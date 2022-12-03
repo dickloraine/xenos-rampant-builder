@@ -1,0 +1,12 @@
+{
+  "files": {
+    "main.js": "/xenos-rampant-builder/static/js/main.e3a30a8d.js",
+    "static/js/390.7866f963.chunk.js": "/xenos-rampant-builder/static/js/390.7866f963.chunk.js",
+    "index.html": "/xenos-rampant-builder/index.html",
+    "main.e3a30a8d.js.map": "/xenos-rampant-builder/static/js/main.e3a30a8d.js.map",
+    "390.7866f963.chunk.js.map": "/xenos-rampant-builder/static/js/390.7866f963.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.e3a30a8d.js"
+  ]
+}
