@@ -20,7 +20,6 @@ const Restore: React.FC<{ onClose?: () => void; showText?: boolean }> = ({
       const content = fileReader.result as string;
       const data: any = JSON.parse(content);
 
-      // check if the new format with customData is used
       if (data.hasOwnProperty('rosters')) {
         await Promise.all(
           Object.entries(data.rosters).map(([key, val]) =>
@@ -28,12 +27,6 @@ const Restore: React.FC<{ onClose?: () => void; showText?: boolean }> = ({
           )
         );
         dispatch(importCustomData(data.customData));
-      }
-      // old data
-      else {
-        await Promise.all(
-          Object.entries(data).map(([key, val]) => rosterStore.setItem(key, val))
-        );
       }
       dispatch(toggleForceInputUpdate());
       dispatch(showFeedback(`Restored!`, 'success'));
