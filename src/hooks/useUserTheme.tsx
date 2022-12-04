@@ -17,6 +17,7 @@ const useUserTheme = () => {
       createTheme({
         palette: {
           type: darkMode ? 'dark' : 'light',
+          primary: { main: '#006B3C' },
         },
       }),
     [darkMode]
