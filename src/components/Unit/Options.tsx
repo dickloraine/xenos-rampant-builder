@@ -29,18 +29,6 @@ const Options: React.FC<{ unit: Unit; onChange: (unit: Unit) => void }> = ({
   const handleChange = (e: React.ChangeEvent<{ value: unknown }>) =>
     onChange({ ...unit, options: [...(e.target.value as string[])] });
 
-  // const handleChange = (option: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   let newUnit = { ...unit };
-
-  //   if (e.target.checked) {
-  //     newUnit.options = [...newUnit.options, option];
-  //   } else {
-  //     newUnit.options = newUnit.options.filter((val) => val !== option);
-  //   }
-
-  //   onChange(newUnit);
-  // };
-
   return (
     <>
       <FormLabel onClick={handleOpen} component="legend">

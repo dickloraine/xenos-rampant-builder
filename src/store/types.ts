@@ -42,6 +42,7 @@ interface BaseUnit {
   xenosRules: string[];
   freeActivations: (keyof UnitStats)[];
   customName?: string;
+  psiPowers?: string[];
 }
 
 export interface Unit extends BaseUnit {
@@ -57,6 +58,7 @@ export interface CompactUnit {
   options: string[];
   xenosRules: string[];
   customName?: string;
+  psiPowers?: string[];
 }
 
 export type XenosRule = {
@@ -73,7 +75,7 @@ export type Rule = {
   description: string;
 };
 
-export type Spell = {
+export type PsychicPower = {
   name: string;
   difficulty: number;
   target: string;
@@ -84,15 +86,15 @@ export type Spell = {
 export type Units = { [name: string]: DataUnit };
 export type XenosRules = { [name: string]: XenosRule };
 export type Rules = { [name: string]: Rule };
-export type Spells = { [name: string]: Spell };
+export type PsychicPowers = { [name: string]: PsychicPower };
 
-export type CustomDataElement = DataUnit | XenosRule | Rule | Spell;
+export type CustomDataElement = DataUnit | XenosRule | Rule | PsychicPower;
 
 export interface CustomData {
   unitData: Units;
   xenosRulesData: XenosRules;
   rulesData: Rules;
-  spellData: Spells;
+  psychicPowers: PsychicPowers;
 }
 
 export interface Data extends CustomData {
@@ -134,6 +136,6 @@ export type UIState = {
   darkMode: null | boolean;
   validationExpanded: boolean;
   rulesSummaryExpanded: boolean;
-  spellsExpanded: boolean;
+  powersExpanded: boolean;
   statisticsExpanded: boolean;
 };

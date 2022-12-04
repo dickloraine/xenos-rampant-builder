@@ -8,11 +8,11 @@ import {
   TextField,
 } from '@material-ui/core';
 import React from 'react';
-import { Spell } from 'store/types';
+import { PsychicPower } from 'store/types';
 import range from 'utils/range';
 import { CustomFormProps } from './CustomizeList';
 
-function SpellsForm(props: CustomFormProps<Spell>) {
+function SpellsForm(props: CustomFormProps<PsychicPower>) {
   const { open, handleClose, initialState, changeState, handleAction, validateName } =
     props;
   const spell = initialState;

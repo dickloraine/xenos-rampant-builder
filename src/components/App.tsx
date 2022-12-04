@@ -7,6 +7,7 @@ import { hydrateData } from 'store/dataSlice';
 import AppBar from './AppBar';
 import CustomizeMenu from './Customize/CustomizeMenu';
 import ListName from './ListName';
+import PsychicPowerTable from './PsychicPowerTable';
 import Roster from './Roster';
 import RulesSummary from './RulesSummary';
 import ShowFeedback from './ShowFeedback';
@@ -29,7 +30,7 @@ const App = () => {
         <Roster />
         <Validation />
         <RulesSummary />
-        {/* <SpellTable /> */}
+        <PsychicPowerTable />
         {/* <Statistics /> */}
         <ShowFeedback />
         <CustomizeMenu />

@@ -17,6 +17,7 @@ import ExpandIcon from '../ExpandIcon';
 import Actions from './Actions';
 import buildUnit from './buildUnit';
 import Options from './Options';
+import PsychicPowers from './psychicPowers';
 import SpecialRules from './SpecialRules';
 import StatBlock from './StatBlock';
 import UnitSelector from './UnitSelector';
@@ -84,6 +85,7 @@ const Unit: React.FC<{ id: number }> = ({ id }) => {
               <SpecialRules rules={unit.rules} />
             </>
           )}
+          <PsychicPowers onChange={handleChange} unit={unit} />
           {!viewMode && (
             <>
               <Options onChange={handleChange} unit={unit} />

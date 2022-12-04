@@ -14,14 +14,32 @@ import buildUnit from './Unit/buildUnit';
 import Unit from './Unit/Unit';
 
 const packRoster = (roster: RosterState): CompactRosterState => {
-  const units: CompactUnit[] = roster.units.map((unit) => ({
-    name: unit.name,
-    customName: unit.customName || '',
-    options: unit.options,
-    xenosRules: unit.xenosRules,
-  }));
+  const units: CompactUnit[] = roster.units.map((unit) => {
+    const compactUnit: CompactUnit = {
+      name: unit.name,
+      options: unit.options,
+      xenosRules: unit.xenosRules,
+    };
+    if (unit.customName) {
+      compactUnit.customName = unit.customName;
+    }
+    if (unit.psiPowers && unit.psiPowers.length > 0) {
+      compactUnit.psiPowers = unit.psiPowers;
+    }
+    return compactUnit;
+  });
+
   return { ...roster, units: units };
 };
+// const packRoster = (roster: RosterState): CompactRosterState => {
+//   const units: CompactUnit[] = roster.units.map((unit) => ({
+//     name: unit.name,
+//     customName: unit.customName || '',
+//     options: unit.options,
+//     xenosRules: unit.xenosRules,
+//   }));
+//   return { ...roster, units: units };
+// };
 
 const unpackRoster = (compactRoster: CompactRosterState): RosterState => {
   const units = Object.values(compactRoster.units).map((unit) => buildUnit(unit));

@@ -204,6 +204,66 @@ export const xenosRulesData: XenosRules = {
     description:
       'As an ordered activation, succeeding on a 7+, this unit can restore 1 Strength Point it has previously lost, for any reason, during the game. This cannot take the unit above its initial Strength Point total.',
   },
+  'Psychic 1': {
+    name: 'Psychic 1',
+    points: 1,
+    exclude_units: ['Militia Rabble', 'Berserk Infantry', 'Soft-skin Vehicle'],
+    description: 'The unit has access to one psychic power.',
+  },
+  'Psychic 2': {
+    name: 'Psychic 2',
+    points: 2,
+    exclude_units: ['Militia Rabble', 'Berserk Infantry', 'Soft-skin Vehicle'],
+    description: 'The unit has access to two psychic powers.',
+  },
+  'Psychic 3': {
+    name: 'Psychic 3',
+    points: 3,
+    exclude_units: ['Militia Rabble', 'Berserk Infantry', 'Soft-skin Vehicle'],
+    description: 'The unit has access to three psychic powers.',
+  },
+  'Psychic 4': {
+    name: 'Psychic 4',
+    points: 4,
+    exclude_units: ['Militia Rabble', 'Berserk Infantry', 'Soft-skin Vehicle'],
+    description:
+      'The unit has access to three psychic powers and increases the range of all powers by 6".',
+  },
+  'Psychic Hazards': {
+    name: 'Psychic Hazards',
+    points: -1,
+    exclude_units: ['Militia Rabble', 'Berserk Infantry', 'Soft-skin Vehicle'],
+    description:
+      'Psychic units only. A unit with the Psychic Hazards xeno rule will suffer Strength Point loss if it rolls a double on an activation test to Manifest a psychic power. If the activation test is successful, the power is still Manifested, although should the Manifesting unit be Suppressed or destroyed by the loss of Strength Points, any effects of the psychic power will end immediately. The number of Strength Points lost is equal to the number rolled on one of the activation test dice.',
+  },
+  'Psychic Resistance': {
+    name: 'Psychic Hazards',
+    points: 1,
+    exclude_units: ['Militia Rabble'],
+    description:
+      'If this unit is successfully targeted by a psychic power, whether friendly or hostile, roll one die. On a result of 4 or more, the psychic power has no effect. The activation roll used to Manifest the power still counts as a success.',
+  },
+  'Psychic Species 1': {
+    name: 'Psychic Species 1',
+    points: 1,
+    exclude_units: ['Militia Rabble', 'Berserk Infantry', 'Soft-skin Vehicle'],
+    description:
+      'Psychic units only. Psychic powers of Difficulty 6+ can be Manifested as a Free Action.',
+  },
+  'Psychic Species 2': {
+    name: 'Psychic Species 2',
+    points: 2,
+    exclude_units: ['Militia Rabble', 'Berserk Infantry', 'Soft-skin Vehicle'],
+    description:
+      'Psychic units only. Psychic powers of Difficulty 6+ or 7+ can be Manifested as a Free Action.',
+  },
+  'Psychic Species 3': {
+    name: 'Psychic Species 3',
+    points: 3,
+    exclude_units: ['Militia Rabble', 'Berserk Infantry', 'Soft-skin Vehicle'],
+    description:
+      'Psychic units only. All Psychic powers can be Manifested as a Free Action.',
+  },
   Skimmer: {
     name: 'Skimmer',
     points: 1,

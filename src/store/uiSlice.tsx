@@ -18,7 +18,7 @@ const getInitialState = () => {
     darkMode: null,
     validationExpanded: true,
     rulesSummaryExpanded: true,
-    spellsExpanded: false,
+    powersExpanded: false,
     statisticsExpanded: true,
   };
 };

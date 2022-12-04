@@ -10,6 +10,7 @@ const buildUnit = (unitToBuild: CompactUnit | Unit) => {
     customName: unitToBuild.customName || '',
     options: [...unitToBuild.options],
     xenosRules: [...unitToBuild.xenosRules],
+    psiPowers: unitToBuild.psiPowers || [],
   };
 
   let points = unitData.points;
@@ -39,6 +40,8 @@ const buildUnit = (unitToBuild: CompactUnit | Unit) => {
         unit.rules = unit.rules.filter((val) => val !== rule);
       }
     }
+
+    unit.rules.sort();
   }
 
   for (const rule of unit.xenosRules) {
@@ -64,6 +67,13 @@ const buildUnit = (unitToBuild: CompactUnit | Unit) => {
       unit = { ...unit, stats: { ...unit.stats, [key]: oldVal + val } };
     }
   }
+
+  if (
+    !unit.xenosRules.some((x) =>
+      ['Psychic 1', 'Psychic 2', 'Psychic 3', 'Psychic 4'].includes(x)
+    )
+  )
+    unit.psiPowers = [];
 
   unit = { ...unit, points: points };
   return unit;

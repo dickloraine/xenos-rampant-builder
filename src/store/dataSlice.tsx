@@ -4,11 +4,10 @@ import {
   createSlice,
   PayloadAction,
 } from '@reduxjs/toolkit';
+import { psychicPowers } from 'assets/XenosRampantData/psychicPowers';
 import { rulesData } from 'assets/XenosRampantData/rules';
-import spellData from 'assets/XenosRampantData/spells.json';
 import { unitsData } from 'assets/XenosRampantData/units';
 import { xenosRulesData } from 'assets/XenosRampantData/xenosRules';
-// import unitData from 'assets/XenosRampantData/units.json';
 import produce from 'immer';
 import { dataStore } from './persistantStorage';
 import {
@@ -16,9 +15,9 @@ import {
   CustomDataElement,
   Data,
   DataUnit,
+  PsychicPower,
   RootState,
   Rule,
-  Spell,
   Thunk,
   XenosRule,
 } from './types';
@@ -27,14 +26,14 @@ export const getEmptyCustomData = (): CustomData => ({
   unitData: {},
   xenosRulesData: {},
   rulesData: {},
-  spellData: {},
+  psychicPowers: {},
 });
 
 const initialData: Data = {
   unitData: unitsData,
   xenosRulesData: xenosRulesData,
   rulesData: rulesData,
-  spellData: spellData,
+  psychicPowers: psychicPowers,
   customData: getEmptyCustomData(),
 };
 
@@ -65,7 +64,7 @@ const dataSlice = createSlice({
           ...customData.xenosRulesData,
         },
         rulesData: { ...initialData.rulesData, ...customData.rulesData },
-        spellData: { ...initialData.spellData, ...customData.spellData },
+        psychicPowers: { ...initialData.psychicPowers, ...customData.psychicPowers },
         customData: customData,
       };
     });
@@ -131,8 +130,8 @@ export const removeUnit = removeAndDispatch('unitData');
 export const addXenosRule = addAndDispatch<XenosRule>('xenosRulesData');
 export const removeXenosRule = removeAndDispatch('xenosRulesData');
 
-export const addSpell = addAndDispatch<Spell>('spellData');
-export const removeSpell = removeAndDispatch('spellData');
+export const addSpell = addAndDispatch<PsychicPower>('psychicPowers');
+export const removeSpell = removeAndDispatch('psychicPowers');
 
 export const addRule = addAndDispatch<Rule>('rulesData');
 export const removeRule = removeAndDispatch('rulesData');

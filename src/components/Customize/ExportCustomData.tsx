@@ -115,7 +115,7 @@ const ExportCustomData: React.FC<{ open: boolean; handleClose: () => void }> = (
           <DataGroup label="Units" type="unitData" {...groupProps} />
           <DataGroup label="Rules" type="rulesData" {...groupProps} />
           <DataGroup label="Xenos Rules" type="xenosRulesData" {...groupProps} />
-          <DataGroup label="Spells" type="spellData" {...groupProps} />
+          <DataGroup label="Psychic Powers" type="psychicPowers" {...groupProps} />
         </FormControl>
       </DialogContent>
       <DialogActions>

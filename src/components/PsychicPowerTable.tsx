@@ -24,22 +24,30 @@ import { getSpecialRules } from 'store/rosterSlice';
 import { RootState } from 'store/types';
 import { toggleUIOption } from 'store/uiSlice';
 
-const SpellTable = () => {
+const PsychicPowerTable = () => {
   const dispatch = useDispatch();
-  const spellData = useSelector((state: RootState) => state.data.spellData);
-  const spellsExpanded = useSelector((state: RootState) => state.ui.spellsExpanded);
+  const psychicData = useSelector((state: RootState) => state.data.psychicPowers);
+  const powersExpanded = useSelector((state: RootState) => state.ui.powersExpanded);
   const units = useSelector((state: RootState) => state.roster.units);
-  const [open, setOpen] = useState([...Array(Object.keys(spellData))].map(() => false));
+  const [open, setOpen] = useState(
+    [...Array(Object.keys(psychicData))].map(() => false)
+  );
   const specialRules = getSpecialRules(units);
 
-  const spellcasterInRoster = () => {
+  const psycherInRoster = () => {
     for (const rule of specialRules) {
-      if (rule === 'Spellcaster' || rule === 'Wizardlings') return true;
+      if (
+        rule === 'Psychic 1' ||
+        rule === 'Psychic 2' ||
+        rule === 'Psychic 3' ||
+        rule === 'Psychic 4'
+      )
+        return true;
     }
     return false;
   };
 
-  const handleSpellClick = (index: number) => {
+  const handlePowerClick = (index: number) => {
     const newOpen = [...open];
     newOpen[index] = !open[index];
     setOpen(newOpen);
@@ -47,22 +55,22 @@ const SpellTable = () => {
 
   return (
     <>
-      {spellcasterInRoster() && (
+      {psycherInRoster() && (
         <Accordion
-          expanded={spellsExpanded}
-          onChange={() => dispatch(toggleUIOption('spellsExpanded'))}
+          expanded={powersExpanded}
+          onChange={() => dispatch(toggleUIOption('powersExpanded'))}
           style={{ maxWidth: 1210 }}
         >
           <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-            <Typography variant="h5">Spell Table</Typography>
+            <Typography variant="h5">Psychic Power Table</Typography>
           </AccordionSummary>
           <AccordionDetails style={{ maxWidth: 800 }}>
             <Hidden smDown>
               <TableContainer>
                 <Table size="small" style={{ minWidth: 650 }}>
                   <TableHead>
-                    <TableRow key="headspelltable">
-                      <TableCell style={{ minWidth: 100 }}>Spell name</TableCell>
+                    <TableRow key="headpowertable">
+                      <TableCell style={{ minWidth: 120 }}>Power name</TableCell>
                       <Hidden smDown>
                         <TableCell align="center">Difficulty</TableCell>
                       </Hidden>
@@ -75,15 +83,15 @@ const SpellTable = () => {
                     </TableRow>
                   </TableHead>
                   <TableBody>
-                    {Object.values(spellData).map((spell) => (
-                      <TableRow key={spell.name}>
+                    {Object.values(psychicData).map((power) => (
+                      <TableRow key={power.name}>
                         <TableCell component="th" scope="row">
-                          {spell.name}
+                          {power.name}
                         </TableCell>
-                        <TableCell align="center">{spell.difficulty}+</TableCell>
-                        <TableCell>{spell.target}</TableCell>
-                        <TableCell>{spell.duration}</TableCell>
-                        <TableCell>{spell.effect}</TableCell>
+                        <TableCell align="center">{power.difficulty}+</TableCell>
+                        <TableCell>{power.target}</TableCell>
+                        <TableCell>{power.duration}</TableCell>
+                        <TableCell>{power.effect}</TableCell>
                       </TableRow>
                     ))}
                   </TableBody>
@@ -92,36 +100,36 @@ const SpellTable = () => {
             </Hidden>
             <Hidden mdUp>
               <List>
-                {Object.values(spellData).map((spell, index) => (
+                {Object.values(psychicData).map((power, index) => (
                   <Box key={index}>
                     <ListItem
-                      key={spell.name + 'small'}
+                      key={power.name + 'small'}
                       button
-                      onClick={() => handleSpellClick(index)}
+                      onClick={() => handlePowerClick(index)}
                     >
-                      <ListItemText primary={spell.name} />
+                      <ListItemText primary={power.name} />
                       <Box width={25}></Box>
                       {open[index] ? <ExpandLessIcon /> : <ExpandMoreIcon />}
                     </ListItem>
                     <Collapse in={open[index]} timeout="auto" unmountOnExit>
-                      <List key={spell.name + 'list'} dense style={{ paddingLeft: 20 }}>
-                        <ListItem key={spell.name + spell.difficulty}>
+                      <List key={power.name + 'list'} dense style={{ paddingLeft: 20 }}>
+                        <ListItem key={power.name + power.difficulty}>
                           <ListItemText
                             primary="Difficulty: "
-                            secondary={spell.difficulty}
+                            secondary={power.difficulty}
                           />
                         </ListItem>
-                        <ListItem key={spell.name + spell.target}>
-                          <ListItemText primary="Target: " secondary={spell.target} />
+                        <ListItem key={power.name + power.target}>
+                          <ListItemText primary="Target: " secondary={power.target} />
                         </ListItem>
-                        <ListItem key={spell.name + spell.duration}>
+                        <ListItem key={power.name + power.duration}>
                           <ListItemText
                             primary="Duration: "
-                            secondary={spell.duration}
+                            secondary={power.duration}
                           />
                         </ListItem>
-                        <ListItem key={spell.name + spell.effect}>
-                          <ListItemText primary="Effect: " secondary={spell.effect} />
+                        <ListItem key={power.name + power.effect}>
+                          <ListItemText primary="Effect: " secondary={power.effect} />
                         </ListItem>
                       </List>
                     </Collapse>
@@ -136,4 +144,4 @@ const SpellTable = () => {
   );
 };
 
-export default SpellTable;
+export default PsychicPowerTable;
