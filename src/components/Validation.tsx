@@ -37,26 +37,16 @@ const Validation = () => {
 
   const warnings = [];
   for (const unit of units) {
-    if (unit.points > 10)
-      warnings.push([unit.name, 'No Unit may cost more than 10 points!']);
-    if (unit.name !== 'Unit' && unit.points <= 0)
-      warnings.push([unit.name, 'No Unit may cost 0 or less points!']);
-    if (
-      unit.options.includes('Short range missiles') &&
-      unit.options.includes('Mixed Weapons')
-    )
-      warnings.push([
-        unit.name,
-        'Short range missiles and Mixed Weapons may not be used together!',
-      ]);
-    if (
-      unit.xenosRules.includes('Unstoppable March of the Dead') &&
-      !unit.xenosRules.includes('Leader')
-    )
-      warnings.push([
-        unit.name,
-        'Only a leader can take "Unstoppable March of the Dead"',
-      ]);
+    if (unit.points > 12)
+      warnings.push([unit.name, 'No Unit may cost more than 12 points!']);
+    if (unit.name !== 'Unit' && unit.points < 1)
+      warnings.push([unit.name, 'No Unit may cost less than one point!']);
+    if (unit.xenosRules.includes('Fanatical Discipline') && unit.stats.courage < 3)
+      warnings.push([unit.name, 'This unit can´t have less than 3 courage!']);
+    if (unit.xenosRules.includes('Hive Mind') && unit.xenosRules.includes('Commander'))
+      warnings.push([unit.name, 'A Commander can´t have Hive Mind!']);
+    if (unit.xenosRules.includes('Slow') && unit.options.includes('Mobile'))
+      warnings.push([unit.name, 'Slow and Mobile can´t be used together!']);
   }
 
   return (
