@@ -41,10 +41,17 @@ const buildUnit = (unitToBuild: CompactUnit | Unit) => {
     }
   }
 
-  for (const xen of unit.xenosRules) {
-    const xenosRule = xenosRulesData[xen];
+  for (const rule of unit.xenosRules) {
+    const xenosRule = xenosRulesData[rule];
     points += xenosRule.points;
     unit.rules = [...unit.rules, xenosRule.name];
+
+    if (xenosRule.setStats) {
+      for (const [key, val] of Object.entries(xenosRule.setStats)) {
+        unit = { ...unit, stats: { ...unit.stats, [key]: val } };
+      }
+    }
+
     if (xenosRule.adjustStats) {
       statsToAdjust = { ...statsToAdjust, ...xenosRule.adjustStats };
     }

@@ -255,6 +255,11 @@ export const xenosRulesData: XenosRules = {
     exclude_units: ['Militia Rabble'],
     description:
       'Whatever the reason, the Unarmed xeno rule changes a unit’s Shoot and Shoot Value characteristics to "-". Only units that normally have a ranged attack can take this xeno rule.',
+    setStats: {
+      shoot: 0,
+      shootValue: 0,
+      shootRange: 0,
+    },
   },
   Undead: {
     name: 'Undead',

@@ -64,6 +64,7 @@ export type XenosRule = {
   points: number;
   exclude_units: string[];
   description: string;
+  setStats?: Partial<UnitStats>;
   adjustStats?: Partial<UnitStats>;
 };
 
