@@ -1,12 +1,12 @@
 {
   "files": {
-    "main.js": "/xenos-rampant-builder/static/js/main.e3a30a8d.js",
-    "static/js/390.7866f963.chunk.js": "/xenos-rampant-builder/static/js/390.7866f963.chunk.js",
+    "main.js": "/xenos-rampant-builder/static/js/main.54c168c6.js",
+    "static/js/390.86ff680d.chunk.js": "/xenos-rampant-builder/static/js/390.86ff680d.chunk.js",
     "index.html": "/xenos-rampant-builder/index.html",
-    "main.e3a30a8d.js.map": "/xenos-rampant-builder/static/js/main.e3a30a8d.js.map",
-    "390.7866f963.chunk.js.map": "/xenos-rampant-builder/static/js/390.7866f963.chunk.js.map"
+    "main.54c168c6.js.map": "/xenos-rampant-builder/static/js/main.54c168c6.js.map",
+    "390.86ff680d.chunk.js.map": "/xenos-rampant-builder/static/js/390.86ff680d.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.e3a30a8d.js"
+    "static/js/main.54c168c6.js"
   ]
 }
