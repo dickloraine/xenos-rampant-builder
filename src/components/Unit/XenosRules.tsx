@@ -13,7 +13,6 @@ import {
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { selectAllRules } from 'store/dataSlice';
 import { RootState, Unit } from 'store/types';
 import useOpen from '../../hooks/useOpen';
 
@@ -23,7 +22,6 @@ const XenosRules: React.FC<{ unit: Unit; onChange: (unit: Unit) => void }> = ({
 }) => {
   const [open, handleOpen, handleClose] = useOpen();
   const xenosRulesData = useSelector((state: RootState) => state.data.xenosRulesData);
-  const rulesData = useSelector((state: RootState) => selectAllRules(state));
 
   let xenosRules = Object.keys(xenosRulesData).filter(
     (rule) => !xenosRulesData[rule].exclude_units.includes(unit.name)
@@ -54,7 +52,7 @@ const XenosRules: React.FC<{ unit: Unit; onChange: (unit: Unit) => void }> = ({
                 />
               }
               label={
-                <Tooltip title={rulesData[name].description}>
+                <Tooltip title={xenosRulesData[name].description}>
                   <Typography>
                     {name}{' '}
                     <Typography color="secondary" component="span">
@@ -82,7 +80,7 @@ const XenosRules: React.FC<{ unit: Unit; onChange: (unit: Unit) => void }> = ({
           {xenosRules.map((name) => (
             <MenuItem key={name} value={name}>
               {unit.xenosRules.indexOf(name) < 0 && (
-                <Tooltip title={rulesData[name].description}>
+                <Tooltip title={xenosRulesData[name].description}>
                   <Typography>
                     {name}{' '}
                     <Typography color="secondary" component="span">
@@ -92,7 +90,7 @@ const XenosRules: React.FC<{ unit: Unit; onChange: (unit: Unit) => void }> = ({
                 </Tooltip>
               )}
               {unit.xenosRules.indexOf(name) > -1 && (
-                <Tooltip title={rulesData[name].description}>
+                <Tooltip title={xenosRulesData[name].description}>
                   <Typography color="primary">
                     {name}{' '}
                     <Typography color="secondary" component="span">
