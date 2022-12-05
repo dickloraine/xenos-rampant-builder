@@ -69,16 +69,17 @@ const PsychicPowers: React.FC<{ unit: Unit; onChange: (unit: Unit) => void }> = 
         >
           {Object.keys(powersData).map((name) => (
             <MenuItem key={name} value={name}>
-              {unit.psiPowers && unit.psiPowers.indexOf(name) < 0 && (
-                <Tooltip title={powersData[name].effect}>
-                  <Typography>{name} </Typography>
-                </Tooltip>
-              )}
-              {unit.psiPowers && unit.psiPowers.indexOf(name) > -1 && (
-                <Tooltip title={powersData[name].effect}>
-                  <Typography color="primary">{name} </Typography>
-                </Tooltip>
-              )}
+              <Tooltip title={powersData[name].effect}>
+                <Typography
+                  color={
+                    unit.psiPowers && unit.psiPowers.indexOf(name) > -1
+                      ? 'primary'
+                      : 'inherit'
+                  }
+                >
+                  {name}{' '}
+                </Typography>
+              </Tooltip>
             </MenuItem>
           ))}
         </Select>

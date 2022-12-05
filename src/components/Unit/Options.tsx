@@ -84,26 +84,16 @@ const Options: React.FC<{ unit: Unit; onChange: (unit: Unit) => void }> = ({
                   !optionsData[name].enabledBy?.some((x) => unit.options.includes(x)))
               }
             >
-              {unit.options.indexOf(name) < 0 && (
-                <Tooltip title={optionsData[name].description}>
-                  <Typography>
-                    {name}{' '}
-                    <Typography color="secondary" component="span">
-                      @{optionsData[name].points}
-                    </Typography>
+              <Tooltip title={optionsData[name].description}>
+                <Typography
+                  color={unit.options.indexOf(name) > -1 ? 'primary' : 'inherit'}
+                >
+                  {name}{' '}
+                  <Typography color="secondary" component="span">
+                    @{optionsData[name].points}
                   </Typography>
-                </Tooltip>
-              )}
-              {unit.options.indexOf(name) > -1 && (
-                <Tooltip title={optionsData[name].description}>
-                  <Typography color="primary">
-                    {name}{' '}
-                    <Typography color="secondary" component="span">
-                      @{optionsData[name].points}
-                    </Typography>
-                  </Typography>
-                </Tooltip>
-              )}
+                </Typography>
+              </Tooltip>
             </MenuItem>
           ))}
         </Select>

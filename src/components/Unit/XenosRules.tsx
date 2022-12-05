@@ -79,26 +79,16 @@ const XenosRules: React.FC<{ unit: Unit; onChange: (unit: Unit) => void }> = ({
         >
           {xenosRules.map((name) => (
             <MenuItem key={name} value={name}>
-              {unit.xenosRules.indexOf(name) < 0 && (
-                <Tooltip title={xenosRulesData[name].description}>
-                  <Typography>
-                    {name}{' '}
-                    <Typography color="secondary" component="span">
-                      @{xenosRulesData[name].points}
-                    </Typography>
+              <Tooltip title={xenosRulesData[name].description}>
+                <Typography
+                  color={unit.xenosRules.indexOf(name) > -1 ? 'primary' : 'inherit'}
+                >
+                  {name}{' '}
+                  <Typography color="secondary" component="span">
+                    @{xenosRulesData[name].points}
                   </Typography>
-                </Tooltip>
-              )}
-              {unit.xenosRules.indexOf(name) > -1 && (
-                <Tooltip title={xenosRulesData[name].description}>
-                  <Typography color="primary">
-                    {name}{' '}
-                    <Typography color="secondary" component="span">
-                      @{xenosRulesData[name].points}
-                    </Typography>
-                  </Typography>
-                </Tooltip>
-              )}
+                </Typography>
+              </Tooltip>
             </MenuItem>
           ))}
         </Select>
