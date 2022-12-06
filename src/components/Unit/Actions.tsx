@@ -3,14 +3,14 @@ import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import PersonAddOutlinedIcon from '@material-ui/icons/PersonAddOutlined';
 import TextFieldsIcon from '@material-ui/icons/TextFields';
+import { useAppDispatch } from 'hooks/reduxHooks';
 import React from 'react';
-import { useDispatch } from 'react-redux';
 import { addUnit, moveUnit, renameUnit } from 'store/rosterSlice';
-import { AppDispatch, Unit } from 'store/types';
+import { Unit } from 'store/types';
 import TextInputDialog from '../TextInputDialog';
 
 const Actions: React.FC<{ id: number; unit: Unit }> = ({ id, unit }) => {
-  const dispatch: AppDispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const moveLeft = () => dispatch(moveUnit(id, 'left'));
   const moveRight = () => dispatch(moveUnit(id, 'right'));

@@ -2,11 +2,10 @@ import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import FormatAlignJustifyIcon from '@material-ui/icons/FormatAlignJustify';
 import FormatAlignLeftIcon from '@material-ui/icons/FormatAlignLeft';
 import ShareIcon from '@material-ui/icons/Share';
+import { useAppDispatch, useAppSelector } from 'hooks/reduxHooks';
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { showFeedback } from 'store/appStateSlice';
 import { getTotalPoints } from 'store/rosterSlice';
-import { AppDispatch, RootState } from 'store/types';
 import copyToClipboard from 'utils/copyToClipboard';
 import ListDialogMenu from './ListDialogMenu';
 import { packRoster } from './Roster';
@@ -15,10 +14,10 @@ const ExportList: React.FC<{ onClose?: () => void; showText?: boolean }> = ({
   onClose,
   showText,
 }) => {
-  const dispatch: AppDispatch = useDispatch();
-  const roster = useSelector((state: RootState) => state.roster);
+  const dispatch = useAppDispatch();
+  const roster = useAppSelector((state) => state.roster);
+  const units = useAppSelector((state) => state.roster.units);
   const getImportableString = () => JSON.stringify(packRoster(roster));
-  const units = useSelector((state: RootState) => state.roster.units);
   const armyCost = getTotalPoints(units);
 
   const getListAsText = () => {

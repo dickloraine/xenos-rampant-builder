@@ -1,18 +1,17 @@
 import { IconButton, Tooltip, Typography } from '@material-ui/core';
 import SaveIcon from '@material-ui/icons/Save';
+import { useAppDispatch, useAppSelector } from 'hooks/reduxHooks';
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { showFeedback } from 'store/appStateSlice';
 import { rosterStore } from 'store/persistantStorage';
-import { AppDispatch, RootState } from 'store/types';
 import { packRoster } from './Roster';
 
 const SaveList: React.FC<{ onClose?: () => void; showText?: boolean }> = ({
   onClose,
   showText,
 }) => {
-  const dispatch: AppDispatch = useDispatch();
-  const roster = useSelector((state: RootState) => state.roster);
+  const dispatch = useAppDispatch();
+  const roster = useAppSelector((state) => state.roster);
 
   const saveRoster = () => {
     if (roster.name === 'New List') {

@@ -1,6 +1,6 @@
 import DeleteIcon from '@material-ui/icons/Delete';
+import { useAppDispatch } from 'hooks/reduxHooks';
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { showFeedback } from 'store/appStateSlice';
 import { rosterStore } from 'store/persistantStorage';
 import ListDialogMenu from './ListDialogMenu';
@@ -9,7 +9,7 @@ const DeleteList: React.FC<{ onClose?: () => void; showText?: boolean }> = ({
   onClose,
   showText,
 }) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [savedRosters, setSavedRosters] = useState<string[]>([]);
 
   const handleOpen = () => rosterStore.keys().then((keys) => setSavedRosters(keys));

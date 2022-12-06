@@ -1,11 +1,10 @@
 import { Container, List, ListItem, Tooltip, Typography } from '@material-ui/core';
+import { useAppSelector } from 'hooks/reduxHooks';
 import React from 'react';
-import { useSelector } from 'react-redux';
 import { selectAllRules } from 'store/dataSlice';
-import { RootState } from 'store/types';
 
 const SpecialRules: React.FC<{ rules: string[] }> = ({ rules }) => {
-  const rulesData = useSelector((state: RootState) => selectAllRules(state));
+  const rulesData = useAppSelector((state) => selectAllRules(state));
   if (rules && rules.length) {
     return (
       <Container>

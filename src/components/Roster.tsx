@@ -1,15 +1,9 @@
 import { Box, Fab, Typography } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
+import { useAppDispatch, useAppSelector } from 'hooks/reduxHooks';
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { addUnit } from 'store/rosterSlice';
-import {
-  AppDispatch,
-  CompactRosterState,
-  CompactUnit,
-  RootState,
-  RosterState,
-} from 'store/types';
+import { CompactRosterState, CompactUnit, RosterState } from 'store/types';
 import buildUnit from './Unit/buildUnit';
 import Unit from './Unit/Unit';
 
@@ -47,9 +41,9 @@ const unpackRoster = (compactRoster: CompactRosterState): RosterState => {
 };
 
 const Roster = () => {
-  const dispatch: AppDispatch = useDispatch();
-  const roster = useSelector((state: RootState) => state.roster);
-  const viewMode = useSelector((state: RootState) => state.ui.viewMode);
+  const dispatch = useAppDispatch();
+  const roster = useAppSelector((state) => state.roster);
+  const viewMode = useAppSelector((state) => state.ui.viewMode);
 
   return (
     <>

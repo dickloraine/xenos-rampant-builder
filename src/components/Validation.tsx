@@ -11,9 +11,8 @@ import {
 import { makeStyles } from '@material-ui/core/styles';
 import ErrorIcon from '@material-ui/icons/Error';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { useAppDispatch, useAppSelector } from 'hooks/reduxHooks';
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from 'store/types';
 import { toggleUIOption } from 'store/uiSlice';
 
 const useStyles = makeStyles((theme) => ({
@@ -28,12 +27,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Validation = () => {
-  const dispatch = useDispatch();
-  const validationExpanded = useSelector(
-    (state: RootState) => state.ui.validationExpanded
-  );
+  const dispatch = useAppDispatch();
+  const validationExpanded = useAppSelector((state) => state.ui.validationExpanded);
   const classes = useStyles();
-  const units = Object.values(useSelector((state: RootState) => state.roster.units));
+  const units = Object.values(useAppSelector((state) => state.roster.units));
 
   const warnings = [];
   for (const unit of units) {

@@ -1,7 +1,7 @@
 import { Divider, Drawer, List, ListItem } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import React, { useCallback } from 'react';
-// import { useDispatch } from 'react-redux';
+// import { useAppDispatch } from 'hooks/reduxHooks';
 // import { setCustomizeMode } from 'store/appStateSlice';
 import About from './About';
 import Backup from './Backup';
@@ -15,7 +15,7 @@ import SaveList from './SaveList';
 
 const SideMenu = () => {
   const [open, setOpen] = React.useState(false);
-  // const dispatch = useDispatch();
+  // const dispatch = useAppDispatch();
 
   // const showCustomizeMenu = () => {
   //   dispatch(setCustomizeMode(true));

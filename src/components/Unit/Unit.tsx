@@ -8,10 +8,10 @@ import {
   Typography,
 } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
+import { useAppDispatch, useAppSelector } from 'hooks/reduxHooks';
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { removeUnit, updateUnit } from 'store/rosterSlice';
-import { AppDispatch, RootState, Unit as UnitType } from 'store/types';
+import { Unit as UnitType } from 'store/types';
 import ExpandIcon from '../ExpandIcon';
 import Actions from './Actions';
 import buildUnit from './buildUnit';
@@ -23,10 +23,10 @@ import UnitSelector from './UnitSelector';
 import XenosRules from './XenosRules';
 
 const Unit: React.FC<{ id: number }> = ({ id }) => {
-  const dispatch: AppDispatch = useDispatch();
-  const unit = useSelector((state: RootState) => state.roster.units[id]);
-  const viewMode = useSelector((state: RootState) => state.ui.viewMode);
-  const editMode = useSelector((state: RootState) => state.ui.editMode);
+  const dispatch = useAppDispatch();
+  const unit = useAppSelector((state) => state.roster.units[id]);
+  const viewMode = useAppSelector((state) => state.ui.viewMode);
+  const editMode = useAppSelector((state) => state.ui.editMode);
 
   const [expanded, setExpanded] = React.useState(true);
   const handleExpandClick = () => setExpanded(!expanded);

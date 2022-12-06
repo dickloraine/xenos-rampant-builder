@@ -10,9 +10,9 @@ import {
   Typography,
 } from '@material-ui/core';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import { useAppSelector } from 'hooks/reduxHooks';
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { RootState, Unit } from 'store/types';
+import { Unit } from 'store/types';
 import useOpen from '../../hooks/useOpen';
 
 const PsychicPowers: React.FC<{ unit: Unit; onChange: (unit: Unit) => void }> = ({
@@ -20,8 +20,8 @@ const PsychicPowers: React.FC<{ unit: Unit; onChange: (unit: Unit) => void }> = 
   onChange,
 }) => {
   const [open, handleOpen, handleClose] = useOpen();
-  const powersData = useSelector((state: RootState) => state.data.psychicPowers);
-  const viewMode = useSelector((state: RootState) => state.ui.viewMode);
+  const powersData = useAppSelector((state) => state.data.psychicPowers);
+  const viewMode = useAppSelector((state) => state.ui.viewMode);
   if (
     !unit.xenosRules.some((rule) =>
       ['Psychic 1', 'Psychic 2', 'Psychic 3', 'Psychic 4'].includes(rule)

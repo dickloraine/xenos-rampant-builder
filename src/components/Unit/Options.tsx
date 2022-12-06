@@ -11,9 +11,9 @@ import {
   Typography,
 } from '@material-ui/core';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import { useAppSelector } from 'hooks/reduxHooks';
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { RootState, Unit } from 'store/types';
+import { Unit } from 'store/types';
 import useOpen from '../../hooks/useOpen';
 
 const Options: React.FC<{ unit: Unit; onChange: (unit: Unit) => void }> = ({
@@ -21,9 +21,7 @@ const Options: React.FC<{ unit: Unit; onChange: (unit: Unit) => void }> = ({
   onChange,
 }) => {
   const [open, handleOpen, handleClose] = useOpen();
-  const optionsData = useSelector(
-    (state: RootState) => state.data.unitData[unit.name].options
-  );
+  const optionsData = useAppSelector((state) => state.data.unitData[unit.name].options);
   if (!optionsData || !Object.keys(optionsData).length) return <div></div>;
 
   const handleChange = (e: React.ChangeEvent<{ value: unknown }>) =>

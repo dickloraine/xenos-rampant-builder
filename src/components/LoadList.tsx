@@ -1,6 +1,6 @@
 import SaveOutlinedIcon from '@material-ui/icons/SaveOutlined';
+import { useAppDispatch } from 'hooks/reduxHooks';
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { showFeedback, toggleForceInputUpdate } from 'store/appStateSlice';
 import { rosterStore } from 'store/persistantStorage';
 import { setRoster } from 'store/rosterSlice';
@@ -12,7 +12,7 @@ const LoadList: React.FC<{ onClose?: () => void; showText?: boolean }> = ({
   onClose,
   showText,
 }) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [savedRosters, setSavedRosters] = useState<string[]>([]);
 
   const handleOpen = () => rosterStore.keys().then((keys) => setSavedRosters(keys));

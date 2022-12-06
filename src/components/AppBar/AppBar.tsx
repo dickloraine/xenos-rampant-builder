@@ -9,8 +9,8 @@ import {
 import EditIcon from '@material-ui/icons/Edit';
 import ReplayIcon from '@material-ui/icons/Replay';
 import VisibilityIcon from '@material-ui/icons/Visibility';
+import { useAppDispatch } from 'hooks/reduxHooks';
 import React from 'react';
-import { useDispatch } from 'react-redux';
 import { newRoster } from 'store/rosterSlice';
 import LoadList from '../LoadList';
 import SaveList from '../SaveList';
@@ -19,7 +19,7 @@ import ToggleViewMode from './ToggleViewMode';
 import TotalPoints from './TotalPoints';
 
 const AppBar = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   return (
     <Box display="flex">

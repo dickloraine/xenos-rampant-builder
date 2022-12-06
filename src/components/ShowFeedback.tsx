@@ -1,13 +1,12 @@
 import Snackbar from '@material-ui/core/Snackbar';
 import Alert from '@material-ui/lab/Alert';
+import { useAppDispatch, useAppSelector } from 'hooks/reduxHooks';
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { closeFeedback } from 'store/appStateSlice';
-import { AppDispatch, RootState } from 'store/types';
 
 const ShowFeedback = () => {
-  const dispatch: AppDispatch = useDispatch();
-  const feedback = useSelector((state: RootState) => state.appState.feedback);
+  const dispatch = useAppDispatch();
+  const feedback = useAppSelector((state) => state.appState.feedback);
 
   const handleClose = (event?: React.SyntheticEvent, reason?: string) => {
     if (reason === 'clickaway') {

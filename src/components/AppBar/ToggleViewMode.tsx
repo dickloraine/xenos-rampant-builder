@@ -1,7 +1,7 @@
 import { IconButton, Tooltip } from '@material-ui/core';
+import { useAppDispatch, useAppSelector } from 'hooks/reduxHooks';
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState, UIState } from 'store/types';
+import { UIState } from 'store/types';
 import { updateUI } from 'store/uiSlice';
 
 const ToggleViewMode: React.FC<{
@@ -9,8 +9,8 @@ const ToggleViewMode: React.FC<{
   Icon: any;
   title: string;
 }> = ({ option, Icon, title }) => {
-  const optionState = useSelector((state: RootState) => state.ui[option]);
-  const dispatch = useDispatch();
+  const optionState = useAppSelector((state) => state.ui[option]);
+  const dispatch = useAppDispatch();
 
   const changeViewMode = () => {
     const notClicked = option === 'viewMode' ? 'editMode' : 'viewMode';

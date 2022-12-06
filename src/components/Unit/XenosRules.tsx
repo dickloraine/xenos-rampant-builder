@@ -11,9 +11,9 @@ import {
   Typography,
 } from '@material-ui/core';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import { useAppSelector } from 'hooks/reduxHooks';
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { RootState, Unit } from 'store/types';
+import { Unit } from 'store/types';
 import useOpen from '../../hooks/useOpen';
 
 const XenosRules: React.FC<{ unit: Unit; onChange: (unit: Unit) => void }> = ({
@@ -21,7 +21,7 @@ const XenosRules: React.FC<{ unit: Unit; onChange: (unit: Unit) => void }> = ({
   onChange,
 }) => {
   const [open, handleOpen, handleClose] = useOpen();
-  const xenosRulesData = useSelector((state: RootState) => state.data.xenosRulesData);
+  const xenosRulesData = useAppSelector((state) => state.data.xenosRulesData);
 
   let xenosRules = Object.keys(xenosRulesData).filter(
     (rule) => !xenosRulesData[rule].exclude_units.includes(unit.name)

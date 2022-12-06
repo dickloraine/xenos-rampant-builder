@@ -1,7 +1,7 @@
 import { IconButton, Tooltip, Typography } from '@material-ui/core';
 import GetAppIcon from '@material-ui/icons/GetApp';
+import { useAppDispatch } from 'hooks/reduxHooks';
 import React from 'react';
-import { useDispatch } from 'react-redux';
 import { showFeedback, toggleForceInputUpdate } from 'store/appStateSlice';
 import { setRoster } from 'store/rosterSlice';
 import { unpackRoster } from './Roster';
@@ -11,7 +11,7 @@ const ImportList: React.FC<{ onClose?: () => void; showText?: boolean }> = ({
   onClose,
   showText,
 }) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const handleImport = (value?: string) => {
     if (!value) return;

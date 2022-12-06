@@ -18,17 +18,16 @@ import {
 } from '@material-ui/core';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { useAppDispatch, useAppSelector } from 'hooks/reduxHooks';
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { getSpecialRules } from 'store/rosterSlice';
-import { RootState } from 'store/types';
 import { toggleUIOption } from 'store/uiSlice';
 
 const PsychicPowerTable = () => {
-  const dispatch = useDispatch();
-  const psychicData = useSelector((state: RootState) => state.data.psychicPowers);
-  const powersExpanded = useSelector((state: RootState) => state.ui.powersExpanded);
-  const units = useSelector((state: RootState) => state.roster.units);
+  const dispatch = useAppDispatch();
+  const psychicData = useAppSelector((state) => state.data.psychicPowers);
+  const powersExpanded = useAppSelector((state) => state.ui.powersExpanded);
+  const units = useAppSelector((state) => state.roster.units);
   const [open, setOpen] = useState(
     [...Array(Object.keys(psychicData))].map(() => false)
   );

@@ -1,7 +1,7 @@
 import { IconButton, Tooltip, Typography } from '@material-ui/core';
 import RestorePageIcon from '@material-ui/icons/RestorePage';
+import { useAppDispatch } from 'hooks/reduxHooks';
 import React from 'react';
-import { useDispatch } from 'react-redux';
 import { showFeedback, toggleForceInputUpdate } from 'store/appStateSlice';
 import { importCustomData } from 'store/dataSlice';
 import { rosterStore } from 'store/persistantStorage';
@@ -10,7 +10,7 @@ const Restore: React.FC<{ onClose?: () => void; showText?: boolean }> = ({
   showText,
   onClose,
 }) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   let fileReader: FileReader;
   const fileDialog = React.useRef<HTMLInputElement>(null);

@@ -1,18 +1,18 @@
 import { Chip, Typography } from '@material-ui/core';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import { useAppDispatch, useAppSelector } from 'hooks/reduxHooks';
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { selectUnitNames } from 'store/dataSlice';
 import { setUnit } from 'store/rosterSlice';
-import { AppDispatch, RootState, Unit } from 'store/types';
+import { Unit } from 'store/types';
 import ListDialog from '../ListDialog';
 
 const UnitSelector: React.FC<{
   unit: Unit;
   id: number;
 }> = ({ unit, id }) => {
-  const unitNames = useSelector((state: RootState) => selectUnitNames(state));
-  const dispatch: AppDispatch = useDispatch();
+  const unitNames = useAppSelector((state) => selectUnitNames(state));
+  const dispatch = useAppDispatch();
   const name = unit.customName ? unit.customName : unit.name;
 
   const setSelectedUnit = (value: string) => {

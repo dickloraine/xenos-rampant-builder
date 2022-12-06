@@ -8,20 +8,17 @@ import {
   Typography,
 } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { useAppDispatch, useAppSelector } from 'hooks/reduxHooks';
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { selectAllRules } from 'store/dataSlice';
 import { getSpecialRules } from 'store/rosterSlice';
-import { RootState } from 'store/types';
 import { toggleUIOption } from 'store/uiSlice';
 
 const RulesSummary = () => {
-  const dispatch = useDispatch();
-  const rulesData = useSelector((state: RootState) => selectAllRules(state));
-  const rulesSummaryExpanded = useSelector(
-    (state: RootState) => state.ui.rulesSummaryExpanded
-  );
-  const units = useSelector((state: RootState) => state.roster.units);
+  const dispatch = useAppDispatch();
+  const rulesData = useAppSelector((state) => selectAllRules(state));
+  const rulesSummaryExpanded = useAppSelector((state) => state.ui.rulesSummaryExpanded);
+  const units = useAppSelector((state) => state.roster.units);
   const specialRules = getSpecialRules(units);
 
   return (

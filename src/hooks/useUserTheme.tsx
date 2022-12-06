@@ -1,14 +1,13 @@
 import { createTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { useAppDispatch, useAppSelector } from 'hooks/reduxHooks';
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { setAutoDarkMode } from 'store/appStateSlice';
-import { AppDispatch, RootState } from 'store/types';
 
 const useUserTheme = () => {
-  const dispatch: AppDispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
-  const hasDarkMode = useSelector((state: RootState) => state.ui.darkMode);
+  const hasDarkMode = useAppSelector((state) => state.ui.darkMode);
   const darkMode = hasDarkMode === undefined ? prefersDarkMode : hasDarkMode;
   dispatch(setAutoDarkMode(darkMode));
 
