@@ -1,8 +1,8 @@
 import { Divider, Drawer, List, ListItem } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import React, { useCallback } from 'react';
-import { useDispatch } from 'react-redux';
-import { setCustomizeMode } from 'store/appStateSlice';
+// import { useDispatch } from 'react-redux';
+// import { setCustomizeMode } from 'store/appStateSlice';
 import About from './About';
 import Backup from './Backup';
 import DarkMode from './DarkMode';
@@ -15,12 +15,12 @@ import SaveList from './SaveList';
 
 const SideMenu = () => {
   const [open, setOpen] = React.useState(false);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  const showCustomizeMenu = () => {
-    dispatch(setCustomizeMode(true));
-    setOpen(false);
-  };
+  // const showCustomizeMenu = () => {
+  //   dispatch(setCustomizeMode(true));
+  //   setOpen(false);
+  // };
 
   const toggleDrawer = (open: boolean) => (event: any) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
