@@ -23,8 +23,8 @@ const PsychicPowers: React.FC<{ unit: Unit; onChange: (unit: Unit) => void }> = 
   const powersData = useSelector((state: RootState) => state.data.psychicPowers);
   const viewMode = useSelector((state: RootState) => state.ui.viewMode);
   if (
-    !unit.xenosRules.some((x) =>
-      ['Psychic 1', 'Psychic 2', 'Psychic 3', 'Psychic 4'].includes(x)
+    !unit.xenosRules.some((rule) =>
+      ['Psychic 1', 'Psychic 2', 'Psychic 3', 'Psychic 4'].includes(rule)
     )
   )
     return <div></div>;

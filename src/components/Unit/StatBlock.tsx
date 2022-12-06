@@ -50,7 +50,7 @@ const StatBlock: React.FC<{
     isPhone: isPhone,
   };
 
-  let shootingValue = stats.shoot ? `${stats.shootValue}+/${stats.shootRange}"` : '-';
+  const shootingValue = stats.shoot ? `${stats.shootValue}+/${stats.shootRange}"` : '-';
 
   return (
     <TableContainer style={{ marginBottom: 20 }}>
