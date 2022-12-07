@@ -31,11 +31,10 @@ const ExportList: React.FC<{ onClose?: () => void; showText?: boolean }> = ({
           unit.points
         } points`
       );
-      text.push('-----------------------------------');
 
       const options = [...unit.options, ...unit.xenosRules];
       if (options.length) {
-        for (const option of options) text.push(`- ${option}`);
+        for (const option of options) text.push(`  - ${option}`);
       }
     }
     text.push('');
@@ -44,13 +43,13 @@ const ExportList: React.FC<{ onClose?: () => void; showText?: boolean }> = ({
 
   const getListAsMarkdown = () => {
     let text: string[] = [];
-    text.push(`**${roster.name} @${armyCost} points**`);
+    text.push(`**${roster.name} --- ${armyCost} points**`);
     for (const unit of Object.values(roster.units)) {
       text.push('');
       text.push(
-        `* ${unit.customName ? unit.customName + ' (' + unit.name + ')' : unit.name} @${
-          unit.points
-        } points`
+        `* ${
+          unit.customName ? unit.customName + ' (' + unit.name + ')' : unit.name
+        } -- ${unit.points} points`
       );
 
       const options = [...unit.options, ...unit.xenosRules];
