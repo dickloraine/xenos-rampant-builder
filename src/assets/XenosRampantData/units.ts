@@ -742,14 +742,14 @@ export const unitsData: Units = {
       },
       'Transport (10)': {
         name: 'Transport (10)',
-        points: 1,
+        points: 2,
         description:
           'This vehicle can carry an infantry unit with up to 10 Strength Points.',
         add: ['Transport (10)'],
       },
       'Transport (15)': {
         name: 'Transport (15)',
-        points: 1,
+        points: 2,
         description:
           'This vehicle can carry an infantry unit with up to 15 Strength Points.',
         adjustStats: {

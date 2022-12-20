@@ -111,8 +111,10 @@ export const xenosRulesData: XenosRules = {
     name: 'Fearful',
     points: -1,
     exclude_units: ['Militia Rabble'],
-    description:
-      'Every Courage and Rally test suffers -1 to the total; if Attacked by a Fearsome unit, Courage tests are taken at -2.',
+    description: 'Decreases this units courage by one.',
+    adjustStats: {
+      courage: 1,
+    },
   },
   Flying: {
     name: 'Flying',
@@ -204,6 +206,77 @@ export const xenosRulesData: XenosRules = {
     description:
       'As an ordered activation, succeeding on a 7+, this unit can restore 1 Strength Point it has previously lost, for any reason, during the game. This cannot take the unit above its initial Strength Point total.',
   },
+  Skimmer: {
+    name: 'Skimmer',
+    points: 1,
+    exclude_units: ['Militia Rabble'],
+    description:
+      'When it moves, including during Retreats and Attacks, the unit can ignore rough and impassable terrain, gliding straight over it. The unit may not end its move in  impassable terrain.',
+  },
+  Slow: {
+    name: 'Slow',
+    points: -1,
+    exclude_units: ['Militia Rabble'],
+    description:
+      'Reduce the units Maximum Movement value by 2". This cannot be combined with the Mobile option available to some units.',
+    adjustStats: {
+      movement: -2,
+    },
+  },
+  'Special Insertion': {
+    name: 'Special Insertion',
+    points: 1,
+    exclude_units: [],
+    description:
+      'Special Insertion units begin the game in reserve and are not deployed with the rest of your Detachment. They deploy in one of two ways: 1. A Psychic unit that successfully Manifests the Summoner psychic power can place a single Special Insertion unit anywhere within 12" of themselves, but at least 6" away from any enemy units. 2. A Special Insertion unit can be activated while off the table, but it can only make an ordered Move activation (even if Move is normally a Free Action for it). If successful, place the unit anywhere on the table, so long as it is not within 6” of an enemy unit. If unsuccessful, the unit can still be placed on the table, but if you do, you must roll a die and compare it to the unit’s Courage; if you roll below the unit’s Courage, it suffers the die result in Strength Point damage, which causes an immediate Courage test. You can choose not to deploy a Special Insertion unit on a failed activation test and not have it suffer any Strength Point damage',
+  },
+  'Stabilised Weaponry': {
+    name: 'Stabilised Weaponry',
+    points: 2,
+    exclude_units: ['Militia Rabble'],
+    description:
+      'Infantry only. Units with Stabilised Weaponry can Move and Shoot as an ordered activation in the same way as vehicles.',
+  },
+  'Stun Weapons': {
+    name: 'Stun Weapons',
+    points: 1,
+    exclude_units: [],
+    description:
+      'This xeno rule applies to both a unit’s Attack and Shoot actions. Hits from Stun Weapons are treated as normal, but do not cause Strength Point loss. Instead, any ‘casualties’ that would have been inflicted count as double for the purposes of Courage tests. Before any dice are rolled for a given Attack or Shoot action, a unit with Stun Weapons may choose to use lethal force if it prefers. Demonic, Mechanoid, and Undead units are immune to the effects of Stun Weapons.',
+  },
+  'Teleport Jump': {
+    name: 'Teleport Jump',
+    points: 1,
+    exclude_units: ['Militia Rabble'],
+    description:
+      'When this unit takes a Move action, it can either choose to move normally, or it can teleport. If it chooses to teleport, choose the desired direction and then roll two dice; you may move the unit any number of inches up to the result. You do not have to move the full distance but may ignore all terrain effects (including impassable terrain). If the distance rolled on the two dice is a double, the unit still moves as above, but something has gone horribly wrong during teleportation; the unit loses a number of Strength Points equal to the result of one of the dice.',
+  },
+  Unarmed: {
+    name: 'Unarmed',
+    points: -1,
+    exclude_units: ['Militia Rabble'],
+    description:
+      'Whatever the reason, the Unarmed xeno rule changes a unit’s Shoot and Shoot Value characteristics to "-". Only units that normally have a ranged attack can take this xeno rule.',
+    setStats: {
+      shoot: 0,
+      shootValue: 0,
+      shootRange: 0,
+    },
+  },
+  Undead: {
+    name: 'Undead',
+    points: 0,
+    exclude_units: [],
+    description:
+      'Ignore the effects of Fearsome units. Ignore the effects of Stun Weapons. Courage value of 0+. This means that your unit will never become Suppressed, but will still rout on a negative Courage Test result as enough of the unit take crippling injuries that they cease to be combat effective or the force reanimating them dissipates. Any excess hits they take during Attacks are rounded up when working out how many Strength Points are lost. Shooting is resolved normally.',
+  },
+  Unstable: {
+    name: 'Unarmed',
+    points: -2,
+    exclude_units: ['Militia Rabble'],
+    description:
+      'If this unit rolls a double on an activation roll, including for ‘out-of-sequence’ activations like Wild Charge or Firefight tests, but excluding Rally tests, the order passes or fails as normal, but the unit loses a number of Strength Points equal to the result of one of the dice.',
+  },
   'Psychic 1': {
     name: 'Psychic 1',
     points: 1,
@@ -263,76 +336,5 @@ export const xenosRulesData: XenosRules = {
     exclude_units: ['Militia Rabble', 'Berserk Infantry', 'Soft-skin Vehicle'],
     description:
       'Psychic units only. All Psychic powers can be Manifested as a Free Action.',
-  },
-  Skimmer: {
-    name: 'Skimmer',
-    points: 1,
-    exclude_units: ['Militia Rabble'],
-    description:
-      'When it moves, including during Retreats and Attacks, the unit can ignore rough and impassable terrain, gliding straight over it. The unit may not end its move in  impassable terrain.',
-  },
-  Slow: {
-    name: 'Slow',
-    points: -1,
-    exclude_units: ['Militia Rabble'],
-    description:
-      'Reduce the units Maximum Movement value by 2". This cannot be combined with the Mobile option available to some units.',
-    adjustStats: {
-      movement: -2,
-    },
-  },
-  'Special Insertion': {
-    name: 'Special Insertion',
-    points: 1,
-    exclude_units: [],
-    description:
-      'Special Insertion units begin the game in reserve and are not deployed with the rest of your Detachment. They deploy in one of two ways: 1. A Psychic unit that successfully Manifests the Summoner psychic power can place a single Special Insertion unit anywhere within 12" of themselves, but at least 6" away from any enemy units. 2. A Special Insertion unit can be activated while off the table, but it can only make an ordered Move activation (even if Move is normally a Free Action for it). If successful, place the unit anywhere on the table, so long as it is not within 6” of an enemy unit. If unsuccessful, the unit can still be placed on the table, but if you do, you must roll a die and compare it to the unit’s Courage; if you roll below the unit’s Courage, it suffers the die result in Strength Point damage, which causes an immediate Courage test. You can choose not to deploy a Special Insertion unit on a failed activation test and not have it suffer any Strength Point damage',
-  },
-  'Stabilised Weaponry': {
-    name: 'Stabilised Weaponry',
-    points: 2,
-    exclude_units: ['Militia Rabble'],
-    description:
-      'Infantry only. Units with Stabilised Weaponry can Move and Shoot as an ordered activation in the same way as vehicles.',
-  },
-  'Stun Weapons': {
-    name: 'Stun Weapons',
-    points: 1,
-    exclude_units: [],
-    description:
-      'his xeno rule applies to both a unit’s Attack and Shoot actions. Hits from Stun Weapons are treated as normal, but do not cause Strength Point loss. Instead, any ‘casualties’ that would have been inflicted count as double for the purposes of Courage tests. Before any dice are rolled for a given Attack or Shoot action, a unit with Stun Weapons may choose to use lethal force if it prefers. Demonic, Mechanoid, and Undead units are immune to the effects of Stun Weapons.',
-  },
-  'Teleport Jump': {
-    name: 'Teleport Jump',
-    points: 1,
-    exclude_units: ['Militia Rabble'],
-    description:
-      'When this unit takes a Move action, it can either choose to move normally, or it can teleport. If it chooses to teleport, choose the desired direction and then roll two dice; you may move the unit any number of inches up to the result. You do not have to move the full distance but may ignore all terrain effects (including impassable terrain). If the distance rolled on the two dice is a double, the unit still moves as above, but something has gone horribly wrong during teleportation; the unit loses a number of Strength Points equal to the result of one of the dice.',
-  },
-  Unarmed: {
-    name: 'Unarmed',
-    points: -1,
-    exclude_units: ['Militia Rabble'],
-    description:
-      'Whatever the reason, the Unarmed xeno rule changes a unit’s Shoot and Shoot Value characteristics to "-". Only units that normally have a ranged attack can take this xeno rule.',
-    setStats: {
-      shoot: 0,
-      shootValue: 0,
-      shootRange: 0,
-    },
-  },
-  Undead: {
-    name: 'Undead',
-    points: 0,
-    exclude_units: [],
-    description:
-      'Ignore the effects of Fearsome units. Ignore the effects of Stun Weapons. Courage value of 0+. This means that your unit will never become Suppressed, but will still rout on a negative Courage Test result as enough of the unit take crippling injuries that they cease to be combat effective or the force reanimating them dissipates. Any excess hits they take during Attacks are rounded up when working out how many Strength Points are lost. Shooting is resolved normally.',
-  },
-  Unstable: {
-    name: 'Unarmed',
-    points: -2,
-    exclude_units: ['Militia Rabble'],
-    description:
-      'If this unit rolls a double on an activation roll, including for ‘out-of-sequence’ activations like Wild Charge or Firefight tests, but excluding Rally tests, the order passes or fails as normal, but the unit loses a number of Strength Points equal to the result of one of the dice.',
   },
 };
