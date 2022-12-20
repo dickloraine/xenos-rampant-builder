@@ -60,7 +60,7 @@ const Options: React.FC<{ unit: Unit; onChange: (unit: Unit) => void }> = ({
           />
         </div>
       ))}
-      <FormControl style={{ marginTop: 10, width: 0, height: 0 }}>
+      <FormControl style={{ margin: 0, width: 0, height: 0 }}>
         <Select
           open={open}
           onClose={handleClose}

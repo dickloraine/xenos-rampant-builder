@@ -32,7 +32,7 @@ const XenosRules: React.FC<{ unit: Unit; onChange: (unit: Unit) => void }> = ({
 
   return (
     <>
-      <FormLabel onClick={handleOpen} component="legend">
+      <FormLabel onClick={handleOpen} component="legend" style={{ marginTop: 5 }}>
         Xenos Rules <ArrowDropDownIcon />
       </FormLabel>
       {unit.xenosRules &&
@@ -65,7 +65,7 @@ const XenosRules: React.FC<{ unit: Unit; onChange: (unit: Unit) => void }> = ({
             />
           </div>
         ))}
-      <FormControl style={{ marginTop: 10, width: 0, height: 0 }}>
+      <FormControl style={{ marginTop: 0, width: 0, height: 0 }}>
         <Select
           open={open}
           onClose={handleClose}
