@@ -47,6 +47,14 @@ const Validation = () => {
       warnings.push([unit.name, 'A Commander can´t have Hive Mind!']);
     if (unit.xenosRules.includes('Slow') && unit.options.includes('Mobile'))
       warnings.push([unit.name, 'Slow and Mobile can´t be used together!']);
+    if (
+      unit.xenosRules.includes('Contagious') &&
+      !(unit.xenosRules.includes('Demonic') || unit.xenosRules.includes('Undead'))
+    )
+      warnings.push([
+        unit.name,
+        'Conatagious can only be taken by demonic or undead units!',
+      ]);
     if (unit.xenosRules.includes('Psychic Hazards') && !isPsycher)
       warnings.push([unit.name, 'Only a psychic unit can take Psychic Hazards!']);
     if (
