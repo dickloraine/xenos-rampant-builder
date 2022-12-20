@@ -171,7 +171,7 @@ export const unitsData: Units = {
         description:
           "This unit's Attack Value is reduced by 1 (e.g. 4+ to 5+ for base units).",
         adjustStats: {
-          attackValue: -1,
+          attackValue: +1,
         },
       },
       'Heavy Armor': {
