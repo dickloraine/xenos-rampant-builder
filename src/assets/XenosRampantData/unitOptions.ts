@@ -65,7 +65,6 @@ export const unitOptions: UnitOptions = {
     description:
       'This unit is armed for short-range combat, reducing its Shooting Range to 12".',
     setStats: {
-      shootValue: 4,
       shootRange: 12,
     },
     disabledBy: ['Artillery'],
