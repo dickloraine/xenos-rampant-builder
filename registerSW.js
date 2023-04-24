@@ -1,1 +1,1 @@
-if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('/sw.js', { scope: '/' })})}
+if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('/dickloraine.github.io/xenos-rampant-builder/sw.js', { scope: '/dickloraine.github.io/xenos-rampant-builder/' })})}
