@@ -1,4 +1,4 @@
-import { Rules } from 'store/types';
+import { Rules } from '../../store/types';
 import { unitOptions } from './unitOptions';
 
 const rulesOnly: Rules = {

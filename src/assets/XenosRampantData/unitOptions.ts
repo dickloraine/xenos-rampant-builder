@@ -1,4 +1,4 @@
-import { UnitOptions } from 'store/types';
+import { UnitOptions } from '../../store/types';
 
 export const unitOptions: UnitOptions = {
   'All-Terrain': {

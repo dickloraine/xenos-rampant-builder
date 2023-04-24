@@ -47,7 +47,7 @@ const Roster = () => {
   return (
     <>
       <Box display="flex" flexDirection="row" flexWrap="wrap">
-        {roster.units.map((unit, id) => (
+        {roster.units.map((_unit, id) => (
           <Unit id={id} key={id} />
         ))}
       </Box>

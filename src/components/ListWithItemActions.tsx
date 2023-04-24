@@ -12,7 +12,7 @@ import { OverridableComponent } from '@material-ui/core/OverridableComponent';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import EditIcon from '@material-ui/icons/Edit';
-import React, { FC } from 'react';
+import { FC } from 'react';
 
 interface ListWithItemActionsProps {
   data: Object;

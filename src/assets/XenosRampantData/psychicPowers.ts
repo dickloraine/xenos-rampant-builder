@@ -1,4 +1,4 @@
-import { PsychicPowers } from 'store/types';
+import { PsychicPowers } from '../../store/types';
 
 export const psychicPowers: PsychicPowers = {
   'Mental Command': {

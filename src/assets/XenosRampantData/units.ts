@@ -1,4 +1,4 @@
-import { Units } from 'store/types';
+import { Units } from '../../store/types';
 import { unitOptions } from './unitOptions';
 
 export const unitsData: Units = {

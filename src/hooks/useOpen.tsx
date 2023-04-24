@@ -5,7 +5,7 @@ const useOpen = (
   onOpen?: () => void,
   onClose?: () => void
 ): [boolean, () => void, () => void] => {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(isOpen);
 
   const handleOpen = () => {
     setOpen(true);

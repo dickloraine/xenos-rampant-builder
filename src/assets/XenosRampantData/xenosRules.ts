@@ -1,4 +1,4 @@
-import { XenosRules } from 'store/types';
+import { XenosRules } from '../../store/types';
 
 export const xenosRulesData: XenosRules = {
   Commander: {

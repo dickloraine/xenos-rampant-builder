@@ -16,7 +16,7 @@ const CustomizeMenuContent = () => {
   const [openExport, handleOpenExport, handleCloseExport] = useOpen();
 
   const handleChange = useCallback(
-    (panel: string) => (event: React.ChangeEvent<{}>, isExpanded: boolean) => {
+    (panel: string) => (_event: React.ChangeEvent<{}>, isExpanded: boolean) => {
       setExpanded(isExpanded ? panel : '');
     },
     []

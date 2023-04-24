@@ -8,7 +8,7 @@ const ShowFeedback = () => {
   const dispatch = useAppDispatch();
   const feedback = useAppSelector((state) => state.appState.feedback);
 
-  const handleClose = (event?: React.SyntheticEvent, reason?: string) => {
+  const handleClose = (_event?: React.SyntheticEvent, reason?: string) => {
     if (reason === 'clickaway') {
       return;
     }
