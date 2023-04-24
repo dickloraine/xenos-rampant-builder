@@ -1,8 +1,8 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { showFeedback } from 'store/appStateSlice';
-import { addXenosRule, removeXenosRule } from 'store/dataSlice';
-import { AppDispatch, RootState, XenosRule } from 'store/types';
+import { showFeedback } from '../../store/appStateSlice';
+import { addXenosRule, removeXenosRule } from '../../store/dataSlice';
+import { AppDispatch, RootState, XenosRule } from '../../store/types';
 import { PanelProps } from './CustomizeMenu';
 import CustomizePanel from './CustomizePanel';
 import XenosRulesForm from './XenosRulesForm';

@@ -1,10 +1,10 @@
 import { IconButton, Tooltip, Typography } from '@material-ui/core';
 import RestorePageIcon from '@material-ui/icons/RestorePage';
-import { useAppDispatch } from 'hooks/reduxHooks';
 import React from 'react';
-import { showFeedback, toggleForceInputUpdate } from 'store/appStateSlice';
-import { importCustomData } from 'store/dataSlice';
-import { rosterStore } from 'store/persistantStorage';
+import { useAppDispatch } from '../hooks/reduxHooks';
+import { showFeedback, toggleForceInputUpdate } from '../store/appStateSlice';
+import { importCustomData } from '../store/dataSlice';
+import { rosterStore } from '../store/persistantStorage';
 
 const Restore: React.FC<{ onClose?: () => void; showText?: boolean }> = ({
   showText,

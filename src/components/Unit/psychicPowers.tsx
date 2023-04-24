@@ -10,10 +10,10 @@ import {
   Typography,
 } from '@material-ui/core';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
-import { useAppSelector } from 'hooks/reduxHooks';
 import React from 'react';
-import { Unit } from 'store/types';
+import { useAppSelector } from '../../hooks/reduxHooks';
 import useOpen from '../../hooks/useOpen';
+import { Unit } from '../../store/types';
 
 const PsychicPowers: React.FC<{ unit: Unit; onChange: (unit: Unit) => void }> = ({
   unit,

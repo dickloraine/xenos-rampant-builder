@@ -1,8 +1,8 @@
 import { IconButton, Tooltip } from '@material-ui/core';
-import { useAppDispatch, useAppSelector } from 'hooks/reduxHooks';
 import React from 'react';
-import { UIState } from 'store/types';
-import { updateUI } from 'store/uiSlice';
+import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
+import { UIState } from '../../store/types';
+import { updateUI } from '../../store/uiSlice';
 
 const ToggleViewMode: React.FC<{
   option: keyof UIState;

@@ -1,9 +1,9 @@
 import { Container, CssBaseline } from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/core/styles';
-import { useAppDispatch } from 'hooks/reduxHooks';
-import useUserTheme from 'hooks/useUserTheme';
-import React, { useEffect } from 'react';
-import { hydrateData } from 'store/dataSlice';
+import { useEffect } from 'react';
+import { useAppDispatch } from '../hooks/reduxHooks';
+import useUserTheme from '../hooks/useUserTheme';
+import { hydrateData } from '../store/dataSlice';
 import AppBar from './AppBar';
 import CustomizeMenu from './Customize/CustomizeMenu';
 import ListName from './ListName';

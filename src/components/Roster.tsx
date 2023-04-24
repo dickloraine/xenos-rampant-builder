@@ -1,11 +1,10 @@
 import { Box, Fab, Typography } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
-import { useAppDispatch, useAppSelector } from 'hooks/reduxHooks';
-import React from 'react';
-import { addUnit } from 'store/rosterSlice';
-import { CompactRosterState, CompactUnit, RosterState } from 'store/types';
-import buildUnit from './Unit/buildUnit';
+import { useAppDispatch, useAppSelector } from '../hooks/reduxHooks';
+import { addUnit } from '../store/rosterSlice';
+import { CompactRosterState, CompactUnit, RosterState } from '../store/types';
 import Unit from './Unit/Unit';
+import buildUnit from './Unit/buildUnit';
 
 const packRoster = (roster: RosterState): CompactRosterState => {
   const units: CompactUnit[] = roster.units.map((unit) => {

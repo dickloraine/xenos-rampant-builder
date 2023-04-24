@@ -17,13 +17,13 @@ import {
 } from '@material-ui/core';
 import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-import useOpen from 'hooks/useOpen';
 import produce from 'immer';
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { DataUnit, RootState, UnitOption, UnitStats } from 'store/types';
-import range from 'utils/range';
-import statData from 'utils/statData';
+import useOpen from '../../hooks/useOpen';
+import { DataUnit, RootState, UnitOption, UnitStats } from '../../store/types';
+import range from '../../utils/range';
+import statData from '../../utils/statData';
 import { ListWithItemActions } from '../ListWithItemActions';
 import { CustomFormProps } from './CustomizeList';
 import OptionsForm from './OptionsForm';

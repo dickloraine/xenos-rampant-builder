@@ -1,9 +1,9 @@
 import { IconButton, Tooltip, Typography } from '@material-ui/core';
 import SaveIcon from '@material-ui/icons/Save';
-import { useAppDispatch, useAppSelector } from 'hooks/reduxHooks';
 import React from 'react';
-import { showFeedback } from 'store/appStateSlice';
-import { rosterStore } from 'store/persistantStorage';
+import { useAppDispatch, useAppSelector } from '../hooks/reduxHooks';
+import { showFeedback } from '../store/appStateSlice';
+import { rosterStore } from '../store/persistantStorage';
 import { packRoster } from './Roster';
 
 const SaveList: React.FC<{ onClose?: () => void; showText?: boolean }> = ({

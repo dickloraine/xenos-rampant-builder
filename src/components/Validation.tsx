@@ -11,9 +11,8 @@ import {
 import { makeStyles } from '@material-ui/core/styles';
 import ErrorIcon from '@material-ui/icons/Error';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { useAppDispatch, useAppSelector } from 'hooks/reduxHooks';
-import React from 'react';
-import { toggleUIOption } from 'store/uiSlice';
+import { useAppDispatch, useAppSelector } from '../hooks/reduxHooks';
+import { toggleUIOption } from '../store/uiSlice';
 
 const useStyles = makeStyles((theme) => ({
   title: {

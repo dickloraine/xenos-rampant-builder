@@ -1,8 +1,8 @@
 import DeleteIcon from '@material-ui/icons/Delete';
-import { useAppDispatch } from 'hooks/reduxHooks';
 import React, { useState } from 'react';
-import { showFeedback } from 'store/appStateSlice';
-import { rosterStore } from 'store/persistantStorage';
+import { useAppDispatch } from '../hooks/reduxHooks';
+import { showFeedback } from '../store/appStateSlice';
+import { rosterStore } from '../store/persistantStorage';
 import ListDialogMenu from './ListDialogMenu';
 
 const DeleteList: React.FC<{ onClose?: () => void; showText?: boolean }> = ({

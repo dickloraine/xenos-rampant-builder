@@ -1,8 +1,8 @@
 import { FormControl, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { useAppDispatch, useAppSelector } from 'hooks/reduxHooks';
 import React from 'react';
-import { updateRoster } from 'store/rosterSlice';
+import { useAppDispatch, useAppSelector } from '../hooks/reduxHooks';
+import { updateRoster } from '../store/rosterSlice';
 
 const useStyles = makeStyles((theme) => ({
   root: {

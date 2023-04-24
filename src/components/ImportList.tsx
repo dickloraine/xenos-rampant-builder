@@ -1,9 +1,9 @@
 import { IconButton, Tooltip, Typography } from '@material-ui/core';
 import GetAppIcon from '@material-ui/icons/GetApp';
-import { useAppDispatch } from 'hooks/reduxHooks';
 import React from 'react';
-import { showFeedback, toggleForceInputUpdate } from 'store/appStateSlice';
-import { setRoster } from 'store/rosterSlice';
+import { useAppDispatch } from '../hooks/reduxHooks';
+import { showFeedback, toggleForceInputUpdate } from '../store/appStateSlice';
+import { setRoster } from '../store/rosterSlice';
 import { unpackRoster } from './Roster';
 import TextInputDialog from './TextInputDialog';
 

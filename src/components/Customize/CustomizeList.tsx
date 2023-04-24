@@ -1,6 +1,6 @@
-import useOpen from 'hooks/useOpen';
 import React, { useState } from 'react';
-import { CustomDataElement } from 'store/types';
+import useOpen from '../../hooks/useOpen';
+import { CustomDataElement } from '../../store/types';
 import { ListWithItemActions } from '../ListWithItemActions';
 
 export interface CustomFormProps<T extends CustomDataElement> {

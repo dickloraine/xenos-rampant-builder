@@ -6,8 +6,7 @@ import {
   DialogTitle,
   TextField,
 } from '@material-ui/core';
-import React from 'react';
-import { Rule } from 'store/types';
+import { Rule } from '../../store/types';
 import { CustomFormProps } from './CustomizeList';
 
 function RulesForm(props: CustomFormProps<Rule>) {

@@ -7,9 +7,8 @@ import {
   MenuItem,
   TextField,
 } from '@material-ui/core';
-import React from 'react';
-import { PsychicPower } from 'store/types';
-import range from 'utils/range';
+import { PsychicPower } from '../../store/types';
+import range from '../../utils/range';
 import { CustomFormProps } from './CustomizeList';
 
 function SpellsForm(props: CustomFormProps<PsychicPower>) {

@@ -1,8 +1,8 @@
 import Snackbar from '@material-ui/core/Snackbar';
 import Alert from '@material-ui/lab/Alert';
-import { useAppDispatch, useAppSelector } from 'hooks/reduxHooks';
 import React from 'react';
-import { closeFeedback } from 'store/appStateSlice';
+import { useAppDispatch, useAppSelector } from '../hooks/reduxHooks';
+import { closeFeedback } from '../store/appStateSlice';
 
 const ShowFeedback = () => {
   const dispatch = useAppDispatch();

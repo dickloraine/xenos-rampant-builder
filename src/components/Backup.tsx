@@ -1,9 +1,9 @@
 import { IconButton, Tooltip, Typography } from '@material-ui/core';
 import BackupIcon from '@material-ui/icons/Backup';
 import { saveAs } from 'file-saver';
-import { useAppSelector } from 'hooks/reduxHooks';
 import React from 'react';
-import { rosterStore } from 'store/persistantStorage';
+import { useAppSelector } from '../hooks/reduxHooks';
+import { rosterStore } from '../store/persistantStorage';
 
 const Backup: React.FC<{ showText: boolean; onClose?: () => void }> = ({
   showText = false,

@@ -8,8 +8,8 @@ import {
 } from '@material-ui/core';
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { showFeedback } from 'store/appStateSlice';
-import { importCustomData } from 'store/dataSlice';
+import { showFeedback } from '../../store/appStateSlice';
+import { importCustomData } from '../../store/dataSlice';
 
 const ImportCustomData: React.FC<{ open: boolean; handleClose: () => void }> = ({
   open,

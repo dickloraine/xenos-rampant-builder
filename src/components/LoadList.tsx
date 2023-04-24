@@ -1,10 +1,10 @@
 import SaveOutlinedIcon from '@material-ui/icons/SaveOutlined';
-import { useAppDispatch } from 'hooks/reduxHooks';
 import React, { useState } from 'react';
-import { showFeedback, toggleForceInputUpdate } from 'store/appStateSlice';
-import { rosterStore } from 'store/persistantStorage';
-import { setRoster } from 'store/rosterSlice';
-import { CompactRosterState } from 'store/types';
+import { useAppDispatch } from '../hooks/reduxHooks';
+import { showFeedback, toggleForceInputUpdate } from '../store/appStateSlice';
+import { rosterStore } from '../store/persistantStorage';
+import { setRoster } from '../store/rosterSlice';
+import { CompactRosterState } from '../store/types';
 import ListDialogMenu from './ListDialogMenu';
 import { unpackRoster } from './Roster';
 

@@ -2,11 +2,11 @@ import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import FormatAlignJustifyIcon from '@material-ui/icons/FormatAlignJustify';
 import FormatAlignLeftIcon from '@material-ui/icons/FormatAlignLeft';
 import ShareIcon from '@material-ui/icons/Share';
-import { useAppDispatch, useAppSelector } from 'hooks/reduxHooks';
 import React from 'react';
-import { showFeedback } from 'store/appStateSlice';
-import { getTotalPoints } from 'store/rosterSlice';
-import copyToClipboard from 'utils/copyToClipboard';
+import { useAppDispatch, useAppSelector } from '../hooks/reduxHooks';
+import { showFeedback } from '../store/appStateSlice';
+import { getTotalPoints } from '../store/rosterSlice';
+import copyToClipboard from '../utils/copyToClipboard';
 import ListDialogMenu from './ListDialogMenu';
 import { packRoster } from './Roster';
 

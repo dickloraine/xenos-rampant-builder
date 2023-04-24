@@ -1,7 +1,6 @@
 import { Fab, Hidden, Typography } from '@material-ui/core';
-import { useAppSelector } from 'hooks/reduxHooks';
-import React from 'react';
-import { getTotalPoints } from 'store/rosterSlice';
+import { useAppSelector } from '../../hooks/reduxHooks';
+import { getTotalPoints } from '../../store/rosterSlice';
 
 const TotalPoints = () => {
   const units = useAppSelector((state) => state.roster.units);

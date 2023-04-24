@@ -1,8 +1,8 @@
 import { IconButton, Tooltip, Typography } from '@material-ui/core';
 import BrightnessHighIcon from '@material-ui/icons/BrightnessHigh';
-import { useAppDispatch, useAppSelector } from 'hooks/reduxHooks';
 import React from 'react';
-import { updateUI } from 'store/uiSlice';
+import { useAppDispatch, useAppSelector } from '../hooks/reduxHooks';
+import { updateUI } from '../store/uiSlice';
 
 const Darkmode: React.FC<{ showText?: boolean }> = ({ showText }) => {
   let darkMode = useAppSelector((state) => state.ui.darkMode);

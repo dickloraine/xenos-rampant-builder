@@ -6,7 +6,7 @@ import {
 } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import React from 'react';
-import { CustomDataElement } from 'store/types';
+import { CustomDataElement } from '../../store/types';
 import CustomizeList, { CustomizeListProps } from './CustomizeList';
 
 interface CustomizePanelProps<T extends CustomDataElement>

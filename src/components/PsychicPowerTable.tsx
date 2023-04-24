@@ -18,10 +18,10 @@ import {
 } from '@material-ui/core';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { useAppDispatch, useAppSelector } from 'hooks/reduxHooks';
-import React, { useState } from 'react';
-import { getSpecialRules } from 'store/rosterSlice';
-import { toggleUIOption } from 'store/uiSlice';
+import { useState } from 'react';
+import { useAppDispatch, useAppSelector } from '../hooks/reduxHooks';
+import { toggleUIOption } from '../store/uiSlice';
+import { getSpecialRules } from '../utils/getSpecialRules';
 
 const PsychicPowerTable = () => {
   const dispatch = useAppDispatch();

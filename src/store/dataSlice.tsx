@@ -4,11 +4,11 @@ import {
   createSlice,
   PayloadAction,
 } from '@reduxjs/toolkit';
-import { psychicPowers } from 'assets/XenosRampantData/psychicPowers';
-import { rulesData } from 'assets/XenosRampantData/rules';
-import { unitsData } from 'assets/XenosRampantData/units';
-import { xenosRulesData } from 'assets/XenosRampantData/xenosRules';
 import produce from 'immer';
+import { psychicPowers } from '../assets/XenosRampantData/psychicPowers';
+import { rulesData } from '../assets/XenosRampantData/rules';
+import { unitsData } from '../assets/XenosRampantData/units';
+import { xenosRulesData } from '../assets/XenosRampantData/xenosRules';
 import { dataStore } from './persistantStorage';
 import {
   CustomData,

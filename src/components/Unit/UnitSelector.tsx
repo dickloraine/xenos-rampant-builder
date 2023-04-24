@@ -1,10 +1,10 @@
 import { Chip, Typography } from '@material-ui/core';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
-import { useAppDispatch, useAppSelector } from 'hooks/reduxHooks';
 import React from 'react';
-import { selectUnitNames } from 'store/dataSlice';
-import { setUnit } from 'store/rosterSlice';
-import { Unit } from 'store/types';
+import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
+import { selectUnitNames } from '../../store/dataSlice';
+import { setUnit } from '../../store/rosterSlice';
+import { Unit } from '../../store/types';
 import ListDialog from '../ListDialog';
 
 const UnitSelector: React.FC<{

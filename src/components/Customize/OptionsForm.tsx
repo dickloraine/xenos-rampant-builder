@@ -21,8 +21,8 @@ import produce from 'immer';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { DataUnit, RootState, UnitOption, UnitStats } from 'store/types';
-import range from 'utils/range';
-import statData from 'utils/statData';
+import range from '../../utils/range';
+import statData from '../../utils/statData';
 
 const OptionsForm: React.FC<{
   open: boolean;
