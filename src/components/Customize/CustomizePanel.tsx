@@ -16,7 +16,7 @@ interface CustomizePanelProps<T extends CustomDataElement>
   expanded: string;
   handleChange: (
     name: string
-  ) => (event: React.ChangeEvent<{}>, isExpanded: boolean) => void;
+  ) => (event: React.ChangeEvent<object>, isExpanded: boolean) => void;
 }
 
 function CustomizePanel<T extends CustomDataElement>(props: CustomizePanelProps<T>) {

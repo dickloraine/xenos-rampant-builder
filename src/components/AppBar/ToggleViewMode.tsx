@@ -1,4 +1,4 @@
-import { IconButton, Tooltip } from '@material-ui/core';
+import { Icon, IconButton, Tooltip } from '@material-ui/core';
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
 import { UIState } from '../../store/types';
@@ -6,7 +6,7 @@ import { updateUI } from '../../store/uiSlice';
 
 const ToggleViewMode: React.FC<{
   option: keyof UIState;
-  Icon: any;
+  Icon: typeof Icon;
   title: string;
 }> = ({ option, Icon, title }) => {
   const optionState = useAppSelector((state) => state.ui[option]);

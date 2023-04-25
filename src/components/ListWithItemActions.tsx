@@ -15,15 +15,15 @@ import EditIcon from '@material-ui/icons/Edit';
 import { FC } from 'react';
 
 interface ListWithItemActionsProps {
-  data: Object;
+  data: object;
   actionOneName?: string;
-  ActionOneIcon?: OverridableComponent<SvgIconTypeMap<{}, 'svg'>>;
+  ActionOneIcon?: OverridableComponent<SvgIconTypeMap<object, 'svg'>>;
   handleClickActionOne: (name: string) => void;
   actionTwoName?: string;
-  ActionTwoIcon?: OverridableComponent<SvgIconTypeMap<{}, 'svg'>>;
+  ActionTwoIcon?: OverridableComponent<SvgIconTypeMap<object, 'svg'>>;
   handleClickActionTwo: (name: string) => void;
   actionSpecialName?: string;
-  ActionSpecialIcon?: OverridableComponent<SvgIconTypeMap<{}, 'svg'>>;
+  ActionSpecialIcon?: OverridableComponent<SvgIconTypeMap<object, 'svg'>>;
   handleClickSpecialAction: () => void;
 }
 

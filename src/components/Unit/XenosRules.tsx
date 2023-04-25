@@ -23,7 +23,7 @@ const XenosRules: React.FC<{ unit: Unit; onChange: (unit: Unit) => void }> = ({
   const [open, handleOpen, handleClose] = useOpen();
   const xenosRulesData = useAppSelector((state) => state.data.xenosRulesData);
 
-  let xenosRules = Object.keys(xenosRulesData).filter(
+  const xenosRules = Object.keys(xenosRulesData).filter(
     (rule) => !xenosRulesData[rule].exclude_units.includes(unit.name)
   );
 

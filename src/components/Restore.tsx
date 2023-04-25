@@ -18,8 +18,10 @@ const Restore: React.FC<{ onClose?: () => void; showText?: boolean }> = ({
   const restore = async () => {
     try {
       const content = fileReader.result as string;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const data: any = JSON.parse(content);
 
+      // eslint-disable-next-line no-prototype-builtins
       if (data.hasOwnProperty('rosters')) {
         await Promise.all(
           Object.entries(data.rosters).map(([key, val]) =>

@@ -4,6 +4,12 @@ import { saveAs } from 'file-saver';
 import React from 'react';
 import { useAppSelector } from '../hooks/reduxHooks';
 import { rosterStore } from '../store/persistantStorage';
+import { CustomData } from '../store/types';
+
+type BackupState = {
+  rosters: { [name: string]: unknown };
+  customData: CustomData;
+};
 
 const Backup: React.FC<{ showText: boolean; onClose?: () => void }> = ({
   showText = false,
@@ -12,7 +18,7 @@ const Backup: React.FC<{ showText: boolean; onClose?: () => void }> = ({
   const customData = useAppSelector((state) => state.data.customData);
 
   const backup = async () => {
-    const backupState: any = {
+    const backupState: BackupState = {
       rosters: {},
       customData: customData,
     };

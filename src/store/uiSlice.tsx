@@ -42,6 +42,7 @@ const uiSlice = createSlice({
 
 const { _setUI, _toggleUIOption, _updateUI } = uiSlice.actions;
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type UIThunk = ThunkAction<void, any, unknown, Action<string>>;
 
 export const setUI =

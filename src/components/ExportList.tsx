@@ -21,7 +21,7 @@ const ExportList: React.FC<{ onClose?: () => void; showText?: boolean }> = ({
   const armyCost = getTotalPoints(units);
 
   const getListAsText = () => {
-    let text: string[] = [];
+    const text: string[] = [];
     text.push(`${roster.name} @${armyCost} points`);
     text.push('=====================================');
     for (const unit of Object.values(roster.units)) {
@@ -42,7 +42,7 @@ const ExportList: React.FC<{ onClose?: () => void; showText?: boolean }> = ({
   };
 
   const getListAsMarkdown = () => {
-    let text: string[] = [];
+    const text: string[] = [];
     text.push(`**${roster.name} --- ${armyCost} points**`);
     for (const unit of Object.values(roster.units)) {
       text.push('');
@@ -71,7 +71,7 @@ const ExportList: React.FC<{ onClose?: () => void; showText?: boolean }> = ({
   const funcs = [getImportableString, getListAsText, getListAsMarkdown];
 
   const exportList = (text: string) => {
-    let exportFunc: () => string =
+    const exportFunc: () => string =
       funcs[options.reduce((acc, opt, i) => (opt[0] === text ? i : acc), 0)];
 
     try {

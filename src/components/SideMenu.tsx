@@ -22,6 +22,7 @@ const SideMenu = () => {
   //   setOpen(false);
   // };
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const toggleDrawer = (open: boolean) => (event: any) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return;

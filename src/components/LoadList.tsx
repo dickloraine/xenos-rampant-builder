@@ -20,6 +20,7 @@ const LoadList: React.FC<{ onClose?: () => void; showText?: boolean }> = ({
   const loadList = async (name: string) => {
     try {
       const compactRoster = await rosterStore.getItem<CompactRosterState>(name);
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       const roster = unpackRoster(compactRoster!);
       dispatch(setRoster({ ...roster }));
       dispatch(toggleForceInputUpdate());
