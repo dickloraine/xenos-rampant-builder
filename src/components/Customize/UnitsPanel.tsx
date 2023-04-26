@@ -31,7 +31,7 @@ function UnitsPanel(props: PanelProps) {
       emptyState={{
         name: 'Name',
         type: 'foot',
-        points: 4,
+        points: 2,
         stats: {
           attack: 5,
           move: 6,
@@ -43,7 +43,7 @@ function UnitsPanel(props: PanelProps) {
           shootValue: 0,
           shootRange: 0,
           movement: 6,
-          strengthPoints: 12,
+          strengthPoints: 6,
         },
         freeActivations: [],
         rules: [],

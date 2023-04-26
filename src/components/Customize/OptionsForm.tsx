@@ -45,13 +45,24 @@ const OptionsForm: React.FC<{
 }) => {
   const specialRules = useSelector((state: RootState) => state.data.rulesData);
   const [anchorSetStat, setAnchorSetStat] = React.useState<null | HTMLElement>(null);
+  const [anchorAdjustStat, setAnchorAdjustStat] = React.useState<null | HTMLElement>(
+    null
+  );
 
   const handleClickSetStat = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorSetStat(event.currentTarget);
   };
 
+  const handleClickAdjustStat = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorAdjustStat(event.currentTarget);
+  };
+
   const handleCloseSetStat = () => {
     setAnchorSetStat(null);
+  };
+
+  const handleCloseAdjustStat = () => {
+    setAnchorAdjustStat(null);
   };
 
   const onClickSetStat = (name: keyof UnitStats) => () => {
@@ -293,15 +304,15 @@ const OptionsForm: React.FC<{
               </ListItem>
             ))}
           <ListItem id="add_opt_adj" key="add_opt_adj">
-            <Button onClick={handleClickSetStat} startIcon={<AddCircleIcon />}>
+            <Button onClick={handleClickAdjustStat} startIcon={<AddCircleIcon />}>
               Add Stat
             </Button>
             <Menu
-              id="addjust-stat-menu"
-              anchorEl={anchorSetStat}
+              id="adjust-stat-menu"
+              anchorEl={anchorAdjustStat}
               keepMounted
-              open={Boolean(anchorSetStat)}
-              onClose={handleCloseSetStat}
+              open={Boolean(anchorAdjustStat)}
+              onClose={handleCloseAdjustStat}
             >
               {Object.keys(statData)
                 .filter((k) => !Object.keys(option.adjustStats || {}).includes(k))
