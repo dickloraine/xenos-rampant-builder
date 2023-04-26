@@ -1,8 +1,17 @@
-import { Divider, Drawer, List, ListItem } from '@material-ui/core';
+import {
+  Divider,
+  Drawer,
+  IconButton,
+  List,
+  ListItem,
+  Tooltip,
+  Typography,
+} from '@material-ui/core';
+import ColorLensIcon from '@material-ui/icons/ColorLens';
 import MenuIcon from '@material-ui/icons/Menu';
 import React, { useCallback } from 'react';
-// import { useAppDispatch } from 'hooks/reduxHooks';
-// import { setCustomizeMode } from 'store/appStateSlice';
+import { useAppDispatch } from '../hooks/reduxHooks';
+import { setCustomizeMode } from '../store/appStateSlice';
 import About from './About';
 import Backup from './Backup';
 import DarkMode from './DarkMode';
@@ -15,12 +24,12 @@ import SaveList from './SaveList';
 
 const SideMenu = () => {
   const [open, setOpen] = React.useState(false);
-  // const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch();
 
-  // const showCustomizeMenu = () => {
-  //   dispatch(setCustomizeMode(true));
-  //   setOpen(false);
-  // };
+  const showCustomizeMenu = () => {
+    dispatch(setCustomizeMode(true));
+    setOpen(false);
+  };
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const toggleDrawer = (open: boolean) => (event: any) => {
@@ -61,14 +70,14 @@ const SideMenu = () => {
             <Restore onClose={handleClose} showText={true} />
           </ListItem>
           <Divider />
-          {/* <ListItem button key={'FR'}>
+          <ListItem button key={'FR'}>
             <Tooltip title="Customize">
               <IconButton color="inherit" onClick={showCustomizeMenu}>
                 <ColorLensIcon />
               </IconButton>
             </Tooltip>
             <Typography onClick={showCustomizeMenu}>Customize</Typography>
-          </ListItem> */}
+          </ListItem>
           <Divider />
           <ListItem button key={'DarkMode'}>
             <DarkMode showText={true} />

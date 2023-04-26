@@ -65,6 +65,17 @@ const OptionsForm: React.FC<{
     handleCloseSetStat();
   };
 
+  const onClickAdjustStat = (name: keyof UnitStats) => () => {
+    changeOption({
+      ...option,
+      adjustStats: {
+        ...option.adjustStats,
+        [name]: 0,
+      },
+    });
+    handleCloseSetStat();
+  };
+
   const handleAction = () => {
     changeState({
       ...unit,
@@ -111,7 +122,7 @@ const OptionsForm: React.FC<{
         </TextField>
         {/* -------------------------------- Summary -------------------------------- */}
         <TextField
-          label="Summary"
+          label="Description"
           type="text"
           margin="normal"
           fullWidth
@@ -222,6 +233,81 @@ const OptionsForm: React.FC<{
                 .map((name) => (
                   <MenuItem
                     onClick={onClickSetStat(name as keyof UnitStats)}
+                    key={name}
+                  >
+                    {statData[name].name}
+                  </MenuItem>
+                ))}
+            </Menu>
+          </ListItem>
+        </List>
+        {/* ----------------------------- Adjust Stats ------------------------------ */}
+        <InputLabel id="adjust-options-label" style={{ marginTop: 15 }}>
+          Adjust Stats
+        </InputLabel>
+        <List>
+          {option.adjustStats &&
+            Object.keys(option.adjustStats).map((name) => (
+              <ListItem id={name} key={name}>
+                <ListItemText>{statData[name].name}</ListItemText>
+                <Select
+                  value={
+                    option.adjustStats ? option.adjustStats[name as keyof UnitStats] : 0
+                  }
+                  type="number"
+                  onChange={(e) =>
+                    changeOption({
+                      ...option,
+                      adjustStats: {
+                        ...option.adjustStats,
+                        [name]:
+                          ((option.adjustStats &&
+                            (option.adjustStats[name as keyof UnitStats] as number)) ||
+                            0) + (e.target.value as number),
+                      },
+                    })
+                  }
+                >
+                  {statData[name].adjustRange.map((value) => (
+                    <MenuItem key={value} value={value}>
+                      {value}
+                    </MenuItem>
+                  ))}
+                </Select>
+                <ListItemSecondaryAction>
+                  <IconButton
+                    size="small"
+                    aria-label="Delete"
+                    onClick={() =>
+                      changeOption(
+                        produce(option, (draft) => {
+                          if (draft.adjustStats)
+                            delete draft.adjustStats[name as keyof UnitStats];
+                        })
+                      )
+                    }
+                  >
+                    <DeleteForeverIcon color="action" />
+                  </IconButton>
+                </ListItemSecondaryAction>
+              </ListItem>
+            ))}
+          <ListItem id="add_opt_adj" key="add_opt_adj">
+            <Button onClick={handleClickSetStat} startIcon={<AddCircleIcon />}>
+              Add Stat
+            </Button>
+            <Menu
+              id="addjust-stat-menu"
+              anchorEl={anchorSetStat}
+              keepMounted
+              open={Boolean(anchorSetStat)}
+              onClose={handleCloseSetStat}
+            >
+              {Object.keys(statData)
+                .filter((k) => !Object.keys(option.adjustStats || {}).includes(k))
+                .map((name) => (
+                  <MenuItem
+                    onClick={onClickAdjustStat(name as keyof UnitStats)}
                     key={name}
                   >
                     {statData[name].name}

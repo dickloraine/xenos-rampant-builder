@@ -34,6 +34,8 @@ const emptyOption = {
   description: '',
 };
 
+const activations = ['attack', 'move', 'shoot'];
+
 const SelectStat: React.FC<{
   stat: keyof UnitStats;
   unit: DataUnit;
@@ -188,6 +190,28 @@ function UnitsForm(props: CustomFormProps<DataUnit>) {
             </TableBody>
           </Table>
         </TableContainer>
+        {/* --------------------------- Free Activations ---------------------------- */}
+        <InputLabel id="activations-label" style={{ marginTop: 15 }}>
+          Free Activations
+        </InputLabel>
+        <Select
+          multiple
+          id="activations"
+          labelId="activations-label"
+          value={unit.freeActivations}
+          onChange={(e) =>
+            changeState({
+              ...unit,
+              freeActivations: e.target.value as (keyof UnitStats)[],
+            })
+          }
+        >
+          {activations.map((command) => (
+            <MenuItem key={command} value={command}>
+              {command}
+            </MenuItem>
+          ))}
+        </Select>
         {/* --------------------------------- Rules --------------------------------- */}
         <InputLabel id="rules-label" style={{ marginTop: 15 }}>
           Rules
