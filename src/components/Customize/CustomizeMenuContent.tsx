@@ -5,8 +5,8 @@ import React, { useCallback, useState } from 'react';
 import useOpen from '../../hooks/useOpen';
 import ExportCustomData from './ExportCustomData';
 import ImportCustomData from './ImportCustomData';
+import PsychicPowersPanel from './PsychicPowersPanel';
 import RulesPanel from './RulesPanel';
-import SpellsPanel from './SpellsPanel';
 import UnitsPanel from './UnitsPanel';
 import XenosRulesPanel from './XenosRulesPanel';
 
@@ -28,7 +28,7 @@ const CustomizeMenuContent = () => {
       <UnitsPanel expanded={expanded} handleChange={handleChange} />
       <XenosRulesPanel expanded={expanded} handleChange={handleChange} />
       <RulesPanel expanded={expanded} handleChange={handleChange} />
-      <SpellsPanel expanded={expanded} handleChange={handleChange} />
+      <PsychicPowersPanel expanded={expanded} handleChange={handleChange} />
       <Box m={2} mx="auto">
         <ButtonGroup color="primary" variant="outlined">
           <Button

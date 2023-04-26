@@ -11,7 +11,7 @@ import { PsychicPower } from '../../store/types';
 import range from '../../utils/range';
 import { CustomFormProps } from './CustomizeList';
 
-function SpellsForm(props: CustomFormProps<PsychicPower>) {
+function PsychicPowersForm(props: CustomFormProps<PsychicPower>) {
   const { open, handleClose, initialState, changeState, handleAction, validateName } =
     props;
   const spell = initialState;
@@ -85,4 +85,4 @@ function SpellsForm(props: CustomFormProps<PsychicPower>) {
   );
 }
 
-export default SpellsForm;
+export default PsychicPowersForm;

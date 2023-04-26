@@ -24,7 +24,7 @@ function XenosRulesPanel(props: PanelProps) {
 
   return (
     <CustomizePanel<XenosRule>
-      name="xenos Rules"
+      name="Xenos Rules"
       id="xenos-rules"
       expanded={expanded}
       handleChange={handleChange}

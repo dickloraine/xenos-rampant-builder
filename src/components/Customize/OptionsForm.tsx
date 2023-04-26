@@ -20,6 +20,7 @@ import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import produce from 'immer';
 import React from 'react';
 import { useSelector } from 'react-redux';
+import useAnchor from '../../hooks/useAnchor';
 import { DataUnit, RootState, UnitOption, UnitStats } from '../../store/types';
 import range from '../../utils/range';
 import statData from '../../utils/statData';
@@ -44,26 +45,8 @@ const OptionsForm: React.FC<{
   changeOption,
 }) => {
   const specialRules = useSelector((state: RootState) => state.data.rulesData);
-  const [anchorSetStat, setAnchorSetStat] = React.useState<null | HTMLElement>(null);
-  const [anchorAdjustStat, setAnchorAdjustStat] = React.useState<null | HTMLElement>(
-    null
-  );
-
-  const handleClickSetStat = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setAnchorSetStat(event.currentTarget);
-  };
-
-  const handleClickAdjustStat = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setAnchorAdjustStat(event.currentTarget);
-  };
-
-  const handleCloseSetStat = () => {
-    setAnchorSetStat(null);
-  };
-
-  const handleCloseAdjustStat = () => {
-    setAnchorAdjustStat(null);
-  };
+  const [anchorSetStat, handleClickSetStat, handleCloseSetStat] = useAnchor();
+  const [anchorAdjustStat, handleClickAdjustStat, handleCloseAdjustStat] = useAnchor();
 
   const onClickSetStat = (name: keyof UnitStats) => () => {
     changeOption({
@@ -84,7 +67,7 @@ const OptionsForm: React.FC<{
         [name]: 0,
       },
     });
-    handleCloseSetStat();
+    handleCloseAdjustStat();
   };
 
   const handleAction = () => {

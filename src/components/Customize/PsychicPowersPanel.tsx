@@ -4,7 +4,7 @@ import { addSpell, removeSpell } from '../../store/dataSlice';
 import { AppDispatch, PsychicPower, RootState } from '../../store/types';
 import { PanelProps } from './CustomizeMenu';
 import CustomizePanel from './CustomizePanel';
-import SpellsForm from './SpellsForm';
+import PsychicPowersForm from './PsychicPowersForm';
 
 function SpellsPanel(props: PanelProps) {
   const { expanded, handleChange } = props;
@@ -18,12 +18,12 @@ function SpellsPanel(props: PanelProps) {
 
   return (
     <CustomizePanel<PsychicPower>
-      name="Spells"
+      name="Psychic Powers"
       id="spells"
       expanded={expanded}
       handleChange={handleChange}
       data={customData}
-      CustomForm={SpellsForm}
+      CustomForm={PsychicPowersForm}
       emptyState={{
         name: 'Name',
         difficulty: 7,
