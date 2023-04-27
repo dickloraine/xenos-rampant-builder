@@ -1,4 +1,5 @@
-import { Icon, IconButton, Tooltip } from '@material-ui/core';
+import { IconButton, SvgIconTypeMap, Tooltip } from '@material-ui/core';
+import { OverridableComponent } from '@material-ui/core/OverridableComponent';
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
 import { UIState } from '../../store/types';
@@ -6,7 +7,7 @@ import { updateUI } from '../../store/uiSlice';
 
 const ToggleViewMode: React.FC<{
   option: keyof UIState;
-  Icon: typeof Icon;
+  Icon: OverridableComponent<SvgIconTypeMap<object, 'svg'>>;
   title: string;
 }> = ({ option, Icon, title }) => {
   const optionState = useAppSelector((state) => state.ui[option]);
