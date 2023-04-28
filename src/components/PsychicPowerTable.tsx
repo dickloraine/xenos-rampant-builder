@@ -45,7 +45,7 @@ const PsychicPowerTable = () => {
         <Accordion
           expanded={powersExpanded}
           onChange={() => dispatch(toggleUIOption('powersExpanded'))}
-          style={{ maxWidth: 1210 }}
+          style={{ maxWidth: 1210, marginBottom: 20 }}
         >
           <AccordionSummary expandIcon={<ExpandMoreIcon />}>
             <Typography variant="h5">Psychic Power Table</Typography>

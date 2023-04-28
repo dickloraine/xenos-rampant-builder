@@ -23,7 +23,7 @@ const RulesSummary = () => {
     <Accordion
       expanded={rulesSummaryExpanded}
       onChange={() => dispatch(toggleUIOption('rulesSummaryExpanded'))}
-      style={{ maxWidth: 1210 }}
+      style={{ maxWidth: 1210, marginBottom: 20 }}
     >
       <AccordionSummary expandIcon={<ExpandMoreIcon />}>
         <Typography variant="h5">Rules Summary</Typography>
