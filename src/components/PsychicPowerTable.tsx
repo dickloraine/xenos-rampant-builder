@@ -20,30 +20,18 @@ import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../hooks/reduxHooks';
-import { getSpecialRules } from '../store/rosterSlice';
+import { getPsychicPowers } from '../store/rosterSlice';
 import { toggleUIOption } from '../store/uiSlice';
 
 const PsychicPowerTable = () => {
   const dispatch = useAppDispatch();
-  const psychicData = useAppSelector((state) => state.data.psychicPowers);
+  const psychicData = useAppSelector((state) => getPsychicPowers(state));
   const powersExpanded = useAppSelector((state) => state.ui.powersExpanded);
   const [open, setOpen] = useState(
     [...Array(Object.keys(psychicData))].map(() => false)
   );
-  const specialRules = useAppSelector((state) => getSpecialRules(state));
 
-  const psycherInRoster = () => {
-    for (const rule of specialRules) {
-      if (
-        rule === 'Psychic 1' ||
-        rule === 'Psychic 2' ||
-        rule === 'Psychic 3' ||
-        rule === 'Psychic 4'
-      )
-        return true;
-    }
-    return false;
-  };
+  const psycherInRoster = psychicData && Object.keys(psychicData).length > 0;
 
   const handlePowerClick = (index: number) => {
     const newOpen = [...open];
@@ -53,7 +41,7 @@ const PsychicPowerTable = () => {
 
   return (
     <>
-      {psycherInRoster() && (
+      {psycherInRoster && (
         <Accordion
           expanded={powersExpanded}
           onChange={() => dispatch(toggleUIOption('powersExpanded'))}

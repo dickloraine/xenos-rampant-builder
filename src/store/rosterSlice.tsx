@@ -1,6 +1,14 @@
 import { createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { selectAllRules } from '../store/dataSlice';
-import { Data, RootState, RosterState, RosterUnits, Thunk, Unit } from './types';
+import {
+  Data,
+  PsychicPowers,
+  RootState,
+  RosterState,
+  RosterUnits,
+  Thunk,
+  Unit,
+} from './types';
 
 const rosterInitialState: RosterState = {
   name: 'New List',
@@ -110,8 +118,22 @@ const getSpecialRules = createSelector(
       .filter((rule, index, ary) => !index || rule !== ary[index - 1]);
   }
 );
+const getPsychicPowers = createSelector(
+  (state: RootState) => state.roster.units,
+  (state: RootState) => state.data.psychicPowers,
+  (units, rulesData) => {
+    const unique_powers = new Set<string>();
+    units.forEach((unit) =>
+      unit.psiPowers?.forEach((powerName) => unique_powers.add(powerName))
+    );
+    const power_names = Array.from(unique_powers).sort();
+    const powers: PsychicPowers = {};
+    power_names.forEach((powerName) => (powers[powerName] = rulesData[powerName]));
+    return powers;
+  }
+);
 
-export { getTotalPoints, getSpecialRules };
+export { getTotalPoints, getSpecialRules, getPsychicPowers };
 
 export const {
   newRoster,
