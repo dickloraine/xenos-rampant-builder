@@ -10,15 +10,14 @@ import {
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { useAppDispatch, useAppSelector } from '../hooks/reduxHooks';
 import { selectAllRules } from '../store/dataSlice';
+import { getSpecialRules } from '../store/rosterSlice';
 import { toggleUIOption } from '../store/uiSlice';
-import { getSpecialRules } from '../utils/getSpecialRules';
 
 const RulesSummary = () => {
   const dispatch = useAppDispatch();
   const rulesData = useAppSelector((state) => selectAllRules(state));
   const rulesSummaryExpanded = useAppSelector((state) => state.ui.rulesSummaryExpanded);
-  const units = useAppSelector((state) => state.roster.units);
-  const specialRules = getSpecialRules(units);
+  const specialRules = useAppSelector((state) => getSpecialRules(state));
 
   return (
     <Accordion

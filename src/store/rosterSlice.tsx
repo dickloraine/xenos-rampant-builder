@@ -1,5 +1,6 @@
 import { createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Data, RosterState, RosterUnits, Thunk, Unit } from './types';
+import { selectAllRules } from '../store/dataSlice';
+import { Data, RootState, RosterState, RosterUnits, Thunk, Unit } from './types';
 
 const rosterInitialState: RosterState = {
   name: 'New List',
@@ -89,7 +90,28 @@ const getTotalPoints = createSelector(
   (units) => Object.values(units).reduce((acc, unit) => acc + unit.points, 0)
 );
 
-export { getTotalPoints };
+const getSpecialRules = createSelector(
+  (state: RootState) => state.roster.units,
+  (state: RootState) => selectAllRules(state),
+  (units, rulesData) => {
+    return Object.values(units)
+      .reduce(
+        (acc: string[], unit) =>
+          unit.rules.reduce(
+            (acc, rule) =>
+              rulesData[rulesData[rule]?.description]
+                ? [...acc, rulesData[rule].description]
+                : [...acc, rule],
+            acc
+          ),
+        []
+      )
+      .sort()
+      .filter((rule, index, ary) => !index || rule !== ary[index - 1]);
+  }
+);
+
+export { getTotalPoints, getSpecialRules };
 
 export const {
   newRoster,
