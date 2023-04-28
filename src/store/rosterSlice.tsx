@@ -6,6 +6,7 @@ import {
   RootState,
   RosterState,
   RosterUnits,
+  Rules,
   Thunk,
   Unit,
 } from './types';
@@ -102,22 +103,24 @@ const getSpecialRules = createSelector(
   (state: RootState) => state.roster.units,
   (state: RootState) => selectAllRules(state),
   (units, rulesData) => {
-    return Object.values(units)
-      .reduce(
-        (acc: string[], unit) =>
-          unit.rules.reduce(
-            (acc, rule) =>
-              rulesData[rulesData[rule]?.description]
-                ? [...acc, rulesData[rule].description]
-                : [...acc, rule],
-            acc
-          ),
-        []
-      )
-      .sort()
-      .filter((rule, index, ary) => !index || rule !== ary[index - 1]);
+    const unique_rules = new Set<string>();
+    units.forEach((unit) =>
+      unit.rules.forEach((ruleName) => unique_rules.add(ruleName))
+    );
+
+    return [...unique_rules].sort().reduce(
+      (acc: Rules, ruleName) =>
+        rulesData[ruleName]
+          ? {
+              ...acc,
+              [ruleName]: rulesData[ruleName],
+            }
+          : acc,
+      {}
+    );
   }
 );
+
 const getPsychicPowers = createSelector(
   (state: RootState) => state.roster.units,
   (state: RootState) => state.data.psychicPowers,
@@ -126,10 +129,14 @@ const getPsychicPowers = createSelector(
     units.forEach((unit) =>
       unit.psiPowers?.forEach((powerName) => unique_powers.add(powerName))
     );
-    const power_names = Array.from(unique_powers).sort();
-    const powers: PsychicPowers = {};
-    power_names.forEach((powerName) => (powers[powerName] = rulesData[powerName]));
-    return powers;
+
+    return [...unique_powers].sort().reduce(
+      (acc: PsychicPowers, powerName) => ({
+        ...acc,
+        [powerName]: rulesData[powerName],
+      }),
+      {}
+    );
   }
 );
 

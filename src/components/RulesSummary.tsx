@@ -9,13 +9,11 @@ import {
 } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { useAppDispatch, useAppSelector } from '../hooks/reduxHooks';
-import { selectAllRules } from '../store/dataSlice';
 import { getSpecialRules } from '../store/rosterSlice';
 import { toggleUIOption } from '../store/uiSlice';
 
 const RulesSummary = () => {
   const dispatch = useAppDispatch();
-  const rulesData = useAppSelector((state) => selectAllRules(state));
   const rulesSummaryExpanded = useAppSelector((state) => state.ui.rulesSummaryExpanded);
   const specialRules = useAppSelector((state) => getSpecialRules(state));
 
@@ -30,18 +28,11 @@ const RulesSummary = () => {
       </AccordionSummary>
       <AccordionDetails style={{ maxWidth: 800 }}>
         <List>
-          {specialRules.map((rule) =>
-            rulesData[rule] ? (
-              <ListItem key={rule}>
-                <ListItemText
-                  primary={rule}
-                  secondary={rulesData[rule].description || ''}
-                />
-              </ListItem>
-            ) : (
-              ''
-            )
-          )}
+          {Object.values(specialRules).map((rule) => (
+            <ListItem key={rule.name}>
+              <ListItemText primary={rule.name} secondary={rule.description || ''} />
+            </ListItem>
+          ))}
         </List>
       </AccordionDetails>
     </Accordion>
