@@ -24,7 +24,7 @@ const RulesSummary = () => {
       style={{ maxWidth: 1210, marginBottom: 20 }}
     >
       <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-        <Typography variant="h5">Rules Summary</Typography>
+        <Typography variant="h3">Rules Summary</Typography>
       </AccordionSummary>
       <AccordionDetails style={{ maxWidth: 800 }}>
         <List>

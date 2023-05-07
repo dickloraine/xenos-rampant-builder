@@ -27,12 +27,12 @@ const AppBar = () => {
           <Box display="flex" alignItems="center">
             <SideMenu />
             <Hidden smDown>
-              <Typography variant="h5">
+              <Typography variant="h3">
                 &nbsp;&nbsp;Xenos Rampant Army Builder&nbsp;&nbsp;
               </Typography>
             </Hidden>
             <Hidden xsDown mdUp>
-              <Typography variant="h5">&nbsp;&nbsp;XRAB&nbsp;&nbsp;</Typography>
+              <Typography variant="h3">&nbsp;&nbsp;XRAB&nbsp;&nbsp;</Typography>
             </Hidden>
             <IconButton
               color="inherit"

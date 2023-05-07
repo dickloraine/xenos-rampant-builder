@@ -7,6 +7,7 @@ import {
 import produce from 'immer';
 import { psychicPowers } from '../assets/XenosRampantData/psychicPowers';
 import { rulesData } from '../assets/XenosRampantData/rules';
+import { traitData } from '../assets/XenosRampantData/traits';
 import { unitsData } from '../assets/XenosRampantData/units';
 import { xenosRulesData } from '../assets/XenosRampantData/xenosRules';
 import { dataStore } from './persistantStorage';
@@ -34,6 +35,7 @@ const initialData: Data = {
   xenosRulesData: xenosRulesData,
   rulesData: rulesData,
   psychicPowers: psychicPowers,
+  traitData: traitData,
   customData: getEmptyCustomData(),
 };
 
@@ -65,6 +67,7 @@ const dataSlice = createSlice({
         },
         rulesData: { ...initialData.rulesData, ...customData.rulesData },
         psychicPowers: { ...initialData.psychicPowers, ...customData.psychicPowers },
+        traitData: { ...initialData.traitData },
         customData: customData,
       };
     });

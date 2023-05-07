@@ -26,7 +26,7 @@ const ListName = () => {
       <Typography
         className={classes.root}
         aria-label="List name"
-        variant="h4"
+        variant="h2"
         key={inputUpdate.toString()}
         component="input"
         value={rosterName}

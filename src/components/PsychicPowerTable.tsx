@@ -48,7 +48,7 @@ const PsychicPowerTable = () => {
           style={{ maxWidth: 1210, marginBottom: 20 }}
         >
           <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-            <Typography variant="h5">Psychic Power Table</Typography>
+            <Typography variant="h3">Psychic Power Table</Typography>
           </AccordionSummary>
           <AccordionDetails style={{ maxWidth: 800 }}>
             <Hidden smDown>

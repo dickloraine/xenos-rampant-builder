@@ -18,6 +18,38 @@ const useUserTheme = () => {
           type: darkMode ? 'dark' : 'light',
           primary: { main: '#006B3C' },
         },
+        typography: {
+          h2: {
+            fontWeight: 400,
+            fontSize: '2.125rem',
+            lineHeight: 1.235,
+            letterSpacing: '0.00735em',
+          },
+          h3: {
+            fontWeight: 400,
+            fontSize: '1.5rem',
+            lineHeight: 1.334,
+            letterSpacing: '0em',
+          },
+          h4: {
+            fontWeight: 500,
+            fontSize: '1.25rem',
+            lineHeight: 1.6,
+            letterSpacing: '0.0075em',
+          },
+          h5: {
+            fontWeight: 500,
+            fontSize: '1.1rem',
+            lineHeight: 1.6,
+            letterSpacing: '0.0075em',
+          },
+          h6: {
+            fontWeight: 400,
+            fontSize: '1.1rem',
+            lineHeight: 1.6,
+            letterSpacing: '0.0075em',
+          },
+        },
       }),
     [darkMode]
   );

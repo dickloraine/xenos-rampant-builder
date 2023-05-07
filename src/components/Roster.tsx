@@ -52,7 +52,7 @@ const Roster = () => {
         ))}
       </Box>
       {!Object.keys(roster.units).length && !viewMode && (
-        <Typography variant="h6" style={{ marginBottom: 25 }}>
+        <Typography variant="h4" style={{ marginBottom: 25 }}>
           Click the button to add your first unit!
         </Typography>
       )}

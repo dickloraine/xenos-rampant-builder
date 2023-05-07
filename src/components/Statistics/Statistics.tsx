@@ -88,7 +88,7 @@ const Statistics = () => {
       style={{ maxWidth: 1210 }}
     >
       <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-        <Typography variant="h5">Statistics</Typography>
+        <Typography variant="h3">Statistics</Typography>
       </AccordionSummary>
       <AccordionDetails>
         <div>
@@ -115,7 +115,7 @@ const Statistics = () => {
           />
           {unitsCost > 0 && (
             <Suspense fallback={<CircularProgress />}>
-              <Typography variant="h6" style={{ marginTop: 25 }}>
+              <Typography variant="h4" style={{ marginTop: 25 }}>
                 Unit Distribution
               </Typography>
               <UnitDistributionChart
@@ -123,7 +123,7 @@ const Statistics = () => {
                 height={300}
                 colors={COLORS}
               />
-              <Typography variant="h6" style={{ marginTop: 25 }}>
+              <Typography variant="h4" style={{ marginTop: 25 }}>
                 Point Distribution
               </Typography>
               <PointDistributionChart data={dataPoints} height={300} colors={COLORS} />

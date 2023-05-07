@@ -9,18 +9,18 @@ const TotalPoints = () => {
   return (
     <>
       <Hidden smDown>
-        <Typography variant="h6">
+        <Typography variant="h4">
           &nbsp;&nbsp;&nbsp;&nbsp;Total Points&nbsp;&nbsp;
           <Fab color="secondary" size="small">
-            <Typography variant="h6">{armyCost}</Typography>
+            <Typography variant="h4">{armyCost}</Typography>
           </Fab>
         </Typography>
       </Hidden>
       <Hidden mdUp>
-        <Typography variant="h6">
+        <Typography variant="h4">
           &nbsp;&nbsp;&nbsp;&nbsp;
           <Fab color="secondary" size="small">
-            <Typography variant="h6">{armyCost}</Typography>
+            <Typography variant="h4">{armyCost}</Typography>
           </Fab>
         </Typography>
       </Hidden>

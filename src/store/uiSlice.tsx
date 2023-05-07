@@ -18,6 +18,7 @@ const getInitialState = () => {
     darkMode: null,
     validationExpanded: true,
     rulesSummaryExpanded: true,
+    campaignExpanded: false,
     powersExpanded: false,
     statisticsExpanded: true,
   };

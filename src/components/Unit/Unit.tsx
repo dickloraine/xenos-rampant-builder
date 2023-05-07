@@ -46,7 +46,7 @@ const Unit: React.FC<{ id: number }> = ({ id }) => {
         <CardHeader
           title={
             <>
-              <Typography variant="h5">
+              <Typography variant="h3">
                 <Chip label={unit.points} color="primary" />
                 &nbsp;&nbsp;
                 {unit.customName ? unit.customName : unit.name}

@@ -101,7 +101,7 @@ const Validation = () => {
             className={classes.title}
             expandIcon={<ExpandMoreIcon className={classes.title} />}
           >
-            <Typography variant="h5">Warnings</Typography>
+            <Typography variant="h3">Warnings</Typography>
           </AccordionSummary>
           <AccordionDetails className={classes.details}>
             <List>

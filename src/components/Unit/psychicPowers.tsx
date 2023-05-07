@@ -41,7 +41,7 @@ const PsychicPowers: React.FC<{ unit: Unit; onChange: (unit: Unit) => void }> = 
       )}
       <Container>
         {viewMode && (
-          <Typography variant="h6" style={{ marginBottom: 10 }}>
+          <Typography variant="h4" style={{ marginBottom: 10 }}>
             Psychic Powers
           </Typography>
         )}

@@ -83,6 +83,9 @@ export type PsychicPower = {
   effect: string;
 };
 
+export type TraitRule = { name: string; description: string; category: string };
+export type TraitData = { [name: string]: TraitRule };
+
 export type Units = { [name: string]: DataUnit };
 export type XenosRules = { [name: string]: XenosRule };
 export type Rules = { [name: string]: Rule };
@@ -98,6 +101,7 @@ export interface CustomData {
 }
 
 export interface Data extends CustomData {
+  traitData: TraitData;
   customData: CustomData;
 }
 
@@ -116,18 +120,48 @@ export type AppState = {
   customizeMode: boolean;
 };
 
+export interface CommanderBattle {
+  enemy: string;
+  victoryPoints: number;
+  enemyVictoryPoints: number;
+  careerPointsGained: number;
+  date: string;
+}
+
+export interface BattleState extends CommanderBattle {
+  commander: string;
+}
+
+export type BattleStates = BattleState[];
+
+export type CommanderState = {
+  name: string;
+  commanderTraits: string[];
+  removedCommanderTraits: string[];
+  detachmentExpansions: number;
+  missesGame: boolean;
+  initialCareerPoints: number;
+  careerPointAdjustment: number;
+  battles: CommanderBattle[];
+};
+
+export type CampaignState = {
+  commanders: CommanderState[];
+  retirements: number;
+};
+
 export type RosterUnits = Unit[];
 
 export type RosterState = {
   name: string;
-  nextID: number;
   units: RosterUnits;
+  campaign?: CampaignState;
 };
 
 export type CompactRosterState = {
   name: string;
-  nextID: number;
   units: CompactUnit[];
+  campaign?: CampaignState;
 };
 
 export type UIState = {
@@ -136,6 +170,7 @@ export type UIState = {
   darkMode: null | boolean;
   validationExpanded: boolean;
   rulesSummaryExpanded: boolean;
+  campaignExpanded: boolean;
   powersExpanded: boolean;
   statisticsExpanded: boolean;
 };

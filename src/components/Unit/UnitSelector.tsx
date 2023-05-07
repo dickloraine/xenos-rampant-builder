@@ -26,7 +26,7 @@ const UnitSelector: React.FC<{
       action={setSelectedUnit}
       anchor={
         <>
-          <Typography variant="h5">
+          <Typography variant="h3">
             <Chip label={unit.points} color="primary" />
             &nbsp;&nbsp;
             {name}
