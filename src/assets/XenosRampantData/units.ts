@@ -560,7 +560,7 @@ export const unitsData: Units = {
     rules: [
       'All-Terrain',
       'Anti-Tank',
-      'Demolition',
+      'Demolitions',
       'High-Powered Blades',
       'Line-Breaker',
       'Vehicle',
@@ -587,7 +587,7 @@ export const unitsData: Units = {
         adjustStats: {
           armor: -1,
         },
-        remove: ['Demolition', 'Line-Breaker'],
+        remove: ['Demolitions', 'Line-Breaker'],
       },
       'Green Crew': {
         name: 'Green Crew',
