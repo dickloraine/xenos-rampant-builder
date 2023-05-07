@@ -1,6 +1,6 @@
 import { Box, Typography } from '@material-ui/core';
 import React from 'react';
-import { CommanderState, TraitData } from '../../store/types';
+import { CommanderState, TraitData } from '../../../store/types';
 import AddTraits from './AddTraits';
 import ExpandDetachment from './ExpandDetachment';
 import RemoveTraits from './RemoveTraits';

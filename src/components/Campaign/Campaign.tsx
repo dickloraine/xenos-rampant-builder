@@ -9,16 +9,19 @@ import {
 } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
-import { addCampaign, getVictoryPoints } from '../../store/rosterSlice';
+import {
+  addCampaign,
+  getCurrentCommander,
+  getVictoryPoints,
+} from '../../store/rosterSlice';
 import { toggleUIOption } from '../../store/uiSlice';
-import Battles from './Battles';
-import CurrentCommander from './CurrentCommander';
+import Battles from './Battles/Battles';
+import CurrentCommander from './CurrentCommander/CurrentCommander';
 
 const Campaign = () => {
   const dispatch = useAppDispatch();
   const campaignExpanded = useAppSelector((state) => state.ui.campaignExpanded);
-  const campaign = useAppSelector((state) => state.roster.campaign);
-  const currentCommander = campaign?.commanders[campaign.commanders.length - 1];
+  const currentCommander = useAppSelector((state) => getCurrentCommander(state));
   const totalVictoryPoints = useAppSelector((state) => getVictoryPoints(state));
 
   return (

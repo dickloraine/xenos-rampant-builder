@@ -1,5 +1,5 @@
 import { createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { BattleSelection } from '../components/Campaign/BattlesView';
+import { BattleSelection } from '../components/Campaign/Battles/BattlesView';
 import { selectAllRules } from '../store/dataSlice';
 import {
   BattleStates,
@@ -255,6 +255,11 @@ export const getVictoryPoints = createSelector(
           0
         )
       : 0
+);
+
+export const getCurrentCommander = createSelector(
+  (state: RootState) => state.roster.campaign?.commanders,
+  (commanders) => (commanders ? commanders[commanders.length - 1] : null)
 );
 
 export const getBattles = createSelector(

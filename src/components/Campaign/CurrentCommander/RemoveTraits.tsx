@@ -10,10 +10,10 @@ import {
 } from '@material-ui/core';
 import { RemoveCircle } from '@material-ui/icons';
 import React from 'react';
-import { useAppDispatch } from '../../hooks/reduxHooks';
-import useOpen from '../../hooks/useOpen';
-import { removeTrait } from '../../store/rosterSlice';
-import { CommanderState, TraitData } from '../../store/types';
+import { useAppDispatch } from '../../../hooks/reduxHooks';
+import useOpen from '../../../hooks/useOpen';
+import { removeTrait } from '../../../store/rosterSlice';
+import { CommanderState, TraitData } from '../../../store/types';
 
 const RemoveTraits: React.FC<{ commander: CommanderState; traitData: TraitData }> = ({
   commander,

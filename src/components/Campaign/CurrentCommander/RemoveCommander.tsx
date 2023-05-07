@@ -1,7 +1,7 @@
 import { Box, Button } from '@material-ui/core';
-import { useAppDispatch } from '../../hooks/reduxHooks';
-import useConfirmation from '../../hooks/useConfirmation';
-import { addCommander, addRetirement } from '../../store/rosterSlice';
+import { useAppDispatch } from '../../../hooks/reduxHooks';
+import useConfirmation from '../../../hooks/useConfirmation';
+import { addCommander, addRetirement } from '../../../store/rosterSlice';
 
 const RemoveCommander = () => {
   const dispatch = useAppDispatch();

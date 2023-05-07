@@ -1,9 +1,9 @@
 import { IconButton, Theme, makeStyles } from '@material-ui/core';
 import { Edit } from '@material-ui/icons';
 import React from 'react';
-import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
-import useOpen from '../../hooks/useOpen';
-import { editBattle } from '../../store/rosterSlice';
+import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks';
+import useOpen from '../../../hooks/useOpen';
+import { editBattle } from '../../../store/rosterSlice';
 import BattleForm, { CommanderBattleForm, initialBattleForm } from './BattleForm';
 import { BattleSelection } from './BattlesView';
 

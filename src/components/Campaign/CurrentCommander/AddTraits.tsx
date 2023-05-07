@@ -11,10 +11,10 @@ import {
 } from '@material-ui/core';
 import { AddCircle } from '@material-ui/icons';
 import React from 'react';
-import { useAppDispatch } from '../../hooks/reduxHooks';
-import useOpen from '../../hooks/useOpen';
-import { addTrait } from '../../store/rosterSlice';
-import { CommanderState, TraitData } from '../../store/types';
+import { useAppDispatch } from '../../../hooks/reduxHooks';
+import useOpen from '../../../hooks/useOpen';
+import { addTrait } from '../../../store/rosterSlice';
+import { CommanderState, TraitData } from '../../../store/types';
 
 const getTraitSelections = (traitData: TraitData, commander: CommanderState) => {
   const elements: JSX.Element[] = [];

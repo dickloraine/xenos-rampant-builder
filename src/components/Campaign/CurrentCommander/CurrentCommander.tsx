@@ -8,9 +8,9 @@ import {
   makeStyles,
 } from '@material-ui/core';
 import React from 'react';
-import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
-import { setCommanderName } from '../../store/rosterSlice';
-import { CommanderState } from '../../store/types';
+import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks';
+import { setCommanderName } from '../../../store/rosterSlice';
+import { CommanderState } from '../../../store/types';
 import CareerPoints from './CareerPoints';
 import RemoveCommander from './RemoveCommander';
 import SpendCareerPoints from './SpendCareerPoints';

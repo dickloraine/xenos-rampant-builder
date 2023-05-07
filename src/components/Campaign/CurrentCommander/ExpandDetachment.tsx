@@ -2,9 +2,9 @@ import { Box, IconButton, Typography } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
 import React from 'react';
-import { useAppDispatch } from '../../hooks/reduxHooks';
-import { adjustDetachmentExpansions } from '../../store/rosterSlice';
-import { CommanderState } from '../../store/types';
+import { useAppDispatch } from '../../../hooks/reduxHooks';
+import { adjustDetachmentExpansions } from '../../../store/rosterSlice';
+import { CommanderState } from '../../../store/types';
 
 const ExpandDetachment: React.FC<{
   commander: CommanderState;

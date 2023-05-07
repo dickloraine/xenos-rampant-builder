@@ -1,4 +1,4 @@
-import { CommanderState, TraitData } from '../../store/types';
+import { CommanderState, TraitData } from '../../../store/types';
 
 const calculateCareerPoints = (commander: CommanderState, traitData: TraitData) => {
   let points = commander.battles.reduce(

@@ -1,6 +1,6 @@
 import { List, ListItem, Tooltip, Typography } from '@material-ui/core';
 import React from 'react';
-import { CommanderState, TraitData } from '../../store/types';
+import { CommanderState, TraitData } from '../../../store/types';
 
 const Traits: React.FC<{ commander: CommanderState; traitData: TraitData }> = ({
   commander,

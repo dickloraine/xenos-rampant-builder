@@ -10,10 +10,10 @@ import {
 } from '@material-ui/core';
 import { Edit } from '@material-ui/icons';
 import React from 'react';
-import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
-import useOpen from '../../hooks/useOpen';
-import { adjustCareerPoints } from '../../store/rosterSlice';
-import { CommanderState } from '../../store/types';
+import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks';
+import useOpen from '../../../hooks/useOpen';
+import { adjustCareerPoints } from '../../../store/rosterSlice';
+import { CommanderState } from '../../../store/types';
 import calculateCareerPoints from './calculateCareerPoints';
 
 const CareerPoints: React.FC<{ commander: CommanderState }> = ({ commander }) => {

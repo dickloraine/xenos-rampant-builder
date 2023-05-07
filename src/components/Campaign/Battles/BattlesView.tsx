@@ -20,8 +20,8 @@ import {
 } from '@material-ui/core/styles';
 import { DeleteForever } from '@material-ui/icons';
 import React from 'react';
-import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
-import { getBattles, removeBattle } from '../../store/rosterSlice';
+import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks';
+import { getBattles, removeBattle } from '../../../store/rosterSlice';
 import EditBattle from './EditBattle';
 
 const HeadTableCell = withStyles((theme: Theme) =>
