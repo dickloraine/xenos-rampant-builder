@@ -1,7 +1,7 @@
 {
   "name": "xenos-rampant-builder",
   "private": true,
-  "version": "0.2.1",
+  "version": "0.2.2",
   "homepage": "https://dickloraine.github.io/xenos-rampant-builder/",
   "type": "module",
   "scripts": {
