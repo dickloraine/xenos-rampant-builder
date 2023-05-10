@@ -34,10 +34,10 @@ const BattleForm: React.FC<{
 }> = ({ title, battle, setBattle, handleSubmit, open, handleClose }) => {
   const validations = {
     enemyVictoryPoints: () =>
-      !isNaN(Number(battle.enemyVictoryPoints)) ||
-      Number(battle.enemyVictoryPoints) < 0,
+      !isNaN(Number(battle.enemyVictoryPoints)) &&
+      Number(battle.enemyVictoryPoints) >= 0,
     victoryPoints: () =>
-      !isNaN(Number(battle.victoryPoints)) || Number(battle.victoryPoints) < 0,
+      !isNaN(Number(battle.victoryPoints)) && Number(battle.victoryPoints) >= 0,
     careerPointsGained: () => !isNaN(Number(battle.careerPointsGained)),
   };
 
