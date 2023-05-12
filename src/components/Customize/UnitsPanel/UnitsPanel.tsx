@@ -1,11 +1,12 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { showFeedback } from '../../store/appStateSlice';
-import { addUnit, removeUnit } from '../../store/dataSlice';
-import { AppDispatch, DataUnit, RootState } from '../../store/types';
-import { PanelProps } from './CustomizeMenu';
-import CustomizePanel from './CustomizePanel';
+import { showFeedback } from '../../../store/appStateSlice';
+import { addUnit, removeUnit } from '../../../store/dataSlice';
+import { AppDispatch, DataUnit, RootState } from '../../../store/types';
+import { PanelProps } from '../CustomizeMenu/CustomizeMenu';
+import CustomizePanel from '../CustomizePanel/CustomizePanel';
 import UnitsForm from './UnitsForm';
+import { emptyUnit } from './unitSchemas';
 
 function UnitsPanel(props: PanelProps) {
   const { expanded, handleChange } = props;
@@ -28,28 +29,7 @@ function UnitsPanel(props: PanelProps) {
       handleChange={handleChange}
       data={customData}
       CustomForm={UnitsForm}
-      emptyState={{
-        name: 'Name',
-        type: 'foot',
-        points: 2,
-        stats: {
-          attack: 5,
-          move: 6,
-          shoot: 0,
-          courage: 4,
-          armor: 0,
-          attackValue: 5,
-          defenceValue: 5,
-          shootValue: 0,
-          shootRange: 0,
-          movement: 6,
-          strengthPoints: 6,
-        },
-        freeActivations: [],
-        rules: [],
-        options: {},
-        xenosRules: [],
-      }}
+      emptyState={{ ...emptyUnit }}
       removeFunc={removeFunc}
       addFunc={addFunc}
     />

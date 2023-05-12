@@ -61,8 +61,8 @@ const statData: {
   shootRange: {
     name: 'Shooting Range',
     shortName: 'SR',
-    range: [0, 6, 12, 18],
-    adjustRange: [-18, -12, -6, 0, 6, 12, 18],
+    range: [0, 6, 12, 18, 24],
+    adjustRange: [-24, -18, -12, -6, 0, 6, 12, 18, 24],
     suffix: '',
   },
   armor: {
@@ -75,7 +75,7 @@ const statData: {
   movement: {
     name: 'Movement',
     shortName: 'MR',
-    range: [2, 4, 6, 8, 10, 12, 14, 16, 18],
+    range: [0, 2, 4, 6, 8, 10, 12, 14, 16, 18],
     adjustRange: [
       -18, -16, -14, -12, -10, -8, -6, -4, -2, 2, 4, 6, 8, 10, 12, 14, 16, 18,
     ],
@@ -84,8 +84,8 @@ const statData: {
   strengthPoints: {
     name: 'Strength Points',
     shortName: 'SP',
-    range: [6, 12],
-    adjustRange: [-12, -6, 6, 12],
+    range: [5, 10],
+    adjustRange: [-10, -5, 5, 10],
     suffix: '',
   },
 };

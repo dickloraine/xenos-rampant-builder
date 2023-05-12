@@ -1,10 +1,11 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addSpell, removeSpell } from '../../store/dataSlice';
-import { AppDispatch, PsychicPower, RootState } from '../../store/types';
-import { PanelProps } from './CustomizeMenu';
-import CustomizePanel from './CustomizePanel';
+import { addSpell, removeSpell } from '../../../store/dataSlice';
+import { AppDispatch, PsychicPower, RootState } from '../../../store/types';
+import { PanelProps } from '../CustomizeMenu/CustomizeMenu';
+import CustomizePanel from '../CustomizePanel/CustomizePanel';
 import PsychicPowersForm from './PsychicPowersForm';
+import { emptyPsychicPower } from './psychicPowersSchemas';
 
 function SpellsPanel(props: PanelProps) {
   const { expanded, handleChange } = props;
@@ -24,13 +25,7 @@ function SpellsPanel(props: PanelProps) {
       handleChange={handleChange}
       data={customData}
       CustomForm={PsychicPowersForm}
-      emptyState={{
-        name: 'Name',
-        difficulty: 7,
-        target: 'Target',
-        duration: 'Duration',
-        effect: 'Effekt',
-      }}
+      emptyState={{ ...emptyPsychicPower }}
       removeFunc={removeFunc}
       addFunc={addFunc}
     />

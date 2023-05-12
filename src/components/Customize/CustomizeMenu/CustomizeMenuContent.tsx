@@ -2,13 +2,13 @@ import { Box, Button, ButtonGroup, DialogTitle } from '@material-ui/core';
 import GetAppIcon from '@material-ui/icons/GetApp';
 import ShareIcon from '@material-ui/icons/Share';
 import React, { useCallback, useState } from 'react';
-import useOpen from '../../hooks/useOpen';
-import ExportCustomData from './ExportCustomData';
-import ImportCustomData from './ImportCustomData';
-import PsychicPowersPanel from './PsychicPowersPanel';
-import RulesPanel from './RulesPanel';
-import UnitsPanel from './UnitsPanel';
-import XenosRulesPanel from './XenosRulesPanel';
+import useOpen from '../../../hooks/useOpen';
+import ExportCustomData from '../ExportCustomData';
+import ImportCustomData from '../ImportCustomData';
+import PsychicPowersPanel from '../PsychicPowersPanel/PsychicPowersPanel';
+import RulesPanel from '../RulesPanel/RulesPanel';
+import UnitsPanel from '../UnitsPanel/UnitsPanel';
+import XenosRulesPanel from '../XenosRulesPanel/XenosRulesPanel';
 
 const CustomizeMenuContent = () => {
   const [expanded, setExpanded] = useState<string>('');

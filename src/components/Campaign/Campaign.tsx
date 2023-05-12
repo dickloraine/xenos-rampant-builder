@@ -15,8 +15,8 @@ import {
   getVictoryPoints,
 } from '../../store/rosterSlice';
 import { toggleUIOption } from '../../store/uiSlice';
-import Battles from './Battles/Battles';
-import CurrentCommander from './CurrentCommander/CurrentCommander';
+import Battles from './Battles';
+import CurrentCommander from './CurrentCommander';
 
 const Campaign = () => {
   const dispatch = useAppDispatch();

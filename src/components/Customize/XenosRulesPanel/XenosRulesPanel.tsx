@@ -1,11 +1,12 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { showFeedback } from '../../store/appStateSlice';
-import { addXenosRule, removeXenosRule } from '../../store/dataSlice';
-import { AppDispatch, RootState, XenosRule } from '../../store/types';
-import { PanelProps } from './CustomizeMenu';
-import CustomizePanel from './CustomizePanel';
+import { showFeedback } from '../../../store/appStateSlice';
+import { addXenosRule, removeXenosRule } from '../../../store/dataSlice';
+import { AppDispatch, RootState, XenosRule } from '../../../store/types';
+import { PanelProps } from '../CustomizeMenu/CustomizeMenu';
+import CustomizePanel from '../CustomizePanel/CustomizePanel';
 import XenosRulesForm from './XenosRulesForm';
+import { emptyXenosRule } from './xenosRulesSchemas';
 
 function XenosRulesPanel(props: PanelProps) {
   const { expanded, handleChange } = props;
@@ -30,12 +31,7 @@ function XenosRulesPanel(props: PanelProps) {
       handleChange={handleChange}
       data={customData}
       CustomForm={XenosRulesForm}
-      emptyState={{
-        name: 'Name',
-        points: 0,
-        exclude_units: ['Ravenous Hordes'],
-        description: 'Description',
-      }}
+      emptyState={{ ...emptyXenosRule }}
       removeFunc={removeFunc}
       addFunc={addFunc}
     />

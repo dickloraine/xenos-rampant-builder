@@ -6,7 +6,7 @@ import useUserTheme from '../hooks/useUserTheme';
 import { hydrateData } from '../store/dataSlice';
 import AppBar from './AppBar';
 import Campaign from './Campaign/Campaign';
-import CustomizeMenu from './Customize/CustomizeMenu';
+import CustomizeMenu from './Customize/CustomizeMenu/CustomizeMenu';
 import ListName from './ListName';
 import PsychicPowerTable from './PsychicPowerTable';
 import Roster from './Roster';

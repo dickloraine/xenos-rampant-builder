@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
-import useOpen from '../../hooks/useOpen';
-import { CustomDataElement } from '../../store/types';
-import { ListWithItemActions } from '../ListWithItemActions';
+import useOpen from '../../../hooks/useOpen';
+import { CustomDataElement } from '../../../store/types';
+import { ListWithItemActions } from '../../ListWithItemActions';
 
 export interface CustomFormProps<T extends CustomDataElement> {
   open: boolean;
   handleClose: () => void;
   initialState: T;
-  changeState: React.Dispatch<React.SetStateAction<T>>;
-  handleAction: () => void;
-  validateName: () => boolean;
+  handleAction: (data: T) => void;
+  validateName: (name: string) => boolean;
 }
 
 export interface CustomizeListProps<T extends CustomDataElement> {
@@ -22,20 +21,22 @@ export interface CustomizeListProps<T extends CustomDataElement> {
 
 function CustomizeList<T extends CustomDataElement>(props: CustomizeListProps<T>) {
   const { data, CustomForm, emptyState, removeFunc, addFunc } = props;
-  const [open, handleOpen, handleClose] = useOpen(false);
+  const [open, handleOpen, handleClose] = useOpen();
   const [state, setstate] = useState(emptyState);
   const [originalName, setOriginalName] = useState('');
 
-  const validateName = (): boolean =>
-    state.name !== '' &&
-    Object.keys(data).every((name) => name === originalName || name !== state.name);
+  const validateName = (name: string): boolean =>
+    name !== '' &&
+    Object.keys(data).every(
+      (dataName) => dataName === originalName || dataName !== name
+    );
 
-  const handleAction = () => {
-    if (state.name !== originalName) {
+  const handleAction = (data: T) => {
+    if (data.name !== originalName) {
       removeFunc(originalName);
     }
-    if (validateName()) {
-      addFunc(state);
+    if (validateName(data.name)) {
+      addFunc(data);
       handleClose();
     }
   };
@@ -65,7 +66,6 @@ function CustomizeList<T extends CustomDataElement>(props: CustomizeListProps<T>
         handleClose={handleClose}
         handleAction={handleAction}
         initialState={state}
-        changeState={setstate}
         validateName={validateName}
       />
     </>

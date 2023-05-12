@@ -1,11 +1,12 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { showFeedback } from '../../store/appStateSlice';
-import { addRule, removeRule } from '../../store/dataSlice';
-import { AppDispatch, RootState, Rule } from '../../store/types';
-import { PanelProps } from './CustomizeMenu';
-import CustomizePanel from './CustomizePanel';
+import { showFeedback } from '../../../store/appStateSlice';
+import { addRule, removeRule } from '../../../store/dataSlice';
+import { AppDispatch, RootState, Rule } from '../../../store/types';
+import { PanelProps } from '../CustomizeMenu/CustomizeMenu';
+import CustomizePanel from '../CustomizePanel/CustomizePanel';
 import RulesForm from './RulesForm';
+import { emptyRule } from './rulesSchemas';
 
 function RulesPanel(props: PanelProps) {
   const { expanded, handleChange } = props;
@@ -31,10 +32,7 @@ function RulesPanel(props: PanelProps) {
       handleChange={handleChange}
       data={customData.rulesData}
       CustomForm={RulesForm}
-      emptyState={{
-        name: 'Name',
-        description: 'Description',
-      }}
+      emptyState={{ ...emptyRule }}
       removeFunc={removeFunc}
       addFunc={addFunc}
     />

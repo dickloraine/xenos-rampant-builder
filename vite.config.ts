@@ -5,6 +5,26 @@ import { VitePWA } from 'vite-plugin-pwa';
 // https://vitejs.dev/config/
 export default defineConfig({
   base: '/xenos-rampant-builder/',
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          react: ['react', 'react-dom'],
+          redux: ['redux', 'react-redux', '@reduxjs/toolkit'],
+          mui: ['@material-ui/core', '@material-ui/icons', '@material-ui/lab'],
+          hookform: [
+            'react-hook-form',
+            '@hookform/resolvers',
+            'yup',
+            '@material-ui/pickers',
+            '@date-io/date-fns',
+            'date-fns',
+            '@date-io/dayjs',
+          ],
+        },
+      },
+    },
+  },
   plugins: [
     react(),
     VitePWA({
