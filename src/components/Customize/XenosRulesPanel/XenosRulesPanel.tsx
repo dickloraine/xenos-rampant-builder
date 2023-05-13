@@ -6,7 +6,7 @@ import { AppDispatch, RootState, XenosRule } from '../../../store/types';
 import { PanelProps } from '../CustomizeMenu/CustomizeMenu';
 import CustomizePanel from '../CustomizePanel/CustomizePanel';
 import XenosRulesForm from './XenosRulesForm';
-import { emptyXenosRule } from './xenosRulesSchemas';
+import { emptyXenosRule, xenosRuleSchema } from './xenosRulesSchemas';
 
 function XenosRulesPanel(props: PanelProps) {
   const { expanded, handleChange } = props;
@@ -31,6 +31,7 @@ function XenosRulesPanel(props: PanelProps) {
       handleChange={handleChange}
       data={customData}
       CustomForm={XenosRulesForm}
+      schema={xenosRuleSchema}
       emptyState={{ ...emptyXenosRule }}
       removeFunc={removeFunc}
       addFunc={addFunc}

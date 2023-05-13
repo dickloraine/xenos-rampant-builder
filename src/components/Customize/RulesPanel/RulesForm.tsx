@@ -1,4 +1,3 @@
-import { yupResolver } from '@hookform/resolvers/yup';
 import {
   Button,
   Dialog,
@@ -6,26 +5,12 @@ import {
   DialogContent,
   DialogTitle,
 } from '@material-ui/core';
-import { useEffect } from 'react';
-import { useForm } from 'react-hook-form';
 import { FormContainer, TextFieldElement } from '../../../libs/react-hook-form-mui';
 import { Rule } from '../../../store/types';
 import { CustomFormProps } from '../CustomizePanel/CustomizeList';
-import { ruleSchema } from './rulesSchemas';
 
 function RulesForm(props: CustomFormProps<Rule>) {
-  const { open, handleClose, initialState, handleAction, validateName } = props;
-  const formContext = useForm<Rule>({
-    resolver: yupResolver(ruleSchema),
-    defaultValues: { ...initialState },
-  });
-  const { reset } = formContext;
-
-  useEffect(() => {
-    if (open) {
-      reset({ ...initialState });
-    }
-  }, [reset, open, initialState]);
+  const { formContext, open, handleClose, handleAction, validateName } = props;
 
   return (
     <Dialog open={open}>

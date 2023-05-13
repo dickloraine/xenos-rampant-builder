@@ -1,7 +1,7 @@
 import * as yup from 'yup';
 import { PsychicPower } from '../../../store/types';
 
-export const psychicPowerSchema = yup.object({
+export const psychicPowerSchema = yup.object<PsychicPower>({
   name: yup.string().min(1).required(),
   difficulty: yup.number().min(2).max(12),
   target: yup.string(),

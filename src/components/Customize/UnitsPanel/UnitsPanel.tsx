@@ -6,7 +6,7 @@ import { AppDispatch, DataUnit, RootState } from '../../../store/types';
 import { PanelProps } from '../CustomizeMenu/CustomizeMenu';
 import CustomizePanel from '../CustomizePanel/CustomizePanel';
 import UnitsForm from './UnitsForm';
-import { emptyUnit } from './unitSchemas';
+import { dataUnitSchema, emptyUnit } from './unitSchemas';
 
 function UnitsPanel(props: PanelProps) {
   const { expanded, handleChange } = props;
@@ -29,6 +29,7 @@ function UnitsPanel(props: PanelProps) {
       handleChange={handleChange}
       data={customData}
       CustomForm={UnitsForm}
+      schema={dataUnitSchema}
       emptyState={{ ...emptyUnit }}
       removeFunc={removeFunc}
       addFunc={addFunc}

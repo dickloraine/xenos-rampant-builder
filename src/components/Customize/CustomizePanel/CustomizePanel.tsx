@@ -27,6 +27,7 @@ function CustomizePanel<T extends CustomDataElement>(props: CustomizePanelProps<
     handleChange,
     data,
     CustomForm,
+    schema,
     emptyState,
     removeFunc,
     addFunc,
@@ -45,6 +46,7 @@ function CustomizePanel<T extends CustomDataElement>(props: CustomizePanelProps<
         <CustomizeList<T>
           data={data}
           CustomForm={CustomForm}
+          schema={schema}
           emptyState={emptyState}
           removeFunc={removeFunc}
           addFunc={addFunc}

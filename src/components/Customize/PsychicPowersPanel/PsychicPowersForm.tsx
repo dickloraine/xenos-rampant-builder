@@ -1,4 +1,3 @@
-import { yupResolver } from '@hookform/resolvers/yup';
 import {
   Button,
   Dialog,
@@ -6,8 +5,6 @@ import {
   DialogContent,
   DialogTitle,
 } from '@material-ui/core';
-import { useEffect } from 'react';
-import { useForm } from 'react-hook-form';
 import {
   FormContainer,
   SelectElement,
@@ -16,21 +13,9 @@ import {
 import { PsychicPower } from '../../../store/types';
 import range from '../../../utils/range';
 import { CustomFormProps } from '../CustomizePanel/CustomizeList';
-import { psychicPowerSchema } from './psychicPowersSchemas';
 
 function PsychicPowersForm(props: CustomFormProps<PsychicPower>) {
-  const { open, handleClose, initialState, handleAction, validateName } = props;
-  const formContext = useForm<PsychicPower>({
-    resolver: yupResolver(psychicPowerSchema),
-    defaultValues: { ...initialState },
-  });
-  const { reset } = formContext;
-
-  useEffect(() => {
-    if (open) {
-      reset({ ...initialState });
-    }
-  }, [reset, open, initialState]);
+  const { formContext, open, handleClose, handleAction, validateName } = props;
 
   return (
     <Dialog open={open}>

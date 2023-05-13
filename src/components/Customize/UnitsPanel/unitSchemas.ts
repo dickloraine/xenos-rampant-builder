@@ -1,8 +1,8 @@
 import * as yup from 'yup';
-import { DataUnit, UnitOption } from '../../../store/types';
+import { DataUnit, UnitOption, UnitStats } from '../../../store/types';
 import { dynamicSchemaObject } from '../../../utils/dynamicSchemaObject';
 
-export const unitSetStatsSchema = yup.object({
+export const unitSetStatsSchema = yup.object<UnitStats>({
   attack: yup.number().min(2).max(12),
   move: yup.number().min(2).max(12),
   shoot: yup.number().min(0).max(12),
@@ -16,7 +16,7 @@ export const unitSetStatsSchema = yup.object({
   strengthPoints: yup.number().oneOf([5, 10]),
 });
 
-export const unitAdjustStatsSchema = yup.object({
+export const unitAdjustStatsSchema = yup.object<UnitStats>({
   attack: yup.number().min(-12).max(12),
   move: yup.number().min(-12).max(12),
   shoot: yup.number().min(-12).max(12),
@@ -30,7 +30,7 @@ export const unitAdjustStatsSchema = yup.object({
   strengthPoints: yup.number().oneOf([-10, -5, 0, 5, 10]),
 });
 
-export const unitOptionSchema = yup.object({
+export const unitOptionSchema = yup.object<UnitOption>({
   name: yup.string().min(1).required(),
   points: yup.number().required(),
   description: yup.string().required(),
@@ -43,7 +43,7 @@ export const unitOptionSchema = yup.object({
   enabledBy: yup.array().of(yup.string()),
 });
 
-export const dataUnitSchema = yup.object({
+export const dataUnitSchema = yup.object<DataUnit>({
   name: yup.string().min(1).required(),
   type: yup.string(),
   points: yup.number().min(1).required(),

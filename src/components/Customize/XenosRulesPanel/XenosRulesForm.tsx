@@ -1,4 +1,3 @@
-import { yupResolver } from '@hookform/resolvers/yup';
 import {
   Button,
   Dialog,
@@ -6,8 +5,6 @@ import {
   DialogContent,
   DialogTitle,
 } from '@material-ui/core';
-import { useEffect } from 'react';
-import { useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 import {
   FormContainer,
@@ -20,22 +17,11 @@ import { RootState, XenosRule } from '../../../store/types';
 import range from '../../../utils/range';
 import { CustomFormProps } from '../CustomizePanel/CustomizeList';
 import StatManipulation from '../common/StatManipulation';
-import { xenosRuleSchema } from './xenosRulesSchemas';
 
 function XenosRulesForm(props: CustomFormProps<XenosRule>) {
-  const { open, handleClose, initialState, handleAction, validateName } = props;
+  const { formContext, open, handleClose, handleAction, validateName } = props;
   const units = useSelector((state: RootState) => selectUnitNames(state));
-  const formContext = useForm<XenosRule>({
-    resolver: yupResolver(xenosRuleSchema),
-    defaultValues: { ...initialState },
-  });
-  const { reset, watch, setValue } = formContext;
-
-  useEffect(() => {
-    if (open) {
-      reset({ ...initialState });
-    }
-  }, [reset, open, initialState]);
+  const { watch, setValue } = formContext;
 
   return (
     <Dialog open={open}>

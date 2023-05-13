@@ -1,4 +1,3 @@
-import { yupResolver } from '@hookform/resolvers/yup';
 import {
   Button,
   Dialog,
@@ -8,8 +7,7 @@ import {
   InputLabel,
 } from '@material-ui/core';
 import produce from 'immer';
-import { useEffect, useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { useState } from 'react';
 // import { FormContainer, MultiSelectElement } from 'react-hook-form-mui';
 import { useSelector } from 'react-redux';
 import useOpen from '../../../hooks/useOpen';
@@ -25,7 +23,7 @@ import { ListWithItemActions } from '../../ListWithItemActions';
 import { CustomFormProps } from '../CustomizePanel/CustomizeList';
 import OptionsForm from './OptionsForm';
 import UnitsFormStats from './UnitsFormStats';
-import { dataUnitSchema, emptyOption } from './unitSchemas';
+import { emptyOption } from './unitSchemas';
 
 const activations = [
   { id: 'attack', title: 'Attack' },
@@ -34,21 +32,11 @@ const activations = [
 ];
 
 function UnitsForm(props: CustomFormProps<DataUnit>) {
-  const { open, handleClose, initialState, handleAction, validateName } = props;
-  const formContext = useForm<DataUnit>({
-    resolver: yupResolver(dataUnitSchema),
-    defaultValues: { ...initialState },
-  });
-  const { reset, watch, setValue } = formContext;
+  const { formContext, open, handleClose, handleAction, validateName } = props;
+  const { watch, setValue } = formContext;
   const rules = useSelector((state: RootState) => state.data.rulesData);
   const [optionsOpen, handleOpenOptions, handleCloseOptions] = useOpen();
   const [currentOption, setCurrentOption] = useState<UnitOption>({ ...emptyOption });
-
-  useEffect(() => {
-    if (open) {
-      reset({ ...initialState });
-    }
-  }, [reset, open, initialState]);
 
   const handleOptionsSubmit = (option: UnitOption) => {
     setValue('options', { ...watch('options'), [option.name]: option });

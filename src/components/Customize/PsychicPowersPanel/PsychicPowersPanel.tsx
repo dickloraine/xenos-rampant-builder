@@ -5,7 +5,7 @@ import { AppDispatch, PsychicPower, RootState } from '../../../store/types';
 import { PanelProps } from '../CustomizeMenu/CustomizeMenu';
 import CustomizePanel from '../CustomizePanel/CustomizePanel';
 import PsychicPowersForm from './PsychicPowersForm';
-import { emptyPsychicPower } from './psychicPowersSchemas';
+import { emptyPsychicPower, psychicPowerSchema } from './psychicPowersSchemas';
 
 function SpellsPanel(props: PanelProps) {
   const { expanded, handleChange } = props;
@@ -25,6 +25,7 @@ function SpellsPanel(props: PanelProps) {
       handleChange={handleChange}
       data={customData}
       CustomForm={PsychicPowersForm}
+      schema={psychicPowerSchema}
       emptyState={{ ...emptyPsychicPower }}
       removeFunc={removeFunc}
       addFunc={addFunc}
