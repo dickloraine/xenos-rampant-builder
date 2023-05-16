@@ -7,6 +7,7 @@ export const psychicPowerSchema = yup.object<PsychicPower>({
   target: yup.string(),
   duration: yup.string(),
   effect: yup.string(),
+  short: yup.string(),
 });
 
 export const emptyPsychicPower: PsychicPower = {

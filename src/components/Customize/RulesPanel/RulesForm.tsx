@@ -33,6 +33,14 @@ function RulesForm(props: CustomFormProps<Rule>) {
             fullWidth
             multiline
           />
+          <TextFieldElement
+            name="short"
+            label="Short description"
+            type="text"
+            margin="normal"
+            fullWidth
+            multiline
+          />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">

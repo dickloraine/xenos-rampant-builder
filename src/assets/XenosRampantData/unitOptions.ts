@@ -5,6 +5,7 @@ export const unitOptions: UnitOptions = {
     name: 'All-Terrain',
     points: 1,
     description: 'This unit does not halve its movement in rough terrain.',
+    short: 'Move through terrain.',
     add: ['All-Terrain'],
   },
   'Anti-Tank': {
@@ -20,6 +21,7 @@ export const unitOptions: UnitOptions = {
     name: 'Area Effect',
     points: 1,
     description: 'Ignore cover when Shooting',
+    short: 'Ignore cover when Shooting',
     add: ['Area Effect'],
   },
   Armored: {
@@ -27,6 +29,8 @@ export const unitOptions: UnitOptions = {
     points: 1,
     description:
       'This unit is wearing primitive metal armor or has naturally resilient scales, plates or leathery skin. This unit counts as armor 2 when Attacking or Defending, or against Shooting attacks from Primitive Infantry or Militia Rabble only; against all other sources of harm, they are their usual armor 1.',
+    short:
+      'Armor 2 when Attacking or Defending, or against Shooting attacks from Primitive Infantry or Militia Rabble only.',
     add: ['Armored'],
   },
   'Armor-Piercing': {
@@ -43,6 +47,8 @@ export const unitOptions: UnitOptions = {
     points: 2,
     description:
       'This unit\'s Shoot Value becomes 4+ / 48". If this vehicle targets an enemy that is within 12" of a friendly unit that has not been activated this turn, the friendly unit may forgo its action this turn to act as spotters. Spotters improve the vehicle\'s Shoot Value to 3+ / 48" for this action only. Cannot be combined with Close Quarters Doctrine.',
+    short:
+      'Shoot range 48". Shooting value of 3+ against enemies in 12" of friendly unit which forgoes its activation.',
     setStats: {
       shootRange: 48,
     },
@@ -64,6 +70,7 @@ export const unitOptions: UnitOptions = {
     points: -1,
     description:
       'This unit is armed for short-range combat, reducing its Shooting Range to 12".',
+    short: 'Reduced Shooting Range of 12".',
     setStats: {
       shootRange: 12,
     },
@@ -74,6 +81,7 @@ export const unitOptions: UnitOptions = {
     points: 1,
     description:
       'This vehicle is fitted out with heavy equipment for clearing mines or demolishing obstructions. If it Attacks a building, the building only hits on Defence rolls of 6.',
+    short: 'Attacked Buildings only hits on Defence rolls of 6.',
     add: ['Combat Engineering Vehicle'],
   },
   'Counter-Sniper Training': {
@@ -105,6 +113,7 @@ export const unitOptions: UnitOptions = {
     name: 'Fire Support',
     points: 4,
     description: 'This unit can call in Fire Support as an ordered activation.',
+    short: 'Call in Fire Support as an ordered activation.',
     add: ['Fire Support'],
   },
   'Green Recons': {
@@ -154,6 +163,7 @@ export const unitOptions: UnitOptions = {
     points: 1,
     description:
       'The use of exo-skeletons, powered armor or mounts increases this unit\'s Maximum Movement by 4". This unit still counts, for all rules purposes, as infantry. This cannot be combined with the Slow xeno rule.',
+    short: 'Maximum Movement increased by 4".',
     adjustStats: {
       movement: 4,
     },
@@ -163,6 +173,7 @@ export const unitOptions: UnitOptions = {
     points: 1,
     description:
       'This unit is armed with javelins, bows, slings, or perhaps muskets, granting it Shoot 6+ and Shoot Value 6 / 6". However, against any opponents other than Greater or Lesser Xenomorphs, Primitive Infantry, or Militia Rabble, targets count as having one more point of armor. Cannot be combined with Savages.',
+    short: 'Shoot 6+ and Shoot Value 6 / 6". Some units get +1 armor vs this.',
     setStats: {
       shoot: 6,
       shootValue: 6,
@@ -189,6 +200,7 @@ export const unitOptions: UnitOptions = {
     points: 2,
     description:
       "You don't think they're tough enough already? Some Elite Infantry boast carapaces more suited to an armored vehicle. Increase this unit's armor to 5, but reduce its Maximum Movement by 2\". Super-heavily armored infantry also become susceptible to the Anti-Tank and Demolitions rules, as if they were vehicles.",
+    short: 'Armor 5, Movement -2". Susceptible to Anti-Tank and Demolitions.',
     setStats: {
       armor: 5,
     },
@@ -201,6 +213,7 @@ export const unitOptions: UnitOptions = {
     name: 'Undisciplined',
     points: -1,
     description: 'The unit has Courage 5+.',
+    short: 'The unit has Courage 5+.',
     setStats: {
       courage: 5,
     },
@@ -228,6 +241,7 @@ export const unitOptions: UnitOptions = {
     points: 2,
     description:
       'This vehicle walks, by means bipedal, quadrupedal, or creepily crab-like. Its Maximum Movement is reduced by 2", but its Attack Value becomes 4+. Walkers are able to Storm defences if they win an Attack action, while buildings they Attack do not get to Defend.',
+    short: 'Movement -2", Attack Value 4+. Storm defences.',
     setStats: {
       attackValue: 4,
     },

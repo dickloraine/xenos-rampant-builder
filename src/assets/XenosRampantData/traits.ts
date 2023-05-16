@@ -5,6 +5,7 @@ export const traitData: TraitData = {
     name: 'Timid',
     description:
       'The Commander’s unit may not be given an Attack order (but will still make Wild Charges if applicable).',
+    short: 'The Commander’s unit may not be given an Attack order.',
     category: 'Aggressive',
   },
   Insipid: {
@@ -16,6 +17,7 @@ export const traitData: TraitData = {
     name: 'Attack, Attack, Attack!',
     description:
       'The Commander’s unit gains the Wild Charge rule; if it already has the Wild Charge rule, then it automatically passes any tests for Wild Charge.',
+    short: 'Gains Wild Charge; if already, automatically passes it.',
     category: 'Aggressive',
   },
   'Extreme Disciplinarian': {
@@ -69,6 +71,8 @@ export const traitData: TraitData = {
     name: 'Hold The Line!',
     description:
       'Each turn, one unit within 12" of your Commander model may ignore a compulsory Wild Charge, and may instead take an ordered action in your ordered activation phase.',
+    short:
+      'One unit within 12" may ignore a compulsory Wild Charge, and take an ordered action.',
     category: 'Tactical',
   },
   'Incompetent Paper Pusher': {
@@ -80,6 +84,8 @@ export const traitData: TraitData = {
     name: 'Half-Wit',
     description:
       'After deployment (whether your Commander is on the table or not) roll one die for each of your units other than the Commander’s. On a roll of 1, that unit never received its orders and is immediately removed from play (not counting as casualties). Only one unit will fail to arrive per game; once a unit has been removed, stop rolling.',
+    short:
+      'After deployment roll one die for each of your units other than the Commander’s. On a roll of 1, remove it from play. Only one unit will fail to arrive per game.',
     category: 'Strategic',
   },
   Wise: {
@@ -98,6 +104,8 @@ export const traitData: TraitData = {
     name: 'Unpredictable',
     description:
       'In games where you deploy before the other player, you may swap the positions of up to three units after the other player has deployed. All units must occupy the space vacated by another of the units that has been redeployed.',
+    short:
+      'If you deploy first, you may swap the positions of up to three units after the other player has deployed.',
     category: 'Strategic',
   },
   Logistician: {
@@ -131,12 +139,15 @@ export const traitData: TraitData = {
     name: 'Crack Shot',
     description:
       'When shooting (whether as a Shoot action or when using the Firefight rule), your Commander’s unit may reroll up to two failed hit dice.',
+    short: 'When shooting, your Commander’s unit may reroll up to two failed hit dice.',
     category: 'Warlord',
   },
   Champion: {
     name: 'Champion',
     description:
       'During Attacks (whether attacking or defending), your Commander’s unit may reroll up to two failed hit dice.',
+    short:
+      'During close combat, your Commander’s unit may reroll up to two failed hit dice.',
     category: 'Warlord',
   },
 };

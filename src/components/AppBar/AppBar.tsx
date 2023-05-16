@@ -11,6 +11,7 @@ import ReplayIcon from '@material-ui/icons/Replay';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import { useAppDispatch } from '../../hooks/reduxHooks';
 import { newRoster } from '../../store/rosterSlice';
+import InlineRules from '../InlineRules';
 import LoadList from '../LoadList';
 import SaveList from '../SaveList';
 import SideMenu from '../SideMenu';
@@ -48,6 +49,9 @@ const AppBar = () => {
           <Box display="flex" alignItems="center">
             <ToggleViewMode option="viewMode" Icon={VisibilityIcon} title="View mode" />
             <ToggleViewMode option="editMode" Icon={EditIcon} title="Edit mode" />
+            <Hidden smDown>
+              <InlineRules />
+            </Hidden>
             <TotalPoints />
           </Box>
         </Toolbar>

@@ -14,6 +14,7 @@ import { removeUnit, updateUnit } from '../../store/rosterSlice';
 import { Unit as UnitType } from '../../store/types';
 import ExpandIcon from '../ExpandIcon';
 import Actions from './Actions';
+import CommanderTraits from './CommanderTraits';
 import Options from './Options';
 import SpecialRules from './SpecialRules';
 import StatBlock from './StatBlock';
@@ -79,6 +80,7 @@ const Unit: React.FC<{ id: number }> = ({ id }) => {
             <>
               <StatBlock stats={unit.stats} freeActivations={unit.freeActivations} />
               <SpecialRules rules={unit.rules} />
+              <CommanderTraits rules={unit.rules} />
             </>
           )}
           <PsychicPowers onChange={handleChange} unit={unit} />

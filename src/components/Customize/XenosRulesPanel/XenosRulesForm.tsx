@@ -52,6 +52,14 @@ function XenosRulesForm(props: CustomFormProps<XenosRule>) {
             fullWidth
             multiline
           />
+          <TextFieldElement
+            name="short"
+            label="Short description"
+            type="text"
+            margin="normal"
+            fullWidth
+            multiline
+          />
           <MultiSelectElement
             name="exclude_units"
             label="Exclude&nbsp;Units"

@@ -87,6 +87,8 @@ export const unitsData: Units = {
         points: 2,
         description:
           'This unit begins the game with 10 Strength Points and increases its Attack Value to 5+, Defence Value to 4+ and Shoot Value to 5+/18".',
+        short:
+          '10 Strength Points. Attack Value 5+, Defence Value 4+ , Shoot Value 5+/18".',
         setStats: {
           attackValue: 5,
           defenceValue: 4,
@@ -131,6 +133,8 @@ export const unitsData: Units = {
         points: 2,
         description:
           'This unit begins the game with 10 Strength Points and increases its Attack Value to 5+, Defence Value to 4+ and Shoot Value to 5+/18".',
+        short:
+          '10 Strength Points, Attack Value 5+, Defence Value 4+, Shoot Value 5+/18".',
         setStats: {
           attackValue: 5,
           defenceValue: 4,
@@ -170,6 +174,7 @@ export const unitsData: Units = {
         points: -1,
         description:
           "This unit's Attack Value is reduced by 1 (e.g. 4+ to 5+ for base units).",
+        short: 'Attack Value -1.',
         adjustStats: {
           attackValue: +1,
         },
@@ -178,6 +183,7 @@ export const unitsData: Units = {
         name: 'Heavy Armor',
         points: 2,
         description: "This unit's armor becomes 3.",
+        short: 'Armor becomes 3.',
         setStats: {
           armor: 3,
         },
@@ -188,6 +194,7 @@ export const unitsData: Units = {
         points: 4,
         description:
           "Change this unit's armor to 4 and Attack Value to 3+. May not be combined with Heavy armor or Increased Squad Size.",
+        short: 'Armor 4, Attack Value 3+.',
         setStats: {
           armor: 4,
           attackValue: 3,
@@ -200,6 +207,7 @@ export const unitsData: Units = {
         points: 1,
         description:
           "This unit begins the game with 10 Strength Points, and also increases its Attack Value to 3+. This unit's Defence Value and Shoot Value remain unchanged.",
+        short: '10 Strength Points, Attack Value 3+.',
         setStats: {
           attackValue: 3,
           strengthPoints: 10,
@@ -211,6 +219,7 @@ export const unitsData: Units = {
         name: 'Veteran',
         points: 2,
         description: "This unit's Defence Value becomes 5+.",
+        short: 'Defence Value 5+.',
         setStats: {
           defenceValue: 5,
         },
@@ -245,6 +254,7 @@ export const unitsData: Units = {
         points: 2,
         description:
           'This unit\'s Shooting Range becomes 48". Cannot be combined with Close Quarters Doctrine.',
+        short: 'Shooting Range 48".',
         setStats: {
           shootValue: 4,
           shootRange: 48,
@@ -315,6 +325,7 @@ export const unitsData: Units = {
         points: 1,
         description:
           'This unit begins the game with 10 Strength Points and increases its Attack Value to 4+, Defence Value to 5+. Its Shoot Value remains unchanged. This cannot be combined with Mob.',
+        short: '10 Strength Points, Attack Value 4+, Defence Value 5+.',
         setStats: {
           attackValue: 4,
           defenceValue: 5,
@@ -327,6 +338,7 @@ export const unitsData: Units = {
         points: 2,
         description:
           'This unit begins the game with 15 Strength Points, and also increases its Attack Value to 3+ and its Defence Value to 5+. Its Shoot Value remains unchanged. This cannot be combined with Increased Squad Size.',
+        short: '15 Strength Points, Attack Value 3+, Defence Value 5+.',
         setStats: {
           attackValue: 3,
           defenceValue: 5,
@@ -341,6 +353,7 @@ export const unitsData: Units = {
         points: -1,
         description:
           'This unit becomes subject to the rules for Wild Charges. Cannot be combined with Primitive Missiles.',
+        short: 'Gets Wild Charges.',
         add: ['Wild Charge'],
         disabledBy: ['Primitive Missiles'],
       },
@@ -348,6 +361,7 @@ export const unitsData: Units = {
         name: 'Young Warriors',
         points: -1,
         description: 'Courage becomes 5+.',
+        short: 'Courage 5+.',
         setStats: {
           courage: 5,
         },
@@ -380,6 +394,7 @@ export const unitsData: Units = {
         points: 1,
         description:
           'This unit begins the game with 15 Strength Points, and also increases Shoot Value to 6 / 12". This unit\'s Attack Value and Defence Value remain unchanged.',
+        short: '15 Strength Points, Shoot Value 6 / 12".',
         setStats: {
           shootValue: 6,
           shootRange: 12,
@@ -391,6 +406,7 @@ export const unitsData: Units = {
         points: 0,
         description:
           " Remove this unit's Shoot and Shoot Value, but increase its Attack to a (still-pathetic) 7+.",
+        short: 'Remove shooting. Attack 7+.',
         setStats: {
           attack: 7,
           shoot: 0,
@@ -425,6 +441,7 @@ export const unitsData: Units = {
         name: 'Cunning',
         points: 2,
         description: "This unit's Defence Value becomes 5+.",
+        short: 'Defence Value 5+.',
         setStats: {
           defenceValue: 5,
         },
@@ -433,6 +450,7 @@ export const unitsData: Units = {
         name: 'Ponderous',
         points: 1,
         description: 'This unit loses the Wild Charge rule.',
+        short: 'Loses Wild Charge.',
         remove: ['Wild Charge'],
         disabledBy: ['Xenomorph Ranged Attack'],
       },
@@ -443,6 +461,7 @@ export const unitsData: Units = {
         points: 2,
         description:
           'This unit either has a ranged weapon or can spit acid, flame or poison gas. Remove the Wild Charge rule and replace it with Shoot 6+ and Shoot Value 5+ / 18".',
+        short: 'Remove Wild Charge, Shoot 6+, Shoot Value 5+/18".',
         setStats: {
           shoot: 6,
           shootValue: 5,
@@ -494,6 +513,7 @@ export const unitsData: Units = {
         name: 'Cunning',
         points: 2,
         description: "This unit's Defence Value becomes 5+.",
+        short: 'Defence Value 5+.',
         setStats: {
           defenceValue: 5,
         },
@@ -504,6 +524,7 @@ export const unitsData: Units = {
         points: 2,
         description:
           'This unit begins the game with 10 Strength Points, and also increases its Attack Value to 3+. Its Defence Value and Shoot Value remain unchanged.',
+        short: '10 Strength Points, Attack Value 3+.',
         setStats: {
           attackValue: 3,
         },
@@ -513,6 +534,7 @@ export const unitsData: Units = {
         points: 2,
         description:
           'This unit either has a ranged weapon or can spit acid, flame or poison gas. Remove the Wild Charge rule and replace it with Shoot 6+ and Shoot Value 5+ / 18".',
+        short: 'Remove Wild Charge, Shoot 6+, Shoot Value 5+/18".',
         setStats: {
           shoot: 6,
           shootValue: 5,
@@ -571,6 +593,7 @@ export const unitsData: Units = {
         points: -1,
         description:
           'This unit is geared almost exclusively towards blowing up or mowing down infantry. Remove the Anti-Tank rule.',
+        short: 'Remove Anti-Tank.',
         remove: ['Anti-Tank'],
       },
       'Area Effect': unitOptions['Area Effect'],
@@ -584,6 +607,7 @@ export const unitsData: Units = {
         points: -2,
         description:
           "Reduce this unit's armor by 1 and remove the Demolitions and Line-Breaker rules.",
+        short: 'Armor -1, remove Demolitions and Line-Breaker.',
         adjustStats: {
           armor: -1,
         },
@@ -594,6 +618,7 @@ export const unitsData: Units = {
         points: -1,
         description:
           'This unit\'s Shoot Value becomes 5+ / 18" (5+ / 12" with Close Quarters Doctrine, 5+ / 48" with Artillery). This cannot be combined with Veteran Crew.',
+        short: 'Shoot Value 5+ / 18".',
         setStats: {
           shootValue: 5,
         },
@@ -631,6 +656,7 @@ export const unitsData: Units = {
         points: 2,
         description:
           'This unit is not slowed by linear obstacles such as barricades, barbed wire, low walls, fences or trench parapets. In the case of obstacles that could plausibly be crushed beneath the vehicle, you can remove an appropriately sized stretch of the obstacle after the unit passes over it.',
+        short: 'Can move through linear obstacles.',
         add: ['Line-Breaker'],
       },
       'Transport (10)': {
@@ -645,6 +671,7 @@ export const unitsData: Units = {
         name: 'Green Crew',
         points: -1,
         description: 'This vehicle\'s Shoot Value becomes 6 / 12"',
+        short: 'Shoot Value 6 / 12".',
         setStats: {
           shootValue: 6,
         },
@@ -685,7 +712,8 @@ export const unitsData: Units = {
         name: 'Civilian',
         points: -1,
         description:
-          'This unit is a civilian vehicle, lacking in any armour. Reduce its Armour to 2. Cannot be combined with Improvised Armour.',
+          'This unit is a civilian vehicle, lacking in any armor. Reduce its Armor to 2. Cannot be combined with Improvised Armour.',
+        short: 'Armor 2.',
         setStats: {
           armor: 2,
         },
@@ -695,7 +723,8 @@ export const unitsData: Units = {
         name: 'Improvised Armour',
         points: 1,
         description:
-          'Heavy armour plating has been welded onto this vehicle, slowing its Maximum Movement by 2”, but increasing its Armour to 4.',
+          'Heavy armor plating has been welded onto this vehicle, slowing its Maximum Movement by 2”, but increasing its Armor to 4.',
+        short: 'Movement -2”, Armor 4.',
         setStats: {
           armor: 4,
         },
@@ -709,6 +738,7 @@ export const unitsData: Units = {
         points: 2,
         description:
           'This vehicle is a bus, oil tanker, combine harvester, or similarly bulky vehicle. Reduce its Maximum Movement by 2", but increase Strength Points to 10.',
+        short: 'Strength Points 10, Movement -2”.',
         setStats: {
           strengthPoints: 10,
         },
@@ -720,6 +750,7 @@ export const unitsData: Units = {
         name: 'Green Crew',
         points: -1,
         description: "This unit's Courage becomes 5+.",
+        short: 'Courage 5+.',
         setStats: {
           courage: 5,
         },
@@ -729,6 +760,7 @@ export const unitsData: Units = {
         points: 1,
         description:
           "Scythed wheels, spiked dozer blades, or meat hooks trailing on chains increases this unit's Attack Value to 5+.",
+        short: 'Attack Value 5+.',
         setStats: {
           attackValue: 5,
         },
@@ -773,7 +805,8 @@ export const unitsData: Units = {
         name: 'Technical',
         points: 2,
         description:
-          ' This vehicle has weapons, possibly hastily bolted onto the chassis. Improve its Shoot to 6+ and Shoot Value to 5+ / 18".',
+          'This vehicle has weapons, possibly hastily bolted onto the chassis. Improve its Shoot to 6+ and Shoot Value to 5+ / 18".',
+        short: 'Shoot 6+, Shoot Value 5+/18".',
         setStats: {
           shoot: 6,
           shootValue: 5,

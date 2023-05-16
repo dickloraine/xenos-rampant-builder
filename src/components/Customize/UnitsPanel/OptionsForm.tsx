@@ -77,7 +77,7 @@ const OptionsForm: React.FC<{
             fullWidth
             options={range(-4, 6)}
           />
-          {/* ------------------------------- Summary ------------------------------- */}
+          {/* ----------------------------- Description ----------------------------- */}
           <TextFieldElement
             name="description"
             label="Description"
@@ -86,6 +86,14 @@ const OptionsForm: React.FC<{
             fullWidth
             multiline
             style={{ marginBottom: 20 }}
+          />
+          <TextFieldElement
+            name="short"
+            label="Short description"
+            type="text"
+            margin="normal"
+            fullWidth
+            multiline
           />
           {/* ----------------------------- Remove Rules ---------------------------- */}
           <MultiSelectElement

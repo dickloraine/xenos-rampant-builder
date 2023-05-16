@@ -66,6 +66,7 @@ export type XenosRule = {
   points: number;
   exclude_units: string[];
   description: string;
+  short?: string;
   setStats?: Partial<UnitStats>;
   adjustStats?: Partial<UnitStats>;
 };
@@ -73,6 +74,7 @@ export type XenosRule = {
 export type Rule = {
   name: string;
   description: string;
+  short?: string;
 };
 
 export type PsychicPower = {
@@ -81,9 +83,15 @@ export type PsychicPower = {
   target: string;
   duration: string;
   effect: string;
+  short?: string;
 };
 
-export type TraitRule = { name: string; description: string; category: string };
+export type TraitRule = {
+  name: string;
+  description: string;
+  category: string;
+  short?: string;
+};
 export type TraitData = { [name: string]: TraitRule };
 
 export type Units = { [name: string]: DataUnit };
@@ -167,6 +175,7 @@ export type CompactRosterState = {
 export type UIState = {
   viewMode: boolean;
   editMode: boolean;
+  inlineRules: boolean;
   darkMode: null | boolean;
   validationExpanded: boolean;
   rulesSummaryExpanded: boolean;

@@ -18,6 +18,7 @@ import DarkMode from './DarkMode';
 import DeleteList from './DeleteList';
 import ExportList from './ExportList';
 import ImportList from './ImportList';
+import InlineRules from './InlineRules';
 import LoadList from './LoadList';
 import Restore from './Restore';
 import SaveList from './SaveList';
@@ -79,6 +80,9 @@ const SideMenu = () => {
             <Typography onClick={showCustomizeMenu}>Customize</Typography>
           </ListItem>
           <Divider />
+          <ListItem button key={'InlineRules'}>
+            <InlineRules showText={true} />
+          </ListItem>
           <ListItem button key={'DarkMode'}>
             <DarkMode showText={true} />
           </ListItem>

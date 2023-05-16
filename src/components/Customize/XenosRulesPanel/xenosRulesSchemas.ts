@@ -7,6 +7,7 @@ export const xenosRuleSchema = yup.object<XenosRule>({
   points: yup.number().min(0).required(),
   exclude_units: yup.array().of(yup.string()),
   description: yup.string().required(),
+  short: yup.string(),
   setStats: unitSetStatsSchema,
   adjustStats: unitAdjustStatsSchema,
 });

@@ -8,6 +8,7 @@ export const psychicPowers: PsychicPowers = {
     duration: "Until start of player's next activation phase, or until used.",
     effect:
       'If the target unit fails its next ordered activation, it may immediately re-roll the test once. The power’s effects end immediately, whether the re-roll is successful or not.',
+    short: 'Target may re-roll failed activation.',
   },
   'Soothed Mind': {
     name: 'Soothed Mind',
@@ -15,6 +16,7 @@ export const psychicPowers: PsychicPowers = {
     target: 'Friendly unit within 18"',
     duration: "Until the start of the player's next activation phase.",
     effect: 'The target unit may re-roll all failed Courage tests once per test.',
+    short: 'Target may re-roll all failed Courage tests.',
   },
   Summoner: {
     name: 'Summoner',
@@ -23,6 +25,7 @@ export const psychicPowers: PsychicPowers = {
     duration: 'Instantaneous',
     effect:
       'Place the target unit onto the table anywhere within 12" of the Manifesting unit, but at least 6” from any enemy units.',
+    short: 'Place the target unit onto the table anywhere within 12".',
   },
   'Psychic Healing': {
     name: 'Psychic Healing',
@@ -31,6 +34,7 @@ export const psychicPowers: PsychicPowers = {
     duration: 'Instantaneous',
     effect:
       'Restore 1 lost Strength Point to a friendly infantry unit, as long as it does not have the Mechanoid xeno rule.',
+    short: 'Restore 1 lost Strength Point to an infantry unit.',
   },
   'Machine Friend': {
     name: 'Machine Friend',
@@ -39,6 +43,7 @@ export const psychicPowers: PsychicPowers = {
     duration: 'Instantaneous',
     effect:
       'Restore 1 lost Strength Point to a friendly vehicle unit or infantry unit with the Mechanoid xeno rule.',
+    short: 'Restore 1 lost Strength Point to a vehicle unit.',
   },
   'Visions of Terror': {
     name: 'Visions of Terror',
@@ -47,6 +52,7 @@ export const psychicPowers: PsychicPowers = {
     duration: 'Until the unit Rallies.',
     effect:
       'Suppresses the target unit. May not be used on an already Suppressed unit.',
+    short: 'Suppresses the target unit.',
   },
   Paralysis: {
     name: 'Paralysis',
@@ -55,6 +61,7 @@ export const psychicPowers: PsychicPowers = {
     duration: 'Until the end of the target’s next activation phase.',
     effect:
       'Any movement or combat the target unit is involved in counts as in rough terrain; this does not affect any other units. If the target unit moves into ‘real’ rough terrain, movement is reduced to 1⁄4 of normal speed.',
+    short: 'Any movement or combat of the target unit counts as in rough terrain.',
   },
   Concealment: {
     name: 'Concealment',
@@ -63,6 +70,7 @@ export const psychicPowers: PsychicPowers = {
     duration: 'Until the end of the target’s next activation phase.',
     effect:
       'The target unit can only be targeted by Attacks or Shooting from within 12" of it.',
+    short: 'Target unit can only be targeted by Attacks or Shooting from within 12".',
   },
   'Guiding Eye': {
     name: 'Guiding Eye',
@@ -70,6 +78,7 @@ export const psychicPowers: PsychicPowers = {
     target: 'Self or friendly unit within 18"',
     duration: 'Until the start of the player’s next activation phase.',
     effect: 'The target unit may re-roll all failed Shoot or Firefight dice.',
+    short: 'Target unit may re-roll all failed Shooting dice.',
   },
   'Guiding Hand': {
     name: 'Guiding Hand',
@@ -77,6 +86,7 @@ export const psychicPowers: PsychicPowers = {
     target: 'Self or friendly unit within 18"',
     duration: 'Until the start of the player’s next activation phase.',
     effect: 'The target unit may re-roll all failed Attack or Defence dice.',
+    short: 'Target unit may re-roll all failed Attack or Defence dice.',
   },
   'Psychic Shield': {
     name: 'Psychic Shield',
@@ -84,6 +94,7 @@ export const psychicPowers: PsychicPowers = {
     target: 'Self or friendly unit within 18"',
     duration: 'Until the start of the player’s next activation phase.',
     effect: 'The target unit’s Armour is increased by 1.',
+    short: 'Target unit’s Armour is increased by 1.',
   },
   Transportation: {
     name: 'Transportation',
@@ -92,6 +103,7 @@ export const psychicPowers: PsychicPowers = {
     duration: 'Instantaneous',
     effect:
       'Roll two dice. The target unit is moved, whether by teleportation, telekinesis, or portals ripped in space-time, up to that many inches in a direction chosen by the Manifesting unit’s player.',
+    short: 'Target unit is moved 2d6 inches.',
   },
   Annulment: {
     name: 'Annulment',
@@ -100,5 +112,6 @@ export const psychicPowers: PsychicPowers = {
     duration: 'Instantaneous',
     effect:
       'Cancel the effect of any psychic powers currently affecting the target unit with a duration other than ‘Instantaneous’.',
+    short: 'Cancel the effect of a psychic power.',
   },
 };

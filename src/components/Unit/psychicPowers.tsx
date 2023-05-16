@@ -4,7 +4,9 @@ import {
   FormControl,
   FormLabel,
   Input,
-  MenuItem,
+  List,
+  ListItem,
+  ListItemText,
   Select,
   Tooltip,
   Typography,
@@ -21,7 +23,9 @@ const PsychicPowers: React.FC<{ unit: Unit; onChange: (unit: Unit) => void }> = 
 }) => {
   const [open, handleOpen, handleClose] = useOpen();
   const powersData = useAppSelector((state) => state.data.psychicPowers);
+  const inlineRules = useAppSelector((state) => state.ui.inlineRules);
   const viewMode = useAppSelector((state) => state.ui.viewMode);
+  const editMode = useAppSelector((state) => state.ui.editMode);
   if (
     !unit.xenosRules.some((rule) =>
       ['Psychic 1', 'Psychic 2', 'Psychic 3', 'Psychic 4'].includes(rule)
@@ -33,27 +37,39 @@ const PsychicPowers: React.FC<{ unit: Unit; onChange: (unit: Unit) => void }> = 
     onChange({ ...unit, psiPowers: [...(e.target.value as string[])] });
 
   return (
-    <>
+    <Box marginBottom="-20px">
       {!viewMode && (
-        <FormLabel onClick={handleOpen} component="legend" style={{ marginBottom: 10 }}>
+        <FormLabel onClick={handleOpen} component="legend">
           Psychic Powers <ArrowDropDownIcon />
         </FormLabel>
       )}
-      <Container>
-        {viewMode && (
-          <Typography variant="h4" style={{ marginBottom: 10 }}>
-            Psychic Powers
-          </Typography>
+      <Container style={{ marginBottom: 0 }}>
+        {viewMode && <Typography variant="h4">Psychic Powers</Typography>}
+        {unit.psiPowers && (
+          <List dense>
+            <Box marginLeft={!inlineRules ? '1rem' : 'inherit'}>
+              {unit.psiPowers.map((name, i, arr) => (
+                <Tooltip key={name} title={powersData[name]?.effect || ''}>
+                  {unit.psiPowers && !editMode && inlineRules ? (
+                    <ListItem key={name}>
+                      <ListItemText
+                        primary={name}
+                        secondary={powersData[name]?.short || ''}
+                        primaryTypographyProps={{ variant: 'body2' }}
+                        style={{ margin: 0 }}
+                      />
+                    </ListItem>
+                  ) : (
+                    <Typography variant="inherit" key={name}>
+                      {name}
+                      {i === arr.length - 1 ? '' : ', '}
+                    </Typography>
+                  )}
+                </Tooltip>
+              ))}
+            </Box>
+          </List>
         )}
-        {unit.psiPowers &&
-          unit.psiPowers.map((r, i, arr) => (
-            <Tooltip key={r} title={powersData[r]?.effect || ''}>
-              <Typography variant="inherit" key={r}>
-                {r}
-                {i === arr.length - 1 ? '' : ', '}
-              </Typography>
-            </Tooltip>
-          ))}
       </Container>
       <FormControl style={{ marginTop: 10, width: 0, height: 0 }}>
         <Select
@@ -68,23 +84,25 @@ const PsychicPowers: React.FC<{ unit: Unit; onChange: (unit: Unit) => void }> = 
           renderValue={() => ' '}
         >
           {Object.keys(powersData).map((name) => (
-            <MenuItem key={name} value={name}>
+            <ListItem key={name} value={name} dense style={{ maxWidth: 400 }}>
               <Tooltip title={powersData[name].effect}>
-                <Typography
-                  color={
-                    unit.psiPowers && unit.psiPowers.indexOf(name) > -1
-                      ? 'primary'
-                      : 'inherit'
-                  }
-                >
-                  {name}{' '}
-                </Typography>
+                <ListItemText
+                  primary={name}
+                  secondary={(inlineRules && powersData[name]?.short) || ''}
+                  primaryTypographyProps={{
+                    color:
+                      unit.psiPowers && unit.psiPowers.indexOf(name) > -1
+                        ? 'primary'
+                        : 'inherit',
+                  }}
+                  style={{ margin: 0 }}
+                />
               </Tooltip>
-            </MenuItem>
+            </ListItem>
           ))}
         </Select>
       </FormControl>
-    </>
+    </Box>
   );
 };
 

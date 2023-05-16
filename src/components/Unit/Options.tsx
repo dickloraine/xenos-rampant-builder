@@ -5,7 +5,8 @@ import {
   FormControlLabel,
   FormLabel,
   Input,
-  MenuItem,
+  ListItem,
+  ListItemText,
   Select,
   Tooltip,
   Typography,
@@ -22,6 +23,8 @@ const Options: React.FC<{ unit: Unit; onChange: (unit: Unit) => void }> = ({
 }) => {
   const [open, handleOpen, handleClose] = useOpen();
   const optionsData = useAppSelector((state) => state.data.unitData[unit.name].options);
+  const inlineRules = useAppSelector((state) => state.ui.inlineRules);
+
   if (!optionsData || !Object.keys(optionsData).length) return <div></div>;
 
   const handleChange = (e: React.ChangeEvent<{ value: unknown }>) =>
@@ -73,9 +76,11 @@ const Options: React.FC<{ unit: Unit; onChange: (unit: Unit) => void }> = ({
           renderValue={() => ' '}
         >
           {Object.keys(optionsData).map((name) => (
-            <MenuItem
+            <ListItem
               key={name}
               value={name}
+              dense
+              style={{ maxWidth: 400 }}
               disabled={
                 optionsData[name].disabledBy?.some((x) => unit.options.includes(x)) ||
                 (optionsData[name].enabledBy &&
@@ -83,16 +88,24 @@ const Options: React.FC<{ unit: Unit; onChange: (unit: Unit) => void }> = ({
               }
             >
               <Tooltip title={optionsData[name].description}>
-                <Typography
-                  color={unit.options.indexOf(name) > -1 ? 'primary' : 'inherit'}
-                >
-                  {name}{' '}
-                  <Typography color="secondary" component="span">
-                    @{optionsData[name].points}
-                  </Typography>
-                </Typography>
+                <ListItemText
+                  primary={
+                    <Typography
+                      variant="body2"
+                      color={unit.options.indexOf(name) > -1 ? 'primary' : 'inherit'}
+                    >
+                      {name}{' '}
+                      <Typography color="secondary" variant="body2" component="span">
+                        @{optionsData[name].points}
+                      </Typography>
+                    </Typography>
+                  }
+                  secondary={(inlineRules && optionsData[name]?.short) || ''}
+                  primaryTypographyProps={{ variant: 'body2' }}
+                  style={{ margin: 0 }}
+                />
               </Tooltip>
-            </MenuItem>
+            </ListItem>
           ))}
         </Select>
       </FormControl>

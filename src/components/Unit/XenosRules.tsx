@@ -5,7 +5,8 @@ import {
   FormControlLabel,
   FormLabel,
   Input,
-  MenuItem,
+  ListItem,
+  ListItemText,
   Select,
   Tooltip,
   Typography,
@@ -22,6 +23,7 @@ const XenosRules: React.FC<{ unit: Unit; onChange: (unit: Unit) => void }> = ({
 }) => {
   const [open, handleOpen, handleClose] = useOpen();
   const xenosRulesData = useAppSelector((state) => state.data.xenosRulesData);
+  const inlineRules = useAppSelector((state) => state.ui.inlineRules);
 
   const xenosRules = Object.keys(xenosRulesData).filter(
     (rule) => !xenosRulesData[rule].exclude_units.includes(unit.name)
@@ -78,18 +80,25 @@ const XenosRules: React.FC<{ unit: Unit; onChange: (unit: Unit) => void }> = ({
           renderValue={() => ' '}
         >
           {xenosRules.map((name) => (
-            <MenuItem key={name} value={name}>
+            <ListItem key={name} value={name} dense style={{ maxWidth: 400 }}>
               <Tooltip title={xenosRulesData[name].description}>
-                <Typography
-                  color={unit.xenosRules.indexOf(name) > -1 ? 'primary' : 'inherit'}
-                >
-                  {name}{' '}
-                  <Typography color="secondary" component="span">
-                    @{xenosRulesData[name].points}
-                  </Typography>
-                </Typography>
+                <ListItemText
+                  primary={
+                    <Typography
+                      variant="body2"
+                      color={unit.xenosRules.indexOf(name) > -1 ? 'primary' : 'inherit'}
+                    >
+                      {name}{' '}
+                      <Typography color="secondary" component="span" variant="body2">
+                        @{xenosRulesData[name].points}
+                      </Typography>
+                    </Typography>
+                  }
+                  secondary={(inlineRules && xenosRulesData[name]?.short) || ''}
+                  style={{ margin: 0 }}
+                />
               </Tooltip>
-            </MenuItem>
+            </ListItem>
           ))}
         </Select>
       </FormControl>

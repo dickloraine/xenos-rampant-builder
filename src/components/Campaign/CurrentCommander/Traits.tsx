@@ -1,5 +1,6 @@
-import { List, ListItem, Tooltip, Typography } from '@material-ui/core';
+import { List, ListItem, ListItemText, Tooltip, Typography } from '@material-ui/core';
 import React from 'react';
+import { useAppSelector } from '../../../hooks/reduxHooks';
 import { CommanderState, TraitData } from '../../../store/types';
 
 const Traits: React.FC<{ commander: CommanderState; traitData: TraitData }> = ({
@@ -9,14 +10,26 @@ const Traits: React.FC<{ commander: CommanderState; traitData: TraitData }> = ({
   const traits = commander.commanderTraits.filter(
     (trait) => !commander.removedCommanderTraits.includes(trait)
   );
+  const inlineRules = useAppSelector((state) => state.ui.inlineRules);
 
   return (
     <>
       <Typography variant="subtitle1">Traits</Typography>
-      <List>
+      <List dense>
         {traits.map((name) => (
           <Tooltip key={name} title={traitData[name].description}>
-            <ListItem key={name}>{name}</ListItem>
+            <ListItem key={name}>
+              <ListItemText
+                primary={name}
+                secondary={
+                  inlineRules
+                    ? traitData[name]?.short || traitData[name]?.description || ''
+                    : ''
+                }
+                primaryTypographyProps={{ variant: 'body2' }}
+                style={{ margin: 0 }}
+              />
+            </ListItem>
           </Tooltip>
         ))}
       </List>

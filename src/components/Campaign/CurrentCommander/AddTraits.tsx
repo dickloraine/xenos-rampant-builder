@@ -3,50 +3,60 @@ import {
   FormControl,
   IconButton,
   Input,
+  ListItem,
+  ListItemText,
   ListSubheader,
-  MenuItem,
   Select,
   Tooltip,
   Typography,
 } from '@material-ui/core';
 import { AddCircle } from '@material-ui/icons';
 import React from 'react';
-import { useAppDispatch } from '../../../hooks/reduxHooks';
+import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks';
 import useOpen from '../../../hooks/useOpen';
 import { addTrait } from '../../../store/rosterSlice';
 import { CommanderState, TraitData } from '../../../store/types';
 
-const getTraitSelections = (traitData: TraitData, commander: CommanderState) => {
+const getTraitSelections = (
+  traitData: TraitData,
+  commander: CommanderState,
+  inlineRules: boolean
+) => {
   const elements: JSX.Element[] = [];
   let category = '';
+
   Object.values(traitData).map((trait) => {
+    const name = trait.name;
+
     if (trait.category !== category) {
       category = trait.category;
       elements.push(
-        <ListSubheader key={trait.name + 'header'}>
-          <Typography
-            key={trait.name + 'headertypo'}
-            color="secondary"
-            variant="overline"
-          >
+        <ListSubheader key={name + 'header'} disableSticky>
+          <Typography color="secondary" variant="overline">
             {category}
           </Typography>
         </ListSubheader>
       );
     }
     elements.push(
-      <MenuItem key={trait.name + 'menuitem'} value={trait.name}>
-        <Tooltip key={trait.name} title={trait.description}>
-          <Typography
-            key={trait.name + 'menutypo'}
-            color={
-              commander.commanderTraits.indexOf(trait.name) > -1 ? 'primary' : 'inherit'
+      <ListItem key={name} value={name} dense style={{ maxWidth: 400 }}>
+        <Tooltip title={trait.description}>
+          <ListItemText
+            primary={name}
+            secondary={
+              inlineRules
+                ? traitData[name]?.short || traitData[name]?.description || ''
+                : ''
             }
-          >
-            {trait.name}
-          </Typography>
+            primaryTypographyProps={{
+              variant: 'body2',
+              color:
+                commander.commanderTraits.indexOf(name) > -1 ? 'primary' : 'inherit',
+            }}
+            style={{ margin: 0 }}
+          />
         </Tooltip>
-      </MenuItem>
+      </ListItem>
     );
   });
   return elements;
@@ -58,6 +68,7 @@ const AddTraits: React.FC<{ commander: CommanderState; traitData: TraitData }> =
 }) => {
   const dispatch = useAppDispatch();
   const [open, handleOpen, handleClose] = useOpen();
+  const inlineRules = useAppSelector((state) => state.ui.inlineRules);
 
   const handleChange = (e: React.ChangeEvent<{ value: unknown }>) =>
     dispatch(addTrait([...(e.target.value as string[])]));
@@ -82,7 +93,7 @@ const AddTraits: React.FC<{ commander: CommanderState; traitData: TraitData }> =
           input={<Input />}
           renderValue={() => ' '}
         >
-          {getTraitSelections(traitData, commander)}
+          {getTraitSelections(traitData, commander, inlineRules)}
         </Select>
       </FormControl>
     </Box>

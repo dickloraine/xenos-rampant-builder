@@ -5,7 +5,10 @@ export const xenosRulesData: XenosRules = {
     name: 'Commander',
     points: 0,
     exclude_units: [],
-    description: 'The commander of the army.',
+    description:
+      'The Commander grants a +1 modifier to all ordered activations and Courage tests taken by units within 12" of its unit, including the Commander’s own unit. These bonuses only apply if the Commander is not Suppressed.',
+    short:
+      'Grants a +1 modifier to all ordered activations and Courage tests taken within 12".',
   },
   'Boarding Shields': {
     name: 'Boarding Shields',
@@ -13,6 +16,7 @@ export const xenosRulesData: XenosRules = {
     exclude_units: ['Militia Rabble'],
     description:
       'Troops armed with Boarding Shields improve their Defence Value characteristic by 1 (e.g. from 4+ to 3+), and also gain +1 Armour against Shoot actions and Firefight reactions.',
+    short: 'Defense value increased by 1, armor +1 vs shooting.',
     adjustStats: {
       defenceValue: -1,
     },
@@ -23,6 +27,7 @@ export const xenosRulesData: XenosRules = {
     exclude_units: ['Militia Rabble'],
     description:
       'This unit, plus any other friendly units within 6", may re-roll failed Courage tests (including for Rallying), once per test. This effect only applies if the Brutal Leader’s unit is not Suppressed (therefore this rule cannot be used to Rally the Brutal Leader’s own unit). A unit re-rolling a test because of a Brutal Leader will automatically lose a Strength Point. This Strength Point loss is in addition to any caused by failed Courage tests and does not cause further Courage tests.',
+    short: 'Unit on 6" re-roll courage, but loses 1 strength point.',
   },
   'Cloaking Device': {
     name: 'Cloaking Device',
@@ -30,6 +35,7 @@ export const xenosRulesData: XenosRules = {
     exclude_units: ['Militia Rabble', 'Recon Infantry'],
     description:
       'The unit may only be targeted by ranged attacks within 12" and gains +1 Armour against Shoot actions and Firefight reactions. Psychic powers and Attacks work as normal against cloaked units.',
+    short: 'Can only be target in 12" and +1 armor vs shooting.',
   },
   'Combat Medic': {
     name: 'Combat Medic',
@@ -37,6 +43,8 @@ export const xenosRulesData: XenosRules = {
     exclude_units: ['Militia Rabble'],
     description:
       'Should the unit, or a friendly one within 6", lose Strength Points (except as the result of a failed Courage test or the Brutal Leader xeno rule), roll one die. Subtract 1 from the result if the unit with Combat Medic is at half Strength Points or below. On a roll of 4+, reduce the number of Strength Points lost by one. Combat Medic has no effect on units with the Demonic, Mechanoid, or Undead xeno rules (unless the unit with Combat Medic also has the matching xeno rule), and cannot be used when the unit with Combat Medic is Suppressed.',
+    short:
+      'On a 4+ (-1 if under half strength) a unit within 6" looses 1 less strength points.',
   },
   Contagious: {
     name: 'Contagious',
@@ -44,6 +52,7 @@ export const xenosRulesData: XenosRules = {
     exclude_units: [],
     description:
       'Demonic or Undead infantry units only. Every time this unit inflicts Strength Point loss on an enemy infantry unit during an Attack (whether Attacking or Defending), the Contagious unit regains one Strength Point that it has lost during the game.',
+    short: 'Regain a strength point for each strength point inflicted in close combat.',
   },
   Crusader: {
     name: 'Crusader',
@@ -56,6 +65,8 @@ export const xenosRulesData: XenosRules = {
     ],
     description:
       'Pick a target for the Crusader’s wrath: units with the Demonic, Mechanoid, or Undead xeno rule, or a particular species of alien (including, for aliens, humans), are all applicable choices. Followers of another religion, so long as that would be obvious on the battlefield such as in a war between two cults, is also a possibility. A Crusader unit may re-roll all misses once during Shooting and Attacks, including in Firefights and while Defending, when fighting against a unit of the targeted type. A Crusader may choose to ignore the effects caused by Fearsome units of the targeted type. The 4-point cost only applies when playing against a Detachment with one or more units of the targeted type present.',
+    short:
+      'Re-roll all misses once during Shooting and close combat when fighting against a unit of the targeted type.',
   },
   'Crusader 0': {
     name: 'Crusader 0',
@@ -68,6 +79,8 @@ export const xenosRulesData: XenosRules = {
     ],
     description:
       'Pick a target for the Crusader’s wrath: units with the Demonic, Mechanoid, or Undead xeno rule, or a particular species of alien (including, for aliens, humans), are all applicable choices. Followers of another religion, so long as that would be obvious on the battlefield such as in a war between two cults, is also a possibility. A Crusader unit may re-roll all misses once during Shooting and Attacks, including in Firefights and while Defending, when fighting against a unit of the targeted type. A Crusader may choose to ignore the effects caused by Fearsome units of the targeted type. The 0-point cost only applies when playing against a Detachment with none of the targeted type present.',
+    short:
+      'Re-roll all misses once during Shooting and close combat when fighting against a unit of the targeted type.',
   },
   Demonic: {
     name: 'Demonic',
@@ -82,6 +95,8 @@ export const xenosRulesData: XenosRules = {
     exclude_units: ['Militia Rabble', 'Recon Infantry'],
     description:
       'The unit acts as normal until it explodes. Units with the 1-point version of this xeno rule will explode upon reaching 0 Strength Points, but before any models are removed from the table. Removal from the table by any other means (such as routing) means that the unit does not explode. When the unit explodes, the explosion affects all buildings and units – friend and foe alike – within a 6" radius of the exploding unit. This works as a Shoot action hitting on a 3+ (the number of dice rolled is equal to the Exploder’s Strength Points immediately prior to the action triggering the explosion), but you should roll separately for each unit within the blast zone. Once exploded, the Exploder unit is removed the table and counts as destroyed.',
+    short:
+      'Explode upon reaching 0 Strength Points. 3+ Shooting attack against all units within 6"',
   },
   'Exploder 2': {
     name: 'Exploder 2',
@@ -89,6 +104,8 @@ export const xenosRulesData: XenosRules = {
     exclude_units: ['Militia Rabble', 'Recon Infantry'],
     description:
       'The unit acts as normal until it explodes. Units with the 2-point version only explode by choice, as an ordered activation successful on a 5+. A failed activation test means that only a partial detonation occurs, destroying the unit but without harming anyone else. Remove the unit from play as a casualty. When the unit explodes, the explosion affects all buildings and units – friend and foe alike – within a 6" radius of the exploding unit. This works as a Shoot action hitting on a 3+ (the number of dice rolled is equal to the Exploder’s Strength Points immediately prior to the action triggering the explosion), but you should roll separately for each unit within the blast zone. Once exploded, the Exploder unit is removed the table and counts as destroyed.',
+    short:
+      'Explode upon an ordered 5+ activation. 3+ Shooting attack against all units within 6"',
   },
   'Fanatical Discipline': {
     name: 'Fanatical Discipline',
@@ -96,6 +113,7 @@ export const xenosRulesData: XenosRules = {
     exclude_units: ['Militia Rabble'],
     description:
       'This unit is courageous to the point of foolhardiness. Improve its Courage score by 1, to a maximum of 3+. For example, a unit with Courage 5+ becomes Courage 4+.',
+    short: 'Courage +1.',
     adjustStats: {
       courage: -1,
     },
@@ -106,12 +124,14 @@ export const xenosRulesData: XenosRules = {
     exclude_units: [],
     description:
       'Courage tests caused as the result of an Attack (but not Shooting) by a Fearsome unit suffer an additional -1 to the total. Fearsome does not apply when the Fearsome unit is the Defender. Demonic, Mechanoid, and Undead units, and those with the Fearsome xeno rule themselves, are not frightened of Fearsome opponents.',
+    short: 'On attack: Enemy courage tests -1.',
   },
   Fearful: {
     name: 'Fearful',
     points: -1,
     exclude_units: ['Militia Rabble'],
     description: 'Decreases this units courage by one.',
+    short: 'Courage -1.',
     adjustStats: {
       courage: 1,
     },
@@ -129,6 +149,7 @@ export const xenosRulesData: XenosRules = {
     exclude_units: ['Militia Rabble'],
     description:
       'When the unit loses Strength Points to Shooting (but not during Attacks), roll a die for each lost Strength Point. For each 6 rolled, reduce the number of Strength Points lost by one.',
+    short: 'Strength Points losses to Shooting can be saved by 6+.',
   },
   'Force field 2': {
     name: 'Force field 2',
@@ -136,6 +157,7 @@ export const xenosRulesData: XenosRules = {
     exclude_units: ['Militia Rabble'],
     description:
       'When the unit loses Strength Points to Shooting (but not during Attacks), roll a die for each lost Strength Point. For each 5 or 6 rolled, reduce the number of Strength Points lost by one.',
+    short: 'Strength Points losses to Shooting can be saved by 5+.',
   },
   'Force field 3': {
     name: 'Force field 3',
@@ -143,6 +165,7 @@ export const xenosRulesData: XenosRules = {
     exclude_units: ['Militia Rabble'],
     description:
       'When the unit loses Strength Points to Shooting or during Attacks, roll a die for each lost Strength Point. For each 5 or 6 rolled, reduce the number of Strength Points lost by one.',
+    short: 'Strength Points losses can be saved by 5+.',
   },
   Hatred: {
     name: 'Hatred',
@@ -150,6 +173,7 @@ export const xenosRulesData: XenosRules = {
     exclude_units: [],
     description:
       'Before deployment, pick a target for your unit’s Hatred. Units with Hatred gain the Wild Charge special rule against enemy units they hate. Units with Hatred that already have the Wild Charge special rule automatically pass their Wild Charge tests against enemy units they hate.',
+    short: 'Pick a target for your unit’s Hatred. Gain Wild Charge against the target.',
   },
   'Hive Mind': {
     name: 'Hive Mind',
@@ -157,6 +181,7 @@ export const xenosRulesData: XenosRules = {
     exclude_units: ['Militia Rabble'],
     description:
       'While the Detachment’s Commander is on the table and not Suppressed, all friendly units that have the Hive Mind xeno rule are counted as if they were within 12" of the Commander model. If a unit with the Hive Mind rule is actually within 12" of the Commander model, they also count as being Courage 0+. A Commander unit may not take this xeno rule.',
+    short: 'Always count as if within 12" of the Commander. If within 12" Courage 0+.',
   },
   Immobile: {
     name: 'Immobile',
@@ -164,6 +189,7 @@ export const xenosRulesData: XenosRules = {
     exclude_units: ['Militia Rabble'],
     description:
       'As Immobile units cannot take Move actions, they cannot board or disembark a transport vehicle. Immobile units cannot move onto the table after the start of Turn 1, unless they also have the Special Insertion xeno rule to enter play.',
+    short: 'Cannot take Move actions.',
   },
   Infiltrators: {
     name: 'Infiltrators',
@@ -171,6 +197,7 @@ export const xenosRulesData: XenosRules = {
     exclude_units: ['Militia Rabble'],
     description:
       'After deployment, but prior to the start of the game, each unit of Infiltrators may make a single Move activation. This Move action does not require an activation test and you may roll a die and increase the number of inches each unit can move by the result. A unit of Infiltrators cannot use its pre-game Move action to embark or disembark from a vehicle. If both players have Infiltrators, the attacker should move all of their Infiltrators first.',
+    short: 'After deployment make a single Move activation with +d6 movement.',
   },
   'Inspirational Leader': {
     name: 'Inspirational Leader',
@@ -178,6 +205,7 @@ export const xenosRulesData: XenosRules = {
     exclude_units: ['Militia Rabble'],
     description:
       'This unit, plus any other friendly units within 6”, may re-roll failed Courage tests (including Rallying), once per test. This effect only applies if the Inspirational Leader’s unit is not Suppressed.',
+    short: 'Units within 6”, may re-roll failed Courage tests.',
   },
   Mechanoid: {
     name: 'Mechanoid',
@@ -198,6 +226,7 @@ export const xenosRulesData: XenosRules = {
     exclude_units: ['Militia Rabble'],
     description:
       'When fighting during Attacks, whether as Attacker or Defender, any 6s rolled by this unit count as two hits, rather than the usual one.',
+    short: 'During close combat any 6s rolled count as two hits.',
   },
   Regeneration: {
     name: 'Regeneration',
@@ -205,6 +234,7 @@ export const xenosRulesData: XenosRules = {
     exclude_units: ['Militia Rabble'],
     description:
       'As an ordered activation, succeeding on a 7+, this unit can restore 1 Strength Point it has previously lost, for any reason, during the game. This cannot take the unit above its initial Strength Point total.',
+    short: 'As an ordered 7+ activation restore 1 Strength Point.',
   },
   Skimmer: {
     name: 'Skimmer',
@@ -212,6 +242,7 @@ export const xenosRulesData: XenosRules = {
     exclude_units: ['Militia Rabble'],
     description:
       'When it moves, including during Retreats and Attacks, the unit can ignore rough and impassable terrain, gliding straight over it. The unit may not end its move in  impassable terrain.',
+    short: 'Can ignore rough and impassable terrain.',
   },
   Slow: {
     name: 'Slow',
@@ -219,6 +250,7 @@ export const xenosRulesData: XenosRules = {
     exclude_units: ['Militia Rabble'],
     description:
       'Reduce the units Maximum Movement value by 2". This cannot be combined with the Mobile option available to some units.',
+    short: 'Movement -2".',
     adjustStats: {
       movement: -2,
     },
@@ -229,6 +261,7 @@ export const xenosRulesData: XenosRules = {
     exclude_units: [],
     description:
       'Special Insertion units begin the game in reserve and are not deployed with the rest of your Detachment. They deploy in one of two ways: 1. A Psychic unit that successfully Manifests the Summoner psychic power can place a single Special Insertion unit anywhere within 12" of themselves, but at least 6" away from any enemy units. 2. A Special Insertion unit can be activated while off the table, but it can only make an ordered Move activation (even if Move is normally a Free Action for it). If successful, place the unit anywhere on the table, so long as it is not within 6” of an enemy unit. If unsuccessful, the unit can still be placed on the table, but if you do, you must roll a die and compare it to the unit’s Courage; if you roll below the unit’s Courage, it suffers the die result in Strength Point damage, which causes an immediate Courage test. You can choose not to deploy a Special Insertion unit on a failed activation test and not have it suffer any Strength Point damage',
+    short: 'Can be teleported on the battle field.',
   },
   'Stabilised Weaponry': {
     name: 'Stabilised Weaponry',
@@ -236,6 +269,7 @@ export const xenosRulesData: XenosRules = {
     exclude_units: ['Militia Rabble'],
     description:
       'Infantry only. Units with Stabilised Weaponry can Move and Shoot as an ordered activation in the same way as vehicles.',
+    short: 'Can Move and Shoot as an ordered activation.',
   },
   'Stun Weapons': {
     name: 'Stun Weapons',
@@ -243,6 +277,8 @@ export const xenosRulesData: XenosRules = {
     exclude_units: [],
     description:
       'This xeno rule applies to both a unit’s Attack and Shoot actions. Hits from Stun Weapons are treated as normal, but do not cause Strength Point loss. Instead, any ‘casualties’ that would have been inflicted count as double for the purposes of Courage tests. Before any dice are rolled for a given Attack or Shoot action, a unit with Stun Weapons may choose to use lethal force if it prefers. Demonic, Mechanoid, and Undead units are immune to the effects of Stun Weapons.',
+    short:
+      'Hits from Stun Weapons do not cause Strength Point loss. Each "loss" counts double for courage tests.',
   },
   'Teleport Jump': {
     name: 'Teleport Jump',
@@ -250,6 +286,7 @@ export const xenosRulesData: XenosRules = {
     exclude_units: ['Militia Rabble'],
     description:
       'When this unit takes a Move action, it can either choose to move normally, or it can teleport. If it chooses to teleport, choose the desired direction and then roll two dice; you may move the unit any number of inches up to the result. You do not have to move the full distance but may ignore all terrain effects (including impassable terrain). If the distance rolled on the two dice is a double, the unit still moves as above, but something has gone horribly wrong during teleportation; the unit loses a number of Strength Points equal to the result of one of the dice.',
+    short: 'Unit may move 2d6 in any direction. On a double loose strangth points.',
   },
   Unarmed: {
     name: 'Unarmed',
@@ -257,6 +294,7 @@ export const xenosRulesData: XenosRules = {
     exclude_units: ['Militia Rabble'],
     description:
       'Whatever the reason, the Unarmed xeno rule changes a unit’s Shoot and Shoot Value characteristics to "-". Only units that normally have a ranged attack can take this xeno rule.',
+    short: 'Shoot and Shoot Value become "-".',
     setStats: {
       shoot: 0,
       shootValue: 0,
@@ -276,6 +314,8 @@ export const xenosRulesData: XenosRules = {
     exclude_units: ['Militia Rabble'],
     description:
       'If this unit rolls a double on an activation roll, including for ‘out-of-sequence’ activations like Wild Charge or Firefight tests, but excluding Rally tests, the order passes or fails as normal, but the unit loses a number of Strength Points equal to the result of one of the dice.',
+    short:
+      'On a double on an activation roll, lose Strength Points equal to one of the dice.',
   },
   'Psychic 1': {
     name: 'Psychic 1',
@@ -308,6 +348,8 @@ export const xenosRulesData: XenosRules = {
     exclude_units: ['Militia Rabble', 'Berserk Infantry', 'Soft-skin Vehicle'],
     description:
       'Psychic units only. A unit with the Psychic Hazards xeno rule will suffer Strength Point loss if it rolls a double on an activation test to Manifest a psychic power. If the activation test is successful, the power is still Manifested, although should the Manifesting unit be Suppressed or destroyed by the loss of Strength Points, any effects of the psychic power will end immediately. The number of Strength Points lost is equal to the number rolled on one of the activation test dice.',
+    short:
+      'On a double on a psychic roll, lose Strength Points equal to one of the dice.',
   },
   'Psychic Resistance': {
     name: 'Psychic Hazards',
@@ -315,6 +357,7 @@ export const xenosRulesData: XenosRules = {
     exclude_units: ['Militia Rabble'],
     description:
       'If this unit is successfully targeted by a psychic power, whether friendly or hostile, roll one die. On a result of 4 or more, the psychic power has no effect. The activation roll used to Manifest the power still counts as a success.',
+    short: 'On a 4+ or more, the psychic power has no effect.',
   },
   'Psychic Species 1': {
     name: 'Psychic Species 1',
@@ -322,6 +365,7 @@ export const xenosRulesData: XenosRules = {
     exclude_units: ['Militia Rabble', 'Berserk Infantry', 'Soft-skin Vehicle'],
     description:
       'Psychic units only. Psychic powers of Difficulty 6+ can be Manifested as a Free Action.',
+    short: 'Psychic powers of Difficulty 6+ can be Manifested as a Free Action.',
   },
   'Psychic Species 2': {
     name: 'Psychic Species 2',
@@ -329,6 +373,7 @@ export const xenosRulesData: XenosRules = {
     exclude_units: ['Militia Rabble', 'Berserk Infantry', 'Soft-skin Vehicle'],
     description:
       'Psychic units only. Psychic powers of Difficulty 6+ or 7+ can be Manifested as a Free Action.',
+    short: 'Psychic powers of Difficulty 6+ or 7+ can be Manifested as a Free Action.',
   },
   'Psychic Species 3': {
     name: 'Psychic Species 3',
@@ -336,5 +381,6 @@ export const xenosRulesData: XenosRules = {
     exclude_units: ['Militia Rabble', 'Berserk Infantry', 'Soft-skin Vehicle'],
     description:
       'Psychic units only. All Psychic powers can be Manifested as a Free Action.',
+    short: 'All Psychic powers can be Manifested as a Free Action.',
   },
 };

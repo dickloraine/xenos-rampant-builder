@@ -1,18 +1,34 @@
-import { Container, List, ListItem, Tooltip, Typography } from '@material-ui/core';
+import {
+  Container,
+  List,
+  ListItem,
+  ListItemText,
+  Tooltip,
+  Typography,
+} from '@material-ui/core';
 import React from 'react';
 import { useAppSelector } from '../../hooks/reduxHooks';
 import { selectAllRules } from '../../store/dataSlice';
 
 const SpecialRules: React.FC<{ rules: string[] }> = ({ rules }) => {
   const rulesData = useAppSelector((state) => selectAllRules(state));
+  const inlineRules = useAppSelector((state) => state.ui.inlineRules);
+
   if (rules && rules.length) {
     return (
       <Container>
         <Typography variant="h4">Special Rules</Typography>
-        <List>
+        <List dense>
           {rules.map((r) => (
             <Tooltip key={r} title={rulesData[r]?.description || ''}>
-              <ListItem key={r}>{r}</ListItem>
+              <ListItem key={r}>
+                <ListItemText
+                  primary={r}
+                  secondary={(inlineRules && rulesData[r]?.short) || ''}
+                  primaryTypographyProps={{ variant: 'body2' }}
+                  style={{ margin: 0 }}
+                />
+              </ListItem>
             </Tooltip>
           ))}
         </List>
