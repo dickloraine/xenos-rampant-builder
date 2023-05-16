@@ -33,7 +33,6 @@ const App = () => {
         <RulesSummary />
         <PsychicPowerTable />
         <Campaign />
-        {/* <Statistics /> */}
         <ShowFeedback />
         <CustomizeMenu />
       </Container>
