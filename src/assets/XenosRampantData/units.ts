@@ -288,7 +288,7 @@ export const unitsData: Units = {
       movement: 8,
       strengthPoints: 5,
     },
-    freeActivations: [],
+    freeActivations: ['move'],
     rules: ['Firefight', 'Hard to Target', 'Open Order', 'Skirmish'],
     options: {
       'Counter-Sniper Training': unitOptions['Counter-Sniper Training'],
