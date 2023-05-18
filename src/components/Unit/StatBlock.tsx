@@ -28,7 +28,7 @@ const StatCells: React.FC<{
       {freeActivations.includes(stat) ? (
         <TableCell>
           <Typography color="secondary" variant="inherit">
-            {value}
+            <strong>{value}</strong>
           </Typography>
         </TableCell>
       ) : (
