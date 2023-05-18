@@ -1,4 +1,4 @@
-import DeleteIcon from '@material-ui/icons/Delete';
+import DeleteIcon from '@mui/icons-material/Delete';
 import React, { useState } from 'react';
 import { useAppDispatch } from '../hooks/reduxHooks';
 import { showFeedback } from '../store/appStateSlice';

@@ -1,3 +1,4 @@
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import {
   Accordion,
   AccordionDetails,
@@ -6,8 +7,7 @@ import {
   ListItem,
   ListItemText,
   Typography,
-} from '@material-ui/core';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+} from '@mui/material';
 import { useAppDispatch, useAppSelector } from '../hooks/reduxHooks';
 import { getSpecialRules } from '../store/rosterSlice';
 import { toggleUIOption } from '../store/uiSlice';
@@ -21,12 +21,12 @@ const RulesSummary = () => {
     <Accordion
       expanded={rulesSummaryExpanded}
       onChange={() => dispatch(toggleUIOption('rulesSummaryExpanded'))}
-      style={{ maxWidth: 1210, marginBottom: 20 }}
+      sx={{ maxWidth: 1210, mb: 3 }}
     >
       <AccordionSummary expandIcon={<ExpandMoreIcon />}>
         <Typography variant="h3">Rules Summary</Typography>
       </AccordionSummary>
-      <AccordionDetails style={{ maxWidth: 800 }}>
+      <AccordionDetails sx={{ maxWidth: 800 }}>
         <List>
           {Object.values(specialRules).map((rule) => (
             <ListItem key={rule.name}>

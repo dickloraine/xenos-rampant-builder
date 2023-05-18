@@ -7,16 +7,9 @@ import {
   FormGroup,
   FormHelperText,
   FormLabel,
-} from '@material-ui/core';
-import { red } from '@material-ui/core/colors';
-import { makeStyles } from '@material-ui/core/styles';
+} from '@mui/material';
+import { red } from '@mui/material/colors';
 import { FieldError, useController } from 'react-hook-form';
-
-const useStyles = makeStyles({
-  root: {
-    color: red[400],
-  },
-});
 
 export type CheckboxButtonGroupProps = {
   options: any[];
@@ -48,7 +41,6 @@ export default function CheckboxButtonGroup({
   row,
   ...rest
 }: CheckboxButtonGroupProps): JSX.Element {
-  const classes = useStyles();
   const {
     field: { value = [], onChange },
     fieldState: { invalid, error },
@@ -87,7 +79,7 @@ export default function CheckboxButtonGroup({
   };
   const checkboxProps: CheckboxProps = {};
   if (invalid) {
-    checkboxProps.className = classes.root;
+    checkboxProps.sx = { color: red[400] };
   }
 
   return (

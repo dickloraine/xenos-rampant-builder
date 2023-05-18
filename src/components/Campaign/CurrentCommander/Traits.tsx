@@ -1,4 +1,4 @@
-import { List, ListItem, ListItemText, Tooltip, Typography } from '@material-ui/core';
+import { List, ListItem, ListItemText, Tooltip, Typography } from '@mui/material';
 import React from 'react';
 import { useAppSelector } from '../../../hooks/reduxHooks';
 import { CommanderState, TraitData } from '../../../store/types';
@@ -27,7 +27,7 @@ const Traits: React.FC<{ commander: CommanderState; traitData: TraitData }> = ({
                     : ''
                 }
                 primaryTypographyProps={{ variant: 'body2' }}
-                style={{ margin: 0 }}
+                sx={{ m: 0 }}
               />
             </ListItem>
           </Tooltip>

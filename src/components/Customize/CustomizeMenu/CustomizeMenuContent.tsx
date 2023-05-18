@@ -1,6 +1,6 @@
-import { Box, Button, ButtonGroup, DialogTitle } from '@material-ui/core';
-import GetAppIcon from '@material-ui/icons/GetApp';
-import ShareIcon from '@material-ui/icons/Share';
+import GetAppIcon from '@mui/icons-material/GetApp';
+import ShareIcon from '@mui/icons-material/Share';
+import { Box, Button, ButtonGroup, DialogTitle } from '@mui/material';
 import React, { useCallback, useState } from 'react';
 import useOpen from '../../../hooks/useOpen';
 import ExportCustomData from '../ExportCustomData';

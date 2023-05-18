@@ -1,3 +1,4 @@
+import CloseIcon from '@mui/icons-material/Close';
 import {
   Button,
   Card,
@@ -6,8 +7,7 @@ import {
   Chip,
   Collapse,
   Typography,
-} from '@material-ui/core';
-import CloseIcon from '@material-ui/icons/Close';
+} from '@mui/material';
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
 import { removeUnit, updateUnit } from '../../store/rosterSlice';
@@ -40,9 +40,7 @@ const Unit: React.FC<{ id: number }> = ({ id }) => {
   const handleRemove = () => dispatch(removeUnit(id));
 
   return (
-    <Card
-      style={{ marginBottom: 25, maxWidth: 400, width: '100%', position: 'relative' }}
-    >
+    <Card sx={{ mb: 3, maxWidth: 400, width: '100%', position: 'relative' }}>
       {viewMode ? (
         <CardHeader
           title={
@@ -54,11 +52,9 @@ const Unit: React.FC<{ id: number }> = ({ id }) => {
               </Typography>
               {unit.customName &&
                 (expanded ? (
-                  <Typography style={{ marginLeft: 45, marginBottom: -25 }}>
-                    {unit.name}
-                  </Typography>
+                  <Typography sx={{ ml: '45px', mb: -3 }}>{unit.name}</Typography>
                 ) : (
-                  <Typography style={{ marginLeft: 45 }}>{unit.name}</Typography>
+                  <Typography sx={{ ml: '45px' }}>{unit.name}</Typography>
                 ))}
             </>
           }

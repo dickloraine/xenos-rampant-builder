@@ -1,11 +1,4 @@
-import {
-  Box,
-  Dialog,
-  DialogTitle,
-  List,
-  ListItem,
-  ListItemIcon,
-} from '@material-ui/core';
+import { Box, Dialog, DialogTitle, List, ListItem, ListItemIcon } from '@mui/material';
 import React from 'react';
 import useOpen from '../hooks/useOpen';
 

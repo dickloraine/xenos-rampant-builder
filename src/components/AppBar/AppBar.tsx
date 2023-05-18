@@ -1,14 +1,13 @@
+import EditIcon from '@mui/icons-material/Edit';
+import ReplayIcon from '@mui/icons-material/Replay';
+import VisibilityIcon from '@mui/icons-material/Visibility';
 import {
   AppBar as AppBarMaterial,
   Box,
-  Hidden,
   IconButton,
   Toolbar,
   Typography,
-} from '@material-ui/core';
-import EditIcon from '@material-ui/icons/Edit';
-import ReplayIcon from '@material-ui/icons/Replay';
-import VisibilityIcon from '@material-ui/icons/Visibility';
+} from '@mui/material';
 import { useAppDispatch } from '../../hooks/reduxHooks';
 import { newRoster } from '../../store/rosterSlice';
 import InlineRules from '../InlineRules';
@@ -27,18 +26,20 @@ const AppBar = () => {
         <Toolbar>
           <Box display="flex" alignItems="center">
             <SideMenu />
-            <Hidden smDown>
-              <Typography variant="h3">
-                &nbsp;&nbsp;Xenos Rampant Army Builder&nbsp;&nbsp;
-              </Typography>
-            </Hidden>
-            <Hidden xsDown mdUp>
-              <Typography variant="h3">&nbsp;&nbsp;XRAB&nbsp;&nbsp;</Typography>
-            </Hidden>
+            <Typography variant="h3" sx={{ display: { xs: 'none', md: 'block' } }}>
+              &nbsp;&nbsp;Xenos Rampant Army Builder&nbsp;&nbsp;
+            </Typography>
+            <Typography
+              variant="h3"
+              sx={{ display: { xs: 'none', sm: 'block', md: 'none' } }}
+            >
+              &nbsp;&nbsp;XRAB&nbsp;&nbsp;
+            </Typography>
             <IconButton
               color="inherit"
               aria-label="reload"
               onClick={() => dispatch(newRoster())}
+              size="large"
             >
               <ReplayIcon />
             </IconButton>
@@ -49,9 +50,9 @@ const AppBar = () => {
           <Box display="flex" alignItems="center">
             <ToggleViewMode option="viewMode" Icon={VisibilityIcon} title="View mode" />
             <ToggleViewMode option="editMode" Icon={EditIcon} title="Edit mode" />
-            <Hidden smDown>
+            <Box sx={{ display: { xs: 'none', md: 'block' } }}>
               <InlineRules />
-            </Hidden>
+            </Box>
             <TotalPoints />
           </Box>
         </Toolbar>

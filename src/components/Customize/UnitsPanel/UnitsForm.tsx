@@ -5,7 +5,7 @@ import {
   DialogContent,
   DialogTitle,
   InputLabel,
-} from '@material-ui/core';
+} from '@mui/material';
 import produce from 'immer';
 import { useState } from 'react';
 // import { FormContainer, MultiSelectElement } from 'react-hook-form-mui';
@@ -71,7 +71,6 @@ function UnitsForm(props: CustomFormProps<DataUnit>) {
             name="name"
             label="Name"
             type="text"
-            margin="normal"
             fullWidth
             customError={(name) => !validateName(name)}
           />
@@ -79,7 +78,6 @@ function UnitsForm(props: CustomFormProps<DataUnit>) {
           <SelectElement
             name="points"
             label="Points"
-            margin="normal"
             type="number"
             fullWidth
             options={range(1, 10)}
@@ -88,7 +86,6 @@ function UnitsForm(props: CustomFormProps<DataUnit>) {
           <SelectElement
             name="stats.strengthPoints"
             label="Strength&nbsp;Points"
-            margin="normal"
             type="number"
             fullWidth
             options={[5, 10]}
@@ -100,7 +97,7 @@ function UnitsForm(props: CustomFormProps<DataUnit>) {
             name="freeActivations"
             label="Free Activations"
             fullWidth
-            style={{ marginBottom: 15 }}
+            sx={{ mb: 2 }}
             valueKey="id"
             labelKey="title"
             menuItems={[...activations]}
@@ -110,7 +107,7 @@ function UnitsForm(props: CustomFormProps<DataUnit>) {
             name="rules"
             label="Rules"
             fullWidth
-            style={{ marginBottom: 15 }}
+            sx={{ mb: 2 }}
             menuItems={[...Object.keys(rules)]}
           />
           {/* ------------------------------- Options ------------------------------- */}

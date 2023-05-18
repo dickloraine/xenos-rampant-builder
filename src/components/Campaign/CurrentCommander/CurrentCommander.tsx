@@ -5,8 +5,7 @@ import {
   CardHeader,
   FormControl,
   Typography,
-  makeStyles,
-} from '@material-ui/core';
+} from '@mui/material';
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks';
 import { setCommanderName } from '../../../store/rosterSlice';
@@ -16,29 +15,24 @@ import RemoveCommander from './RemoveCommander';
 import SpendCareerPoints from './SpendCareerPoints';
 import Traits from './Traits';
 
-const useStyles = makeStyles((theme) => ({
-  commanderName: {
-    backgroundColor: theme.palette.background.paper,
-    color: theme.palette.text.primary,
-    border: 0,
-  },
-}));
-
 const CurrentCommander: React.FC<{ currentCommander: CommanderState }> = ({
   currentCommander,
 }) => {
   const dispatch = useAppDispatch();
-  const classes = useStyles();
   const traitData = useAppSelector((state) => state.data.traitData);
 
   return (
-    <Card style={{ marginTop: 20 }}>
+    <Card sx={{ mt: 3 }}>
       <CardHeader
         title={
           <Box display="flex" flexWrap="wrap">
-            <FormControl>
+            <FormControl variant="standard">
               <Typography
-                className={classes.commanderName}
+                sx={{
+                  backgroundColor: 'transparent',
+                  color: 'text.primary',
+                  border: 0,
+                }}
                 aria-label="Commander name"
                 variant="h4"
                 key={'currentCommanderName'}
@@ -54,9 +48,9 @@ const CurrentCommander: React.FC<{ currentCommander: CommanderState }> = ({
           </Box>
         }
       />
-      <CardContent style={{ marginLeft: 20 }}>
+      <CardContent sx={{ ml: 2 }}>
         <Traits commander={currentCommander} traitData={traitData} />
-        <Typography variant="subtitle1" style={{ marginBottom: 20 }}>
+        <Typography variant="subtitle1" sx={{ mb: 3 }}>
           Extra detachment size:{' '}
           {<strong>{currentCommander.detachmentExpansions * 2}</strong>}
         </Typography>

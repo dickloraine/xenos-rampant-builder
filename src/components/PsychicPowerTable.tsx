@@ -1,10 +1,11 @@
+import ExpandLessIcon from '@mui/icons-material/ExpandLess';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
   Box,
   Collapse,
-  Hidden,
   List,
   ListItem,
   ListItemText,
@@ -15,9 +16,7 @@ import {
   TableHead,
   TableRow,
   Typography,
-} from '@material-ui/core';
-import ExpandLessIcon from '@material-ui/icons/ExpandLess';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+} from '@mui/material';
 import { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../hooks/reduxHooks';
 import { getPsychicPowers } from '../store/rosterSlice';
@@ -45,84 +44,82 @@ const PsychicPowerTable = () => {
         <Accordion
           expanded={powersExpanded}
           onChange={() => dispatch(toggleUIOption('powersExpanded'))}
-          style={{ maxWidth: 1210, marginBottom: 20 }}
+          sx={{ maxWidth: 1210, mb: 3 }}
         >
           <AccordionSummary expandIcon={<ExpandMoreIcon />}>
             <Typography variant="h3">Psychic Power Table</Typography>
           </AccordionSummary>
-          <AccordionDetails style={{ maxWidth: 800 }}>
-            <Hidden smDown>
-              <TableContainer>
-                <Table size="small" style={{ minWidth: 650 }}>
-                  <TableHead>
-                    <TableRow key="headpowertable">
-                      <TableCell style={{ minWidth: 120 }}>Power name</TableCell>
-                      <Hidden smDown>
-                        <TableCell align="center">Difficulty</TableCell>
-                      </Hidden>
-                      <Hidden mdUp>
-                        <TableCell align="center">Dif</TableCell>
-                      </Hidden>
-                      <TableCell>Target</TableCell>
-                      <TableCell>Duration</TableCell>
-                      <TableCell>Effect</TableCell>
-                    </TableRow>
-                  </TableHead>
-                  <TableBody>
-                    {Object.values(psychicData).map((power) => (
-                      <TableRow key={power.name}>
-                        <TableCell component="th" scope="row">
-                          {power.name}
-                        </TableCell>
-                        <TableCell align="center">{power.difficulty}+</TableCell>
-                        <TableCell>{power.target}</TableCell>
-                        <TableCell>{power.duration}</TableCell>
-                        <TableCell>{power.effect}</TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </TableContainer>
-            </Hidden>
-            <Hidden mdUp>
-              <List>
-                {Object.values(psychicData).map((power, index) => (
-                  <Box key={index}>
-                    <ListItem
-                      key={power.name + 'small'}
-                      button
-                      onClick={() => handlePowerClick(index)}
+          <AccordionDetails sx={{ maxWidth: 800 }}>
+            <TableContainer sx={{ display: { xs: 'none', md: 'block' } }}>
+              <Table size="small" sx={{ minWidth: 650 }}>
+                <TableHead>
+                  <TableRow key="headpowertable">
+                    <TableCell sx={{ minWidth: 120 }}>Power name</TableCell>
+                    <TableCell
+                      align="center"
+                      sx={{ display: { md: 'none', lg: 'block' } }}
                     >
-                      <ListItemText primary={power.name} />
-                      <Box width={25}></Box>
-                      {open[index] ? <ExpandLessIcon /> : <ExpandMoreIcon />}
-                    </ListItem>
-                    <Collapse in={open[index]} timeout="auto" unmountOnExit>
-                      <List key={power.name + 'list'} dense style={{ paddingLeft: 20 }}>
-                        <ListItem key={power.name + power.difficulty}>
-                          <ListItemText
-                            primary="Difficulty: "
-                            secondary={power.difficulty}
-                          />
-                        </ListItem>
-                        <ListItem key={power.name + power.target}>
-                          <ListItemText primary="Target: " secondary={power.target} />
-                        </ListItem>
-                        <ListItem key={power.name + power.duration}>
-                          <ListItemText
-                            primary="Duration: "
-                            secondary={power.duration}
-                          />
-                        </ListItem>
-                        <ListItem key={power.name + power.effect}>
-                          <ListItemText primary="Effect: " secondary={power.effect} />
-                        </ListItem>
-                      </List>
-                    </Collapse>
-                  </Box>
-                ))}
-              </List>
-            </Hidden>
+                      Difficulty
+                    </TableCell>
+                    <TableCell
+                      align="center"
+                      sx={{ display: { md: 'block', lg: 'none' } }}
+                    >
+                      Dif
+                    </TableCell>
+                    <TableCell>Target</TableCell>
+                    <TableCell>Duration</TableCell>
+                    <TableCell>Effect</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {Object.values(psychicData).map((power) => (
+                    <TableRow key={power.name}>
+                      <TableCell component="th" scope="row">
+                        {power.name}
+                      </TableCell>
+                      <TableCell align="center">{power.difficulty}+</TableCell>
+                      <TableCell>{power.target}</TableCell>
+                      <TableCell>{power.duration}</TableCell>
+                      <TableCell>{power.effect}</TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
+            <List sx={{ display: { md: 'none', xs: 'block' } }}>
+              {Object.values(psychicData).map((power, index) => (
+                <Box key={index}>
+                  <ListItem
+                    key={power.name + 'small'}
+                    onClick={() => handlePowerClick(index)}
+                  >
+                    <ListItemText primary={power.name} />
+                    <Box width={25}></Box>
+                    {open[index] ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+                  </ListItem>
+                  <Collapse in={open[index]} timeout="auto" unmountOnExit>
+                    <List key={power.name + 'list'} dense sx={{ pl: 3 }}>
+                      <ListItem key={power.name + power.difficulty}>
+                        <ListItemText
+                          primary="Difficulty: "
+                          secondary={power.difficulty}
+                        />
+                      </ListItem>
+                      <ListItem key={power.name + power.target}>
+                        <ListItemText primary="Target: " secondary={power.target} />
+                      </ListItem>
+                      <ListItem key={power.name + power.duration}>
+                        <ListItemText primary="Duration: " secondary={power.duration} />
+                      </ListItem>
+                      <ListItem key={power.name + power.effect}>
+                        <ListItemText primary="Effect: " secondary={power.effect} />
+                      </ListItem>
+                    </List>
+                  </Collapse>
+                </Box>
+              ))}
+            </List>
           </AccordionDetails>
         </Accordion>
       )}

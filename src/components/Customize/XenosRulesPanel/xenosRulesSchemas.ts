@@ -4,7 +4,7 @@ import { unitAdjustStatsSchema, unitSetStatsSchema } from '../UnitsPanel/unitSch
 
 export const xenosRuleSchema = yup.object<XenosRule>({
   name: yup.string().min(1).required(),
-  points: yup.number().min(0).required(),
+  points: yup.number().integer().min(0).required(),
   exclude_units: yup.array().of(yup.string()),
   description: yup.string().required(),
   short: yup.string(),

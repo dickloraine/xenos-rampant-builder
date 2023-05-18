@@ -11,7 +11,7 @@ import {
   FormControlLabel,
   FormGroup,
   FormLabel,
-} from '@material-ui/core';
+} from '@mui/material';
 import produce from 'immer';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -103,7 +103,7 @@ const ExportCustomData: React.FC<{ open: boolean; handleClose: () => void }> = (
     <Dialog onClose={handleClose} open={open}>
       <DialogTitle>Export custom data</DialogTitle>
       <DialogContent>
-        <FormControl>
+        <FormControl variant="standard">
           {somethingToSelect && (
             <Box mb={1}>
               <ButtonGroup size="small" color="primary" variant="text">

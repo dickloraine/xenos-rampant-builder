@@ -1,7 +1,7 @@
-import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
-import FormatAlignJustifyIcon from '@material-ui/icons/FormatAlignJustify';
-import FormatAlignLeftIcon from '@material-ui/icons/FormatAlignLeft';
-import ShareIcon from '@material-ui/icons/Share';
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import FormatAlignJustifyIcon from '@mui/icons-material/FormatAlignJustify';
+import FormatAlignLeftIcon from '@mui/icons-material/FormatAlignLeft';
+import ShareIcon from '@mui/icons-material/Share';
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../hooks/reduxHooks';
 import { showFeedback } from '../store/appStateSlice';

@@ -1,5 +1,5 @@
-import { IconButton, Tooltip, Typography } from '@material-ui/core';
-import FormatIndentIncreaseIcon from '@material-ui/icons/FormatIndentIncrease';
+import FormatIndentIncreaseIcon from '@mui/icons-material/FormatIndentIncrease';
+import { IconButton, Tooltip, Typography } from '@mui/material';
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../hooks/reduxHooks';
 import { toggleUIOption } from '../store/uiSlice';
@@ -11,27 +11,25 @@ const InlineRules: React.FC<{ showText?: boolean }> = ({ showText }) => {
     dispatch(toggleUIOption('inlineRules'));
   };
 
-  return (
-    <>
-      <Tooltip title="Show short rules inline">
-        <IconButton
-          onClick={handleClick}
-          color="inherit"
-          aria-label="Toggle show short rules inline"
-        >
-          <FormatIndentIncreaseIcon color={inlineRules ? 'inherit' : 'disabled'} />
-        </IconButton>
-      </Tooltip>
-      {showText && (
-        <Typography
-          color={inlineRules ? 'inherit' : 'textSecondary'}
-          onClick={handleClick}
-        >
-          Inline rules
-        </Typography>
-      )}
-    </>
-  );
+  return <>
+    <Tooltip title="Show short rules inline">
+      <IconButton
+        onClick={handleClick}
+        color="inherit"
+        aria-label="Toggle show short rules inline"
+        size="large">
+        <FormatIndentIncreaseIcon color={inlineRules ? 'inherit' : 'disabled'} />
+      </IconButton>
+    </Tooltip>
+    {showText && (
+      <Typography
+        color={inlineRules ? 'inherit' : 'textSecondary'}
+        onClick={handleClick}
+      >
+        Inline rules
+      </Typography>
+    )}
+  </>;
 };
 
 export default React.memo(InlineRules);

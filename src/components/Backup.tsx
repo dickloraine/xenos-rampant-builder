@@ -1,5 +1,5 @@
-import { IconButton, Tooltip, Typography } from '@material-ui/core';
-import BackupIcon from '@material-ui/icons/Backup';
+import BackupIcon from '@mui/icons-material/Backup';
+import { IconButton, Tooltip, Typography } from '@mui/material';
 import { saveAs } from 'file-saver';
 import React from 'react';
 import { useAppSelector } from '../hooks/reduxHooks';
@@ -40,16 +40,14 @@ const Backup: React.FC<{ showText: boolean; onClose?: () => void }> = ({
     if (onClose) onClose();
   };
 
-  return (
-    <>
-      <Tooltip title="Backup">
-        <IconButton color="inherit" onClick={backup}>
-          <BackupIcon />
-        </IconButton>
-      </Tooltip>
-      {showText && <Typography onClick={backup}>Backup</Typography>}
-    </>
-  );
+  return <>
+    <Tooltip title="Backup">
+      <IconButton color="inherit" onClick={backup} size="large">
+        <BackupIcon />
+      </IconButton>
+    </Tooltip>
+    {showText && <Typography onClick={backup}>Backup</Typography>}
+  </>;
 };
 
 export default React.memo(Backup);

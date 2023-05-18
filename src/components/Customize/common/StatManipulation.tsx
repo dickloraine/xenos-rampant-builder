@@ -1,3 +1,5 @@
+import AddCircleIcon from '@mui/icons-material/AddCircle';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import {
   Button,
   IconButton,
@@ -7,9 +9,7 @@ import {
   ListItemSecondaryAction,
   Menu,
   MenuItem,
-} from '@material-ui/core';
-import AddCircleIcon from '@material-ui/icons/AddCircle';
-import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+} from '@mui/material';
 import produce from 'immer';
 import { UseFormSetValue, UseFormWatch } from 'react-hook-form';
 import useAnchor from '../../../hooks/useAnchor';
@@ -32,7 +32,7 @@ const StatManipulation = ({ title, type, watch, setValue }: StatManipulationProp
 
   return (
     <>
-      <InputLabel id="options-label" style={{ marginTop: 15 }}>
+      <InputLabel id="options-label" sx={{ mt: 2 }}>
         {title}
       </InputLabel>
       <List>

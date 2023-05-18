@@ -1,5 +1,5 @@
-import { IconButton, Tooltip, Typography } from '@material-ui/core';
-import GetAppIcon from '@material-ui/icons/GetApp';
+import GetAppIcon from '@mui/icons-material/GetApp';
+import { IconButton, Tooltip, Typography } from '@mui/material';
 import React from 'react';
 import { useAppDispatch } from '../hooks/reduxHooks';
 import { showFeedback, toggleForceInputUpdate } from '../store/appStateSlice';
@@ -30,7 +30,7 @@ const ImportList: React.FC<{ onClose?: () => void; showText?: boolean }> = ({
       anchor={
         <>
           <Tooltip title="Import list">
-            <IconButton color="inherit" aria-label="Import List">
+            <IconButton color="inherit" aria-label="Import List" size="large">
               <GetAppIcon />
             </IconButton>
           </Tooltip>

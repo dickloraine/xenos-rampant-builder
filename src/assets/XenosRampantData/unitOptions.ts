@@ -187,7 +187,7 @@ export const unitOptions: UnitOptions = {
     points: 2,
     description:
       'This unit\'s Shoot Value becomes 5+ / 24", but it cannot use the Skirmish rule. This cannot be combined with Green or Veterans.',
-    short: 'This unit cannot use the Skirmish rule.',
+    short: 'This unit\'s Shoot Value becomes 5+/24", cannot use the Skirmish rule.',
     setStats: {
       shootValue: 5,
       shootRange: 24,

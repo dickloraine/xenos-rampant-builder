@@ -1,3 +1,4 @@
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import {
   Box,
   Checkbox,
@@ -5,13 +6,13 @@ import {
   FormControlLabel,
   FormLabel,
   Input,
-  ListItem,
   ListItemText,
+  MenuItem,
   Select,
+  SelectChangeEvent,
   Tooltip,
   Typography,
-} from '@material-ui/core';
-import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+} from '@mui/material';
 import React from 'react';
 import { useAppSelector } from '../../hooks/reduxHooks';
 import useOpen from '../../hooks/useOpen';
@@ -27,13 +28,14 @@ const Options: React.FC<{ unit: Unit; onChange: (unit: Unit) => void }> = ({
 
   if (!optionsData || !Object.keys(optionsData).length) return <div></div>;
 
-  const handleChange = (e: React.ChangeEvent<{ value: unknown }>) =>
-    onChange({ ...unit, options: [...(e.target.value as string[])] });
+  const handleChange = (e: SelectChangeEvent<string[]>) =>
+    onChange({ ...unit, options: [...e.target.value] });
 
   return (
     <>
       <FormLabel onClick={handleOpen} component="legend">
-        Options <ArrowDropDownIcon />
+        Options
+        <ArrowDropDownIcon sx={{ pt: '5px' }} />
       </FormLabel>
       {unit.options.map((name) => (
         <div key={name}>
@@ -63,8 +65,9 @@ const Options: React.FC<{ unit: Unit; onChange: (unit: Unit) => void }> = ({
           />
         </div>
       ))}
-      <FormControl style={{ margin: 0, width: 0, height: 0 }}>
+      <FormControl variant="standard" sx={{ m: 0, width: 0, height: 0 }}>
         <Select
+          variant="standard"
           open={open}
           onClose={handleClose}
           onOpen={handleOpen}
@@ -76,11 +79,11 @@ const Options: React.FC<{ unit: Unit; onChange: (unit: Unit) => void }> = ({
           renderValue={() => ' '}
         >
           {Object.keys(optionsData).map((name) => (
-            <ListItem
+            <MenuItem
               key={name}
               value={name}
               dense
-              style={{ maxWidth: 400 }}
+              sx={{ maxWidth: 400 }}
               disabled={
                 optionsData[name].disabledBy?.some((x) => unit.options.includes(x)) ||
                 (optionsData[name].enabledBy &&
@@ -102,10 +105,10 @@ const Options: React.FC<{ unit: Unit; onChange: (unit: Unit) => void }> = ({
                   }
                   secondary={(inlineRules && optionsData[name]?.short) || ''}
                   primaryTypographyProps={{ variant: 'body2' }}
-                  style={{ margin: 0 }}
+                  sx={{ m: 0 }}
                 />
               </Tooltip>
-            </ListItem>
+            </MenuItem>
           ))}
         </Select>
       </FormControl>

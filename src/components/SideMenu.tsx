@@ -1,3 +1,5 @@
+import ColorLensIcon from '@mui/icons-material/ColorLens';
+import MenuIcon from '@mui/icons-material/Menu';
 import {
   Divider,
   Drawer,
@@ -6,9 +8,7 @@ import {
   ListItem,
   Tooltip,
   Typography,
-} from '@material-ui/core';
-import ColorLensIcon from '@material-ui/icons/ColorLens';
-import MenuIcon from '@material-ui/icons/Menu';
+} from '@mui/material';
 import React, { useCallback } from 'react';
 import { useAppDispatch } from '../hooks/reduxHooks';
 import { setCustomizeMode } from '../store/appStateSlice';
@@ -42,57 +42,55 @@ const SideMenu = () => {
 
   const handleClose = useCallback(() => setOpen(false), []);
 
-  return (
-    <>
-      <MenuIcon onClick={toggleDrawer(true)} />
-      <Drawer open={open} onClose={toggleDrawer(false)}>
-        <List>
-          <ListItem button key={'Save'}>
-            <SaveList onClose={handleClose} showText={true} />
-          </ListItem>
-          <ListItem button key={'Load'}>
-            <LoadList onClose={handleClose} showText={true} />
-          </ListItem>
-          <ListItem button key={'Delete'}>
-            <DeleteList onClose={handleClose} showText={true} />
-          </ListItem>
-          <Divider />
-          <ListItem button key={'Export'}>
-            <ExportList onClose={handleClose} showText={true} />
-          </ListItem>
-          <ListItem button key={'Import'}>
-            <ImportList onClose={handleClose} showText={true} />
-          </ListItem>
-          <Divider />
-          <ListItem button key={'Backup'}>
-            <Backup onClose={handleClose} showText={true} />
-          </ListItem>
-          <ListItem button key={'Restore'}>
-            <Restore onClose={handleClose} showText={true} />
-          </ListItem>
-          <Divider />
-          <ListItem button key={'FR'}>
-            <Tooltip title="Customize">
-              <IconButton color="inherit" onClick={showCustomizeMenu}>
-                <ColorLensIcon />
-              </IconButton>
-            </Tooltip>
-            <Typography onClick={showCustomizeMenu}>Customize</Typography>
-          </ListItem>
-          <Divider />
-          <ListItem button key={'InlineRules'}>
-            <InlineRules showText={true} />
-          </ListItem>
-          <ListItem button key={'DarkMode'}>
-            <DarkMode showText={true} />
-          </ListItem>
-          <ListItem button key={'About'}>
-            <About onClose={handleClose} />
-          </ListItem>
-        </List>
-      </Drawer>
-    </>
-  );
+  return <>
+    <MenuIcon onClick={toggleDrawer(true)} />
+    <Drawer open={open} onClose={toggleDrawer(false)}>
+      <List>
+        <ListItem button key={'Save'}>
+          <SaveList onClose={handleClose} showText={true} />
+        </ListItem>
+        <ListItem button key={'Load'}>
+          <LoadList onClose={handleClose} showText={true} />
+        </ListItem>
+        <ListItem button key={'Delete'}>
+          <DeleteList onClose={handleClose} showText={true} />
+        </ListItem>
+        <Divider />
+        <ListItem button key={'Export'}>
+          <ExportList onClose={handleClose} showText={true} />
+        </ListItem>
+        <ListItem button key={'Import'}>
+          <ImportList onClose={handleClose} showText={true} />
+        </ListItem>
+        <Divider />
+        <ListItem button key={'Backup'}>
+          <Backup onClose={handleClose} showText={true} />
+        </ListItem>
+        <ListItem button key={'Restore'}>
+          <Restore onClose={handleClose} showText={true} />
+        </ListItem>
+        <Divider />
+        <ListItem button key={'FR'}>
+          <Tooltip title="Customize">
+            <IconButton color="inherit" onClick={showCustomizeMenu} size="large">
+              <ColorLensIcon />
+            </IconButton>
+          </Tooltip>
+          <Typography onClick={showCustomizeMenu}>Customize</Typography>
+        </ListItem>
+        <Divider />
+        <ListItem button key={'InlineRules'}>
+          <InlineRules showText={true} />
+        </ListItem>
+        <ListItem button key={'DarkMode'}>
+          <DarkMode showText={true} />
+        </ListItem>
+        <ListItem button key={'About'}>
+          <About onClose={handleClose} />
+        </ListItem>
+      </List>
+    </Drawer>
+  </>;
 };
 
 export default React.memo(SideMenu);

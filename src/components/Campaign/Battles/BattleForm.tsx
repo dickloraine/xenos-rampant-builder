@@ -4,7 +4,7 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
-} from '@material-ui/core';
+} from '@mui/material';
 import React from 'react';
 import { FormContainer, TextFieldElement } from '../../../libs/react-hook-form-mui';
 import { CommanderBattle } from '../../../store/types';

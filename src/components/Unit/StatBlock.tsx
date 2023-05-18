@@ -5,9 +5,9 @@ import {
   TableContainer,
   TableRow,
   Typography,
-} from '@material-ui/core';
-import { useTheme } from '@material-ui/core/styles';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
+} from '@mui/material';
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import React from 'react';
 import { UnitStats } from '../../store/types';
 import statData from '../../utils/statData';
@@ -43,7 +43,7 @@ const StatBlock: React.FC<{
   freeActivations: (keyof UnitStats)[];
 }> = ({ stats, freeActivations }) => {
   const theme = useTheme();
-  const isPhone = useMediaQuery(theme.breakpoints.down('xs'));
+  const isPhone = useMediaQuery(theme.breakpoints.down('sm'));
   const cellProps = {
     stats: stats,
     freeActivations: freeActivations,
@@ -53,7 +53,7 @@ const StatBlock: React.FC<{
   const shootingValue = stats.shoot ? `${stats.shootValue}+/${stats.shootRange}"` : '-';
 
   return (
-    <TableContainer style={{ marginBottom: 20 }}>
+    <TableContainer sx={{ mb: 2 }}>
       <Table size="small">
         <TableBody>
           <TableRow>

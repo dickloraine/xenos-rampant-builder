@@ -1,4 +1,4 @@
-import { IconButton, Tooltip, Typography } from '@material-ui/core';
+import { IconButton, Tooltip, Typography } from '@mui/material';
 import React from 'react';
 import ListDialog from './ListDialog';
 
@@ -19,7 +19,7 @@ const ListDialogMenu: React.FC<{
       anchor={
         <>
           <Tooltip title={text}>
-            <IconButton color="inherit" aria-label={text}>
+            <IconButton color="inherit" aria-label={text} size="large">
               {icon}
             </IconButton>
           </Tooltip>

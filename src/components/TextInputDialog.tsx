@@ -6,7 +6,7 @@ import {
   DialogContent,
   DialogTitle,
   TextField,
-} from '@material-ui/core';
+} from '@mui/material';
 import React from 'react';
 import useOpen from '../hooks/useOpen';
 
@@ -47,36 +47,34 @@ const TextInputDialog: React.FC<{
     handleClose();
   };
 
-  return (
-    <>
-      <Box display="flex" alignItems="center" onClick={handleOpen}>
-        {anchor}
-      </Box>
-      <Dialog onClose={handleClose} open={open}>
-        <DialogTitle>{title}</DialogTitle>
-        <DialogContent>
-          <TextField
-            autoFocus
-            margin={margin}
-            label={label}
-            type="text"
-            fullWidth
-            defaultValue={defaultValue || value}
-            onChange={(e) => setValue(e.target.value)}
-            onKeyPress={(e) => handleKeyPressed(e.key)}
-          />
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose} color="primary">
-            {cancelText}
-          </Button>
-          <Button onClick={handleAction} disabled={!value} color="primary">
-            {okayText}
-          </Button>
-        </DialogActions>
-      </Dialog>
-    </>
-  );
+  return <>
+    <Box display="flex" alignItems="center" onClick={handleOpen}>
+      {anchor}
+    </Box>
+    <Dialog onClose={handleClose} open={open}>
+      <DialogTitle>{title}</DialogTitle>
+      <DialogContent>
+        <TextField
+          variant="standard"
+          autoFocus
+          margin={margin}
+          label={label}
+          type="text"
+          fullWidth
+          defaultValue={defaultValue || value}
+          onChange={(e) => setValue(e.target.value)}
+          onKeyPress={(e) => handleKeyPressed(e.key)} />
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={handleClose} color="primary">
+          {cancelText}
+        </Button>
+        <Button onClick={handleAction} disabled={!value} color="primary">
+          {okayText}
+        </Button>
+      </DialogActions>
+    </Dialog>
+  </>;
 };
 
 export default TextInputDialog;

@@ -1,5 +1,5 @@
-import { Box, Fab, Typography } from '@material-ui/core';
-import AddIcon from '@material-ui/icons/Add';
+import AddIcon from '@mui/icons-material/Add';
+import { Box, Fab, Typography } from '@mui/material';
 import { useAppDispatch, useAppSelector } from '../hooks/reduxHooks';
 import { addUnit } from '../store/rosterSlice';
 import { CompactRosterState, CompactUnit, RosterState } from '../store/types';
@@ -52,14 +52,14 @@ const Roster = () => {
         ))}
       </Box>
       {!Object.keys(roster.units).length && !viewMode && (
-        <Typography variant="h4" style={{ marginBottom: 25 }}>
+        <Typography variant="h4" sx={{ mb: 3 }}>
           Click the button to add your first unit!
         </Typography>
       )}
       {!viewMode && (
         <Fab
           color="secondary"
-          style={{ marginLeft: 25, marginBottom: 25 }}
+          sx={{ ml: 3, mb: 3 }}
           onClick={() => dispatch(addUnit())}
           aria-label="Add unit"
         >

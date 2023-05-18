@@ -1,4 +1,4 @@
-import { Box, Button } from '@material-ui/core';
+import { Box, Button } from '@mui/material';
 import { useAppDispatch } from '../../../hooks/reduxHooks';
 import useOpen from '../../../hooks/useOpen';
 import { addBattle } from '../../../store/rosterSlice';

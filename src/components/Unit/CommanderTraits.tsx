@@ -5,7 +5,7 @@ import {
   ListItemText,
   Tooltip,
   Typography,
-} from '@material-ui/core';
+} from '@mui/material';
 import React from 'react';
 import { useAppSelector } from '../../hooks/reduxHooks';
 import { getCurrentCommander } from '../../store/rosterSlice';
@@ -35,7 +35,7 @@ const CommanderTraits: React.FC<{ rules: string[] }> = ({ rules }) => {
                       : ''
                   }
                   primaryTypographyProps={{ variant: 'body2' }}
-                  style={{ margin: 0 }}
+                  sx={{ m: 0 }}
                 />
               </ListItem>
             </Tooltip>

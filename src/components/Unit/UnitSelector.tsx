@@ -1,5 +1,5 @@
-import { Chip, Typography } from '@material-ui/core';
-import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import { Chip, Typography } from '@mui/material';
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
 import { selectUnitNames } from '../../store/dataSlice';
@@ -33,9 +33,7 @@ const UnitSelector: React.FC<{
             <ArrowDropDownIcon />
           </Typography>
           {unit.customName && (
-            <Typography style={{ marginLeft: 45, marginBottom: -25 }}>
-              {unit.name}
-            </Typography>
+            <Typography sx={{ ml: '-105px', mb: -7 }}>{unit.name}</Typography>
           )}
         </>
       }

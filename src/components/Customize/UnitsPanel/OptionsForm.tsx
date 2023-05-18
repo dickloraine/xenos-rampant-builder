@@ -5,7 +5,7 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
-} from '@material-ui/core';
+} from '@mui/material';
 import React, { BaseSyntheticEvent, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
@@ -61,18 +61,11 @@ const OptionsForm: React.FC<{
       >
         <DialogContent>
           {/* --------------------------------- Name -------------------------------- */}
-          <TextFieldElement
-            name="name"
-            label="Name"
-            type="text"
-            margin="normal"
-            fullWidth
-          />
+          <TextFieldElement name="name" label="Name" type="text" fullWidth />
           {/* -------------------------------- Points ------------------------------- */}
           <SelectElement
             name="points"
             label="Points"
-            margin="normal"
             type="number"
             fullWidth
             options={range(-4, 6)}
@@ -82,18 +75,16 @@ const OptionsForm: React.FC<{
             name="description"
             label="Description"
             type="text"
-            margin="normal"
             fullWidth
             multiline
-            style={{ marginBottom: 20 }}
           />
           <TextFieldElement
             name="short"
             label="Short description"
             type="text"
-            margin="normal"
             fullWidth
             multiline
+            sx={{ mb: 3 }}
           />
           {/* ----------------------------- Remove Rules ---------------------------- */}
           <MultiSelectElement
@@ -101,7 +92,7 @@ const OptionsForm: React.FC<{
             label="Remove Rules"
             fullWidth
             menuItems={[...rules]}
-            style={{ marginBottom: 20 }}
+            sx={{ mb: 3 }}
           />
           {/* ------------------------------ Add Rules ------------------------------ */}
           <MultiSelectElement
@@ -109,7 +100,7 @@ const OptionsForm: React.FC<{
             label="Add Rules"
             fullWidth
             menuItems={[...Object.keys(specialRules)]}
-            style={{ marginBottom: 20 }}
+            sx={{ mb: 3 }}
           />
           {/* ------------------------------- Set Stats ----------------------------- */}
           <StatManipulation

@@ -7,17 +7,10 @@ import {
   Radio,
   RadioGroup,
   RadioProps,
-} from '@material-ui/core';
-import { red } from '@material-ui/core/colors';
-import { makeStyles } from '@material-ui/core/styles';
+} from '@mui/material';
+import { red } from '@mui/material/colors';
 import { ChangeEvent } from 'react';
 import { FieldError, useController } from 'react-hook-form';
-
-const useStyles = makeStyles({
-  root: {
-    color: red[400],
-  },
-});
 
 export type RadioButtonGroupProps = {
   options: any[];
@@ -49,7 +42,6 @@ export default function RadioButtonGroup({
   row,
   ...rest
 }: RadioButtonGroupProps): JSX.Element {
-  const classes = useStyles();
   const {
     field: { value, onChange },
     fieldState: { invalid, error },
@@ -66,7 +58,7 @@ export default function RadioButtonGroup({
 
   const radioProps: RadioProps = {};
   if (invalid) {
-    radioProps.className = classes.root;
+    radioProps.sx = { color: red[400] };
   }
 
   const onRadioChange = (event: ChangeEvent<HTMLInputElement>) => {

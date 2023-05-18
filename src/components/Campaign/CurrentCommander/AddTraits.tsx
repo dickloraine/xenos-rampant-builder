@@ -1,16 +1,17 @@
+import { AddCircle } from '@mui/icons-material';
 import {
   Box,
   FormControl,
   IconButton,
   Input,
-  ListItem,
   ListItemText,
   ListSubheader,
+  MenuItem,
   Select,
+  SelectChangeEvent,
   Tooltip,
   Typography,
-} from '@material-ui/core';
-import { AddCircle } from '@material-ui/icons';
+} from '@mui/material';
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks';
 import useOpen from '../../../hooks/useOpen';
@@ -39,7 +40,7 @@ const getTraitSelections = (
       );
     }
     elements.push(
-      <ListItem key={name} value={name} dense style={{ maxWidth: 400 }}>
+      <MenuItem key={name} value={name} dense sx={{ maxWidth: 400 }}>
         <Tooltip title={trait.description}>
           <ListItemText
             primary={name}
@@ -53,10 +54,10 @@ const getTraitSelections = (
               color:
                 commander.commanderTraits.indexOf(name) > -1 ? 'primary' : 'inherit',
             }}
-            style={{ margin: 0 }}
+            sx={{ m: 0 }}
           />
         </Tooltip>
-      </ListItem>
+      </MenuItem>
     );
   });
   return elements;
@@ -70,19 +71,18 @@ const AddTraits: React.FC<{ commander: CommanderState; traitData: TraitData }> =
   const [open, handleOpen, handleClose] = useOpen();
   const inlineRules = useAppSelector((state) => state.ui.inlineRules);
 
-  const handleChange = (e: React.ChangeEvent<{ value: unknown }>) =>
+  const handleChange = (e: SelectChangeEvent<string[]>) =>
     dispatch(addTrait([...(e.target.value as string[])]));
 
   return (
     <Box textAlign="center">
-      <Typography variant="subtitle2" style={{ marginTop: 5 }}>
-        Add traits
-      </Typography>
-      <IconButton onClick={handleOpen}>
+      <Typography variant="subtitle2">Add traits</Typography>
+      <IconButton onClick={handleOpen} size="large">
         <AddCircle />
       </IconButton>
-      <FormControl style={{ marginTop: 0, width: 0, height: 0 }}>
+      <FormControl variant="standard" sx={{ mt: 0, width: 0, height: 0 }}>
         <Select
+          variant="standard"
           open={open}
           onClose={handleClose}
           onOpen={handleOpen}

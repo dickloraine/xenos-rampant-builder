@@ -1,22 +1,22 @@
-import { IconButton, Tooltip, Typography } from '@material-ui/core';
-import BrightnessHighIcon from '@material-ui/icons/BrightnessHigh';
+import BrightnessHighIcon from '@mui/icons-material/BrightnessHigh';
+import { IconButton, Tooltip, Typography, useMediaQuery } from '@mui/material';
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../hooks/reduxHooks';
 import { updateUI } from '../store/uiSlice';
 
 const Darkmode: React.FC<{ showText?: boolean }> = ({ showText }) => {
   let darkMode = useAppSelector((state) => state.ui.darkMode);
-  const autoDarkMode = useAppSelector((state) => state.appState.autoDarkMode);
+  const autoDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
   const dispatch = useAppDispatch();
   const handleClick = () => {
-    if (darkMode === undefined) darkMode = autoDarkMode;
+    if (darkMode === null) darkMode = autoDarkMode;
     dispatch(updateUI({ darkMode: !darkMode }));
   };
 
   return (
     <>
       <Tooltip title="Dark Mode">
-        <IconButton onClick={handleClick} aria-label="Toggle Dark mode">
+        <IconButton onClick={handleClick} aria-label="Toggle Dark mode" size="large">
           <BrightnessHighIcon color={darkMode ? 'inherit' : 'disabled'} />
         </IconButton>
       </Tooltip>

@@ -1,3 +1,4 @@
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import {
   Box,
   Checkbox,
@@ -5,13 +6,13 @@ import {
   FormControlLabel,
   FormLabel,
   Input,
-  ListItem,
   ListItemText,
+  MenuItem,
   Select,
+  SelectChangeEvent,
   Tooltip,
   Typography,
-} from '@material-ui/core';
-import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+} from '@mui/material';
 import React from 'react';
 import { useAppSelector } from '../../hooks/reduxHooks';
 import useOpen from '../../hooks/useOpen';
@@ -25,17 +26,20 @@ const XenosRules: React.FC<{ unit: Unit; onChange: (unit: Unit) => void }> = ({
   const xenosRulesData = useAppSelector((state) => state.data.xenosRulesData);
   const inlineRules = useAppSelector((state) => state.ui.inlineRules);
 
+  if (unit.name === 'Unit') return <div></div>;
+
   const xenosRules = Object.keys(xenosRulesData).filter(
     (rule) => !xenosRulesData[rule].exclude_units.includes(unit.name)
   );
 
-  const handleChange = (e: React.ChangeEvent<{ value: unknown }>) =>
+  const handleChange = (e: SelectChangeEvent<string[]>) =>
     onChange({ ...unit, xenosRules: [...(e.target.value as string[])] });
 
   return (
     <>
-      <FormLabel onClick={handleOpen} component="legend" style={{ marginTop: 5 }}>
-        Xenos Rules <ArrowDropDownIcon />
+      <FormLabel onClick={handleOpen} component="legend">
+        Xenos Rules
+        <ArrowDropDownIcon sx={{ pt: '5px' }} />
       </FormLabel>
       {unit.xenosRules &&
         unit.xenosRules.length > 0 &&
@@ -67,8 +71,9 @@ const XenosRules: React.FC<{ unit: Unit; onChange: (unit: Unit) => void }> = ({
             />
           </div>
         ))}
-      <FormControl style={{ marginTop: 0, width: 0, height: 0 }}>
+      <FormControl variant="standard" sx={{ mt: 0, width: 0, height: 0 }}>
         <Select
+          variant="standard"
           open={open}
           onClose={handleClose}
           onOpen={handleOpen}
@@ -80,7 +85,7 @@ const XenosRules: React.FC<{ unit: Unit; onChange: (unit: Unit) => void }> = ({
           renderValue={() => ' '}
         >
           {xenosRules.map((name) => (
-            <ListItem key={name} value={name} dense style={{ maxWidth: 400 }}>
+            <MenuItem key={name} value={name} dense sx={{ maxWidth: 400 }}>
               <Tooltip title={xenosRulesData[name].description}>
                 <ListItemText
                   primary={
@@ -95,10 +100,10 @@ const XenosRules: React.FC<{ unit: Unit; onChange: (unit: Unit) => void }> = ({
                     </Typography>
                   }
                   secondary={(inlineRules && xenosRulesData[name]?.short) || ''}
-                  style={{ margin: 0 }}
+                  sx={{ m: 0 }}
                 />
               </Tooltip>
-            </ListItem>
+            </MenuItem>
           ))}
         </Select>
       </FormControl>

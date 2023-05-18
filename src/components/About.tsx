@@ -1,3 +1,5 @@
+import GitHubIcon from '@mui/icons-material/GitHub';
+import InfoIcon from '@mui/icons-material/Info';
 import {
   Box,
   Chip,
@@ -7,9 +9,7 @@ import {
   IconButton,
   Tooltip,
   Typography,
-} from '@material-ui/core';
-import GitHubIcon from '@material-ui/icons/GitHub';
-import InfoIcon from '@material-ui/icons/Info';
+} from '@mui/material';
 import React from 'react';
 import useOpen from '../hooks/useOpen';
 
@@ -19,19 +19,19 @@ const About: React.FC<{ onClose?: () => void }> = ({ onClose = undefined }) => {
   return (
     <>
       <Tooltip title="Load List">
-        <IconButton color="inherit" onClick={handleOpen}>
+        <IconButton color="inherit" onClick={handleOpen} size="large">
           <InfoIcon />
         </IconButton>
       </Tooltip>
       {<Typography onClick={handleOpen}>About</Typography>}
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle style={{ textAlign: 'center' }}>About</DialogTitle>
+        <DialogTitle sx={{ textAlign: 'center' }}>About</DialogTitle>
         <DialogContent>
           <Typography variant="body1">
             A simple Army Builder for the tabletop game{' '}
             {<a href="https://ospreypublishing.com/xenos-rampant">Xenos Rampant</a>}.
           </Typography>
-          <Box display="flex" style={{ marginTop: 25 }}>
+          <Box display="flex" sx={{ mt: 3 }}>
             <Chip
               label="View on Github"
               icon={<GitHubIcon />}

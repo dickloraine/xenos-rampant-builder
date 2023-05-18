@@ -1,5 +1,5 @@
-import { IconButton, Tooltip, Typography } from '@material-ui/core';
-import SaveIcon from '@material-ui/icons/Save';
+import SaveIcon from '@mui/icons-material/Save';
+import { IconButton, Tooltip, Typography } from '@mui/material';
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../hooks/reduxHooks';
 import { showFeedback } from '../store/appStateSlice';
@@ -30,16 +30,14 @@ const SaveList: React.FC<{ onClose?: () => void; showText?: boolean }> = ({
       });
   };
 
-  return (
-    <>
-      <Tooltip title="Save List">
-        <IconButton color="inherit" aria-label="Save List" onClick={saveRoster}>
-          <SaveIcon />
-        </IconButton>
-      </Tooltip>
-      {showText && <Typography onClick={saveRoster}>Save List</Typography>}
-    </>
-  );
+  return <>
+    <Tooltip title="Save List">
+      <IconButton color="inherit" aria-label="Save List" onClick={saveRoster} size="large">
+        <SaveIcon />
+      </IconButton>
+    </Tooltip>
+    {showText && <Typography onClick={saveRoster}>Save List</Typography>}
+  </>;
 };
 
 export default React.memo(SaveList);

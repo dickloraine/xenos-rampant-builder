@@ -1,4 +1,4 @@
-import { Fab, Hidden, Typography } from '@material-ui/core';
+import { Fab, Typography } from '@mui/material';
 import { useAppSelector } from '../../hooks/reduxHooks';
 import { getTotalPoints } from '../../store/rosterSlice';
 
@@ -8,22 +8,18 @@ const TotalPoints = () => {
 
   return (
     <>
-      <Hidden smDown>
-        <Typography variant="h4">
-          &nbsp;&nbsp;&nbsp;&nbsp;Total Points&nbsp;&nbsp;
-          <Fab color="secondary" size="small">
-            <Typography variant="h4">{armyCost}</Typography>
-          </Fab>
-        </Typography>
-      </Hidden>
-      <Hidden mdUp>
-        <Typography variant="h4">
-          &nbsp;&nbsp;&nbsp;&nbsp;
-          <Fab color="secondary" size="small">
-            <Typography variant="h4">{armyCost}</Typography>
-          </Fab>
-        </Typography>
-      </Hidden>
+      <Typography variant="h4" sx={{ display: { xs: 'none', md: 'block' } }}>
+        &nbsp;&nbsp;&nbsp;&nbsp;Total Points&nbsp;&nbsp;
+        <Fab color="secondary" size="small">
+          <Typography variant="h4">{armyCost}</Typography>
+        </Fab>
+      </Typography>
+      <Typography variant="h4" sx={{ display: { md: 'none', xs: 'block' } }}>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <Fab color="secondary" size="small">
+          <Typography variant="h4">{armyCost}</Typography>
+        </Fab>
+      </Typography>
     </>
   );
 };

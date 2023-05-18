@@ -1,3 +1,4 @@
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import {
   Box,
   Container,
@@ -7,11 +8,12 @@ import {
   List,
   ListItem,
   ListItemText,
+  MenuItem,
   Select,
+  SelectChangeEvent,
   Tooltip,
   Typography,
-} from '@material-ui/core';
-import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+} from '@mui/material';
 import React from 'react';
 import { useAppSelector } from '../../hooks/reduxHooks';
 import useOpen from '../../hooks/useOpen';
@@ -33,17 +35,18 @@ const PsychicPowers: React.FC<{ unit: Unit; onChange: (unit: Unit) => void }> = 
   )
     return <div></div>;
 
-  const handleChange = (e: React.ChangeEvent<{ value: unknown }>) =>
+  const handleChange = (e: SelectChangeEvent<string[]>) =>
     onChange({ ...unit, psiPowers: [...(e.target.value as string[])] });
 
   return (
     <Box marginBottom="-20px">
       {!viewMode && (
         <FormLabel onClick={handleOpen} component="legend">
-          Psychic Powers <ArrowDropDownIcon />
+          Psychic Powers
+          <ArrowDropDownIcon sx={{ pt: '5px' }} />
         </FormLabel>
       )}
-      <Container style={{ marginBottom: 0 }}>
+      <Container sx={{ mb: 0 }}>
         {viewMode && <Typography variant="h4">Psychic Powers</Typography>}
         {unit.psiPowers && (
           <List dense>
@@ -56,7 +59,7 @@ const PsychicPowers: React.FC<{ unit: Unit; onChange: (unit: Unit) => void }> = 
                         primary={name}
                         secondary={powersData[name]?.short || ''}
                         primaryTypographyProps={{ variant: 'body2' }}
-                        style={{ margin: 0 }}
+                        sx={{ m: 0 }}
                       />
                     </ListItem>
                   ) : (
@@ -71,8 +74,9 @@ const PsychicPowers: React.FC<{ unit: Unit; onChange: (unit: Unit) => void }> = 
           </List>
         )}
       </Container>
-      <FormControl style={{ marginTop: 10, width: 0, height: 0 }}>
+      <FormControl variant="standard" sx={{ mt: 1, width: 0, height: 0 }}>
         <Select
+          variant="standard"
           open={open}
           onClose={handleClose}
           onOpen={handleOpen}
@@ -84,7 +88,7 @@ const PsychicPowers: React.FC<{ unit: Unit; onChange: (unit: Unit) => void }> = 
           renderValue={() => ' '}
         >
           {Object.keys(powersData).map((name) => (
-            <ListItem key={name} value={name} dense style={{ maxWidth: 400 }}>
+            <MenuItem key={name} value={name} dense sx={{ maxWidth: 400 }}>
               <Tooltip title={powersData[name].effect}>
                 <ListItemText
                   primary={name}
@@ -95,10 +99,10 @@ const PsychicPowers: React.FC<{ unit: Unit; onChange: (unit: Unit) => void }> = 
                         ? 'primary'
                         : 'inherit',
                   }}
-                  style={{ margin: 0 }}
+                  sx={{ m: 0 }}
                 />
               </Tooltip>
-            </ListItem>
+            </MenuItem>
           ))}
         </Select>
       </FormControl>

@@ -1,3 +1,4 @@
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import {
   Accordion,
   AccordionDetails,
@@ -6,8 +7,7 @@ import {
   Button,
   Fab,
   Typography,
-} from '@material-ui/core';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+} from '@mui/material';
 import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
 import {
   addCampaign,
@@ -28,12 +28,12 @@ const Campaign = () => {
     <Accordion
       expanded={campaignExpanded}
       onChange={() => dispatch(toggleUIOption('campaignExpanded'))}
-      style={{ maxWidth: 1210, marginBottom: 20 }}
+      sx={{ maxWidth: 1210, mb: 3 }}
     >
       <AccordionSummary expandIcon={<ExpandMoreIcon />}>
         <Typography variant="h3">Campaign</Typography>
       </AccordionSummary>
-      <AccordionDetails style={{ marginLeft: 20, marginRight: 20 }}>
+      <AccordionDetails>
         {!currentCommander ? (
           <Button
             color="primary"
@@ -44,7 +44,7 @@ const Campaign = () => {
             Start a campaign!
           </Button>
         ) : (
-          <Box maxWidth="1210" marginBottom="20px" width="100%">
+          <Box sx={{ maxWidth: 1210, mb: 3, width: '100%' }}>
             <Typography variant="h4" align="right">
               Victory Points&nbsp;&nbsp;
               <Fab color="secondary" size="small">

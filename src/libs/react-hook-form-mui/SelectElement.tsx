@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { MenuItem, TextField, TextFieldProps } from '@material-ui/core';
+import { MenuItem, TextField, TextFieldProps } from '@mui/material';
 import { createElement } from 'react';
 import { Controller, ControllerProps, FieldError } from 'react-hook-form';
 
@@ -52,7 +52,7 @@ export default function SelectElement({
           <TextField
             {...rest}
             name={name}
-            value={value || ''}
+            value={value ?? ''}
             onBlur={onBlur}
             onChange={(event) => {
               let item: number | string = event.target.value;

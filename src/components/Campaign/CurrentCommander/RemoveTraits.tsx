@@ -1,3 +1,4 @@
+import { RemoveCircle } from '@mui/icons-material';
 import {
   Box,
   FormControl,
@@ -5,10 +6,10 @@ import {
   Input,
   MenuItem,
   Select,
+  SelectChangeEvent,
   Tooltip,
   Typography,
-} from '@material-ui/core';
-import { RemoveCircle } from '@material-ui/icons';
+} from '@mui/material';
 import React from 'react';
 import { useAppDispatch } from '../../../hooks/reduxHooks';
 import useOpen from '../../../hooks/useOpen';
@@ -22,19 +23,18 @@ const RemoveTraits: React.FC<{ commander: CommanderState; traitData: TraitData }
   const dispatch = useAppDispatch();
   const [open, handleOpen, handleClose] = useOpen();
 
-  const handleChange = (e: React.ChangeEvent<{ value: unknown }>) =>
+  const handleChange = (e: SelectChangeEvent<string[]>) =>
     dispatch(removeTrait([...(e.target.value as string[])]));
 
   return (
     <Box textAlign="center">
-      <Typography variant="subtitle2" style={{ marginTop: 5 }}>
-        Remove traits
-      </Typography>
-      <IconButton onClick={handleOpen}>
+      <Typography variant="subtitle2">Remove traits</Typography>
+      <IconButton onClick={handleOpen} size="large">
         <RemoveCircle />
       </IconButton>
-      <FormControl style={{ marginTop: 0, width: 0, height: 0 }}>
+      <FormControl variant="standard" sx={{ mt: 0, width: 0, height: 0 }}>
         <Select
+          variant="standard"
           open={open}
           onClose={handleClose}
           onOpen={handleOpen}

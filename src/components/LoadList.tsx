@@ -1,4 +1,4 @@
-import SaveOutlinedIcon from '@material-ui/icons/SaveOutlined';
+import SaveOutlinedIcon from '@mui/icons-material/SaveOutlined';
 import React, { useState } from 'react';
 import { useAppDispatch } from '../hooks/reduxHooks';
 import { showFeedback, toggleForceInputUpdate } from '../store/appStateSlice';

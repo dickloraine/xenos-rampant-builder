@@ -4,7 +4,7 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
-} from '@material-ui/core';
+} from '@mui/material';
 import { useSelector } from 'react-redux';
 import {
   FormContainer,
@@ -59,6 +59,7 @@ function XenosRulesForm(props: CustomFormProps<XenosRule>) {
             margin="normal"
             fullWidth
             multiline
+            sx={{ mb: 3 }}
           />
           <MultiSelectElement
             name="exclude_units"

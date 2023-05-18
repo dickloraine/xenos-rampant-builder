@@ -10,7 +10,6 @@ const appStateSlice = createSlice({
       severity: 'info',
     },
     inputUpdate: false,
-    autoDarkMode: false,
     customizeMode: false,
   } as AppState,
 
@@ -33,20 +32,12 @@ const appStateSlice = createSlice({
         payload: [message, severity],
       }),
     },
-    setAutoDarkMode: (state, action) => {
-      state.autoDarkMode = action.payload;
-    },
     setCustomizeMode: (state, action) => {
       state.customizeMode = action.payload;
     },
   },
 });
 
-export const {
-  toggleForceInputUpdate,
-  closeFeedback,
-  showFeedback,
-  setAutoDarkMode,
-  setCustomizeMode,
-} = appStateSlice.actions;
+export const { toggleForceInputUpdate, closeFeedback, showFeedback, setCustomizeMode } =
+  appStateSlice.actions;
 export default appStateSlice.reducer;

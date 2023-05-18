@@ -1,4 +1,4 @@
-import { Box, Button } from '@material-ui/core';
+import { Box, Button } from '@mui/material';
 import { useAppDispatch } from '../../../hooks/reduxHooks';
 import useConfirmation from '../../../hooks/useConfirmation';
 import { addCommander, addRetirement } from '../../../store/rosterSlice';
@@ -28,7 +28,7 @@ const RemoveCommander = () => {
         variant="outlined"
         onClick={retireCommander}
         aria-label="Kill commander"
-        style={{ marginRight: 20 }}
+        sx={{ mr: 3 }}
       >
         Retire
       </Button>

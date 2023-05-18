@@ -5,9 +5,9 @@ import {
   TableCell,
   TableContainer,
   TableRow,
-} from '@material-ui/core';
-import { useTheme } from '@material-ui/core/styles';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
+} from '@mui/material';
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import React from 'react';
 // import { FormContainer, MultiSelectElement } from 'react-hook-form-mui';
 import { SelectElement } from '../../../libs/react-hook-form-mui';
@@ -24,7 +24,12 @@ const SelectStat: React.FC<{
     <>
       <TableCell>{isPhone ? data.shortName : data.name}</TableCell>
       <TableCell>
-        <SelectElement name={'stats.' + stat} type="number" options={data.range} />
+        <SelectElement
+          size="small"
+          name={'stats.' + stat}
+          type="number"
+          options={data.range}
+        />
       </TableCell>
     </>
   );
@@ -32,14 +37,14 @@ const SelectStat: React.FC<{
 
 const UnitsFormStats = () => {
   const theme = useTheme();
-  const isPhone = useMediaQuery(theme.breakpoints.down('xs'));
+  const isPhone = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
     <>
-      <InputLabel id="stats-label" style={{ marginTop: 15 }}>
+      <InputLabel id="stats-label" sx={{ mt: 2 }}>
         Stats
       </InputLabel>
-      <TableContainer style={{ marginBottom: 15 }}>
+      <TableContainer>
         <Table size="small">
           <TableBody>
             <TableRow>

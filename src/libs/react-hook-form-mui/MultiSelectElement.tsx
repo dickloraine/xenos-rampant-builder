@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import CloseIcon from '@mui/icons-material/Cancel';
 import {
   Chip,
   FormControl,
@@ -6,8 +8,7 @@ import {
   MenuItem,
   Select,
   SelectProps,
-} from '@material-ui/core';
-import CloseIcon from '@material-ui/icons/Cancel';
+} from '@mui/material';
 import { Controller, FieldError } from 'react-hook-form';
 
 export type MultiSelectElementProps = Omit<SelectProps, 'value'> & {
@@ -66,7 +67,7 @@ export default function MultiSelectElement({
         return (
           <FormControl
             variant={variant}
-            style={{ minWidth }}
+            sx={{ minWidth }}
             fullWidth={rest.fullWidth}
             error={invalid}
           >
@@ -103,7 +104,7 @@ export default function MultiSelectElement({
                           <Chip
                             key={selectedValue}
                             label={selectedValue}
-                            style={{ display: 'flex', flexWrap: 'wrap' }}
+                            sx={{ display: 'flex', flexWrap: 'wrap' }}
                             onDelete={() => {
                               onChange(value.filter((i: any) => i !== selectedValue));
                               // setValue(name, formValue.filter((i: any) => i !== value), { shouldValidate: true })
@@ -126,7 +127,7 @@ export default function MultiSelectElement({
                 <MenuItem
                   key={`${name}_${valueKey ? item[valueKey] : item}`}
                   value={valueKey ? item[valueKey] : item}
-                  style={{
+                  sx={{
                     fontWeight: (value || []).includes(item) ? 'bold' : 'normal',
                   }}
                 >

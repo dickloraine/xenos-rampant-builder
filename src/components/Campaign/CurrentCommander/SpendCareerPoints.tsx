@@ -1,4 +1,4 @@
-import { Box, Typography } from '@material-ui/core';
+import { Box, Typography } from '@mui/material';
 import React from 'react';
 import { CommanderState, TraitData } from '../../../store/types';
 import AddTraits from './AddTraits';

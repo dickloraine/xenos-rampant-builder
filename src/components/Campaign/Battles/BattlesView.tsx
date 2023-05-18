@@ -1,3 +1,4 @@
+import { DeleteForever } from '@mui/icons-material';
 import {
   Box,
   IconButton,
@@ -9,59 +10,50 @@ import {
   TableRow,
   Typography,
   useMediaQuery,
-} from '@material-ui/core';
-import { lightGreen, red } from '@material-ui/core/colors';
-import {
-  Theme,
-  createStyles,
-  makeStyles,
-  useTheme,
-  withStyles,
-} from '@material-ui/core/styles';
-import { DeleteForever } from '@material-ui/icons';
+} from '@mui/material';
+import { lightGreen, red } from '@mui/material/colors';
+import { styled, useTheme } from '@mui/material/styles';
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks';
 import { getBattles, removeBattle } from '../../../store/rosterSlice';
 import EditBattle from './EditBattle';
 
-const HeadTableCell = withStyles((theme: Theme) =>
-  createStyles({
-    head: {
-      backgroundColor: theme.palette.primary.main,
-      color: theme.palette.primary.contrastText,
-    },
-  })
-)(TableCell);
-
-const useStyles = makeStyles((theme: Theme) => ({
-  win: {
-    backgroundColor: lightGreen[100],
-    color: theme.palette.common.black,
-  },
-  defeat: {
-    backgroundColor: red[100],
-    color: theme.palette.common.black,
-  },
-  draw: {
-    backgroundColor: theme.palette.grey[100],
-    color: theme.palette.common.black,
-  },
-  selected: {
-    backgroundColor: theme.palette.secondary.light,
-  },
-  selectionMenu: {
-    backgroundColor: theme.palette.secondary.main,
-    color: theme.palette.secondary.contrastText,
-    paddingLeft: '20px',
-    width: '100%',
-    display: 'flex',
-    alignItems: 'center',
-    gap: '20px',
-  },
-  selectionMenuIcon: {
-    color: theme.palette.secondary.contrastText,
-  },
+const HeadTableCell = styled(TableCell)(({ theme }) => ({
+  backgroundColor: theme.palette.primary.main,
+  color: theme.palette.primary.contrastText,
 }));
+
+const getResultClass = (
+  selected: boolean,
+  enemyVictoryPoints: number,
+  victoryPoints: number
+) =>
+  selected
+    ? { backgroundColor: 'secondary.light' }
+    : victoryPoints > enemyVictoryPoints
+    ? {
+        backgroundColor: lightGreen[100],
+        color: 'common.black',
+      }
+    : victoryPoints < enemyVictoryPoints
+    ? {
+        backgroundColor: red[100],
+        color: 'common.black',
+      }
+    : {
+        backgroundColor: 'grey[100]',
+        color: 'common.black',
+      };
+
+const selectionMenu = {
+  backgroundColor: 'secondary.main',
+  color: 'secondary.contrastText',
+  paddingLeft: '20px',
+  width: '100%',
+  display: 'flex',
+  alignItems: 'center',
+  gap: '20px',
+};
 
 export type BattleSelection = {
   commanderIndex: number;
@@ -70,31 +62,17 @@ export type BattleSelection = {
 
 const BattlesView = () => {
   const dispatch = useAppDispatch();
-  const classes = useStyles();
   const [battles, battleSelections] = useAppSelector((state) => getBattles(state));
   const [selected, setSelected] = React.useState<number>(-1);
   const theme = useTheme();
-  const isPhone = useMediaQuery(theme.breakpoints.down('xs'));
-
-  const getResultClass = (
-    selected: boolean,
-    enemyVictoryPoints: number,
-    victoryPoints: number
-  ) =>
-    selected
-      ? classes.selected
-      : victoryPoints > enemyVictoryPoints
-      ? classes.win
-      : victoryPoints < enemyVictoryPoints
-      ? classes.defeat
-      : classes.draw;
+  const isPhone = useMediaQuery(theme.breakpoints.down('sm'));
 
   if (battles.length === 0) return <></>;
 
   return (
     <TableContainer component={Box} marginTop="20px">
       {selected >= 0 && (
-        <Box className={classes.selectionMenu}>
+        <Box sx={selectionMenu}>
           <Typography>Actions</Typography>
           <Box flexGrow={1}></Box>
           <IconButton
@@ -107,8 +85,9 @@ const BattlesView = () => {
               );
               setSelected(-1);
             }}
+            size="large"
           >
-            <DeleteForever className={classes.selectionMenuIcon} />
+            <DeleteForever sx={{ color: 'secondary.contrastText' }} />
           </IconButton>
           <EditBattle
             battleSelection={{
@@ -147,23 +126,17 @@ const BattlesView = () => {
                 selected={index === selected}
               >
                 {!isPhone && (
-                  <TableCell className={resultClass} component="th" scope="row">
+                  <TableCell sx={resultClass} component="th" scope="row">
                     {battle.date}
                   </TableCell>
                 )}
+                {!isPhone && <TableCell sx={resultClass}>{battle.commander}</TableCell>}
+                <TableCell sx={resultClass}>{battle.enemy}</TableCell>
                 {!isPhone && (
-                  <TableCell className={resultClass}>{battle.commander}</TableCell>
+                  <TableCell sx={resultClass}>{battle.enemyVictoryPoints}</TableCell>
                 )}
-                <TableCell className={resultClass}>{battle.enemy}</TableCell>
-                {!isPhone && (
-                  <TableCell className={resultClass}>
-                    {battle.enemyVictoryPoints}
-                  </TableCell>
-                )}
-                <TableCell className={resultClass}>{battle.victoryPoints}</TableCell>
-                <TableCell className={resultClass}>
-                  {battle.careerPointsGained}
-                </TableCell>
+                <TableCell sx={resultClass}>{battle.victoryPoints}</TableCell>
+                <TableCell sx={resultClass}>{battle.careerPointsGained}</TableCell>
               </TableRow>
             );
           })}

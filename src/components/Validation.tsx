@@ -1,3 +1,4 @@
+import { Error, ExpandMore } from '@mui/icons-material';
 import {
   Accordion,
   AccordionDetails,
@@ -7,28 +8,13 @@ import {
   ListItemIcon,
   ListItemText,
   Typography,
-} from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import ErrorIcon from '@material-ui/icons/Error';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+} from '@mui/material';
 import { useAppDispatch, useAppSelector } from '../hooks/reduxHooks';
 import { toggleUIOption } from '../store/uiSlice';
-
-const useStyles = makeStyles((theme) => ({
-  title: {
-    backgroundColor: theme.palette.error.main,
-    color: theme.palette.error.contrastText,
-  },
-  details: {
-    backgroundColor: theme.palette.error.light,
-    color: theme.palette.error.contrastText,
-  },
-}));
 
 const Validation = () => {
   const dispatch = useAppDispatch();
   const validationExpanded = useAppSelector((state) => state.ui.validationExpanded);
-  const classes = useStyles();
   const units = Object.values(useAppSelector((state) => state.roster.units));
 
   const warnings = [];
@@ -95,20 +81,22 @@ const Validation = () => {
         <Accordion
           expanded={validationExpanded}
           onChange={() => dispatch(toggleUIOption('validationExpanded'))}
-          style={{ maxWidth: 1210 }}
+          sx={{ maxWidth: 'breakpoints.values.lg' }}
         >
           <AccordionSummary
-            className={classes.title}
-            expandIcon={<ExpandMoreIcon className={classes.title} />}
+            sx={{ backgroundColor: 'error.main', color: 'error.contrastText' }}
+            expandIcon={<ExpandMore sx={{ color: 'error.contrastText' }} />}
           >
             <Typography variant="h3">Warnings</Typography>
           </AccordionSummary>
-          <AccordionDetails className={classes.details}>
+          <AccordionDetails
+            sx={{ backgroundColor: 'error.light', color: 'error.contrastText' }}
+          >
             <List>
               {warnings.map(([name, text], index) => (
                 <ListItem key={index}>
-                  <ListItemIcon className={classes.details}>
-                    <ErrorIcon />
+                  <ListItemIcon sx={{ color: 'error.contrastText' }}>
+                    <Error />
                   </ListItemIcon>
                   <ListItemText primary={name} secondary={text} />
                 </ListItem>

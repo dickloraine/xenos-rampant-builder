@@ -1,5 +1,5 @@
-import { Container, CssBaseline } from '@material-ui/core';
-import { ThemeProvider } from '@material-ui/core/styles';
+import { Container, CssBaseline } from '@mui/material';
+import { StyledEngineProvider, ThemeProvider } from '@mui/material/styles';
 import { useEffect } from 'react';
 import { useAppDispatch } from '../hooks/reduxHooks';
 import useUserTheme from '../hooks/useUserTheme';
@@ -23,20 +23,22 @@ const App = () => {
   }, [dispatch]);
 
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <Container>
-        <AppBar />
-        <ListName />
-        <Roster />
-        <Validation />
-        <RulesSummary />
-        <PsychicPowerTable />
-        <Campaign />
-        <ShowFeedback />
-        <CustomizeMenu />
-      </Container>
-    </ThemeProvider>
+    <StyledEngineProvider injectFirst>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Container>
+          <AppBar />
+          <ListName />
+          <Roster />
+          <Validation />
+          <RulesSummary />
+          <PsychicPowerTable />
+          <Campaign />
+          <ShowFeedback />
+          <CustomizeMenu />
+        </Container>
+      </ThemeProvider>
+    </StyledEngineProvider>
   );
 };
 

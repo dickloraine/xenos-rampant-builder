@@ -5,7 +5,7 @@ import {
   DialogContent,
   DialogTitle,
   TextField,
-} from '@material-ui/core';
+} from '@mui/material';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { showFeedback } from '../../store/appStateSlice';
@@ -48,14 +48,14 @@ const ImportCustomData: React.FC<{ open: boolean; handleClose: () => void }> = (
       <DialogTitle>Enter the import string</DialogTitle>
       <DialogContent>
         <TextField
+          variant="standard"
           autoFocus
           margin="normal"
           label="Import String"
           type="text"
           fullWidth
           onChange={(e) => setValue(e.target.value)}
-          onKeyPress={(e) => handleKeyPressed(e.key)}
-        />
+          onKeyPress={(e) => handleKeyPressed(e.key)} />
       </DialogContent>
       <DialogActions>
         <Button onClick={handleClose} color="primary">

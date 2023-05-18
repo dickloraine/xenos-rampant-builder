@@ -5,7 +5,7 @@ import {
   ListItemText,
   Tooltip,
   Typography,
-} from '@material-ui/core';
+} from '@mui/material';
 import React from 'react';
 import { useAppSelector } from '../../hooks/reduxHooks';
 import { selectAllRules } from '../../store/dataSlice';
@@ -26,7 +26,7 @@ const SpecialRules: React.FC<{ rules: string[] }> = ({ rules }) => {
                   primary={r}
                   secondary={(inlineRules && rulesData[r]?.short) || ''}
                   primaryTypographyProps={{ variant: 'body2' }}
-                  style={{ margin: 0 }}
+                  sx={{ m: 0 }}
                 />
               </ListItem>
             </Tooltip>

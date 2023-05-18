@@ -1,34 +1,20 @@
-import { IconButton } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import clsx from 'clsx';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { IconButton } from '@mui/material';
 import React from 'react';
-
-const useStyles = makeStyles((theme) => ({
-  expand: {
-    transform: 'rotate(0deg)',
-    marginLeft: 'auto',
-    transition: theme.transitions.create('transform', {
-      duration: theme.transitions.duration.shortest,
-    }),
-  },
-  expandOpen: {
-    transform: 'rotate(180deg)',
-  },
-}));
 
 const ExpandIcon: React.FC<{
   expanded: boolean;
   onClick: (e: React.MouseEvent<HTMLElement>) => void;
 }> = ({ expanded, onClick }) => {
-  const classes = useStyles();
-
   return (
     <IconButton
-      className={clsx(classes.expand, {
-        [classes.expandOpen]: expanded,
-      })}
+      sx={
+        expanded
+          ? { transform: 'rotate(180deg)' }
+          : { transform: 'rotate(0deg)', marginLeft: 'auto' }
+      }
       onClick={onClick}
+      size="large"
     >
       <ExpandMoreIcon />
     </IconButton>

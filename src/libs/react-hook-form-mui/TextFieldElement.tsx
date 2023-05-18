@@ -1,10 +1,11 @@
-import { TextField, TextFieldProps } from '@material-ui/core';
+import { TextField, TextFieldProps } from '@mui/material';
 import { Controller, ControllerProps, FieldError } from 'react-hook-form';
 
 export type TextFieldElementProps = Omit<TextFieldProps, 'name'> & {
   validation?: ControllerProps['rules'];
   name: string;
   parseError?: (error: FieldError) => string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   customError?: (value: any) => boolean;
 };
 

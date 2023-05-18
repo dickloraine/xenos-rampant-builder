@@ -1,5 +1,5 @@
-import { IconButton, Tooltip, Typography } from '@material-ui/core';
-import RestorePageIcon from '@material-ui/icons/RestorePage';
+import RestorePageIcon from '@mui/icons-material/RestorePage';
+import { IconButton, Tooltip, Typography } from '@mui/material';
 import React from 'react';
 import { useAppDispatch } from '../hooks/reduxHooks';
 import { showFeedback, toggleForceInputUpdate } from '../store/appStateSlice';
@@ -49,24 +49,22 @@ const Restore: React.FC<{ onClose?: () => void; showText?: boolean }> = ({
     if (fileDialog.current) fileDialog.current.click();
   };
 
-  return (
-    <>
-      <Tooltip title="Backup">
-        <IconButton color="inherit" onClick={openFileDialog}>
-          <RestorePageIcon />
-        </IconButton>
-      </Tooltip>
-      {showText && <Typography onClick={openFileDialog}>Restore</Typography>}
-      <input
-        type="file"
-        ref={fileDialog}
-        style={{ display: 'none' }}
-        id="restoreFile"
-        accept=".sav"
-        onChange={handleFileChosen}
-      />
-    </>
-  );
+  return <>
+    <Tooltip title="Backup">
+      <IconButton color="inherit" onClick={openFileDialog} size="large">
+        <RestorePageIcon />
+      </IconButton>
+    </Tooltip>
+    {showText && <Typography onClick={openFileDialog}>Restore</Typography>}
+    <input
+      type="file"
+      ref={fileDialog}
+      style={{ display: 'none' }}
+      id="restoreFile"
+      accept=".sav"
+      onChange={handleFileChosen}
+    />
+  </>;
 };
 
 export default React.memo(Restore);

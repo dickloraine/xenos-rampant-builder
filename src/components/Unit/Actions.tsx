@@ -1,8 +1,8 @@
-import { Box, IconButton, Tooltip } from '@material-ui/core';
-import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
-import NavigateNextIcon from '@material-ui/icons/NavigateNext';
-import PersonAddOutlinedIcon from '@material-ui/icons/PersonAddOutlined';
-import TextFieldsIcon from '@material-ui/icons/TextFields';
+import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import PersonAddOutlinedIcon from '@mui/icons-material/PersonAddOutlined';
+import TextFieldsIcon from '@mui/icons-material/TextFields';
+import { Box, IconButton, Tooltip } from '@mui/material';
 import React from 'react';
 import { useAppDispatch } from '../../hooks/reduxHooks';
 import { addUnit, moveUnit, renameUnit } from '../../store/rosterSlice';
@@ -19,22 +19,22 @@ const Actions: React.FC<{ id: number; unit: Unit }> = ({ id, unit }) => {
 
   return (
     <Box
-      style={{
+      sx={{
         position: 'absolute',
         bottom: 5,
         width: '95%',
-        paddingRight: 15,
+        pr: 2,
       }}
     >
-      <Box display="flex" style={{ height: 25 }}>
+      <Box display="flex" sx={{ height: 25 }}>
         <Box display="flex" alignItems="center">
           <Tooltip title="Move back">
-            <IconButton onClick={moveLeft}>
+            <IconButton onClick={moveLeft} size="large">
               <NavigateBeforeIcon />
             </IconButton>
           </Tooltip>
           <Tooltip title="Move forward">
-            <IconButton onClick={moveRight}>
+            <IconButton onClick={moveRight} size="large">
               <NavigateNextIcon />
             </IconButton>
           </Tooltip>
@@ -44,7 +44,7 @@ const Actions: React.FC<{ id: number; unit: Unit }> = ({ id, unit }) => {
           <TextInputDialog
             anchor={
               <Tooltip title="Rename unit">
-                <IconButton>
+                <IconButton size="large">
                   <TextFieldsIcon />
                 </IconButton>
               </Tooltip>
@@ -56,7 +56,7 @@ const Actions: React.FC<{ id: number; unit: Unit }> = ({ id, unit }) => {
             okayText="Rename"
           />
           <Tooltip title="Clone unit">
-            <IconButton onClick={cloneUnit}>
+            <IconButton onClick={cloneUnit} size="large">
               <PersonAddOutlinedIcon />
             </IconButton>
           </Tooltip>

@@ -1,5 +1,5 @@
-import { IconButton, SvgIconTypeMap, Tooltip } from '@material-ui/core';
-import { OverridableComponent } from '@material-ui/core/OverridableComponent';
+import { IconButton, SvgIconTypeMap, Tooltip } from '@mui/material';
+import { OverridableComponent } from '@mui/material/OverridableComponent';
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
 import { UIState } from '../../store/types';
@@ -22,7 +22,7 @@ const ToggleViewMode: React.FC<{
 
   return (
     <Tooltip title={title}>
-      <IconButton color="inherit" aria-label={title} onClick={changeViewMode}>
+      <IconButton color="inherit" aria-label={title} onClick={changeViewMode} size="large">
         <Icon fontSize="small" color={optionState ? 'inherit' : 'disabled'} />
       </IconButton>
     </Tooltip>
