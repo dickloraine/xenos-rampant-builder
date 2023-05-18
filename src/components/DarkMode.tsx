@@ -8,8 +8,10 @@ const Darkmode: React.FC<{ showText?: boolean }> = ({ showText }) => {
   let darkMode = useAppSelector((state) => state.ui.darkMode);
   const autoDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
   const dispatch = useAppDispatch();
+
+  if (darkMode === null) darkMode = autoDarkMode;
+
   const handleClick = () => {
-    if (darkMode === null) darkMode = autoDarkMode;
     dispatch(updateUI({ darkMode: !darkMode }));
   };
 
