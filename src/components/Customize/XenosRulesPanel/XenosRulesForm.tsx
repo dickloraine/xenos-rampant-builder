@@ -5,7 +5,7 @@ import {
   DialogContent,
   DialogTitle,
 } from '@mui/material';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '../../../hooks/reduxHooks';
 import {
   FormContainer,
   MultiSelectElement,
@@ -20,7 +20,7 @@ import StatManipulation from '../common/StatManipulation';
 
 function XenosRulesForm(props: CustomFormProps<XenosRule>) {
   const { formContext, open, handleClose, handleAction, validateName } = props;
-  const units = useSelector((state: RootState) => selectUnitNames(state));
+  const units = useAppSelector((state: RootState) => selectUnitNames(state));
   const { watch, setValue } = formContext;
 
   return (

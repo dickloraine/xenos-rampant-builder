@@ -1,4 +1,5 @@
-import { FormHTMLAttributes, FunctionComponent } from 'react';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { FormHTMLAttributes, FunctionComponent, ReactNode } from 'react';
 import { FormProvider, UseFormReturn, useForm } from 'react-hook-form';
 
 export type FormContainerProps = {
@@ -7,6 +8,7 @@ export type FormContainerProps = {
   handleSubmit?: (values: any) => void;
   formContext?: UseFormReturn<any>;
   FormProps?: FormHTMLAttributes<HTMLFormElement>;
+  children?: ReactNode;
 };
 
 const FormContainerCore: FunctionComponent<FormContainerProps> = ({

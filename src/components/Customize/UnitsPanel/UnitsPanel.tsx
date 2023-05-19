@@ -1,8 +1,8 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks';
 import { showFeedback } from '../../../store/appStateSlice';
 import { addUnit, removeUnit } from '../../../store/dataSlice';
-import { AppDispatch, DataUnit, RootState } from '../../../store/types';
+import { DataUnit, RootState } from '../../../store/types';
 import { PanelProps } from '../CustomizeMenu/CustomizeMenu';
 import CustomizePanel from '../CustomizePanel/CustomizePanel';
 import UnitsForm from './UnitsForm';
@@ -10,9 +10,11 @@ import { dataUnitSchema, emptyUnit } from './unitSchemas';
 
 function UnitsPanel(props: PanelProps) {
   const { expanded, handleChange } = props;
-  const dispatch: AppDispatch = useDispatch();
-  const customData = useSelector((state: RootState) => state.data.customData.unitData);
-  const units = useSelector((state: RootState) => state.roster.units);
+  const dispatch = useAppDispatch();
+  const customData = useAppSelector(
+    (state: RootState) => state.data.customData.unitData
+  );
+  const units = useAppSelector((state: RootState) => state.roster.units);
 
   const removeFunc = (name: string) => {
     if (Object.values(units).some((unit) => unit.name === name)) {

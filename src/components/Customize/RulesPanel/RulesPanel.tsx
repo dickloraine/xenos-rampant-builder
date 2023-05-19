@@ -1,8 +1,8 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks';
 import { showFeedback } from '../../../store/appStateSlice';
 import { addRule, removeRule } from '../../../store/dataSlice';
-import { AppDispatch, RootState, Rule } from '../../../store/types';
+import { RootState, Rule } from '../../../store/types';
 import { PanelProps } from '../CustomizeMenu/CustomizeMenu';
 import CustomizePanel from '../CustomizePanel/CustomizePanel';
 import RulesForm from './RulesForm';
@@ -10,9 +10,9 @@ import { emptyRule, ruleSchema } from './rulesSchemas';
 
 function RulesPanel(props: PanelProps) {
   const { expanded, handleChange } = props;
-  const dispatch: AppDispatch = useDispatch();
-  const customData = useSelector((state: RootState) => state.data.customData);
-  const units = useSelector((state: RootState) => state.roster.units);
+  const dispatch = useAppDispatch();
+  const customData = useAppSelector((state: RootState) => state.data.customData);
+  const units = useAppSelector((state: RootState) => state.roster.units);
 
   const removeFunc = (name: string) => {
     if (

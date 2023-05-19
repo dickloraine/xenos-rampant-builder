@@ -1,8 +1,8 @@
 import { Dialog } from '@mui/material';
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks';
 import { setCustomizeMode } from '../../../store/appStateSlice';
-import { AppDispatch, RootState } from '../../../store/types';
+import { RootState } from '../../../store/types';
 import CustomizeMenuContent from './CustomizeMenuContent';
 
 export interface PanelProps {
@@ -13,8 +13,8 @@ export interface PanelProps {
 }
 
 const CustomizeMenu = () => {
-  const open = useSelector((state: RootState) => state.appState.customizeMode);
-  const dispatch: AppDispatch = useDispatch();
+  const open = useAppSelector((state: RootState) => state.appState.customizeMode);
+  const dispatch = useAppDispatch();
 
   return (
     <Dialog open={open} onClose={() => dispatch(setCustomizeMode(false))}>

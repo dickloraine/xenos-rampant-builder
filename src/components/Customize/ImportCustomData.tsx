@@ -7,15 +7,16 @@ import {
   TextField,
 } from '@mui/material';
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useAppDispatch } from '../../hooks/reduxHooks';
 import { showFeedback } from '../../store/appStateSlice';
 import { importCustomData } from '../../store/dataSlice';
+import { CustomData } from '../../store/types';
 
 const ImportCustomData: React.FC<{ open: boolean; handleClose: () => void }> = ({
   open,
   handleClose,
 }) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [value, setValue] = React.useState('');
 
   const handleImport = () => {
@@ -24,7 +25,7 @@ const ImportCustomData: React.FC<{ open: boolean; handleClose: () => void }> = (
       return;
     }
     try {
-      const data = JSON.parse(value);
+      const data: CustomData = JSON.parse(value) as CustomData;
       dispatch(importCustomData(data));
       dispatch(showFeedback('Custom data imported!', 'success'));
     } catch (err) {
@@ -55,7 +56,8 @@ const ImportCustomData: React.FC<{ open: boolean; handleClose: () => void }> = (
           type="text"
           fullWidth
           onChange={(e) => setValue(e.target.value)}
-          onKeyPress={(e) => handleKeyPressed(e.key)} />
+          onKeyPress={(e) => handleKeyPressed(e.key)}
+        />
       </DialogContent>
       <DialogActions>
         <Button onClick={handleClose} color="primary">

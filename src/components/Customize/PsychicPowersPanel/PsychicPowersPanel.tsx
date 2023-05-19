@@ -1,7 +1,7 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks';
 import { addSpell, removeSpell } from '../../../store/dataSlice';
-import { AppDispatch, PsychicPower, RootState } from '../../../store/types';
+import { PsychicPower, RootState } from '../../../store/types';
 import { PanelProps } from '../CustomizeMenu/CustomizeMenu';
 import CustomizePanel from '../CustomizePanel/CustomizePanel';
 import PsychicPowersForm from './PsychicPowersForm';
@@ -9,8 +9,8 @@ import { emptyPsychicPower, psychicPowerSchema } from './psychicPowersSchemas';
 
 function SpellsPanel(props: PanelProps) {
   const { expanded, handleChange } = props;
-  const dispatch: AppDispatch = useDispatch();
-  const customData = useSelector(
+  const dispatch = useAppDispatch();
+  const customData = useAppSelector(
     (state: RootState) => state.data.customData.psychicPowers
   );
 

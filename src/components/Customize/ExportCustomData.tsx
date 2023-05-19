@@ -14,7 +14,7 @@ import {
 } from '@mui/material';
 import produce from 'immer';
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
 import { showFeedback } from '../../store/appStateSlice';
 import { getEmptyCustomData } from '../../store/dataSlice';
 import { CustomData, RootState } from '../../store/types';
@@ -75,8 +75,8 @@ const ExportCustomData: React.FC<{ open: boolean; handleClose: () => void }> = (
   handleClose,
 }) => {
   const [data, setData] = React.useState(getEmptyCustomData());
-  const customData = useSelector((state: RootState) => state.data.customData);
-  const dispatch = useDispatch();
+  const customData = useAppSelector((state: RootState) => state.data.customData);
+  const dispatch = useAppDispatch();
 
   const selectAll = () => setData(customData);
   const selectNone = () => setData(getEmptyCustomData());

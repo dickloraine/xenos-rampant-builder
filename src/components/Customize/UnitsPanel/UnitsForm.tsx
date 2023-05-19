@@ -9,7 +9,7 @@ import {
 import produce from 'immer';
 import { useState } from 'react';
 // import { FormContainer, MultiSelectElement } from 'react-hook-form-mui';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '../../../hooks/reduxHooks';
 import useOpen from '../../../hooks/useOpen';
 import {
   FormContainer,
@@ -34,7 +34,7 @@ const activations = [
 function UnitsForm(props: CustomFormProps<DataUnit>) {
   const { formContext, open, handleClose, handleAction, validateName } = props;
   const { watch, setValue } = formContext;
-  const rules = useSelector((state: RootState) => state.data.rulesData);
+  const rules = useAppSelector((state: RootState) => state.data.rulesData);
   const [optionsOpen, handleOpenOptions, handleCloseOptions] = useOpen();
   const [currentOption, setCurrentOption] = useState<UnitOption>({ ...emptyOption });
 

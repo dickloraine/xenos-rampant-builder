@@ -8,7 +8,7 @@ import {
 } from '@mui/material';
 import React, { BaseSyntheticEvent, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '../../../hooks/reduxHooks';
 import {
   FormContainer,
   MultiSelectElement,
@@ -27,7 +27,7 @@ const OptionsForm: React.FC<{
   rules: string[];
   onSubmit: (option: UnitOption) => void;
 }> = ({ open, handleClose, option, rules, onSubmit }) => {
-  const specialRules = useSelector((state: RootState) => state.data.rulesData);
+  const specialRules = useAppSelector((state: RootState) => state.data.rulesData);
 
   const formContext = useForm<UnitOption>({
     resolver: yupResolver(unitOptionSchema),
