@@ -28,7 +28,7 @@ export default defineConfig({
         short_name: 'Xenos Rampant Builder',
         description:
           'Web app to build armies for Xenos Rampant. An Armybuilder for the tabletop strategy game Xenos Rampant.',
-        theme_color: '#ffffff',
+        theme_color: '#1b5e20',
         icons: [
           {
             src: 'icon-192x192.png',

@@ -7,7 +7,23 @@ import { useAppSelector } from '../hooks/reduxHooks';
 const getTheme = (mode: boolean | null): ThemeOptions => ({
   palette: {
     mode: mode ? 'dark' : 'light',
-    ...(mode ? { primary: { main: green[800] } } : { primary: { main: green[900] } }),
+    ...(mode
+      ? {
+          primary: {
+            light: green[700],
+            main: green[800],
+            dark: green[900],
+            contrastText: '#fff',
+          },
+        }
+      : {
+          primary: {
+            light: green[800],
+            main: green[900],
+            dark: green[900],
+            contrastText: '#fff',
+          },
+        }),
   },
   typography: {
     h2: {
