@@ -54,6 +54,7 @@ const getTraitSelections = (
               color:
                 commander.commanderTraits.indexOf(name) > -1 ? 'primary' : 'inherit',
             }}
+            secondaryTypographyProps={{ sx: { whiteSpace: 'normal' } }}
             sx={{ m: 0 }}
           />
         </Tooltip>

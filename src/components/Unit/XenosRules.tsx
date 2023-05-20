@@ -100,6 +100,7 @@ const XenosRules: React.FC<{ unit: Unit; onChange: (unit: Unit) => void }> = ({
                     </Typography>
                   }
                   secondary={(inlineRules && xenosRulesData[name]?.short) || ''}
+                  secondaryTypographyProps={{ sx: { whiteSpace: 'normal' } }}
                   sx={{ m: 0 }}
                 />
               </Tooltip>

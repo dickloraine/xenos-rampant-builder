@@ -26,6 +26,7 @@ const SpecialRules: React.FC<{ rules: string[] }> = ({ rules }) => {
                   primary={r}
                   secondary={(inlineRules && rulesData[r]?.short) || ''}
                   primaryTypographyProps={{ variant: 'body2' }}
+                  secondaryTypographyProps={{ sx: { whiteSpace: 'normal' } }}
                   sx={{ m: 0 }}
                 />
               </ListItem>

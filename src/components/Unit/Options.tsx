@@ -104,7 +104,7 @@ const Options: React.FC<{ unit: Unit; onChange: (unit: Unit) => void }> = ({
                     </Typography>
                   }
                   secondary={(inlineRules && optionsData[name]?.short) || ''}
-                  primaryTypographyProps={{ variant: 'body2' }}
+                  secondaryTypographyProps={{ sx: { whiteSpace: 'normal' } }}
                   sx={{ m: 0 }}
                 />
               </Tooltip>

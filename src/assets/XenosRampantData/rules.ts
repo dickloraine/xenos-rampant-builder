@@ -60,7 +60,7 @@ const rulesOnly: Rules = {
     name: 'Skirmish',
     description:
       'As an ordered activation, successful on a 7+, this unit may choose to both Move up to half its Maximum Movement and Shoot, in either order. This unit treats its Shoot Value as 6+ / 12" when Skirmishing.',
-    short: 'On 7+ move and shoot. Shoot value 6+ /12".',
+    short: 'On 7+ half move and shoot. Shoot value 6+ /12".',
   },
   Spotters: {
     name: 'Spotters',

@@ -59,6 +59,7 @@ const PsychicPowers: React.FC<{ unit: Unit; onChange: (unit: Unit) => void }> = 
                         primary={name}
                         secondary={powersData[name]?.short || ''}
                         primaryTypographyProps={{ variant: 'body2' }}
+                        secondaryTypographyProps={{ sx: { whiteSpace: 'normal' } }}
                         sx={{ m: 0 }}
                       />
                     </ListItem>
@@ -99,6 +100,7 @@ const PsychicPowers: React.FC<{ unit: Unit; onChange: (unit: Unit) => void }> = 
                         ? 'primary'
                         : 'inherit',
                   }}
+                  secondaryTypographyProps={{ sx: { whiteSpace: 'normal' } }}
                   sx={{ m: 0 }}
                 />
               </Tooltip>

@@ -27,6 +27,7 @@ const Traits: React.FC<{ commander: CommanderState; traitData: TraitData }> = ({
                     : ''
                 }
                 primaryTypographyProps={{ variant: 'body2' }}
+                secondaryTypographyProps={{ sx: { whiteSpace: 'normal' } }}
                 sx={{ m: 0 }}
               />
             </ListItem>
