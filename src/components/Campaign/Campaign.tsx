@@ -28,7 +28,7 @@ const Campaign = () => {
     <Accordion
       expanded={campaignExpanded}
       onChange={() => dispatch(toggleUIOption('campaignExpanded'))}
-      sx={{ maxWidth: 1210, mb: 3 }}
+      sx={{ maxWidth: 1210 }}
     >
       <AccordionSummary expandIcon={<ExpandMoreIcon />}>
         <Typography variant="h3">Campaign</Typography>

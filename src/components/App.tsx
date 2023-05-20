@@ -26,7 +26,7 @@ const App = () => {
     <StyledEngineProvider injectFirst>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Container>
+        <Container sx={{ mb: 3 }}>
           <AppBar />
           <ListName />
           <Roster />
