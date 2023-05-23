@@ -18,7 +18,7 @@ const About: React.FC<{ onClose?: () => void }> = ({ onClose = undefined }) => {
 
   return (
     <>
-      <Tooltip title="Load List">
+      <Tooltip title="About">
         <IconButton color="inherit" onClick={handleOpen} size="large">
           <InfoIcon />
         </IconButton>
@@ -36,7 +36,7 @@ const About: React.FC<{ onClose?: () => void }> = ({ onClose = undefined }) => {
               label="View on Github"
               icon={<GitHubIcon />}
               component="a"
-              href="#chip"
+              href="https://github.com/dickloraine/xenos-rampant-builder"
               clickable
             />
             <Box flexGrow={1}></Box>

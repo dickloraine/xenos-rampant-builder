@@ -24,15 +24,6 @@ const packRoster = (roster: RosterState): CompactRosterState => {
 
   return { ...roster, units: units };
 };
-// const packRoster = (roster: RosterState): CompactRosterState => {
-//   const units: CompactUnit[] = roster.units.map((unit) => ({
-//     name: unit.name,
-//     customName: unit.customName || '',
-//     options: unit.options,
-//     xenosRules: unit.xenosRules,
-//   }));
-//   return { ...roster, units: units };
-// };
 
 const unpackRoster = (compactRoster: CompactRosterState): RosterState => {
   const units = Object.values(compactRoster.units).map((unit) => buildUnit(unit));

@@ -78,19 +78,19 @@ const Options: React.FC<{ unit: Unit; onChange: (unit: Unit) => void }> = ({
           input={<Input />}
           renderValue={() => ' '}
         >
-          {Object.keys(optionsData).map((name) => (
+          {Object.entries(optionsData).map(([name, option]) => (
             <MenuItem
               key={name}
               value={name}
               dense
               sx={{ maxWidth: 400 }}
               disabled={
-                optionsData[name].disabledBy?.some((x) => unit.options.includes(x)) ||
-                (optionsData[name].enabledBy &&
-                  !optionsData[name].enabledBy?.some((x) => unit.options.includes(x)))
+                option.disabledBy?.some((x) => unit.options.includes(x)) ||
+                (option.enabledBy &&
+                  !option.enabledBy?.some((x) => unit.options.includes(x)))
               }
             >
-              <Tooltip title={optionsData[name].description}>
+              <Tooltip title={option.description}>
                 <ListItemText
                   primary={
                     <Typography
@@ -99,11 +99,11 @@ const Options: React.FC<{ unit: Unit; onChange: (unit: Unit) => void }> = ({
                     >
                       {name}{' '}
                       <Typography color="secondary" variant="body2" component="span">
-                        @{optionsData[name].points}
+                        @{option.points}
                       </Typography>
                     </Typography>
                   }
-                  secondary={(inlineRules && optionsData[name]?.short) || ''}
+                  secondary={(inlineRules && option?.short) || ''}
                   secondaryTypographyProps={{ sx: { whiteSpace: 'normal' } }}
                   sx={{ m: 0 }}
                 />

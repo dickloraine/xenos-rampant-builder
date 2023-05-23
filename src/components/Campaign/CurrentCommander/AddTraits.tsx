@@ -12,7 +12,7 @@ import {
   Tooltip,
   Typography,
 } from '@mui/material';
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks';
 import useOpen from '../../../hooks/useOpen';
 import { addTrait } from '../../../store/rosterSlice';
@@ -20,7 +20,7 @@ import { CommanderState, TraitData } from '../../../store/types';
 
 const getTraitSelections = (
   traitData: TraitData,
-  commander: CommanderState,
+  commanderTraits: string[],
   inlineRules: boolean
 ) => {
   const elements: JSX.Element[] = [];
@@ -44,15 +44,10 @@ const getTraitSelections = (
         <Tooltip title={trait.description}>
           <ListItemText
             primary={name}
-            secondary={
-              inlineRules
-                ? traitData[name]?.short || traitData[name]?.description || ''
-                : ''
-            }
+            secondary={inlineRules ? trait?.short || trait?.description || '' : ''}
             primaryTypographyProps={{
               variant: 'body2',
-              color:
-                commander.commanderTraits.indexOf(name) > -1 ? 'primary' : 'inherit',
+              color: commanderTraits.indexOf(name) > -1 ? 'primary' : 'inherit',
             }}
             secondaryTypographyProps={{ sx: { whiteSpace: 'normal' } }}
             sx={{ m: 0 }}
@@ -71,6 +66,10 @@ const AddTraits: React.FC<{ commander: CommanderState; traitData: TraitData }> =
   const dispatch = useAppDispatch();
   const [open, handleOpen, handleClose] = useOpen();
   const inlineRules = useAppSelector((state) => state.ui.inlineRules);
+  const traitSelections = useMemo(
+    () => getTraitSelections(traitData, commander.commanderTraits, inlineRules),
+    [traitData, commander.commanderTraits, inlineRules]
+  );
 
   const handleChange = (e: SelectChangeEvent<string[]>) =>
     dispatch(addTrait([...(e.target.value as string[])]));
@@ -94,7 +93,7 @@ const AddTraits: React.FC<{ commander: CommanderState; traitData: TraitData }> =
           input={<Input />}
           renderValue={() => ' '}
         >
-          {getTraitSelections(traitData, commander, inlineRules)}
+          {traitSelections}
         </Select>
       </FormControl>
     </Box>

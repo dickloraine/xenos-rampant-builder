@@ -4,10 +4,10 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import React from 'react';
 import { useAppSelector } from '../hooks/reduxHooks';
 
-const getTheme = (mode: boolean | null): ThemeOptions => ({
+const getTheme = (isDarkmode: boolean | null): ThemeOptions => ({
   palette: {
-    mode: mode ? 'dark' : 'light',
-    ...(mode
+    mode: isDarkmode ? 'dark' : 'light',
+    ...(isDarkmode
       ? {
           primary: {
             light: green[700],
@@ -76,9 +76,9 @@ const getTheme = (mode: boolean | null): ThemeOptions => ({
 const useUserTheme = () => {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
   const hasDarkMode = useAppSelector((state) => state.ui.darkMode);
-  const darkMode = hasDarkMode === null ? prefersDarkMode : hasDarkMode;
+  const isDarkmode = hasDarkMode === null ? prefersDarkMode : hasDarkMode;
 
-  const theme = React.useMemo(() => createTheme(getTheme(darkMode)), [darkMode]);
+  const theme = React.useMemo(() => createTheme(getTheme(isDarkmode)), [isDarkmode]);
 
   return theme;
 };

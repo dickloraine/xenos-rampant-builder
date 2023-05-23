@@ -88,12 +88,12 @@ const PsychicPowers: React.FC<{ unit: Unit; onChange: (unit: Unit) => void }> = 
           input={<Input />}
           renderValue={() => ' '}
         >
-          {Object.keys(powersData).map((name) => (
+          {Object.entries(powersData).map(([name, power]) => (
             <MenuItem key={name} value={name} dense sx={{ maxWidth: 400 }}>
-              <Tooltip title={powersData[name].effect}>
+              <Tooltip title={power.effect}>
                 <ListItemText
                   primary={name}
-                  secondary={(inlineRules && powersData[name]?.short) || ''}
+                  secondary={(inlineRules && power?.short) || ''}
                   primaryTypographyProps={{
                     color:
                       unit.psiPowers && unit.psiPowers.indexOf(name) > -1
