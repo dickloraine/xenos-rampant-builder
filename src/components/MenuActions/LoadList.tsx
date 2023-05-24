@@ -1,12 +1,13 @@
 import SaveOutlinedIcon from '@mui/icons-material/SaveOutlined';
 import React, { useState } from 'react';
-import { useAppDispatch } from '../hooks/reduxHooks';
-import { showFeedback, toggleForceInputUpdate } from '../store/appStateSlice';
-import { rosterStore } from '../store/persistantStorage';
-import { setRoster } from '../store/rosterSlice';
-import { CompactRosterState } from '../store/types';
-import ListDialogMenu from './ListDialogMenu';
-import { unpackRoster } from './Roster';
+import { useAppDispatch } from '../../hooks/reduxHooks';
+import { showFeedback, toggleForceInputUpdate } from '../../store/appStateSlice';
+import { rosterStore } from '../../store/persistantStorage';
+import { setRoster } from '../../store/rosterSlice';
+import { CompactRosterState } from '../../store/types';
+import ListDialog from '../ListDialog';
+import { unpackRoster } from '../Roster';
+import MenuAction from './MenuAction';
 
 const LoadList: React.FC<{ onClose?: () => void; showText?: boolean }> = ({
   onClose,
@@ -31,14 +32,18 @@ const LoadList: React.FC<{ onClose?: () => void; showText?: boolean }> = ({
   };
 
   return (
-    <ListDialogMenu
+    <ListDialog
       action={loadList}
+      anchor={
+        <MenuAction
+          text={'Load List'}
+          icon={<SaveOutlinedIcon />}
+          showText={showText}
+        />
+      }
       onOpen={handleOpen}
       options={savedRosters}
       title="Choose List to load"
-      text="Load List"
-      icon={<SaveOutlinedIcon />}
-      showText={showText}
       onClose={onClose}
     />
   );

@@ -23,8 +23,8 @@ const ListName = () => {
           backgroundColor: 'transparent',
           color: 'text.primary',
           border: 0,
-          marginTop: '25px',
-          marginBottom: '25px',
+          marginTop: 3,
+          marginBottom: 3,
           width: '100%',
         }}
       />

@@ -1,10 +1,10 @@
 import RestorePageIcon from '@mui/icons-material/RestorePage';
-import { IconButton, Tooltip, Typography } from '@mui/material';
 import React from 'react';
-import { useAppDispatch } from '../hooks/reduxHooks';
-import { showFeedback, toggleForceInputUpdate } from '../store/appStateSlice';
-import { importCustomData } from '../store/dataSlice';
-import { rosterStore } from '../store/persistantStorage';
+import { useAppDispatch } from '../../hooks/reduxHooks';
+import { showFeedback, toggleForceInputUpdate } from '../../store/appStateSlice';
+import { importCustomData } from '../../store/dataSlice';
+import { rosterStore } from '../../store/persistantStorage';
+import MenuAction from './MenuAction';
 
 const Restore: React.FC<{ onClose?: () => void; showText?: boolean }> = ({
   showText,
@@ -49,22 +49,23 @@ const Restore: React.FC<{ onClose?: () => void; showText?: boolean }> = ({
     if (fileDialog.current) fileDialog.current.click();
   };
 
-  return <>
-    <Tooltip title="Backup">
-      <IconButton color="inherit" onClick={openFileDialog} size="large">
-        <RestorePageIcon />
-      </IconButton>
-    </Tooltip>
-    {showText && <Typography onClick={openFileDialog}>Restore</Typography>}
-    <input
-      type="file"
-      ref={fileDialog}
-      style={{ display: 'none' }}
-      id="restoreFile"
-      accept=".sav"
-      onChange={handleFileChosen}
-    />
-  </>;
+  return (
+    <MenuAction
+      text="Restore"
+      action={openFileDialog}
+      icon={<RestorePageIcon />}
+      showText={showText}
+    >
+      <input
+        type="file"
+        ref={fileDialog}
+        style={{ display: 'none' }}
+        id="restoreFile"
+        accept=".sav"
+        onChange={handleFileChosen}
+      />
+    </MenuAction>
+  );
 };
 
 export default React.memo(Restore);

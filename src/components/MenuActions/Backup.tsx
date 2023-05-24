@@ -1,10 +1,10 @@
 import BackupIcon from '@mui/icons-material/Backup';
-import { IconButton, Tooltip, Typography } from '@mui/material';
 import { saveAs } from 'file-saver';
 import React from 'react';
-import { useAppSelector } from '../hooks/reduxHooks';
-import { rosterStore } from '../store/persistantStorage';
-import { CustomData } from '../store/types';
+import { useAppSelector } from '../../hooks/reduxHooks';
+import { rosterStore } from '../../store/persistantStorage';
+import { CustomData } from '../../store/types';
+import MenuAction from './MenuAction';
 
 type BackupState = {
   rosters: { [name: string]: unknown };
@@ -40,14 +40,14 @@ const Backup: React.FC<{ showText: boolean; onClose?: () => void }> = ({
     if (onClose) onClose();
   };
 
-  return <>
-    <Tooltip title="Backup">
-      <IconButton color="inherit" onClick={backup} size="large">
-        <BackupIcon />
-      </IconButton>
-    </Tooltip>
-    {showText && <Typography onClick={backup}>Backup</Typography>}
-  </>;
+  return (
+    <MenuAction
+      text="Backup"
+      action={backup}
+      icon={<BackupIcon />}
+      showText={showText}
+    />
+  );
 };
 
 export default React.memo(Backup);

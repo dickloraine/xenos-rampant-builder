@@ -10,9 +10,9 @@ import {
 } from '@mui/material';
 import { useAppDispatch } from '../../hooks/reduxHooks';
 import { newRoster } from '../../store/rosterSlice';
-import InlineRules from '../InlineRules';
-import LoadList from '../LoadList';
-import SaveList from '../SaveList';
+import InlineRules from '../MenuActions/InlineRules';
+import LoadList from '../MenuActions/LoadList';
+import SaveList from '../MenuActions/SaveList';
 import SideMenu from '../SideMenu';
 import ToggleViewMode from './ToggleViewMode';
 import TotalPoints from './TotalPoints';

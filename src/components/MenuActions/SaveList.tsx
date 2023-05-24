@@ -1,10 +1,10 @@
 import SaveIcon from '@mui/icons-material/Save';
-import { IconButton, Tooltip, Typography } from '@mui/material';
 import React from 'react';
-import { useAppDispatch, useAppSelector } from '../hooks/reduxHooks';
-import { showFeedback } from '../store/appStateSlice';
-import { rosterStore } from '../store/persistantStorage';
-import { packRoster } from './Roster';
+import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
+import { showFeedback } from '../../store/appStateSlice';
+import { rosterStore } from '../../store/persistantStorage';
+import { packRoster } from '../Roster';
+import MenuAction from './MenuAction';
 
 const SaveList: React.FC<{ onClose?: () => void; showText?: boolean }> = ({
   onClose,
@@ -30,14 +30,14 @@ const SaveList: React.FC<{ onClose?: () => void; showText?: boolean }> = ({
       });
   };
 
-  return <>
-    <Tooltip title="Save List">
-      <IconButton color="inherit" aria-label="Save List" onClick={saveRoster} size="large">
-        <SaveIcon />
-      </IconButton>
-    </Tooltip>
-    {showText && <Typography onClick={saveRoster}>Save List</Typography>}
-  </>;
+  return (
+    <MenuAction
+      text="Save List"
+      action={saveRoster}
+      icon={<SaveIcon />}
+      showText={showText}
+    />
+  );
 };
 
 export default React.memo(SaveList);

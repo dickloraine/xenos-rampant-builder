@@ -10,7 +10,7 @@ import {
 import React from 'react';
 import useOpen from '../hooks/useOpen';
 
-const TextInputDialog: React.FC<{
+export type TextInputDialogProps = {
   anchor: JSX.Element;
   action: (text: string) => void;
   title?: string;
@@ -21,7 +21,9 @@ const TextInputDialog: React.FC<{
   margin?: 'none' | 'dense' | 'normal' | undefined;
   onClose?: () => void;
   onOpen?: () => void;
-}> = ({
+};
+
+const TextInputDialog = ({
   anchor,
   action,
   title = '',
@@ -32,7 +34,7 @@ const TextInputDialog: React.FC<{
   margin = 'dense',
   onClose,
   onOpen,
-}) => {
+}: TextInputDialogProps) => {
   const [open, handleOpen, handleClose] = useOpen(false, onOpen, onClose);
   const [value, setValue] = React.useState('');
 
@@ -47,34 +49,37 @@ const TextInputDialog: React.FC<{
     handleClose();
   };
 
-  return <>
-    <Box display="flex" alignItems="center" onClick={handleOpen}>
-      {anchor}
-    </Box>
-    <Dialog onClose={handleClose} open={open}>
-      <DialogTitle>{title}</DialogTitle>
-      <DialogContent>
-        <TextField
-          variant="standard"
-          autoFocus
-          margin={margin}
-          label={label}
-          type="text"
-          fullWidth
-          defaultValue={defaultValue || value}
-          onChange={(e) => setValue(e.target.value)}
-          onKeyPress={(e) => handleKeyPressed(e.key)} />
-      </DialogContent>
-      <DialogActions>
-        <Button onClick={handleClose} color="primary">
-          {cancelText}
-        </Button>
-        <Button onClick={handleAction} disabled={!value} color="primary">
-          {okayText}
-        </Button>
-      </DialogActions>
-    </Dialog>
-  </>;
+  return (
+    <>
+      <Box display="flex" alignItems="center" onClick={handleOpen}>
+        {anchor}
+      </Box>
+      <Dialog onClose={handleClose} open={open}>
+        <DialogTitle>{title}</DialogTitle>
+        <DialogContent>
+          <TextField
+            variant="standard"
+            autoFocus
+            margin={margin}
+            label={label}
+            type="text"
+            fullWidth
+            defaultValue={defaultValue || value}
+            onChange={(e) => setValue(e.target.value)}
+            onKeyPress={(e) => handleKeyPressed(e.key)}
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color="primary">
+            {cancelText}
+          </Button>
+          <Button onClick={handleAction} disabled={!value} color="primary">
+            {okayText}
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </>
+  );
 };
 
 export default TextInputDialog;

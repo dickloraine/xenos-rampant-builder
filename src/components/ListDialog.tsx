@@ -1,4 +1,12 @@
-import { Box, Dialog, DialogTitle, List, ListItem, ListItemIcon } from '@mui/material';
+import {
+  Box,
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  List,
+  ListItemButton,
+  ListItemIcon,
+} from '@mui/material';
 import React from 'react';
 import useOpen from '../hooks/useOpen';
 
@@ -29,14 +37,16 @@ const ListDialog: React.FC<{
       </Box>
       <Dialog onClose={handleClose} open={open}>
         <DialogTitle>{title}</DialogTitle>
-        <List>
-          {opts.map(([text, icon]) => (
-            <ListItem button onClick={() => handleOnClick(text)} key={text}>
-              {icon && <ListItemIcon>{icon}</ListItemIcon>}
-              {text}
-            </ListItem>
-          ))}
-        </List>
+        <DialogContent>
+          <List>
+            {opts.map(([text, icon]) => (
+              <ListItemButton onClick={() => handleOnClick(text)} key={text}>
+                {icon && <ListItemIcon>{icon}</ListItemIcon>}
+                {text}
+              </ListItemButton>
+            ))}
+          </List>
+        </DialogContent>
       </Dialog>
     </>
   );

@@ -1,9 +1,10 @@
 import DeleteIcon from '@mui/icons-material/Delete';
 import React, { useState } from 'react';
-import { useAppDispatch } from '../hooks/reduxHooks';
-import { showFeedback } from '../store/appStateSlice';
-import { rosterStore } from '../store/persistantStorage';
-import ListDialogMenu from './ListDialogMenu';
+import { useAppDispatch } from '../../hooks/reduxHooks';
+import { showFeedback } from '../../store/appStateSlice';
+import { rosterStore } from '../../store/persistantStorage';
+import ListDialog from '../ListDialog';
+import MenuAction from './MenuAction';
 
 const DeleteList: React.FC<{ onClose?: () => void; showText?: boolean }> = ({
   onClose,
@@ -20,14 +21,14 @@ const DeleteList: React.FC<{ onClose?: () => void; showText?: boolean }> = ({
   };
 
   return (
-    <ListDialogMenu
+    <ListDialog
       action={removeList}
+      anchor={
+        <MenuAction text={'Delete List'} icon={<DeleteIcon />} showText={showText} />
+      }
       onOpen={handleOpen}
       options={savedRosters}
       title="Choose List to delete"
-      text="Delete List"
-      icon={<DeleteIcon />}
-      showText={showText}
       onClose={onClose}
     />
   );

@@ -6,24 +6,25 @@ import {
   Dialog,
   DialogContent,
   DialogTitle,
-  IconButton,
-  Tooltip,
   Typography,
 } from '@mui/material';
 import React from 'react';
-import useOpen from '../hooks/useOpen';
+import useOpen from '../../hooks/useOpen';
+import MenuAction from './MenuAction';
 
-const About: React.FC<{ onClose?: () => void }> = ({ onClose = undefined }) => {
+const About: React.FC<{ onClose?: () => void; showText?: boolean }> = ({
+  onClose = undefined,
+  showText = true,
+}) => {
   const [open, handleOpen, handleClose] = useOpen(false, undefined, onClose);
 
   return (
-    <>
-      <Tooltip title="About">
-        <IconButton color="inherit" onClick={handleOpen} size="large">
-          <InfoIcon />
-        </IconButton>
-      </Tooltip>
-      {<Typography onClick={handleOpen}>About</Typography>}
+    <MenuAction
+      text="About"
+      action={handleOpen}
+      icon={<InfoIcon />}
+      showText={showText}
+    >
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle sx={{ textAlign: 'center' }}>About</DialogTitle>
         <DialogContent>
@@ -44,7 +45,7 @@ const About: React.FC<{ onClose?: () => void }> = ({ onClose = undefined }) => {
           </Box>
         </DialogContent>
       </Dialog>
-    </>
+    </MenuAction>
   );
 };
 

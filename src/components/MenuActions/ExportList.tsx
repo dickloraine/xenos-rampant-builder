@@ -3,12 +3,13 @@ import FormatAlignJustifyIcon from '@mui/icons-material/FormatAlignJustify';
 import FormatAlignLeftIcon from '@mui/icons-material/FormatAlignLeft';
 import ShareIcon from '@mui/icons-material/Share';
 import React from 'react';
-import { useAppDispatch, useAppSelector } from '../hooks/reduxHooks';
-import { showFeedback } from '../store/appStateSlice';
-import { getTotalPoints } from '../store/rosterSlice';
-import copyToClipboard from '../utils/copyToClipboard';
-import ListDialogMenu from './ListDialogMenu';
-import { packRoster } from './Roster';
+import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
+import { showFeedback } from '../../store/appStateSlice';
+import { getTotalPoints } from '../../store/rosterSlice';
+import copyToClipboard from '../../utils/copyToClipboard';
+import ListDialog from '../ListDialog';
+import { packRoster } from '../Roster';
+import MenuAction from './MenuAction';
 
 const ExportList: React.FC<{ onClose?: () => void; showText?: boolean }> = ({
   onClose,
@@ -84,13 +85,11 @@ const ExportList: React.FC<{ onClose?: () => void; showText?: boolean }> = ({
   };
 
   return (
-    <ListDialogMenu
+    <ListDialog
       action={exportList}
+      anchor={<MenuAction text={'Export'} icon={<ShareIcon />} showText={showText} />}
       options={options}
       title="Chose how to export"
-      text="Export"
-      icon={<ShareIcon />}
-      showText={showText}
       onClose={onClose}
     />
   );
