@@ -45,10 +45,8 @@ function CustomizeList<T extends CustomDataElement>(props: CustomizeListProps<T>
     if (data.name !== originalName) {
       removeFunc(originalName);
     }
-    if (validateName(data.name)) {
-      addFunc(data);
-      handleClose();
-    }
+    addFunc(data);
+    handleClose();
   };
 
   const handleEdit = (name: string) => {
