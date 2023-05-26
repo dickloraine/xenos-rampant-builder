@@ -67,7 +67,7 @@ function UnitsForm(props: CustomFormProps<DataUnit>) {
         <DialogTitle>Unit</DialogTitle>
         <DialogContent>
           {/* --------------------------------- Name -------------------------------- */}
-          <TextFieldElement name="name" label="Name" type="text" fullWidth />
+          <TextFieldElement name="name" label="Name" type="text" required fullWidth />
           {/* -------------------------------- Points ------------------------------- */}
           <SelectElement
             name="points"

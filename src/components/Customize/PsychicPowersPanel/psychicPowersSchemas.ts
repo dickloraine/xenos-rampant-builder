@@ -5,16 +5,16 @@ import validName from '../common/validName';
 export const psychicPowerSchema = yup.object<PsychicPower>({
   name: validName,
   difficulty: yup.number().integer().min(2).max(12),
-  target: yup.string(),
-  duration: yup.string(),
-  effect: yup.string(),
+  target: yup.string().required(),
+  duration: yup.string().required(),
+  effect: yup.string().required(),
   short: yup.string(),
 });
 
 export const emptyPsychicPower: PsychicPower = {
-  name: 'Name',
+  name: '',
   difficulty: 7,
-  target: 'Target',
-  duration: 'Duration',
-  effect: 'Effekt',
+  target: '',
+  duration: '',
+  effect: '',
 };

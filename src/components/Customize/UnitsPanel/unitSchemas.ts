@@ -62,7 +62,7 @@ export const emptyOption: UnitOption = {
 };
 
 export const emptyUnit: DataUnit = {
-  name: 'Name',
+  name: '',
   type: 'foot',
   points: 2,
   stats: {

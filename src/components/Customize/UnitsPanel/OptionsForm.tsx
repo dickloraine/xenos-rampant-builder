@@ -61,7 +61,7 @@ const OptionsForm: React.FC<{
       >
         <DialogContent>
           {/* --------------------------------- Name -------------------------------- */}
-          <TextFieldElement name="name" label="Name" type="text" fullWidth />
+          <TextFieldElement name="name" label="Name" type="text" required fullWidth />
           {/* -------------------------------- Points ------------------------------- */}
           <SelectElement
             name="points"
@@ -75,6 +75,7 @@ const OptionsForm: React.FC<{
             name="description"
             label="Description"
             type="text"
+            required
             fullWidth
             multiline
           />

@@ -33,6 +33,7 @@ function XenosRulesForm(props: CustomFormProps<XenosRule>) {
             label="Name"
             type="text"
             margin="normal"
+            required
             fullWidth
           />
           <SelectElement
@@ -47,6 +48,7 @@ function XenosRulesForm(props: CustomFormProps<XenosRule>) {
             name="description"
             label="Description"
             type="text"
+            required
             margin="normal"
             fullWidth
             multiline

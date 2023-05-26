@@ -14,8 +14,8 @@ export const xenosRuleSchema = yup.object<XenosRule>({
 });
 
 export const emptyXenosRule: XenosRule = {
-  name: 'Name',
+  name: '',
   points: 0,
   exclude_units: [],
-  description: 'Description',
+  description: '',
 };

@@ -21,6 +21,7 @@ function RulesForm(props: CustomFormProps<Rule>) {
             name="name"
             label="Name"
             type="text"
+            required
             margin="normal"
             fullWidth
           />
@@ -28,6 +29,7 @@ function RulesForm(props: CustomFormProps<Rule>) {
             name="description"
             label="Description"
             type="text"
+            required
             margin="normal"
             fullWidth
             multiline

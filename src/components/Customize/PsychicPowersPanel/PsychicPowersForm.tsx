@@ -26,6 +26,7 @@ function PsychicPowersForm(props: CustomFormProps<PsychicPower>) {
             name="name"
             label="Name"
             type="text"
+            required
             margin="normal"
             fullWidth
           />
@@ -33,6 +34,7 @@ function PsychicPowersForm(props: CustomFormProps<PsychicPower>) {
             name="difficulty"
             label="Difficulty"
             type="number"
+            required
             margin="normal"
             fullWidth
             options={range(2, 12)}
@@ -41,6 +43,7 @@ function PsychicPowersForm(props: CustomFormProps<PsychicPower>) {
             name="target"
             label="Target"
             type="text"
+            required
             margin="normal"
             fullWidth
           />
@@ -48,6 +51,7 @@ function PsychicPowersForm(props: CustomFormProps<PsychicPower>) {
             name="duration"
             label="Duration"
             type="text"
+            required
             margin="normal"
             fullWidth
           />
@@ -55,6 +59,7 @@ function PsychicPowersForm(props: CustomFormProps<PsychicPower>) {
             name="effect"
             label="Effekt"
             type="text"
+            required
             margin="normal"
             fullWidth
             multiline

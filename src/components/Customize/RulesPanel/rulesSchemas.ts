@@ -4,11 +4,11 @@ import validName from '../common/validName';
 
 export const ruleSchema = yup.object<Rule>({
   name: validName,
-  description: yup.string(),
+  description: yup.string().required(),
   short: yup.string(),
 });
 
 export const emptyRule: Rule = {
-  name: 'Name',
-  description: 'Description',
+  name: '',
+  description: '',
 };
