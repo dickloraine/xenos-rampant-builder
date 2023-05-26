@@ -1,6 +1,7 @@
 import * as yup from 'yup';
 import { DataUnit, UnitOption, UnitStats } from '../../../store/types';
 import { dynamicSchemaObject } from '../../../utils/dynamicSchemaObject';
+import validName from '../common/validName';
 
 export const unitSetStatsSchema = yup.object<UnitStats>({
   attack: yup.number().integer().min(0).max(12),
@@ -44,7 +45,7 @@ export const unitOptionSchema = yup.object<UnitOption>({
 });
 
 export const dataUnitSchema = yup.object<DataUnit>({
-  name: yup.string().min(1).required(),
+  name: validName,
   type: yup.string(),
   points: yup.number().integer().min(1).required(),
   stats: unitSetStatsSchema,

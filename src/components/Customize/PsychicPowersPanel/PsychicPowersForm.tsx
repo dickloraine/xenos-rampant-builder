@@ -15,7 +15,7 @@ import range from '../../../utils/range';
 import { CustomFormProps } from '../CustomizePanel/CustomizeList';
 
 function PsychicPowersForm(props: CustomFormProps<PsychicPower>) {
-  const { formContext, open, handleClose, handleAction, validateName } = props;
+  const { formContext, open, handleClose, handleAction } = props;
 
   return (
     <Dialog open={open}>
@@ -28,7 +28,6 @@ function PsychicPowersForm(props: CustomFormProps<PsychicPower>) {
             type="text"
             margin="normal"
             fullWidth
-            customError={(name) => !validateName(name)}
           />
           <SelectElement
             name="difficulty"

@@ -10,7 +10,7 @@ import { Rule } from '../../../store/types';
 import { CustomFormProps } from '../CustomizePanel/CustomizeList';
 
 function RulesForm(props: CustomFormProps<Rule>) {
-  const { formContext, open, handleClose, handleAction, validateName } = props;
+  const { formContext, open, handleClose, handleAction } = props;
 
   return (
     <Dialog open={open}>
@@ -23,7 +23,6 @@ function RulesForm(props: CustomFormProps<Rule>) {
             type="text"
             margin="normal"
             fullWidth
-            customError={(name) => !validateName(name)}
           />
           <TextFieldElement
             name="description"

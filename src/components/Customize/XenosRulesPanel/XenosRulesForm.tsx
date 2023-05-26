@@ -19,7 +19,7 @@ import { CustomFormProps } from '../CustomizePanel/CustomizeList';
 import StatManipulation from '../common/StatManipulation';
 
 function XenosRulesForm(props: CustomFormProps<XenosRule>) {
-  const { formContext, open, handleClose, handleAction, validateName } = props;
+  const { formContext, open, handleClose, handleAction } = props;
   const units = useAppSelector((state: RootState) => selectUnitNames(state));
   const { watch, setValue } = formContext;
 
@@ -34,7 +34,6 @@ function XenosRulesForm(props: CustomFormProps<XenosRule>) {
             type="text"
             margin="normal"
             fullWidth
-            customError={(name) => !validateName(name)}
           />
           <SelectElement
             name="points"

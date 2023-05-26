@@ -32,7 +32,7 @@ const activations = [
 ];
 
 function UnitsForm(props: CustomFormProps<DataUnit>) {
-  const { formContext, open, handleClose, handleAction, validateName } = props;
+  const { formContext, open, handleClose, handleAction } = props;
   const { watch, setValue } = formContext;
   const rules = useAppSelector((state: RootState) => state.data.rulesData);
   const [optionsOpen, handleOpenOptions, handleCloseOptions] = useOpen();
@@ -67,13 +67,7 @@ function UnitsForm(props: CustomFormProps<DataUnit>) {
         <DialogTitle>Unit</DialogTitle>
         <DialogContent>
           {/* --------------------------------- Name -------------------------------- */}
-          <TextFieldElement
-            name="name"
-            label="Name"
-            type="text"
-            fullWidth
-            customError={(name) => !validateName(name)}
-          />
+          <TextFieldElement name="name" label="Name" type="text" fullWidth />
           {/* -------------------------------- Points ------------------------------- */}
           <SelectElement
             name="points"

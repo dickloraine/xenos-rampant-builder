@@ -5,8 +5,6 @@ export type TextFieldElementProps = Omit<TextFieldProps, 'name'> & {
   validation?: ControllerProps['rules'];
   name: string;
   parseError?: (error: FieldError) => string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  customError?: (value: any) => boolean;
 };
 
 export default function TextFieldElement({
@@ -15,7 +13,6 @@ export default function TextFieldElement({
   type,
   required,
   name,
-  customError,
   ...rest
 }: TextFieldElementProps): JSX.Element {
   if (required) {
@@ -46,9 +43,7 @@ export default function TextFieldElement({
           onBlur={onBlur}
           required={required}
           type={type}
-          error={
-            invalid || (typeof customError === 'function' ? customError(value) : false)
-          }
+          error={invalid}
           helperText={
             error
               ? typeof parseError === 'function'

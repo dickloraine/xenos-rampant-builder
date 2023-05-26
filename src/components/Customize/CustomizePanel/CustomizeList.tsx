@@ -12,7 +12,6 @@ export interface CustomFormProps<T extends CustomDataElement> {
   open: boolean;
   handleClose: () => void;
   handleAction: (data: T) => void;
-  validateName: (name: string) => boolean;
 }
 
 export interface CustomizeListProps<T extends CustomDataElement> {
@@ -29,16 +28,18 @@ function CustomizeList<T extends CustomDataElement>(props: CustomizeListProps<T>
   const { data, CustomForm, schema, emptyState, removeFunc, addFunc } = props;
   const [originalName, setOriginalName] = useState('');
   const [open, handleOpen, handleClose] = useOpen();
-  const formContext = useForm<T>({
-    resolver: yupResolver(schema),
-  });
-  const { reset } = formContext;
 
   const validateName = (name: string): boolean =>
     name !== '' &&
     Object.keys(data).every(
       (dataName) => dataName === originalName || dataName !== name
     );
+
+  const formContext = useForm<T>({
+    resolver: yupResolver(schema),
+    context: { validateName: validateName },
+  });
+  const { reset } = formContext;
 
   const handleAction = (data: T) => {
     if (data.name !== originalName) {
@@ -75,7 +76,6 @@ function CustomizeList<T extends CustomDataElement>(props: CustomizeListProps<T>
         open={open}
         handleClose={handleClose}
         handleAction={handleAction}
-        validateName={validateName}
       />
     </>
   );
