@@ -6,8 +6,9 @@ import {
   DialogContent,
   DialogTitle,
 } from '@mui/material';
+import produce from 'immer';
 import React, { BaseSyntheticEvent, useEffect } from 'react';
-import { useForm } from 'react-hook-form';
+import { UseFormSetValue, UseFormWatch, useForm } from 'react-hook-form';
 import { useAppSelector } from '../../../hooks/reduxHooks';
 import {
   FormContainer,
@@ -15,7 +16,7 @@ import {
   SelectElement,
   TextFieldElement,
 } from '../../../libs/react-hook-form-mui';
-import { RootState, UnitOption } from '../../../store/types';
+import { DataUnit, RootState, UnitOption } from '../../../store/types';
 import range from '../../../utils/range';
 import StatManipulation from '../common/StatManipulation';
 import { unitOptionSchema } from './unitSchemas';
@@ -24,13 +25,19 @@ const OptionsForm: React.FC<{
   open: boolean;
   handleClose: () => void;
   option: UnitOption;
-  rules: string[];
-  onSubmit: (option: UnitOption) => void;
-}> = ({ open, handleClose, option, rules, onSubmit }) => {
+  watchUnit: UseFormWatch<DataUnit>;
+  setValueUnit: UseFormSetValue<DataUnit>;
+}> = ({ open, handleClose, option, watchUnit, setValueUnit }) => {
   const specialRules = useAppSelector((state: RootState) => state.data.rulesData);
+
+  const validateName = (name: string): boolean =>
+    Object.keys(watchUnit('options')).every(
+      (dataName) => dataName === option.name || dataName !== name
+    );
 
   const formContext = useForm<UnitOption>({
     resolver: yupResolver(unitOptionSchema),
+    context: { validateName: validateName },
     defaultValues: { ...option },
   });
   const { reset, watch, setValue, handleSubmit } = formContext;
@@ -47,8 +54,16 @@ const OptionsForm: React.FC<{
     handleSubmit(handleAction)(e);
   };
 
-  const handleAction = (option: UnitOption) => {
-    onSubmit(option);
+  const handleAction = (newOption: UnitOption) => {
+    if (newOption.name !== option.name) {
+      setValueUnit(
+        'options',
+        produce(watchUnit('options'), (draft) => {
+          delete draft[option.name];
+        })
+      );
+    }
+    setValueUnit('options', { ...watchUnit('options'), [newOption.name]: newOption });
     handleClose();
   };
 
@@ -92,7 +107,7 @@ const OptionsForm: React.FC<{
             name="remove"
             label="Remove Rules"
             fullWidth
-            menuItems={[...rules]}
+            menuItems={[...watchUnit('rules')]}
             sx={{ mb: 3 }}
           />
           {/* ------------------------------ Add Rules ------------------------------ */}

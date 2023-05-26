@@ -32,7 +32,7 @@ export const unitAdjustStatsSchema = yup.object<UnitStats>({
 });
 
 export const unitOptionSchema = yup.object<UnitOption>({
-  name: yup.string().min(1).required(),
+  name: validName,
   points: yup.number().integer().required(),
   description: yup.string().required(),
   short: yup.string(),

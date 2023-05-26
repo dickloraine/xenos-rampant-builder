@@ -38,10 +38,6 @@ function UnitsForm(props: CustomFormProps<DataUnit>) {
   const [optionsOpen, handleOpenOptions, handleCloseOptions] = useOpen();
   const [currentOption, setCurrentOption] = useState<UnitOption>({ ...emptyOption });
 
-  const handleOptionsSubmit = (option: UnitOption) => {
-    setValue('options', { ...watch('options'), [option.name]: option });
-  };
-
   const handleOptionEdit = (name: string) => {
     setCurrentOption(watch('options')[name]);
     handleOpenOptions();
@@ -116,8 +112,8 @@ function UnitsForm(props: CustomFormProps<DataUnit>) {
             open={optionsOpen}
             handleClose={handleCloseOptions}
             option={currentOption}
-            rules={watch('rules')}
-            onSubmit={handleOptionsSubmit}
+            watchUnit={watch}
+            setValueUnit={setValue}
           />
         </DialogContent>
         <DialogActions>

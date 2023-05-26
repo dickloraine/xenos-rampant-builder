@@ -30,7 +30,6 @@ function CustomizeList<T extends CustomDataElement>(props: CustomizeListProps<T>
   const [open, handleOpen, handleClose] = useOpen();
 
   const validateName = (name: string): boolean =>
-    name !== '' &&
     Object.keys(data).every(
       (dataName) => dataName === originalName || dataName !== name
     );
