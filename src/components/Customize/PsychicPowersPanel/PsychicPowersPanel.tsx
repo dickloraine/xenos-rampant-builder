@@ -2,7 +2,7 @@ import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks';
 import { addSpell, removeSpell } from '../../../store/dataSlice';
 import { PsychicPower, RootState } from '../../../store/types';
-import { PanelProps } from '../CustomizeMenu/CustomizeMenu';
+import { PanelProps } from '../CustomizeMenu';
 import CustomizePanel from '../CustomizePanel';
 import PsychicPowersForm from './PsychicPowersForm';
 import { emptyPsychicPower, psychicPowerSchema } from './psychicPowersSchemas';

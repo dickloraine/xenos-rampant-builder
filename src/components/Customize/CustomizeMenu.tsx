@@ -1,16 +1,28 @@
 import GetAppIcon from '@mui/icons-material/GetApp';
 import ShareIcon from '@mui/icons-material/Share';
-import { Box, Button, ButtonGroup, DialogTitle } from '@mui/material';
+import { Box, Button, ButtonGroup, Dialog, DialogTitle } from '@mui/material';
 import React, { useCallback, useState } from 'react';
-import useOpen from '../../../hooks/useOpen';
-import ExportCustomData from '../ExportCustomData';
-import ImportCustomData from '../ImportCustomData';
-import PsychicPowersPanel from '../PsychicPowersPanel/PsychicPowersPanel';
-import RulesPanel from '../RulesPanel/RulesPanel';
-import UnitsPanel from '../UnitsPanel/UnitsPanel';
-import XenosRulesPanel from '../XenosRulesPanel/XenosRulesPanel';
+import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
+import useOpen from '../../hooks/useOpen';
+import { setCustomizeMode } from '../../store/appStateSlice';
+import { RootState } from '../../store/types';
+import ExportCustomData from './ExportCustomData';
+import ImportCustomData from './ImportCustomData';
+import PsychicPowersPanel from './PsychicPowersPanel/PsychicPowersPanel';
+import RulesPanel from './RulesPanel/RulesPanel';
+import UnitsPanel from './UnitsPanel/UnitsPanel';
+import XenosRulesPanel from './XenosRulesPanel/XenosRulesPanel';
 
-const CustomizeMenuContent = () => {
+export interface PanelProps {
+  expanded: string;
+  handleChange: (
+    name: string
+  ) => (event: React.ChangeEvent<object>, isExpanded: boolean) => void;
+}
+
+const CustomizeMenu = () => {
+  const open = useAppSelector((state: RootState) => state.appState.customizeMode);
+  const dispatch = useAppDispatch();
   const [expanded, setExpanded] = useState<string>('');
   const [openImport, handleOpenImport, handleCloseImport] = useOpen();
   const [openExport, handleOpenExport, handleCloseExport] = useOpen();
@@ -23,7 +35,7 @@ const CustomizeMenuContent = () => {
   );
 
   return (
-    <>
+    <Dialog open={open} onClose={() => dispatch(setCustomizeMode(false))}>
       <DialogTitle>Customize</DialogTitle>
       <UnitsPanel expanded={expanded} handleChange={handleChange} />
       <XenosRulesPanel expanded={expanded} handleChange={handleChange} />
@@ -49,8 +61,8 @@ const CustomizeMenuContent = () => {
       </Box>
       <ImportCustomData open={openImport} handleClose={handleCloseImport} />
       <ExportCustomData open={openExport} handleClose={handleCloseExport} />
-    </>
+    </Dialog>
   );
 };
 
-export default React.memo(CustomizeMenuContent);
+export default React.memo(CustomizeMenu);
