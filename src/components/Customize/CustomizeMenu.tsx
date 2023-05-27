@@ -1,6 +1,13 @@
 import GetAppIcon from '@mui/icons-material/GetApp';
 import ShareIcon from '@mui/icons-material/Share';
-import { Box, Button, ButtonGroup, Dialog, DialogTitle } from '@mui/material';
+import {
+  Button,
+  ButtonGroup,
+  Container,
+  Dialog,
+  DialogContent,
+  DialogTitle,
+} from '@mui/material';
 import React, { useCallback, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
 import useOpen from '../../hooks/useOpen';
@@ -37,28 +44,30 @@ const CustomizeMenu = () => {
   return (
     <Dialog open={open} onClose={() => dispatch(setCustomizeMode(false))}>
       <DialogTitle>Customize</DialogTitle>
-      <UnitsPanel expanded={expanded} handleChange={handleChange} />
-      <XenosRulesPanel expanded={expanded} handleChange={handleChange} />
-      <RulesPanel expanded={expanded} handleChange={handleChange} />
-      <PsychicPowersPanel expanded={expanded} handleChange={handleChange} />
-      <Box m={2} mx="auto">
-        <ButtonGroup color="primary" variant="outlined">
-          <Button
-            aria-label="Import custom data"
-            startIcon={<GetAppIcon />}
-            onClick={() => handleOpenImport()}
-          >
-            Import
-          </Button>
-          <Button
-            aria-label="Export custom data"
-            startIcon={<ShareIcon />}
-            onClick={() => handleOpenExport()}
-          >
-            Export
-          </Button>
-        </ButtonGroup>
-      </Box>
+      <DialogContent>
+        <UnitsPanel expanded={expanded} handleChange={handleChange} />
+        <XenosRulesPanel expanded={expanded} handleChange={handleChange} />
+        <RulesPanel expanded={expanded} handleChange={handleChange} />
+        <PsychicPowersPanel expanded={expanded} handleChange={handleChange} />
+        <Container sx={{ mt: 3 }}>
+          <ButtonGroup color="primary" variant="outlined">
+            <Button
+              aria-label="Import custom data"
+              startIcon={<GetAppIcon />}
+              onClick={() => handleOpenImport()}
+            >
+              Import
+            </Button>
+            <Button
+              aria-label="Export custom data"
+              startIcon={<ShareIcon />}
+              onClick={() => handleOpenExport()}
+            >
+              Export
+            </Button>
+          </ButtonGroup>
+        </Container>
+      </DialogContent>
       <ImportCustomData open={openImport} handleClose={handleCloseImport} />
       <ExportCustomData open={openExport} handleClose={handleCloseExport} />
     </Dialog>
