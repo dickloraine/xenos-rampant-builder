@@ -7,10 +7,8 @@ import {
   InputLabel,
 } from '@mui/material';
 import produce from 'immer';
-import { useState } from 'react';
 // import { FormContainer, MultiSelectElement } from 'react-hook-form-mui';
 import { useAppSelector } from '../../../hooks/reduxHooks';
-import useOpen from '../../../hooks/useOpen';
 import {
   FormContainer,
   MultiSelectElement,
@@ -19,11 +17,10 @@ import {
 } from '../../../libs/react-hook-form-mui';
 import { DataUnit, RootState, UnitOption } from '../../../store/types';
 import range from '../../../utils/range';
-import { ListWithItemActions } from '../../ListWithItemActions';
-import { CustomFormProps } from '../CustomizePanel/CustomizeList';
+import useCustomizeForm, { CustomFormProps } from '../common/useCutomizeForm';
 import OptionsForm from './OptionsForm';
 import UnitsFormStats from './UnitsFormStats';
-import { emptyOption } from './unitSchemas';
+import { emptyOption, unitOptionSchema } from './unitSchemas';
 
 const activations = [
   { id: 'attack', title: 'Attack' },
@@ -35,15 +32,8 @@ function UnitsForm(props: CustomFormProps<DataUnit>) {
   const { formContext, open, handleClose, handleAction } = props;
   const { watch, setValue } = formContext;
   const rules = useAppSelector((state: RootState) => state.data.rulesData);
-  const [optionsOpen, handleOpenOptions, handleCloseOptions] = useOpen();
-  const [currentOption, setCurrentOption] = useState<UnitOption>({ ...emptyOption });
 
-  const handleOptionEdit = (name: string) => {
-    setCurrentOption(watch('options')[name]);
-    handleOpenOptions();
-  };
-
-  const handleOptionDelete = (name: string) => {
+  const deleteOption = (name: string) => {
     setValue(
       'options',
       produce(watch('options'), (draft) => {
@@ -52,10 +42,16 @@ function UnitsForm(props: CustomFormProps<DataUnit>) {
     );
   };
 
-  const handleOptionAdd = () => {
-    setCurrentOption(emptyOption);
-    handleOpenOptions();
-  };
+  const addOption = (newOption: UnitOption) =>
+    setValue('options', { ...watch('options'), [newOption.name]: newOption });
+
+  const { ElementsList, ...optionsFormProps } = useCustomizeForm<UnitOption>(
+    watch('options'),
+    unitOptionSchema,
+    emptyOption,
+    deleteOption,
+    addOption
+  );
 
   return (
     <Dialog open={open}>
@@ -102,19 +98,8 @@ function UnitsForm(props: CustomFormProps<DataUnit>) {
           />
           {/* ------------------------------- Options ------------------------------- */}
           <InputLabel id="options-label">Options</InputLabel>
-          <ListWithItemActions
-            data={watch('options')}
-            handleClickActionOne={handleOptionEdit}
-            handleClickActionTwo={handleOptionDelete}
-            handleClickSpecialAction={handleOptionAdd}
-          />
-          <OptionsForm
-            open={optionsOpen}
-            handleClose={handleCloseOptions}
-            option={currentOption}
-            watchUnit={watch}
-            setValueUnit={setValue}
-          />
+          <ElementsList />
+          <OptionsForm {...optionsFormProps} rules={watch('rules')} />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">

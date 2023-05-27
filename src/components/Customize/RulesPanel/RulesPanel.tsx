@@ -4,7 +4,7 @@ import { showFeedback } from '../../../store/appStateSlice';
 import { addRule, removeRule } from '../../../store/dataSlice';
 import { RootState, Rule } from '../../../store/types';
 import { PanelProps } from '../CustomizeMenu/CustomizeMenu';
-import CustomizePanel from '../CustomizePanel/CustomizePanel';
+import CustomizePanel from '../CustomizePanel';
 import RulesForm from './RulesForm';
 import { emptyRule, ruleSchema } from './rulesSchemas';
 

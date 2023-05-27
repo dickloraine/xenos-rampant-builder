@@ -4,7 +4,7 @@ import { showFeedback } from '../../../store/appStateSlice';
 import { addXenosRule, removeXenosRule } from '../../../store/dataSlice';
 import { RootState, XenosRule } from '../../../store/types';
 import { PanelProps } from '../CustomizeMenu/CustomizeMenu';
-import CustomizePanel from '../CustomizePanel/CustomizePanel';
+import CustomizePanel from '../CustomizePanel';
 import XenosRulesForm from './XenosRulesForm';
 import { emptyXenosRule, xenosRuleSchema } from './xenosRulesSchemas';
 

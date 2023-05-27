@@ -6,17 +6,33 @@ import {
   Typography,
 } from '@mui/material';
 import React from 'react';
-import { CustomDataElement } from '../../../store/types';
-import CustomizeList, { CustomizeListProps } from './CustomizeList';
+import { UseFormReturn } from 'react-hook-form';
+import * as yup from 'yup';
+import { CustomDataElement } from '../../store/types';
+import useCustomizeForm from './common/useCutomizeForm';
 
-interface CustomizePanelProps<T extends CustomDataElement>
-  extends CustomizeListProps<T> {
+interface CustomizePanelProps<T extends CustomDataElement> {
   name: string;
   id: string;
   expanded: string;
   handleChange: (
     name: string
   ) => (event: React.ChangeEvent<object>, isExpanded: boolean) => void;
+  data: { [name: string]: T };
+  CustomForm: React.FC<CustomFormProps<T>>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  schema: yup.ObjectSchema<any>;
+  emptyState: T;
+  removeFunc: (name: string) => void;
+  addFunc: (newState: T) => void;
+}
+
+export interface CustomFormProps<T extends CustomDataElement> {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  formContext: UseFormReturn<T, any>;
+  open: boolean;
+  handleClose: () => void;
+  handleAction: (data: T) => void;
 }
 
 function CustomizePanel<T extends CustomDataElement>(props: CustomizePanelProps<T>) {
@@ -33,6 +49,14 @@ function CustomizePanel<T extends CustomDataElement>(props: CustomizePanelProps<
     addFunc,
   } = props;
 
+  const { ElementsList, ...formProps } = useCustomizeForm<T>(
+    data,
+    schema,
+    emptyState,
+    removeFunc,
+    addFunc
+  );
+
   return (
     <Accordion expanded={expanded === name} onChange={handleChange(name)}>
       <AccordionSummary
@@ -43,14 +67,8 @@ function CustomizePanel<T extends CustomDataElement>(props: CustomizePanelProps<
         <Typography>Manage {name}</Typography>
       </AccordionSummary>
       <AccordionDetails>
-        <CustomizeList<T>
-          data={data}
-          CustomForm={CustomForm}
-          schema={schema}
-          emptyState={emptyState}
-          removeFunc={removeFunc}
-          addFunc={addFunc}
-        />
+        <ElementsList />
+        <CustomForm {...formProps} />
       </AccordionDetails>
     </Accordion>
   );

@@ -1,4 +1,3 @@
-import { yupResolver } from '@hookform/resolvers/yup';
 import {
   Button,
   Dialog,
@@ -6,9 +5,8 @@ import {
   DialogContent,
   DialogTitle,
 } from '@mui/material';
-import produce from 'immer';
-import React, { BaseSyntheticEvent, useEffect } from 'react';
-import { UseFormSetValue, UseFormWatch, useForm } from 'react-hook-form';
+import React, { BaseSyntheticEvent } from 'react';
+import { UseFormReturn } from 'react-hook-form';
 import { useAppSelector } from '../../../hooks/reduxHooks';
 import {
   FormContainer,
@@ -16,55 +14,25 @@ import {
   SelectElement,
   TextFieldElement,
 } from '../../../libs/react-hook-form-mui';
-import { DataUnit, RootState, UnitOption } from '../../../store/types';
+import { RootState, UnitOption } from '../../../store/types';
 import range from '../../../utils/range';
 import StatManipulation from '../common/StatManipulation';
-import { unitOptionSchema } from './unitSchemas';
 
 const OptionsForm: React.FC<{
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  formContext: UseFormReturn<UnitOption, any>;
   open: boolean;
   handleClose: () => void;
-  option: UnitOption;
-  watchUnit: UseFormWatch<DataUnit>;
-  setValueUnit: UseFormSetValue<DataUnit>;
-}> = ({ open, handleClose, option, watchUnit, setValueUnit }) => {
+  handleAction: (newState: UnitOption) => void;
+  rules: string[];
+}> = ({ formContext, open, handleClose, handleAction, rules }) => {
   const specialRules = useAppSelector((state: RootState) => state.data.rulesData);
-
-  const validateName = (name: string): boolean =>
-    Object.keys(watchUnit('options')).every(
-      (dataName) => dataName === option.name || dataName !== name
-    );
-
-  const formContext = useForm<UnitOption>({
-    resolver: yupResolver(unitOptionSchema),
-    context: { validateName: validateName },
-    defaultValues: { ...option },
-  });
-  const { reset, watch, setValue, handleSubmit } = formContext;
-
-  useEffect(() => {
-    if (open) {
-      reset({ ...option });
-    }
-  }, [reset, open, option]);
+  const { handleSubmit, watch, setValue } = formContext;
 
   const handleSubmitWithoutPropagation = (e: BaseSyntheticEvent) => {
     e.preventDefault();
     e.stopPropagation();
     handleSubmit(handleAction)(e);
-  };
-
-  const handleAction = (newOption: UnitOption) => {
-    if (newOption.name !== option.name) {
-      setValueUnit(
-        'options',
-        produce(watchUnit('options'), (draft) => {
-          delete draft[option.name];
-        })
-      );
-    }
-    setValueUnit('options', { ...watchUnit('options'), [newOption.name]: newOption });
-    handleClose();
   };
 
   return (
@@ -107,7 +75,7 @@ const OptionsForm: React.FC<{
             name="remove"
             label="Remove Rules"
             fullWidth
-            menuItems={[...watchUnit('rules')]}
+            menuItems={[...rules]}
             sx={{ mb: 3 }}
           />
           {/* ------------------------------ Add Rules ------------------------------ */}

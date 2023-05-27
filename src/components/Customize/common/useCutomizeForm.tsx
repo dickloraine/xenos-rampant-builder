@@ -1,12 +1,12 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { UseFormReturn, useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import useOpen from '../../../hooks/useOpen';
-import { CustomDataElement } from '../../../store/types';
+import { CustomDataElement, UnitOption } from '../../../store/types';
 import { ListWithItemActions } from '../../ListWithItemActions';
 
-export interface CustomFormProps<T extends CustomDataElement> {
+export interface CustomFormProps<T extends CustomDataElement | UnitOption> {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   formContext: UseFormReturn<T, any>;
   open: boolean;
@@ -14,18 +14,14 @@ export interface CustomFormProps<T extends CustomDataElement> {
   handleAction: (data: T) => void;
 }
 
-export interface CustomizeListProps<T extends CustomDataElement> {
-  data: { [name: string]: T };
-  CustomForm: React.FC<CustomFormProps<T>>;
+const useCustomizeForm = <T extends CustomDataElement | UnitOption>(
+  data: { [name: string]: T },
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  schema: yup.ObjectSchema<any>;
-  emptyState: T;
-  removeFunc: (name: string) => void;
-  addFunc: (newState: T) => void;
-}
-
-function CustomizeList<T extends CustomDataElement>(props: CustomizeListProps<T>) {
-  const { data, CustomForm, schema, emptyState, removeFunc, addFunc } = props;
+  schema: yup.ObjectSchema<any>,
+  emptyState: T,
+  removeFunc: (name: string) => void,
+  addFunc: (newState: T) => void
+): CustomFormProps<T> & { ElementsList: () => JSX.Element } => {
   const [originalName, setOriginalName] = useState('');
   const [open, handleOpen, handleClose] = useOpen();
 
@@ -40,11 +36,11 @@ function CustomizeList<T extends CustomDataElement>(props: CustomizeListProps<T>
   });
   const { reset } = formContext;
 
-  const handleAction = (data: T) => {
-    if (data.name !== originalName) {
+  const handleAction = (newState: T) => {
+    if (newState.name !== originalName) {
       removeFunc(originalName);
     }
-    addFunc(data);
+    addFunc(newState);
     handleClose();
   };
 
@@ -60,22 +56,16 @@ function CustomizeList<T extends CustomDataElement>(props: CustomizeListProps<T>
     handleOpen();
   };
 
-  return (
-    <>
-      <ListWithItemActions
-        data={data}
-        handleClickActionOne={handleEdit}
-        handleClickActionTwo={removeFunc}
-        handleClickSpecialAction={handleAdd}
-      />
-      <CustomForm
-        formContext={formContext}
-        open={open}
-        handleClose={handleClose}
-        handleAction={handleAction}
-      />
-    </>
+  const ElementsList = () => (
+    <ListWithItemActions
+      data={data}
+      handleClickActionOne={handleEdit}
+      handleClickActionTwo={removeFunc}
+      handleClickSpecialAction={handleAdd}
+    />
   );
-}
 
-export default CustomizeList;
+  return { ElementsList, formContext, handleAction, open, handleClose };
+};
+
+export default useCustomizeForm;
