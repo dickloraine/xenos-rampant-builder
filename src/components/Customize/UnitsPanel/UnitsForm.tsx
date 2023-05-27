@@ -30,20 +30,20 @@ const activations = [
 
 function UnitsForm(props: CustomFormProps<DataUnit>) {
   const { formContext, open, handleClose, handleAction } = props;
-  const { watch, setValue } = formContext;
+  const { watch, getValues, setValue } = formContext;
   const rules = useAppSelector((state: RootState) => state.data.rulesData);
 
   const deleteOption = (name: string) => {
     setValue(
       'options',
-      produce(watch('options'), (draft) => {
+      produce(getValues('options'), (draft) => {
         delete draft[name];
       })
     );
   };
 
   const addOption = (newOption: UnitOption) =>
-    setValue('options', { ...watch('options'), [newOption.name]: newOption });
+    setValue('options', { ...getValues('options'), [newOption.name]: newOption });
 
   const { ElementsList, ...optionsFormProps } = useCustomizeForm<UnitOption>(
     watch('options'),
