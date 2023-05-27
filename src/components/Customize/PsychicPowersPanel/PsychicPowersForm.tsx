@@ -12,7 +12,7 @@ import {
 } from '../../../libs/react-hook-form-mui';
 import { PsychicPower } from '../../../store/types';
 import range from '../../../utils/range';
-import { CustomFormProps } from '../CustomizePanel/CustomizeList';
+import { CustomFormProps } from '../common/useCustomizeForm';
 
 function PsychicPowersForm(props: CustomFormProps<PsychicPower>) {
   const { formContext, open, handleClose, handleAction } = props;

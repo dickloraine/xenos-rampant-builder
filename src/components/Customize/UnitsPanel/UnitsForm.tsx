@@ -17,7 +17,7 @@ import {
 } from '../../../libs/react-hook-form-mui';
 import { DataUnit, RootState, UnitOption } from '../../../store/types';
 import range from '../../../utils/range';
-import useCustomizeForm, { CustomFormProps } from '../common/useCutomizeForm';
+import useCustomizeForm, { CustomFormProps } from '../common/useCustomizeForm';
 import OptionsForm from './OptionsForm';
 import UnitsFormStats from './UnitsFormStats';
 import { emptyOption, unitOptionSchema } from './unitSchemas';

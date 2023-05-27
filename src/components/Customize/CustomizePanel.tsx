@@ -6,10 +6,9 @@ import {
   Typography,
 } from '@mui/material';
 import React from 'react';
-import { UseFormReturn } from 'react-hook-form';
 import * as yup from 'yup';
 import { CustomDataElement } from '../../store/types';
-import useCustomizeForm from './common/useCutomizeForm';
+import useCustomizeForm, { CustomFormProps } from './common/useCustomizeForm';
 
 interface CustomizePanelProps<T extends CustomDataElement> {
   name: string;
@@ -25,14 +24,6 @@ interface CustomizePanelProps<T extends CustomDataElement> {
   emptyState: T;
   removeFunc: (name: string) => void;
   addFunc: (newState: T) => void;
-}
-
-export interface CustomFormProps<T extends CustomDataElement> {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  formContext: UseFormReturn<T, any>;
-  open: boolean;
-  handleClose: () => void;
-  handleAction: (data: T) => void;
 }
 
 function CustomizePanel<T extends CustomDataElement>(props: CustomizePanelProps<T>) {

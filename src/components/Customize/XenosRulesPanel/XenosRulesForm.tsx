@@ -15,8 +15,8 @@ import {
 import { selectUnitNames } from '../../../store/dataSlice';
 import { RootState, XenosRule } from '../../../store/types';
 import range from '../../../utils/range';
-import { CustomFormProps } from '../CustomizePanel/CustomizeList';
 import StatManipulation from '../common/StatManipulation';
+import { CustomFormProps } from '../common/useCustomizeForm';
 
 function XenosRulesForm(props: CustomFormProps<XenosRule>) {
   const { formContext, open, handleClose, handleAction } = props;
