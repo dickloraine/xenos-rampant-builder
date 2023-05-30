@@ -29,6 +29,7 @@ type StatManipulationProps = {
 const StatManipulation = ({ title, type, watch, setValue }: StatManipulationProps) => {
   const [anchorStat, handleClickStat, handleCloseStat] = useAnchor();
   const rangeType = type === 'setStats' ? 'range' : 'adjustRange';
+  const stats = watch(type) || {};
 
   return (
     <>
@@ -36,7 +37,7 @@ const StatManipulation = ({ title, type, watch, setValue }: StatManipulationProp
         {title}
       </InputLabel>
       <List>
-        {Object.keys(watch(type) || {}).map((name) => (
+        {Object.keys(stats).map((name) => (
           <ListItem id={name} key={name}>
             <SelectElement
               name={type + '.' + name}
@@ -53,7 +54,7 @@ const StatManipulation = ({ title, type, watch, setValue }: StatManipulationProp
                   setValue(
                     type,
                     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                    produce(watch(type), (draft: any) => {
+                    produce(stats, (draft: any) => {
                       if (draft) delete draft[name as keyof UnitStats];
                     })
                   )
@@ -76,12 +77,12 @@ const StatManipulation = ({ title, type, watch, setValue }: StatManipulationProp
             onClose={handleCloseStat}
           >
             {Object.keys(statData)
-              .filter((k) => !Object.keys(watch(type) || {}).includes(k))
+              .filter((k) => !Object.keys(stats).includes(k))
               .map((name) => (
                 <MenuItem
                   onClick={() =>
                     setValue(type, {
-                      ...watch(type),
+                      ...stats,
                       [name]: type === 'setStats' ? 4 : 0,
                     })
                   }
