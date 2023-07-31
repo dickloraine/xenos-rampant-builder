@@ -352,7 +352,7 @@ export const xenosRulesData: XenosRules = {
       'On a double on a psychic roll, lose Strength Points equal to one of the dice.',
   },
   'Psychic Resistance': {
-    name: 'Psychic Hazards',
+    name: 'Psychic Resistance',
     points: 1,
     exclude_units: ['Militia Rabble'],
     description:
