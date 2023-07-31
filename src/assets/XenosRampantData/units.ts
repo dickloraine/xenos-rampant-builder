@@ -527,6 +527,7 @@ export const unitsData: Units = {
         short: '10 Strength Points, Attack Value 3+.',
         setStats: {
           attackValue: 3,
+          strengthPoints: 10,
         },
       },
       'Xenomorph Ranged Attack': {
