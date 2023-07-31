@@ -14,7 +14,7 @@ const buildUnit = (unitToBuild: CompactUnit | Unit) => {
   };
 
   let points = unitData.points;
-  let statsToAdjust: Partial<UnitStats> = {};
+  let statsToAdjust: Partial<UnitStats>[] = [];
   for (const opt of unit.options) {
     const option = unitData.options[opt];
     points += option.points || 0;
@@ -26,7 +26,7 @@ const buildUnit = (unitToBuild: CompactUnit | Unit) => {
     }
 
     if (option.adjustStats) {
-      statsToAdjust = { ...statsToAdjust, ...option.adjustStats };
+      statsToAdjust = [...statsToAdjust, option.adjustStats];
     }
 
     if (option.add) {
@@ -54,15 +54,17 @@ const buildUnit = (unitToBuild: CompactUnit | Unit) => {
     }
 
     if (xenosRule.adjustStats) {
-      statsToAdjust = { ...statsToAdjust, ...xenosRule.adjustStats };
+      statsToAdjust = [...statsToAdjust, xenosRule.adjustStats];
     }
   }
 
-  for (const [key, val] of Object.entries(statsToAdjust)) {
-    const k = key as keyof UnitStats;
-    const oldVal = unit.stats[k];
-    if (val && typeof val == 'number' && typeof oldVal == 'number') {
-      unit = { ...unit, stats: { ...unit.stats, [key]: oldVal + val } };
+  for (const entry of statsToAdjust) {
+    for (const [key, val] of Object.entries(entry)) {
+      const k = key as keyof UnitStats;
+      const oldVal = unit.stats[k];
+      if (val && typeof val == 'number' && typeof oldVal == 'number') {
+        unit = { ...unit, stats: { ...unit.stats, [key]: oldVal + val } };
+      }
     }
   }
 
