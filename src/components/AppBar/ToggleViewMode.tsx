@@ -22,7 +22,12 @@ const ToggleViewMode: React.FC<{
 
   return (
     <Tooltip title={title}>
-      <IconButton color="inherit" aria-label={title} onClick={changeViewMode} size="large">
+      <IconButton
+        color="inherit"
+        aria-label={title}
+        onClick={changeViewMode}
+        size="large"
+      >
         <Icon fontSize="small" color={optionState ? 'inherit' : 'disabled'} />
       </IconButton>
     </Tooltip>

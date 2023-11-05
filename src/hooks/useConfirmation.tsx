@@ -10,7 +10,7 @@ import React from 'react';
 
 const useConfirmation = (): [
   () => JSX.Element,
-  (message?: string, title?: string) => Promise<boolean>
+  (message?: string, title?: string) => Promise<boolean>,
 ] => {
   const [promise, setPromise] = React.useState<{
     resolve: (value: boolean) => void;

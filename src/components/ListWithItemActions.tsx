@@ -47,7 +47,8 @@ export const ListWithItemActions: FC<ListWithItemActionsProps> = ({
             <IconButton
               aria-label={actionOneName}
               onClick={() => handleClickActionOne(name)}
-              size="large">
+              size="large"
+            >
               <ActionOneIcon color="primary" />
             </IconButton>
           </ListItemIcon>

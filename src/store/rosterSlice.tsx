@@ -228,8 +228,8 @@ export const getPsychicPowers = createSelector(
   (state: RootState) => state.data.psychicPowers,
   (units, rulesData) => {
     const unique_powers = new Set<string>();
-    units.forEach((unit) =>
-      unit.psiPowers?.forEach((powerName) => unique_powers.add(powerName))
+    units.forEach(
+      (unit) => unit.psiPowers?.forEach((powerName) => unique_powers.add(powerName))
     );
 
     return [...unique_powers].sort().reduce(

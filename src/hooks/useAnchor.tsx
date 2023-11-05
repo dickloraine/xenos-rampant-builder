@@ -3,7 +3,7 @@ import React from 'react';
 const useAnchor = (): [
   null | HTMLElement,
   (event: React.MouseEvent<HTMLButtonElement>) => void,
-  () => void
+  () => void,
 ] => {
   const [anchor, _setAnchor] = React.useState<null | HTMLElement>(null);
 
