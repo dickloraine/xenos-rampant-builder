@@ -14,11 +14,11 @@ export const getInitialBattle = (initialBattle?: CommanderBattle): CommanderBatt
   };
 
 const battleFormSchema = yup.object({
-  enemy: yup.string(),
+  enemy: yup.string().required(),
   victoryPoints: yup.number().min(0).integer().required(),
   enemyVictoryPoints: yup.number().min(0).integer().required(),
   careerPointsGained: yup.number().integer().required(),
-  date: yup.string(),
+  date: yup.string().required(),
 });
 
 const useBattleForm = (
