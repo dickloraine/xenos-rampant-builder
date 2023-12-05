@@ -15,7 +15,7 @@ import { toggleUIOption } from '../store/uiSlice';
 const RulesSummary = () => {
   const dispatch = useAppDispatch();
   const rulesSummaryExpanded = useAppSelector((state) => state.ui.rulesSummaryExpanded);
-  const specialRules = useAppSelector((state) => getSpecialRules(state));
+  const specialRules = useAppSelector(getSpecialRules);
 
   return (
     <Accordion

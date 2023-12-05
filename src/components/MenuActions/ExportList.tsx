@@ -17,9 +17,8 @@ const ExportList: React.FC<{ onClose?: () => void; showText?: boolean }> = ({
 }) => {
   const dispatch = useAppDispatch();
   const roster = useAppSelector((state) => state.roster);
-  const units = useAppSelector((state) => state.roster.units);
   const getImportableString = () => JSON.stringify(packRoster(roster));
-  const armyCost = getTotalPoints(units);
+  const armyCost = useAppSelector(getTotalPoints);
 
   const getListAsText = () => {
     const text: string[] = [];

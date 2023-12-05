@@ -11,7 +11,7 @@ const UnitSelector: React.FC<{
   unit: Unit;
   id: number;
 }> = ({ unit, id }) => {
-  const unitNames = useAppSelector((state) => selectUnitNames(state));
+  const unitNames = useAppSelector(selectUnitNames);
   const dispatch = useAppDispatch();
   const name = unit.customName ? unit.customName : unit.name;
 

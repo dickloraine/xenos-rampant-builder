@@ -11,7 +11,7 @@ import { useAppSelector } from '../../hooks/reduxHooks';
 import { selectAllRules } from '../../store/dataSlice';
 
 const SpecialRules: React.FC<{ rules: string[] }> = ({ rules }) => {
-  const rulesData = useAppSelector((state) => selectAllRules(state));
+  const rulesData = useAppSelector(selectAllRules);
   const inlineRules = useAppSelector((state) => state.ui.inlineRules);
 
   if (rules && rules.length) {

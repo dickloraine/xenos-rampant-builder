@@ -62,7 +62,7 @@ export type BattleSelection = {
 
 const BattlesView = () => {
   const dispatch = useAppDispatch();
-  const [battles, battleSelections] = useAppSelector((state) => getBattles(state));
+  const [battles, battleSelections] = useAppSelector(getBattles);
   const [selected, setSelected] = React.useState<number>(-1);
   const theme = useTheme();
   const isPhone = useMediaQuery(theme.breakpoints.down('sm'));

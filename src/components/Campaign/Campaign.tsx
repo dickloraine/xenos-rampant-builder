@@ -21,8 +21,8 @@ import CurrentCommander from './CurrentCommander';
 const Campaign = () => {
   const dispatch = useAppDispatch();
   const campaignExpanded = useAppSelector((state) => state.ui.campaignExpanded);
-  const currentCommander = useAppSelector((state) => getCurrentCommander(state));
-  const totalVictoryPoints = useAppSelector((state) => getVictoryPoints(state));
+  const currentCommander = useAppSelector(getCurrentCommander);
+  const totalVictoryPoints = useAppSelector(getVictoryPoints);
 
   return (
     <Accordion

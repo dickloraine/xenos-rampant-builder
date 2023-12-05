@@ -9,7 +9,6 @@ import {
   PsychicPowers,
   RootState,
   RosterState,
-  RosterUnits,
   Rules,
   Thunk,
   Unit,
@@ -197,13 +196,13 @@ export const setUnit =
   };
 
 export const getTotalPoints = createSelector(
-  (units: RosterUnits) => units,
-  (units) => Object.values(units).reduce((acc, unit) => acc + unit.points, 0)
+  (state: RootState) => state.roster.units,
+  (units) => units.reduce((acc, unit) => acc + unit.points, 0)
 );
 
 export const getSpecialRules = createSelector(
   (state: RootState) => state.roster.units,
-  (state: RootState) => selectAllRules(state),
+  selectAllRules,
   (units, rulesData) => {
     const unique_rules = new Set<string>();
     units.forEach((unit) =>

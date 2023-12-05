@@ -13,14 +13,14 @@ import {
   TextFieldElement,
 } from '../../../libs/react-hook-form-mui';
 import { selectUnitNames } from '../../../store/dataSlice';
-import { RootState, XenosRule } from '../../../store/types';
+import { XenosRule } from '../../../store/types';
 import range from '../../../utils/range';
 import StatManipulation from '../common/StatManipulation';
 import { CustomFormProps } from '../common/useCustomizeForm';
 
 function XenosRulesForm(props: CustomFormProps<XenosRule>) {
   const { formContext, open, handleClose, handleAction } = props;
-  const units = useAppSelector((state: RootState) => selectUnitNames(state));
+  const units = useAppSelector(selectUnitNames);
   const { watch, setValue } = formContext;
 
   return (

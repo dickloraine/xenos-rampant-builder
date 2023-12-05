@@ -24,7 +24,7 @@ import { toggleUIOption } from '../store/uiSlice';
 
 const PsychicPowerTable = () => {
   const dispatch = useAppDispatch();
-  const psychicData = useAppSelector((state) => getPsychicPowers(state));
+  const psychicData = useAppSelector(getPsychicPowers);
   const powersExpanded = useAppSelector((state) => state.ui.powersExpanded);
   const [open, setOpen] = useState(
     [...Array(Object.keys(psychicData))].map(() => false)

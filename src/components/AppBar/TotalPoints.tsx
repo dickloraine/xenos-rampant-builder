@@ -3,8 +3,7 @@ import { useAppSelector } from '../../hooks/reduxHooks';
 import { getTotalPoints } from '../../store/rosterSlice';
 
 const TotalPoints = () => {
-  const units = useAppSelector((state) => state.roster.units);
-  const armyCost = getTotalPoints(units);
+  const armyCost = useAppSelector(getTotalPoints);
 
   return (
     <>

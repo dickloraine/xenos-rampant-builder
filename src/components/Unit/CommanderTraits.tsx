@@ -11,7 +11,7 @@ import { useAppSelector } from '../../hooks/reduxHooks';
 import { getCurrentCommander } from '../../store/rosterSlice';
 
 const CommanderTraits: React.FC<{ rules: string[] }> = ({ rules }) => {
-  const commander = useAppSelector((state) => getCurrentCommander(state));
+  const commander = useAppSelector(getCurrentCommander);
   const traitData = useAppSelector((state) => state.data.traitData);
   const inlineRules = useAppSelector((state) => state.ui.inlineRules);
 
