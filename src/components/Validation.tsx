@@ -19,7 +19,7 @@ const Validation = () => {
 
   const warnings = [];
   for (const unit of units) {
-    const isPsycher = !unit.xenosRules.some((x) =>
+    const isPsycher = unit.xenosRules.some((x) =>
       ['Psychic 1', 'Psychic 2', 'Psychic 3', 'Psychic 4'].includes(x)
     );
     if (unit.points > 12)
