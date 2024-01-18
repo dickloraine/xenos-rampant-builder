@@ -1,4 +1,4 @@
-import{d as K,g as Yr}from"./react-adf67704.js";function ae(q){throw new Error('Could not dynamically require "'+q+'". Please configure the dynamicRequireTargets or/and ignoreDynamicRequires option of @rollup/plugin-commonjs appropriately for this require call to work.')}var Ue={exports:{}};/*!
+import{d as K,g as Yr}from"./react-89610ce2.js";function ae(q){throw new Error('Could not dynamically require "'+q+'". Please configure the dynamicRequireTargets or/and ignoreDynamicRequires option of @rollup/plugin-commonjs appropriately for this require call to work.')}var Ue={exports:{}};/*!
     localForage -- Offline Storage, Improved
     Version 1.10.0
     https://localforage.github.io/localForage
