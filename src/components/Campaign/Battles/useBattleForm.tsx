@@ -2,16 +2,18 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useEffect } from 'react';
 import { UseFormReturn, useForm } from 'react-hook-form';
 import * as yup from 'yup';
+import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks';
+import { addBattle, editBattle } from '../../../store/rosterSlice';
 import { CommanderBattle } from '../../../store/types';
+import { BattleSelection } from './Battles';
 
-export const getInitialBattle = (initialBattle?: CommanderBattle): CommanderBattle =>
-  initialBattle || {
-    enemy: '',
-    victoryPoints: 0,
-    enemyVictoryPoints: 0,
-    careerPointsGained: 0,
-    date: new Date().toISOString().slice(0, 10).replace(/-/g, '-'),
-  };
+const newBattle: CommanderBattle = {
+  enemy: '',
+  victoryPoints: 0,
+  enemyVictoryPoints: 0,
+  careerPointsGained: 0,
+  date: new Date().toISOString().slice(0, 10).replace(/-/g, '-'),
+};
 
 const battleFormSchema = yup.object({
   enemy: yup.string().required(),
@@ -22,30 +24,45 @@ const battleFormSchema = yup.object({
 });
 
 const useBattleForm = (
-  onSubmit: (battle: CommanderBattle) => void,
+  battleSelection: BattleSelection | null,
   open: boolean,
-  handleClose: () => void,
-  initialBattle?: CommanderBattle
+  handleClose: () => void
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-): [UseFormReturn<CommanderBattle, any>, (battle: CommanderBattle) => void] => {
+): [UseFormReturn<CommanderBattle, any>, (battle: CommanderBattle) => void, string] => {
+  const dispatch = useAppDispatch();
+  const initialBattle = useAppSelector((state) =>
+    battleSelection && state.roster.campaign
+      ? state.roster.campaign.commanders[battleSelection.commanderIndex].battles[
+          battleSelection.battleIndex
+        ]
+      : newBattle
+  );
+
   const formContext = useForm<CommanderBattle>({
     resolver: yupResolver(battleFormSchema),
-    defaultValues: { ...getInitialBattle(initialBattle) },
+    defaultValues: { ...initialBattle },
   });
   const { reset } = formContext;
 
   useEffect(() => {
     if (open) {
-      reset({ ...getInitialBattle(initialBattle) });
+      reset({ ...initialBattle });
     }
   }, [reset, open, initialBattle]);
 
-  const onSuccess = (battle: CommanderBattle) => {
-    onSubmit(battle);
-    handleClose();
-  };
+  const title = battleSelection ? 'Edit Battle' : 'New Battle';
 
-  return [formContext, onSuccess];
+  const onSuccess = battleSelection
+    ? (battle: CommanderBattle) => {
+        dispatch(editBattle(battle, battleSelection));
+        handleClose();
+      }
+    : (battle: CommanderBattle) => {
+        dispatch(addBattle(battle));
+        handleClose();
+      };
+
+  return [formContext, onSuccess, title];
 };
 
 export default useBattleForm;

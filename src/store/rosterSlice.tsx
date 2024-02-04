@@ -1,5 +1,5 @@
 import { createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { BattleSelection } from '../components/Campaign/Battles/BattlesView';
+import { BattleSelection } from '../components/Campaign/Battles/Battles';
 import { selectAllRules } from '../store/dataSlice';
 import {
   BattleStates,

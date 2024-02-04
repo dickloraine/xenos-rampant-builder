@@ -12,7 +12,7 @@ const SpendCareerPoints: React.FC<{
   return (
     <>
       <Typography variant="subtitle1">Spend career points</Typography>
-      <Box display="flex" justifyContent="space-evenly">
+      <Box display="flex" justifyContent="space-evenly" marginTop="20px">
         <AddTraits commander={commander} traitData={traitData} />
         <RemoveTraits commander={commander} traitData={traitData} />
         <ExpandDetachment commander={commander} />

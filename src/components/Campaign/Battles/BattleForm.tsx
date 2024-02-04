@@ -7,21 +7,18 @@ import {
 } from '@mui/material';
 import React from 'react';
 import { FormContainer, TextFieldElement } from '../../../libs/react-hook-form-mui';
-import { CommanderBattle } from '../../../store/types';
+import { BattleSelection } from './Battles';
 import useBattleForm from './useBattleForm';
 
 const BattleForm: React.FC<{
-  title: string;
-  onSubmit: (battle: CommanderBattle) => void;
+  battleSelection: BattleSelection | null;
   open: boolean;
   handleClose: () => void;
-  initialBattle?: CommanderBattle;
-}> = ({ title, onSubmit, open, handleClose, initialBattle }) => {
-  const [formContext, onSuccess] = useBattleForm(
-    onSubmit,
+}> = ({ battleSelection, open, handleClose }) => {
+  const [formContext, onSuccess, title] = useBattleForm(
+    battleSelection,
     open,
-    handleClose,
-    initialBattle
+    handleClose
   );
 
   return (
