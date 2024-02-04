@@ -15,7 +15,7 @@ const InlineRules: React.FC<{ showText?: boolean }> = ({ showText }) => {
     <MenuAction
       text="Inline rules"
       action={handleClick}
-      icon={<FormatIndentIncreaseIcon />}
+      icon={<FormatIndentIncreaseIcon color={inlineRules ? 'inherit' : 'disabled'} />}
       showText={showText}
       enabled={inlineRules}
     />
