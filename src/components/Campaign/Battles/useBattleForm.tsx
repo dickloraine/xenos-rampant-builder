@@ -2,6 +2,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useEffect } from 'react';
 import { UseFormReturn, useForm } from 'react-hook-form';
 import * as yup from 'yup';
+import { ObjectSchema } from 'yup';
 import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks';
 import { addBattle, editBattle } from '../../../store/rosterSlice';
 import { CommanderBattle } from '../../../store/types';
@@ -15,7 +16,7 @@ const newBattle: CommanderBattle = {
   date: new Date().toISOString().slice(0, 10).replace(/-/g, '-'),
 };
 
-const battleFormSchema = yup.object({
+const battleFormSchema: ObjectSchema<CommanderBattle> = yup.object({
   enemy: yup.string().required(),
   victoryPoints: yup.number().min(0).integer().required(),
   enemyVictoryPoints: yup.number().min(0).integer().required(),
