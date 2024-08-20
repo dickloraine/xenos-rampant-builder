@@ -309,7 +309,7 @@ export const xenosRulesData: XenosRules = {
       'Ignore the effects of Fearsome units. Ignore the effects of Stun Weapons. Courage value of 0+. This means that your unit will never become Suppressed, but will still rout on a negative Courage Test result as enough of the unit take crippling injuries that they cease to be combat effective or the force reanimating them dissipates. Any excess hits they take during Attacks are rounded up when working out how many Strength Points are lost. Shooting is resolved normally.',
   },
   Unstable: {
-    name: 'Unarmed',
+    name: 'Unstable',
     points: -2,
     exclude_units: ['Militia Rabble'],
     description:
