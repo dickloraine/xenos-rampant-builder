@@ -23,7 +23,7 @@ export const xenosRulesData: XenosRules = {
   },
   'Brutal Leader': {
     name: 'Brutal Leader',
-    points: 2,
+    points: 1,
     exclude_units: ['Militia Rabble'],
     description:
       'This unit, plus any other friendly units within 6", may re-roll failed Courage tests (including for Rallying), once per test. This effect only applies if the Brutal Leader’s unit is not Suppressed (therefore this rule cannot be used to Rally the Brutal Leader’s own unit). A unit re-rolling a test because of a Brutal Leader will automatically lose a Strength Point. This Strength Point loss is in addition to any caused by failed Courage tests and does not cause further Courage tests.',
