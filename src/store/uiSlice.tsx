@@ -15,6 +15,7 @@ const getInitialState = () => {
   return {
     viewMode: false,
     editMode: false,
+    printMode: false,
     inlineRules: true,
     darkMode: null,
     validationExpanded: true,

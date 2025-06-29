@@ -21,12 +21,16 @@ import CurrentCommander from './CurrentCommander';
 const Campaign = () => {
   const dispatch = useAppDispatch();
   const campaignExpanded = useAppSelector((state) => state.ui.campaignExpanded);
+  const printMode = useAppSelector((state) => state.ui.printMode);
   const currentCommander = useAppSelector(getCurrentCommander);
   const totalVictoryPoints = useAppSelector(getVictoryPoints);
 
+  // Force expand in print mode
+  const isExpanded = printMode || campaignExpanded;
+
   return (
     <Accordion
-      expanded={campaignExpanded}
+      expanded={isExpanded}
       onChange={() => dispatch(toggleUIOption('campaignExpanded'))}
       sx={{ maxWidth: 1210 }}
     >

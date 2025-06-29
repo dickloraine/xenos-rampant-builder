@@ -15,11 +15,15 @@ import { toggleUIOption } from '../store/uiSlice';
 const RulesSummary = () => {
   const dispatch = useAppDispatch();
   const rulesSummaryExpanded = useAppSelector((state) => state.ui.rulesSummaryExpanded);
+  const printMode = useAppSelector((state) => state.ui.printMode);
   const specialRules = useAppSelector(getSpecialRules);
+
+  // Force expand in print mode
+  const isExpanded = printMode || rulesSummaryExpanded;
 
   return (
     <Accordion
-      expanded={rulesSummaryExpanded}
+      expanded={isExpanded}
       onChange={() => dispatch(toggleUIOption('rulesSummaryExpanded'))}
       sx={{ maxWidth: 1210 }}
     >

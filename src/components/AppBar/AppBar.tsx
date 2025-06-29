@@ -1,4 +1,5 @@
 import EditIcon from '@mui/icons-material/Edit';
+import PrintIcon from '@mui/icons-material/Print';
 import ReplayIcon from '@mui/icons-material/Replay';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import {
@@ -49,6 +50,7 @@ const AppBar = () => {
           <Box flexGrow={1}></Box>
           <Box display="flex" alignItems="center">
             <ToggleViewMode option="viewMode" Icon={VisibilityIcon} title="View mode" />
+            <ToggleViewMode option="printMode" Icon={PrintIcon} title="Print mode" />
             <ToggleViewMode option="editMode" Icon={EditIcon} title="Edit mode" />
             <Box sx={{ display: { xs: 'none', md: 'block' } }}>
               <InlineRules />

@@ -15,6 +15,7 @@ import { toggleUIOption } from '../store/uiSlice';
 const Validation = () => {
   const dispatch = useAppDispatch();
   const validationExpanded = useAppSelector((state) => state.ui.validationExpanded);
+  const printMode = useAppSelector((state) => state.ui.printMode);
   const units = Object.values(useAppSelector((state) => state.roster.units));
 
   const warnings = [];
@@ -75,11 +76,14 @@ const Validation = () => {
       warnings.push([unit.name, 'A Psychic 4 unit can only take 3 Psychic Powers!']);
   }
 
+  // Force expand in print mode
+  const isExpanded = printMode || validationExpanded;
+
   return (
     <>
       {warnings.length !== 0 && (
         <Accordion
-          expanded={validationExpanded}
+          expanded={isExpanded}
           onChange={() => dispatch(toggleUIOption('validationExpanded'))}
           sx={{ maxWidth: 'breakpoints.values.lg' }}
         >

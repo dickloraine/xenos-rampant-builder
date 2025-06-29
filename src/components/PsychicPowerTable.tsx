@@ -26,6 +26,7 @@ const PsychicPowerTable = () => {
   const dispatch = useAppDispatch();
   const psychicData = useAppSelector(getPsychicPowers);
   const powersExpanded = useAppSelector((state) => state.ui.powersExpanded);
+  const printMode = useAppSelector((state) => state.ui.printMode);
   const [open, setOpen] = useState(
     [...Array(Object.keys(psychicData))].map(() => false)
   );
@@ -38,11 +39,14 @@ const PsychicPowerTable = () => {
     setOpen(newOpen);
   };
 
+  // Force expand in print mode
+  const isExpanded = printMode || powersExpanded;
+
   return (
     <>
       {psycherInRoster && (
         <Accordion
-          expanded={powersExpanded}
+          expanded={isExpanded}
           onChange={() => dispatch(toggleUIOption('powersExpanded'))}
           sx={{ maxWidth: 1210 }}
         >

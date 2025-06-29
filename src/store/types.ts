@@ -175,6 +175,7 @@ export type CompactRosterState = {
 export type UIState = {
   viewMode: boolean;
   editMode: boolean;
+  printMode: boolean;
   inlineRules: boolean;
   darkMode: null | boolean;
   validationExpanded: boolean;

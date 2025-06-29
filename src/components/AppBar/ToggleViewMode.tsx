@@ -14,10 +14,21 @@ const ToggleViewMode: React.FC<{
   const dispatch = useAppDispatch();
 
   const changeViewMode = () => {
-    const notClicked = option === 'viewMode' ? 'editMode' : 'viewMode';
-    optionState
-      ? dispatch(updateUI({ [option]: !optionState }))
-      : dispatch(updateUI({ [option]: !optionState, [notClicked]: false }));
+    if (option === 'printMode') {
+      // Print mode should disable both view and edit modes
+      optionState
+        ? dispatch(updateUI({ [option]: !optionState }))
+        : dispatch(
+            updateUI({ [option]: !optionState, viewMode: false, editMode: false })
+          );
+    } else {
+      const notClicked = option === 'viewMode' ? 'editMode' : 'viewMode';
+      optionState
+        ? dispatch(updateUI({ [option]: !optionState }))
+        : dispatch(
+            updateUI({ [option]: !optionState, [notClicked]: false, printMode: false })
+          );
+    }
   };
 
   return (
