@@ -597,7 +597,10 @@ export const unitsData: Units = {
         short: 'Remove Anti-Tank.',
         remove: ['Anti-Tank'],
       },
-      'Area Effect': unitOptions['Area Effect'],
+      'Area Effect': {
+        ...unitOptions['Area Effect'],
+        points: 2,
+      },
       'Armor-Piercing': unitOptions['Armor-Piercing'],
       Artillery: unitOptions['Artillery'],
       'Close Quarters Doctrine': unitOptions['Close Quarters Doctrine'],
