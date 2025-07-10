@@ -40,7 +40,7 @@ const Unit: React.FC<{ id: number }> = ({ id }) => {
   const handleRemove = () => dispatch(removeUnit(id));
 
   return (
-    <Card sx={{ mb: 3, maxWidth: 380, width: '100%', position: 'relative' }}>
+    <Card sx={{ mb: 3, maxWidth: 370, width: '100%', position: 'relative' }}>
       {viewMode ? (
         <CardHeader
           title={

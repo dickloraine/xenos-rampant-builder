@@ -37,7 +37,7 @@ const Roster = () => {
 
   return (
     <>
-      <Box display="flex" flexDirection="row" flexWrap="wrap">
+      <Box display="flex" flexDirection="row" flexWrap="wrap" gap={2}>
         {roster.units.map((_unit, id) => (
           <Unit id={id} key={id} />
         ))}
