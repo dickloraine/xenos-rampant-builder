@@ -37,12 +37,18 @@ const getTheme = (isDarkmode: boolean | null): ThemeOptions => ({
       fontSize: '1.5rem',
       lineHeight: 1.334,
       letterSpacing: '0em',
+      '@media print': {
+        fontSize: '1.1rem',
+      },
     },
     h4: {
       fontWeight: 500,
       fontSize: '1.25rem',
       lineHeight: 1.6,
       letterSpacing: '0.0075em',
+      '@media print': {
+        fontSize: '1rem',
+      },
     },
     h5: {
       fontWeight: 500,
@@ -68,6 +74,87 @@ const getTheme = (isDarkmode: boolean | null): ThemeOptions => ({
         enterDelay: 500,
         leaveDelay: 100,
         disableInteractive: true,
+      },
+    },
+    MuiContainer: {
+      styleOverrides: {
+        root: {
+          '@media print': {
+            padding: '0',
+            margin: '4px',
+          },
+        },
+      },
+    },
+    MuiTableCell: {
+      styleOverrides: {
+        root: {
+          '@media print': {
+            fontSize: '10pt',
+          },
+        },
+      },
+    },
+    MuiAccordion: {
+      styleOverrides: {
+        root: {
+          '@media print': {
+            boxShadow: 'none',
+            border: 'none',
+          },
+        },
+      },
+    },
+    MuiAppBar: {
+      styleOverrides: {
+        root: {
+          '@media print': {
+            boxShadow: 'none',
+          },
+        },
+      },
+    },
+    MuiCard: {
+      styleOverrides: {
+        root: {
+          '@media print': {
+            width: '48%',
+            breakInside: 'avoid',
+            border: '1px solid black',
+            boxShadow: 'none',
+          },
+        },
+      },
+    },
+    MuiCardHeader: {
+      styleOverrides: {
+        root: {
+          '@media print': {
+            marginBottom: '0',
+            paddingBottom: '0',
+          },
+        },
+      },
+    },
+    MuiChip: {
+      styleOverrides: {
+        root: {
+          '@media print': {
+            backgroundColor: 'transparent',
+            color: 'black',
+            fontSize: '1rem',
+            border: '1px solid black',
+          },
+        },
+      },
+    },
+    MuiSvgIcon: {
+      styleOverrides: {
+        root: {
+          '@media print': {
+            display: 'none',
+          },
+        },
       },
     },
   },

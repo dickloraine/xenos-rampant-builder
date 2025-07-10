@@ -43,7 +43,9 @@ const StatBlock: React.FC<{
   freeActivations: (keyof UnitStats)[];
 }> = ({ stats, freeActivations }) => {
   const theme = useTheme();
-  const isPhone = useMediaQuery(theme.breakpoints.down('sm'));
+  const _isPhone = useMediaQuery(theme.breakpoints.down('sm'));
+  const _isPrint = useMediaQuery('print');
+  const isPhone = _isPhone || _isPrint;
   const cellProps = {
     stats: stats,
     freeActivations: freeActivations,
